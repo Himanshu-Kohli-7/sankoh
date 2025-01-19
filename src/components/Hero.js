@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight, FaHandshake } from "react-icons/fa";
+import industrial1 from "../assets/BackgroundImages/industrial_1.jpg";
+import industrial2 from "../assets/BackgroundImages/industrial_2.jpg";
+import industrial3 from "../assets/BackgroundImages/industrial_3.jpg";
+import Fade from "react-reveal/Fade";
 
 const Hero = () => {
-  const backgroundImages = [
-    "/images/industrial1.png",
-    "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122",
-    "/images/industrial1.png",
-  ];
+  const backgroundImages = [industrial3, industrial1, industrial2];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -19,7 +19,7 @@ const Hero = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [backgroundImages.length]);
 
   return (
     <div className="relative min-h-screen overflow-hidden pt-20">
@@ -40,54 +40,59 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-8">
             {/* Main Heading */}
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white">
-              <span className="block mb-2">Engineering Excellence</span>
-              <span className="block"> for Industrial Needs</span>
-            </h1>
+            <Fade bottom>
+              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-white">
+                <span className="block mb-2">Engineering Excellence</span>
+                <span className="block"> for Industrial Needs</span>
+              </h1>
+            </Fade>
 
             {/* Subheading */}
-            <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light">
-              Precision and Durability for Your Industrial Systems
-            </p>
+            <Fade bottom delay={500}>
+              <p className="text-lg sm:text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light">
+                Precision and Durability for Your Industrial Systems
+              </p>
+            </Fade>
 
             {/* CTA Buttons */}
-            <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-              {/* Explore Products Button */}
-              <Link
-                to="/products"
-                className="inline-flex items-center justify-center gap-2 
-      bg-blue-600 text-white font-medium 
-      py-3 sm:py-4 px-6 sm:px-8 
-      rounded-lg transition-all duration-300 
-      hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/20
-      w-full sm:w-auto min-w-[200px]"
-              >
-                <span>Explore Our Products</span>
-                <FaArrowRight
-                  className="text-sm transition-transform group-hover:translate 
-      group-hover:translate-x-1"
-                />
-              </Link>
+            <Fade bottom delay={1000}>
+              <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                {/* Explore Products Button */}
+                <Link
+                  to="/products"
+                  className="inline-flex items-center justify-center gap-3
+                    bg-blue-600 text-white font-semibold 
+                    py-4 sm:py-5 px-8 sm:px-10 
+                    rounded-lg transition-all duration-300 
+                    hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/20
+                    w-full sm:w-auto min-w-[240px] text-lg"
+                >
+                  <span>Explore Products</span>
+                  <FaArrowRight
+                    className="text-base transition-transform 
+                      group-hover:translate-x-1"
+                  />
+                </Link>
 
-              {/* Contact Us Button */}
-              <Link
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 
-      bg-blue-600 text-white font-medium 
-      py-3 sm:py-4 px-6 sm:px-8 
-      rounded-lg transition-all duration-300 
-      hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-600/20
-      w-full sm:w-auto min-w-[200px]"
-              >
-                <span>Contact Us</span>
-                <FaHandshake
-                  className="text-xl transition-transform 
-      group-hover:scale-110"
-                />
-              </Link>
-            </div>
-
-            {/* Stats */}
+                {/* Contact Us Button */}
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center gap-3
+                    bg-white/10 backdrop-blur-sm text-white font-semibold
+                    py-4 sm:py-5 px-8 sm:px-10 
+                    rounded-lg transition-all duration-300 
+                    hover:bg-white/20 hover:shadow-lg
+                    border border-white/20
+                    w-full sm:w-auto min-w-[240px] text-lg"
+                >
+                  <span>Contact Us</span>
+                  <FaHandshake
+                    className="text-xl transition-transform 
+                      group-hover:scale-110"
+                  />
+                </Link>
+              </div>
+            </Fade>
           </div>
         </div>
       </div>

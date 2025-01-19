@@ -107,7 +107,7 @@ const Footer = () => {
               {[
                 {
                   icon: FaLinkedin,
-                  link: "https://www.linkedin.com/in/sanjay-kohli-a65027194/",
+                  link: "https://www.linkedin.com/in/sankoh-technical-solutions-46b499346/",
                   color: "hover:bg-blue-600",
                 },
                 {
@@ -138,29 +138,33 @@ const Footer = () => {
           <div className="space-y-6">
             <h4
               className="text-lg font-semibold text-white relative pb-4
-        after:content-[''] after:absolute after:bottom-0 after:left-0 
-        after:w-12 after:h-0.5 after:bg-blue-600"
+    after:content-[''] after:absolute after:bottom-0 after:left-0 
+    after:w-12 after:h-0.5 after:bg-blue-600"
             >
               Quick Links
             </h4>
             <ul className="space-y-3">
-              {["Home", "About", "Services", "Products", "Contact"].map(
-                (link) => (
-                  <li key={link}>
-                    <Link
-                      to={`/${link.toLowerCase()}`}
-                      className="text-gray-400 hover:text-white transition-colors duration-300 
-                flex items-center gap-2 group"
-                    >
-                      <FaChevronRight
-                        className="text-xs text-blue-500 transition-transform 
-                duration-300 group-hover:translate-x-1"
-                      />
-                      {link}
-                    </Link>
-                  </li>
-                )
-              )}
+              {[
+                { name: "Home", path: "/" },
+                { name: "About", path: "/about" },
+                { name: "Services", path: "/services" },
+                { name: "Products", path: "/products" },
+                { name: "Contact", path: "/contact" },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className="text-gray-400 hover:text-white transition-colors duration-300 
+          flex items-center gap-2 group"
+                  >
+                    <FaChevronRight
+                      className="text-xs text-blue-500 transition-transform 
+            duration-300 group-hover:translate-x-1"
+                    />
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -185,7 +189,7 @@ const Footer = () => {
                 },
                 {
                   name: "Process Instruments",
-                  path: "/products?category=instruments",
+                  path: "/products?category=process-instruments",
                 },
               ].map((category) => (
                 <li key={category.name}>
@@ -209,8 +213,8 @@ const Footer = () => {
           <div className="space-y-6">
             <h4
               className="text-lg font-semibold text-white relative pb-4
-        after:content-[''] after:absolute after:bottom-0 after:left-0 
-        after:w-12 after:h-0.5 after:bg-blue-600"
+    after:content-[''] after:absolute after:bottom-0 after:left-0 
+    after:w-12 after:h-0.5 after:bg-blue-600"
             >
               Contact Info
             </h4>
@@ -219,9 +223,9 @@ const Footer = () => {
                 <button
                   onClick={handleGetDirections}
                   className="flex items-start gap-3 text-gray-400 hover:text-white 
-              transition-colors duration-300 group text-left"
+        transition-colors duration-300 group text-left"
                 >
-                  <FaMapMarkerAlt className="mt-1 text-blue-500 group-hover:text-blue-400 flex-shrink-0" />
+                  <FaMapMarkerAlt className="mt-1 text-blue-500 group-hover:text-blue-400 flex-shrink-0 text-base" />
                   <span className="text-sm">
                     69, Ground floor, Hansa Industrial Park,
                     <br />
@@ -235,20 +239,20 @@ const Footer = () => {
                 <a
                   href="tel:+919888491527"
                   className="flex items-center gap-3 text-gray-400 hover:text-white 
-              transition-colors duration-300 group"
+        transition-colors duration-300 group"
                 >
-                  <FaPhoneAlt className="text-blue-500 group-hover:text-blue-400" />
-                  <span>+91 9888491527</span>
+                  <FaPhoneAlt className="text-blue-500 group-hover:text-blue-400 text-base flex-shrink-0" />
+                  <span className="text-sm">+91 9888491527</span>
                 </a>
               </li>
               <li>
                 <a
                   href="mailto:sankoh.techsol@gmail.com"
-                  className="flex items-center gap-3 text-gray-400 hover:text-white 
-              transition-colors duration-300 group"
+                  className="flex items-center gap-4 text-gray-400 hover:text-white 
+        transition-colors duration-300 group"
                 >
-                  <FaEnvelope className="text-blue-500 group-hover:text-blue-400" />
-                  <span>sankoh.techsol@gmail.com</span>
+                  <FaEnvelope className="text-blue-500 group-hover:text-blue-400 text-base flex-shrink-0" />
+                  <span className="text-sm">sankoh.techsol@gmail.com</span>
                 </a>
               </li>
             </ul>
@@ -257,16 +261,18 @@ const Footer = () => {
           {/* Business Hours */}
           <div className="space-y-6">
             <h4
-              className="text-lg font-semibold text-white relative pb-4
-        after:content-[''] after:absolute after:bottom-0 after:left-0 
-        after:w-12 after:h-0.5 after:bg-blue-600"
+              className="text-lg font-semibold text-white relative pb-3
+    after:content-[''] after:absolute after:bottom-0 after:left-0 
+    after:w-12 after:h-0.5 after:bg-blue-600"
             >
               Business Hours
             </h4>
             <ul className="space-y-3">
-              <li className="flex justify-between text-gray-400 pb-2 border-b border-gray-800/30">
-                <span>Mon - Sat:</span>
-                <span>9AM - 6PM</span>
+              <li className="text-gray-400 pb-2 border-b border-gray-800/30">
+                <span className="flex items-center space-x-4">
+                  <span>Mon - Sat:</span>
+                  <span className="ml-1">9AM - 6PM</span>
+                </span>
               </li>
             </ul>
           </div>

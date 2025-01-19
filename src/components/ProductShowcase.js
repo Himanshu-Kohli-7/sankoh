@@ -4,7 +4,9 @@ import { FaArrowRight } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import Fade from "react-reveal/Fade"; // Import Fade for animations
 import { productCategories } from "../data/products";
+import industrial from "../assets/BackgroundImages/industrial_1.jpg";
 
 const ProductShowcase = () => {
   const navigate = useNavigate();
@@ -68,7 +70,7 @@ const ProductShowcase = () => {
       <div
         className="absolute inset-0 opacity-20"
         style={{
-          backgroundImage: "url('/images/industrial1.png')",
+          backgroundImage: `url(${industrial})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
@@ -80,137 +82,149 @@ const ProductShowcase = () => {
 
       <div className="relative container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Our Products
-          </h2>
-          <p className="text-gray-400 text-lg">
-            Offering Tailored Industrial Solutions Built for Excellence
-          </p>
-        </div>
+        <Fade bottom>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Our Products
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Offering Tailored Industrial Solutions Built for Excellence
+            </p>
+          </div>
+        </Fade>
 
         {/* Product Categories */}
         <div className="space-y-16">
           {/* Manual Valves */}
-          <div>
-            <div className="flex items-center justify-between mb-8 px-4">
-              <h3 className="text-2xl font-bold text-white">Manual Valves</h3>
-              <button
-                onClick={() => handleProductClick(null, "Manual Valves")}
-                className="text-blue-400 hover:text-blue-300 transition-colors 
-                  duration-300 text-sm flex items-center gap-2"
-              >
-                View Category <FaArrowRight className="text-xs" />
-              </button>
+          <Fade bottom delay={200}>
+            <div>
+              <div className="flex items-center justify-between mb-8 px-4">
+                <h3 className="text-2xl font-bold text-white">Manual Valves</h3>
+                <button
+                  onClick={() => handleProductClick(null, "Manual Valves")}
+                  className="text-blue-400 hover:text-blue-300 transition-colors 
+                    duration-300 text-sm flex items-center gap-2"
+                >
+                  View Category <FaArrowRight className="text-xs" />
+                </button>
+              </div>
+              <div className="overflow-hidden">
+                <Slider {...sliderSettings}>
+                  {productCategories[0].products.map((product) => (
+                    <div key={product.id} className="px-3">
+                      <ProductCard
+                        product={product}
+                        onClick={() =>
+                          handleProductClick(product, "Manual Valves")
+                        }
+                      />
+                    </div>
+                  ))}
+                </Slider>
+              </div>
             </div>
-            <div className="overflow-hidden">
-              <Slider {...sliderSettings}>
-                {productCategories[0].products.map((product) => (
-                  <div key={product.id} className="px-3">
-                    <ProductCard
-                      product={product}
-                      onClick={() =>
-                        handleProductClick(product, "Manual Valves")
-                      }
-                    />
-                  </div>
-                ))}
-              </Slider>
-            </div>
-          </div>
+          </Fade>
 
           {/* Automated Valves */}
-          <div>
-            <div className="flex items-center justify-between mb-8 px-4">
-              <h3 className="text-2xl font-bold text-white">
-                Automated Valves
-              </h3>
-              <button
-                onClick={() => handleProductClick(null, "Automated Valves")}
-                className="text-blue-400 hover:text-blue-300 transition-colors 
-                  duration-300 text-sm flex items-center gap-2"
-              >
-                View Category <FaArrowRight className="text-xs" />
-              </button>
+          <Fade bottom delay={400}>
+            <div>
+              <div className="flex items-center justify-between mb-8 px-4">
+                <h3 className="text-2xl font-bold text-white">
+                  Automated Valves
+                </h3>
+                <button
+                  onClick={() => handleProductClick(null, "Automated Valves")}
+                  className="text-blue-400 hover:text-blue-300 transition-colors 
+                    duration-300 text-sm flex items-center gap-2"
+                >
+                  View Category <FaArrowRight className="text-xs" />
+                </button>
+              </div>
+              <div className="overflow-hidden">
+                <Slider {...sliderSettings}>
+                  {productCategories[1].subcategories.flatMap((sub) =>
+                    sub.products.map((product) => (
+                      <div key={product.id} className="px-3">
+                        <ProductCard
+                          product={{
+                            ...product,
+                            subcategory: sub.name,
+                            subcategoryId: sub.id,
+                          }}
+                          onClick={() =>
+                            handleProductClick(
+                              {
+                                ...product,
+                                subcategory: sub.name,
+                                subcategoryId: sub.id,
+                              },
+                              "Automated Valves"
+                            )
+                          }
+                        />
+                      </div>
+                    ))
+                  )}
+                </Slider>
+              </div>
             </div>
-            <div className="overflow-hidden">
-              <Slider {...sliderSettings}>
-                {productCategories[1].subcategories.flatMap((sub) =>
-                  sub.products.map((product) => (
-                    <div key={product.id} className="px-3">
-                      <ProductCard
-                        product={{
-                          ...product,
-                          subcategory: sub.name,
-                          subcategoryId: sub.id,
-                        }}
-                        onClick={() =>
-                          handleProductClick(
-                            {
-                              ...product,
-                              subcategory: sub.name,
-                              subcategoryId: sub.id,
-                            },
-                            "Automated Valves"
-                          )
-                        }
-                      />
-                    </div>
-                  ))
-                )}
-              </Slider>
-            </div>
-          </div>
+          </Fade>
 
           {/* Process Instruments */}
-          <div>
-            <div className="flex items-center justify-between mb-8 px-4">
-              <h3 className="text-2xl font-bold text-white">
-                Process Instruments
-              </h3>
-              <button
-                onClick={() => handleProductClick(null, "Process Instruments")}
-                className="text-blue-400 hover:text-blue-300 transition-colors 
-                  duration-300 text-sm flex items-center gap-2"
-              >
-                View Category <FaArrowRight className="text-xs" />
-              </button>
+          <Fade bottom delay={600}>
+            <div>
+              <div className="flex items-center justify-between mb-8 px-4">
+                <h3 className="text-2xl font-bold text-white">
+                  Process Instruments
+                </h3>
+                <button
+                  onClick={() =>
+                    handleProductClick(null, "Process Instruments")
+                  }
+                  className="text-blue-400 hover:text-blue-300 transition-colors 
+                    duration-300 text-sm flex items-center gap-2"
+                >
+                  View Category <FaArrowRight className="text-xs" />
+                </button>
+              </div>
+              <div className="overflow-hidden">
+                <Slider {...sliderSettings}>
+                  {productCategories[2].subcategories.flatMap((sub) =>
+                    sub.products.map((product) => (
+                      <div key={product.id} className="px-3">
+                        <ProductCard
+                          product={{ ...product, subcategory: sub.name }}
+                          onClick={() =>
+                            handleProductClick(
+                              { ...product, subcategory: sub.name },
+                              "Process Instruments"
+                            )
+                          }
+                        />
+                      </div>
+                    ))
+                  )}
+                </Slider>
+              </div>
             </div>
-            <div className="overflow-hidden">
-              <Slider {...sliderSettings}>
-                {productCategories[2].subcategories.flatMap((sub) =>
-                  sub.products.map((product) => (
-                    <div key={product.id} className="px-3">
-                      <ProductCard
-                        product={{ ...product, subcategory: sub.name }}
-                        onClick={() =>
-                          handleProductClick(
-                            { ...product, subcategory: sub.name },
-                            "Process Instruments"
-                          )
-                        }
-                      />
-                    </div>
-                  ))
-                )}
-              </Slider>
-            </div>
-          </div>
+          </Fade>
         </div>
 
         {/* CTA Button */}
-        <div className="text-center mt-16">
-          <Link
-            to="/products"
-            className="group inline-flex items-center gap-2 bg-blue-600/90 text-white 
-              px-6 py-3 rounded-lg font-medium transition-all duration-300
-              hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/20
-              backdrop-blur-sm"
-          >
-            Explore Category
-            <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
-        </div>
+        <Fade bottom delay={800}>
+          <div className="text-center mt-16">
+            <Link
+              to="/products"
+              className="group inline-flex items-center gap-2 bg-blue-600/90 text-white 
+                px-6 py-3 rounded-lg font-medium transition-all duration-300
+                hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/20
+                backdrop-blur-sm"
+            >
+              Explore Products
+              <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </Fade>
       </div>
     </section>
   );

@@ -1,28 +1,4 @@
 // Manual Valves Images
-import ballvalve from "../assets/images/Automated_Valves/Ball-Valve.png";
-import bfvUpvc from "../assets/images/Automated_Valves/bfv-upvc.png";
-import cylinder from "../assets/images/Automated_Valves/cylinder.png";
-import pilotType from "../assets/images/Automated_Valves/pilot-type.png";
-import semilift from "../assets/images/Automated_Valves/Semilift.png";
-import eaBallValve from "../assets/images/Automated_Valves/EA-Ball-Valve.png";
-import globeValve from "../assets/images/Automated_Valves/globe-control-valve.png";
-import sphericalButterfly from "../assets/images/Automated_Valves/spherical-disc-bfv.png";
-import triCloveBall from "../assets/images/Automated_Valves/tri-clove-ball-valve.png";
-import sphericalDisc from "../assets/images/Automated_Valves/spherical-disc.png";
-import ssv from "../assets/images/Automated_Valves/ssv.png";
-import triCloveBfv from "../assets/images/Automated_Valves/tri-clove-bfv.png";
-import triClover from "../assets/images/Automated_Valves/tri-clover.png";
-import triCloverBfv from "../assets/images/Automated_Valves/tri-clover-bfv.png";
-import upvcBall from "../assets/images/Automated_Valves/upvc-ball.png";
-import upvcBallValve from "../assets/images/Automated_Valves/upvc-ball-valve.png";
-import upvcBfv from "../assets/images/Automated_Valves/upvc-bfv.png";
-import waferTypeBfv from "../assets/images/Automated_Valves/wafer-type-bfv.png";
-import waferTypeButterflyValve from "../assets/images/Automated_Valves/wafer-type-butterfly-valve.png";
-import yType from "../assets/images/Automated_Valves/Y-type.png";
-// Automated Valves Images
-import directActingImage from "../assets/images/Automated_Valves/direct-acting.png";
-
-// Manual Valves Images
 import globalValve from "../assets/images/Manual Valves/globe-valve.png";
 import ballvalve_1 from "../assets/images/Manual Valves/ball-valve-1.webp";
 import dualPlateNrv from "../assets/images/Manual Valves/dual-plate-nrv.webp";
@@ -38,6 +14,29 @@ import singleClassValve from "../assets/images/Manual Valves/Sight-Glass-Valve.w
 import singleWaferNrv from "../assets/images/Manual Valves/single-wafer-NRV.webp";
 import stainlessSteelBall from "../assets/images/Manual Valves/stainless-steel-ball-valve-screwed.webp";
 import stainer from "../assets/images/Manual Valves/Strainer1.jpg";
+import flushBottom from "../assets/images/Manual Valves/flush-bottom.webp";
+import steamTrap from "../assets/images/Manual Valves/steam-trap.webp";
+import springLoaded from "../assets/images/Manual Valves/spring-loaded1.webp";
+
+// Automated Valves Images
+import ballvalve from "../assets/images/Automated_Valves/Ball-Valve.png";
+import bfvUpvc from "../assets/images/Automated_Valves/bfv-upvc.png";
+import cylinder from "../assets/images/Automated_Valves/cylinder.png";
+import eaBallValve from "../assets/images/Automated_Valves/EA-Ball-Valve.png";
+import globeValve from "../assets/images/Automated_Valves/globe-control-valve.png";
+import sphericalButterfly from "../assets/images/Automated_Valves/spherical-disc-bfv.png";
+import triCloveBall from "../assets/images/Automated_Valves/tri-clove-ball-valve.png";
+import sphericalDisc from "../assets/images/Automated_Valves/spherical-disc.png";
+import triCloveBfv from "../assets/images/Automated_Valves/tri-clove-bfv.png";
+import triClover from "../assets/images/Automated_Valves/tri-clover.png";
+import triCloverBfv from "../assets/images/Automated_Valves/tri-clover-bfv.png";
+import upvcBall from "../assets/images/Automated_Valves/upvc-ball.png";
+import upvcBallValve from "../assets/images/Automated_Valves/upvc-ball-valve.png";
+import upvcBfv from "../assets/images/Automated_Valves/upvc-bfv.png";
+import waferTypeBfv from "../assets/images/Automated_Valves/wafer-type-bfv.png";
+import waferTypeButterflyValve from "../assets/images/Automated_Valves/wafer-type-butterfly-valve.png";
+import yType from "../assets/images/Automated_Valves/Y-type.png";
+import directActingImage from "../assets/images/Automated_Valves/direct-acting.png";
 
 // Process Instruments Images
 // flow meter
@@ -114,7 +113,7 @@ export const productCategories = [
       {
         id: 7,
         name: "Flush Bottom Valve",
-        image: "/images/products/pressure-transmitter.jpg",
+        image: flushBottom,
       },
       {
         id: 8,
@@ -159,12 +158,12 @@ export const productCategories = [
       {
         id: 16,
         name: "Traps",
-        image: "/images/products/pressure-transmitter.jpg",
+        image: steamTrap,
       },
       {
         id: 17,
-        name: "Tanker Valve",
-        image: "/images/products/pressure-transmitter.jpg",
+        name: "Spring Loaded NRV",
+        image: springLoaded,
       },
       {
         id: 18,
@@ -201,26 +200,33 @@ export const productCategories = [
             name: "Power Cylinder",
             image: cylinder,
           },
-
           {
-            id: 6,
+            id: 5,
             name: "Tri Clover Type",
             image: triClover,
           },
           {
-            id: 7,
+            id: 6,
             name: "Tri-Clover Type",
             image: triCloverBfv,
           },
           {
-            id: 8,
+            id: 7,
             name: "UPVC",
             image: upvcBall,
           },
-          { id: 9, name: "UPVC", image: bfvUpvc },
-          { id: 10, name: "Spherical Disc", image: sphericalDisc },
           {
-            id: 11,
+            id: 8,
+            name: "UPVC",
+            image: bfvUpvc,
+          },
+          {
+            id: 9,
+            name: "Spherical Disc",
+            image: sphericalDisc,
+          },
+          {
+            id: 10,
             name: "Wafer Butterfly Valve",
             image: waferTypeButterflyValve,
           },
@@ -231,37 +237,37 @@ export const productCategories = [
         name: "Electric Products",
         products: [
           {
-            id: 9,
+            id: 11,
             name: "Electrical Actuated Spherical Disc Butterfly Valve",
             image: sphericalButterfly,
           },
           {
-            id: 10,
+            id: 12,
             name: "Electrical Ball Valve",
             image: eaBallValve,
           },
           {
-            id: 12,
+            id: 13,
             name: "Electrical TC Ball Valve",
             image: triCloveBall,
           },
           {
-            id: 13,
+            id: 14,
             name: "Electrical TC Butterfly Valve",
             image: triCloveBfv,
           },
           {
-            id: 14,
+            id: 15,
             name: "Electrical UPVC Ball Valve",
             image: upvcBallValve,
           },
           {
-            id: 15,
+            id: 16,
             name: "Electrical UPVC Butterfly Valve",
             image: upvcBfv,
           },
           {
-            id: 16,
+            id: 17,
             name: "Electrical Wafer Butterfly Valve",
             image: waferTypeBfv,
           },
@@ -272,36 +278,21 @@ export const productCategories = [
         name: "Solenoid Products",
         products: [
           {
-            id: 1,
-            name: "Direct Acting",
-            image: directActingImage,
-          },
-          {
-            id: 17,
-            name: "Pilot Type Diaphragm Operated Solenoid Valve",
-            image: pilotType,
-          },
-          {
             id: 18,
-            name: "Regulating Solenoid Valve",
-            image: ssv,
-          },
-          {
-            id: 19,
-            name: "Semilift Diaphragm Operated Solenoid Valve",
-            image: semilift,
+            name: "Direct Acting Solenoid Valve",
+            image: directActingImage,
           },
         ],
       },
     ],
   },
   {
-    id: "instruments",
+    id: "process-instruments",
     name: "Process Instruments",
     subcategories: [
       {
-        id: "flow",
-        name: "Flow Instruments",
+        id: "flow-meter",
+        name: "Flow Meter",
         products: [
           {
             id: 1,
@@ -313,7 +304,6 @@ export const productCategories = [
             name: "Vortex Flow Meter",
             image: vortexMeter,
           },
-
           {
             id: 3,
             name: "Turbine Flow Meter",
@@ -321,13 +311,13 @@ export const productCategories = [
           },
           {
             id: 4,
-            name: "Ultrasonic Flow Meter",
-            image: ultrasonic,
+            name: "Water Meter",
+            image: waterMeter,
           },
           {
             id: 5,
-            name: "water Flow Meter",
-            image: waterMeter,
+            name: "Ultrasonic Flow Meter",
+            image: ultrasonic,
           },
           {
             id: 6,
@@ -336,106 +326,101 @@ export const productCategories = [
           },
           {
             id: 7,
-            name: "Thermal Mass Flow Meter",
+            name: "Mass Flow Meter",
             image: massFlowMeter,
           },
         ],
       },
       {
         id: "pressure",
-        name: "Pressure Instruments",
+        name: "Pressure",
         products: [
           {
-            id: 7,
-            name: "Pressure Transmitter",
-            image: pressureTransmitter,
-          },
-          {
             id: 8,
-            name: "Pressure Switch",
-            image: pressureSwitch,
-          },
-          {
-            id: 9,
             name: "Differential Pressure Transmitter",
             image: differentialPressureTransmitter,
           },
           {
-            id: 10,
+            id: 9,
             name: "Pressure Gauge",
             image: pressureGauge,
+          },
+          {
+            id: 10,
+            name: "Pressure Switch",
+            image: pressureSwitch,
+          },
+          {
+            id: 11,
+            name: "Pressure Transmitter",
+            image: pressureTransmitter,
           },
         ],
       },
       {
         id: "temperature",
-        name: "Temperature Instruments",
+        name: "Temperature",
         products: [
           {
-            id: 11,
-            name: "Temperature Transmitter",
-            image: temperatureTransmitter,
+            id: 12,
+            name: "Mechanical Temperature Gauge",
+            image: mechanicalTemperatureGauge,
           },
           {
-            id: 12,
+            id: 13,
             name: "RTD Sensor",
             image: rtdSensor,
           },
           {
-            id: 13,
-            name: "Temperature Gauge",
-            image: mechanicalTemperatureGauge,
+            id: 14,
+            name: "Temperature Transmitter",
+            image: temperatureTransmitter,
           },
           {
-            id: 14,
-            name: "Temperature Sensor",
+            id: 15,
+            name: "High Temperature Sensor",
             image: temeratureSenor,
           },
         ],
       },
       {
-        id: "level",
-        name: "Level Instruments",
+        id: "level-transmitter",
+        name: "Level Transmitter",
         products: [
           {
-            id: 15,
-            name: "Level Transmitter",
-            image: "/images/products/level-transmitter.jpg",
-          },
-          {
             id: 16,
-            name: "Float Type Level Switch",
-            image: floatLevelSwitch,
-          },
-          {
-            id: 17,
-            name: "Radar Type Level Transmitter",
-            image: radarLevelTransmitter,
-          },
-          {
-            id: 18,
-            name: "Ultrasonic Level Transmitter",
-            image: ultrasonicLevelTransmitter,
-          },
-          {
-            id: 19,
-            name: "Tuning Fork Level Transmitter",
-            image: forkLevelTransmitter,
-          },
-          {
-            id: 20,
-            name: "Rotary Level Transmitter",
-            image: rotaryLevelTransmitter,
-          },
-          {
-            id: 21,
             name: "Capacitance Level Transmitter",
             image: capacitanceLevelTransmitter,
           },
           {
-            id: 22,
+            id: 17,
+            name: "Float Type Level Switch",
+            image: floatLevelSwitch,
+          },
+          {
+            id: 18,
+            name: "Radar Type Level Transmitter",
+            image: radarLevelTransmitter,
+          },
+          {
+            id: 19,
             name: "Side Mounted Level Transmitter",
             image: sideMountedLevelTransmitter,
+          },
+          {
+            id: 20,
+            name: "Resistance Rotary Level Switch",
+            image: rotaryLevelTransmitter,
+          },
+          {
+            id: 21,
+            name: "Ultrasonic Level Transmitter",
+            image: ultrasonicLevelTransmitter,
+          },
+          {
+            id: 22,
+            name: "Vibrating Fork Level Switch",
+            image: forkLevelTransmitter,
           },
         ],
       },
@@ -445,93 +430,26 @@ export const productCategories = [
         products: [
           {
             id: 23,
-            name: "pH Transmitter",
-            image: phTransmitter,
-          },
-          {
-            id: 24,
-            name: "pH Sensor",
-            image: phSenor,
-          },
-          {
-            id: 25,
-            name: "COD Sensor",
-            image: codSensor,
-          },
-          {
-            id: 26,
             name: "BOD Sensor",
             image: bodSensor,
           },
           {
-            id: 27,
-            name: "Chlorine Sensor Transmitter",
-            image: "/images/products/chlorine-sensor.jpg",
+            id: 24,
+            name: "COD Sensor",
+            image: codSensor,
           },
           {
-            id: 28,
-            name: "Connectivity Sensor",
-            image: "/images/products/connectivity-sensor.jpg",
+            id: 25,
+            name: "pH Transmitter",
+            image: phTransmitter,
+          },
+          {
+            id: 26,
+            name: "pH Sensor",
+            image: phSenor,
           },
         ],
       },
     ],
   },
 ];
-
-// Helper function to get featured products for showcase
-export const getFeaturedProducts = () => {
-  const featured = [];
-
-  productCategories.forEach((category) => {
-    if (category.subcategories) {
-      category.subcategories.forEach((sub) => {
-        // Take first product from each subcategory
-        if (sub.products.length) {
-          featured.push({
-            ...sub.products[0],
-            category: category.name,
-          });
-        }
-      });
-    } else {
-      // Take first two products from simple categories
-      category.products.slice(0, 2).forEach((product) => {
-        featured.push({
-          ...product,
-          category: category.name,
-        });
-      });
-    }
-  });
-
-  return featured;
-};
-
-// Helper function to get all products grouped by category
-export const getAllProducts = () => {
-  const allProducts = [];
-
-  productCategories.forEach((category) => {
-    if (category.subcategories) {
-      category.subcategories.forEach((sub) => {
-        sub.products.forEach((product) => {
-          allProducts.push({
-            ...product,
-            category: category.name,
-            subcategory: sub.name,
-          });
-        });
-      });
-    } else {
-      category.products.forEach((product) => {
-        allProducts.push({
-          ...product,
-          category: category.name,
-        });
-      });
-    }
-  });
-
-  return allProducts;
-};
