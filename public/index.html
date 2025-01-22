@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -13,15 +12,26 @@
       name="keywords"
       content="manual valves, automated valves, process instruments, valve repair services, VFD repair, valve manufacturer, industrial valves"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <meta
+      name="google-site-verification"
+      content="your-google-verification-code"
+    />
+
+    <!-- Favicon and Apple Touch Icon -->
+    <link rel="icon" href="/sankoh.png" />
+    <link rel="apple-touch-icon" href="/sankoh.png" />
+
+    <!-- Manifest file for PWA -->
+    <link rel="manifest" href="https://www.sankohtech.com/manifest.json" />
+
+    <!-- Structured Data (Schema.org) for Organization -->
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
         "@type": "Organization",
         "name": "Sankoh Technical Solutions",
-        "url": "https://www.sankohtechn.com",
-        "logo": "https://www.sankohtech.com/logo.png",
+        "url": "https://www.sankohtech.com",
+        "logo": "https://www.sankohtech.com/sankoh.png",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+91-9888491527",
@@ -29,7 +39,7 @@
         },
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": " 69, Ground floor, Hansa Industrial Park, Barwala Road",
+          "streetAddress": "69, Ground floor, Hansa Industrial Park, Barwala Road",
           "addressLocality": "Derabassi",
           "addressRegion": "Punjab",
           "postalCode": "140507",
@@ -37,6 +47,8 @@
         }
       }
     </script>
+
+    <!-- Open Graph Meta Tags -->
     <meta
       property="og:title"
       content="Sankoh Technical Solutions - Manual Valves & Process Instruments"
@@ -45,8 +57,24 @@
       property="og:description"
       content="Sankoh Technical Solutions manufactures manual valves, automated valves, and process instruments, and offers repair services for all types of valves and VFDs."
     />
-    <meta property="og:image" content="https://www.sankohtech.com/logo.png" />
+    <meta property="og:image" content="https://www.sankohtech.com/sankoh.png" />
     <meta property="og:url" content="https://www.sankohtech.com" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Sankoh Technical Solutions - Manual Valves & Process Instruments"
+    />
+    <meta
+      name="twitter:description"
+      content="Sankoh Technical Solutions manufactures manual valves, automated valves, and process instruments, and offers repair services for all types of valves and VFDs."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.sankohtech.com/sankoh.png"
+    />
+
     <title>
       Sankoh Technical Solutions - Manual Valves, Automated Valves & Process
       Instruments
@@ -55,15 +83,5 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>

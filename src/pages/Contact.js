@@ -18,27 +18,97 @@ const ContactPage = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
+    // Clear messages when user starts typing
+    setSuccessMessage("");
+    setErrorMessage("");
+  };
+
+  const validateForm = () => {
+    // Name validation
+    if (!formData.name.trim()) {
+      setErrorMessage("Name is required");
+      return false;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setErrorMessage("Please enter a valid email address");
+      return false;
+    }
+
+    // Phone validation
+    const phoneRegex = /^[\d\s+-]{10,}$/;
+    if (!phoneRegex.test(formData.phone)) {
+      setErrorMessage("Please enter a valid phone number");
+      return false;
+    }
+
+    // Subject validation
+    if (!formData.subject.trim()) {
+      setErrorMessage("Subject is required");
+      return false;
+    }
+
+    // Message validation
+    if (!formData.message.trim()) {
+      setErrorMessage("Message is required");
+      return false;
+    }
+
+    return true;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
+
+    // Reset messages
     setSuccessMessage("");
     setErrorMessage("");
 
+    // Validate form
+    if (!validateForm()) {
+      return;
+    }
+
+    setLoading(true);
+
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/contact",
-        formData
+      const response = await fetch("/.netlify/functions/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send message");
+      }
+
+      // Success
+      setSuccessMessage(
+        "Thank you for your message. We'll get back to you soon!"
       );
-      setSuccessMessage(response.data.message);
+
+      // Clear form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
     } catch (error) {
+      console.error("Submit error:", error);
       setErrorMessage(
-        error.response ? error.response.data.error : "Something went wrong!"
+        "Unable to send message. Please try again or email us directly at sankoh.techsol@gmail.com"
       );
     } finally {
       setLoading(false);
@@ -255,20 +325,85 @@ const ContactPage = () => {
                       </div>
 
                       {/* Submit Button */}
+                      {/* Update the Submit Button and Messages section */}
                       <button
                         type="submit"
-                        className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg 
-                            hover:bg-blue-700 transition-colors duration-300 font-medium"
+                        disabled={loading}
+                        className={`w-full flex items-center justify-center py-3 px-6 rounded-lg 
+      transition-all duration-300 font-medium
+      ${
+        loading
+          ? "bg-gray-400 cursor-not-allowed"
+          : "bg-blue-600 hover:bg-blue-700"
+      } 
+      text-white`}
                       >
-                        Send Message
+                        {loading ? (
+                          <>
+                            <svg
+                              className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                            >
+                              <circle
+                                className="opacity-25"
+                                cx="12"
+                                cy="12"
+                                r="10"
+                                stroke="currentColor"
+                                strokeWidth="4"
+                              />
+                              <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                              />
+                            </svg>
+                            Sending...
+                          </>
+                        ) : (
+                          "Send Message"
+                        )}
                       </button>
 
-                      {loading && <p>Sending...</p>}
+                      {/* Status Messages */}
                       {successMessage && (
-                        <p className="text-green-600">{successMessage}</p>
+                        <div className="mt-4 p-4 rounded-lg bg-green-50 text-green-700 border border-green-200">
+                          <p className="flex items-center">
+                            <svg
+                              className="w-5 h-5 mr-2"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            {successMessage}
+                          </p>
+                        </div>
                       )}
+
                       {errorMessage && (
-                        <p className="text-red-600">{errorMessage}</p>
+                        <div className="mt-4 p-4 rounded-lg bg-red-50 text-red-700 border border-red-200">
+                          <p className="flex items-center">
+                            <svg
+                              className="w-5 h-5 mr-2"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                                clipRule="evenodd"
+                              />
+                            </svg>
+                            {errorMessage}
+                          </p>
+                        </div>
                       )}
                     </form>
                   </div>

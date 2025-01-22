@@ -115,8 +115,16 @@ const Footer = () => {
                   link: "https://wa.me/919888491527",
                   color: "hover:bg-green-600",
                 },
-                { icon: FaFacebook, link: "#", color: "hover:bg-blue-700" },
-                { icon: FaInstagram, link: "#", color: "hover:bg-pink-600" },
+                {
+                  icon: FaFacebook,
+                  link: "https://www.facebook.com/profile.php?id=61572282953214",
+                  color: "hover:bg-blue-700",
+                },
+                {
+                  icon: FaInstagram,
+                  link: "https://www.instagram.com/sankoh.techsol/",
+                  color: "hover:bg-pink-600",
+                },
               ].map((social, index) => (
                 <a
                   key={index}
