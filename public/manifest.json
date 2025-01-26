@@ -3,13 +3,18 @@
   "name": "Sankoh Technical Solutions - Manual Valves & Process Instruments",
   "icons": [
     {
-      "src": "/favicon.ico",
+      "src": "/icons/web-app-manifest-192x192.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/favicon.ico",
+      "src": "/icons/web-app-manifest-512x512.png",
       "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon-96x96.png",
+      "sizes": "96x96",
       "type": "image/png"
     }
   ],
@@ -19,11 +24,5 @@
   "background_color": "#ffffff",
   "description": "Sankoh Technical Solutions manufactures manual valves, trades in automated valves, process instruments, and offers repair services for all types of valves and VFDs.",
   "orientation": "portrait",
-  "scope": "/",
-  "related_applications": [
-    {
-      "platform": "web",
-      "url": "https://www.sankohtech.com"
-    }
-  ]
+  "scope": "/"
 }

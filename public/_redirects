@@ -1,2 +1,5 @@
-https://sankohtech.com/* https://www.sankohtech.com/:splat 301!
+# Redirect non-www to www
+https://sankohtech.com/* https://www.sankohtech.com/:splat 301
+
+# Serve index.html for all routes
 /* /index.html 200

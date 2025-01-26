@@ -73,7 +73,7 @@ exports.handler = async (event, context) => {
             <p style="white-space: pre-wrap;">${message}</p>
           </div>
           <p style="color: #64748b; font-size: 12px; margin-top: 20px;">
-            Sent from sankohtech.com contact form<br>
+            Sent from Sankoh Technical Solutions contact form<br>
             Time: ${new Date().toISOString()}
           </p>
         </div>
