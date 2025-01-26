@@ -22,3 +22,6 @@
   to = "https://www.sankohtech.com/:splat"
   status = 301
   force = true
+
+  [build.environment]
+  ESLINT_NO_DEV_ERRORS = "true"
