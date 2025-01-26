@@ -26,7 +26,6 @@ const ProductsPage = () => {
   const location = useLocation();
   const [activeCategory, setActiveCategory] = useState(productCategories[0].id);
   const [activeSubcategory, setActiveSubcategory] = useState(null);
-  const [activeFilter, setActiveFilter] = useState("All");
 
   // Your existing useEffect and helper functions remain the same
   useEffect(() => {
