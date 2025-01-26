@@ -2,7 +2,9 @@ const { SitemapStream, streamToPromise } = require("sitemap");
 const fs = require("fs");
 
 const generateSitemap = async () => {
-  const smStream = new SitemapStream({ hostname: "https://sankohtech.com" });
+  const smStream = new SitemapStream({
+    hostname: "https://www.sankohtech.com",
+  });
 
   // Add URLs to your sitemap
   const pages = [

@@ -50,16 +50,16 @@ exports.handler = async (event, context) => {
 
     // Email options
     const mailOptions = {
-      from: `"${name}" <${process.env.EMAIL_USER}>`,
-      to: process.env.EMAIL_USER,
-      replyTo: email,
-      subject: `New Contact Form Message: ${subject}`,
+      from: `${name} <${email}>`, // User's email in the 'from' field
+      to: process.env.EMAIL_USER, // Your email where the message is sent
+      replyTo: email, // The sender's (user's) email address to reply to
+      subject: `New Contact Form Message: ${subject}`, // Subject from the form
       text: `
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Subject: ${subject}
-Message: ${message}
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+        Subject: ${subject}
+        Message: ${message}
       `,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -79,7 +79,6 @@ Message: ${message}
         </div>
       `,
     };
-
     // Send email
     await transporter.verify();
     await transporter.sendMail(mailOptions);

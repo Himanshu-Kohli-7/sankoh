@@ -1,6 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Optimize animations performance */
+.react-reveal {
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+}
 
 body {
   margin: 0;

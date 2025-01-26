@@ -86,7 +86,10 @@ const ContactPage = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      const responseText = await response.text();
+      console.log("Raw response:", responseText);
+
+      const data = JSON.parse(responseText);
 
       if (!response.ok) {
         throw new Error(data.error || "Failed to send message");

@@ -2,7 +2,10 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
@@ -18,8 +21,11 @@
     />
 
     <!-- Favicon and Apple Touch Icon -->
-    <link rel="icon" href="/sankoh.png" />
-    <link rel="apple-touch-icon" href="/sankoh.png" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.ico" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.sankohtech.com" />
 
     <!-- Manifest file for PWA -->
     <link rel="manifest" href="https://www.sankohtech.com/manifest.json" />
@@ -28,10 +34,10 @@
     <script type="application/ld+json">
       {
         "@context": "http://schema.org",
-        "@type": "Organization",
+        "@type": "website",
         "name": "Sankoh Technical Solutions",
         "url": "https://www.sankohtech.com",
-        "logo": "https://www.sankohtech.com/sankoh.png",
+        "logo": "https://www.sankohtech.com/favicon.ico",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": "+91-9888491527",
@@ -51,20 +57,26 @@
     <!-- Open Graph Meta Tags -->
     <meta
       property="og:title"
-      content="Sankoh Technical Solutions - Manual Valves & Process Instruments"
+      content="Sankoh Technical Solutions - Leading Manufacturer of Manual Valves, Automated Valves, & Process Instruments"
     />
+    <meta property="og:site_name" content="Sankoh Technical Solutions" />
+
     <meta
       property="og:description"
       content="Sankoh Technical Solutions manufactures manual valves, automated valves, and process instruments, and offers repair services for all types of valves and VFDs."
     />
-    <meta property="og:image" content="https://www.sankohtech.com/sankoh.png" />
+    <meta
+      property="og:image"
+      content="https://www.sankohtech.com/favicon.ico"
+    />
     <meta property="og:url" content="https://www.sankohtech.com" />
+    <meta property="og:type" content="website" />
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Sankoh Technical Solutions - Manual Valves & Process Instruments"
+      content="Sankoh Technical Solutions - Leading Manufacturer of Manual Valves, Automated Valves, & Process Instruments"
     />
     <meta
       name="twitter:description"
@@ -72,12 +84,14 @@
     />
     <meta
       name="twitter:image"
-      content="https://www.sankohtech.com/sankoh.png"
+      content="https://www.sankohtech.com/favicon.ico"
     />
 
+    <meta name="twitter:site" content="@SankohTech" />
+
     <title>
-      Sankoh Technical Solutions - Manual Valves, Automated Valves & Process
-      Instruments
+      Sankoh Technical Solutions - Leading Manufacturer of Manual Valves,
+      Automated Valves, & Process Instruments
     </title>
   </head>
   <body>

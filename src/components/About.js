@@ -1,14 +1,37 @@
-import React from "react";
-import { FaArrowRight } from "react-icons/fa";
+import React, { Suspense } from "react";
+import { FaArrowRight, FaQuoteLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Fade from "react-reveal/Fade";
+import profile from "../assets/Others/sankoh_owner.JPG";
+// hooks/useImageLoader.js
+import { useState, useEffect } from "react";
+
+const useImageLoader = (src) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => setIsLoaded(true);
+    img.onerror = () => setError("Error loading image");
+
+    return () => {
+      img.onload = null;
+      img.onerror = null;
+    };
+  }, [src]);
+
+  return { isLoaded, error };
+};
 
 const AboutUs = () => {
+  const { isLoaded } = useImageLoader(profile);
+
   return (
     <section className="py-16 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <Fade bottom>
+        <Fade appear duration={1000} distance="30px">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               About Sankoh Technical Solutions
@@ -20,10 +43,10 @@ const AboutUs = () => {
         </Fade>
 
         {/* Main Content */}
-        <div className="grid md:grid-cols-2 gap-10 items-center mb-8">
-          {/* Text Content */}
-          <Fade bottom delay={300}>
-            <div className="space-y-6">
+        <div className="grid md:grid-cols-2 gap-10 items-start mb-8">
+          {/* Text Content with cascading fade */}
+          <Fade left distance="20px" duration={800}>
+            <div className="space-y-6 flex flex-col justify-between">
               <div className="space-y-4">
                 <p className="text-gray-600">
                   SANKOH TECHNICAL SOLUTIONS, established in 2018, is a leading
@@ -42,36 +65,14 @@ const AboutUs = () => {
                 </p>
               </div>
 
-              {/* CEO Quote */}
-              <div className="relative bg-white p-6 rounded-lg shadow-lg border-l-4 border-blue-600">
-                <p className="text-gray-600 italic text-sm mb-3">
-                  "Our mission is to deliver high-quality valves and instruments
-                  with unmatched service and reliability, ensuring our clients'
-                  success."
-                </p>
-                <div className="flex items-center gap-3">
-                  <img
-                    src="https://ui-avatars.com/api/?name=S+K&background=0062FF&color=fff"
-                    alt="Sanjay Kohli"
-                    className="w-10 h-10 rounded-full object-cover"
-                  />
-                  <div>
-                    <div className="font-bold text-gray-900 text-sm">
-                      Sanjay Kohli
-                    </div>
-                    <div className="text-blue-600 text-xs">Founder & CEO</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Stats */}
+              {/* Stats with staggered fade */}
               <div className="grid grid-cols-3 gap-6">
                 {[
                   { number: "10+", label: "Years Experience" },
                   { number: "2000+", label: "Valves Delivered" },
                   { number: "100+", label: "Industries Served" },
                 ].map((stat, index) => (
-                  <Fade bottom delay={600 + index * 150} key={index}>
+                  <Fade key={index} bottom delay={index * 200} duration={800}>
                     <div className="p-4 bg-white rounded-lg shadow-md border border-gray-200">
                       <div className="text-2xl font-bold text-blue-600">
                         {stat.number}
@@ -83,7 +84,7 @@ const AboutUs = () => {
               </div>
 
               {/* CTA Button */}
-              <Fade bottom delay={800}>
+              <Fade bottom delay={600} duration={800}>
                 <Link
                   to="/about"
                   className="inline-flex items-center gap-2 bg-blue-600 text-white 
@@ -97,27 +98,63 @@ const AboutUs = () => {
             </div>
           </Fade>
 
-          {/* Image */}
-          <Fade bottom delay={600}>
-            <div className="relative">
-              <div
-                className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 
-                transform -rotate-3 rounded-lg opacity-20"
-              ></div>
-              <div className="relative overflow-hidden rounded-lg shadow-2xl">
-                <img
-                  src="/images/industrial1.png"
-                  alt="Manual and Automated Valves Manufacturing - Sankoh Technical Solutions"
-                  className="w-full h-[500px] object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+          {/* CEO Quote and Image with lazy loading */}
+          <Fade right distance="20px" duration={800}>
+            <div className="relative h-full flex items-center justify-center">
+              {/* Decorative Background Elements */}
+              <div className="absolute -top-3 -right-3 w-40 h-40 bg-blue-100 rounded-full opacity-20 z-0"></div>
+              <div className="absolute -bottom-3 -left-3 w-32 h-32 bg-blue-200 rounded-full opacity-20 z-0"></div>
+
+              {/* Main Image Container */}
+              <div className="relative w-full max-w-lg mx-auto bg-white p-4 rounded-xl shadow-2xl z-10">
+                {/* Image Frame with lazy loading */}
+                <div className="relative w-full h-full rounded-lg overflow-hidden">
+                  <Suspense
+                    fallback={
+                      <div className="w-full h-[500px] bg-gray-200 animate-pulse rounded-lg"></div>
+                    }
+                  >
+                    <img
+                      src={profile}
+                      alt="Sanjay Kohli - Founder & CEO"
+                      loading="lazy"
+                      className={`w-full h-[500px] object-cover rounded-lg transition-all duration-700 ${
+                        isLoaded
+                          ? "opacity-100 scale-100"
+                          : "opacity-0 scale-95"
+                      } hover:scale-105`}
+                    />
+                  </Suspense>
+
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+                  {/* Quote Box */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <FaQuoteLeft className="text-blue-400 text-xl mb-2" />
+                    <p className="text-sm italic mb-3 font-light leading-relaxed">
+                      "Our mission is to deliver high-quality valves and
+                      instruments with unmatched service and reliability,
+                      ensuring our clients' success."
+                    </p>
+                    <div className="border-l-2 border-blue-500 pl-3">
+                      <h3 className="text-lg font-bold text-white">
+                        Sanjay Kohli
+                      </h3>
+                      <p className="text-xs text-blue-200">Founder & CEO</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Decorative Corner Accents */}
+                <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-blue-500 -translate-x-1 -translate-y-1"></div>
+                <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-blue-500 translate-x-1 -translate-y-1"></div>
+                <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-blue-500 -translate-x-1 translate-y-1"></div>
+                <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-blue-500 translate-x-1 translate-y-1"></div>
               </div>
             </div>
           </Fade>
         </div>
-
-        {/* Improved Divider */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-500 to-transparent my-12"></div>
       </div>
     </section>
   );

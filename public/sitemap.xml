@@ -7,7 +7,7 @@
   
   <!-- Homepage -->
   <url>
-    <loc>https://sankohtech.com/</loc>
+    <loc>https://www.sankohtech.com/</loc>
     <lastmod>2025-01-22</lastmod> <!-- Adjust with your actual date -->
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -15,7 +15,7 @@
   
   <!-- About Page -->
   <url>
-    <loc>https://sankohtech.com/about</loc>
+    <loc>https://www.sankohtech.com/about</loc>
     <lastmod>2025-01-15</lastmod> <!-- Adjust with your actual date -->
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -23,7 +23,7 @@
   
   <!-- Services Page -->
   <url>
-    <loc>https://sankohtech.com/services</loc>
+    <loc>https://www.sankohtech.com/services</loc>
     <lastmod>2025-01-15</lastmod> <!-- Adjust with your actual date -->
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -31,7 +31,7 @@
   
   <!-- Products Page -->
   <url>
-    <loc>https://sankohtech.com/products</loc>
+    <loc>https://www.sankohtech.com/products</loc>
     <lastmod>2025-01-15</lastmod> <!-- Adjust with your actual date -->
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -39,7 +39,7 @@
   
   <!-- Contact Page -->
   <url>
-    <loc>https://sankohtech.com/contact</loc>
+    <loc>https://www.sankohtech.com/contact</loc>
     <lastmod>2025-01-15</lastmod> <!-- Adjust with your actual date -->
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

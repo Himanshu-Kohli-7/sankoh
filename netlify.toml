@@ -1,7 +1,7 @@
 [build]
   command = "npm run build"
-  functions = "netlify/functions"
   publish = "build"
+  functions = "netlify/functions"
 
 [functions]
   node_bundler = "esbuild"
@@ -16,3 +16,9 @@
   from = "/api/*"
   to = "/.netlify/functions/:splat"
   status = 200
+
+[[redirects]]
+  from = "https://sankohtech.com/*"
+  to = "https://www.sankohtech.com/:splat"
+  status = 301
+  force = true
