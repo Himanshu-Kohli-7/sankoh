@@ -2,7 +2,7 @@
   "name": "sankoh",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sankohtech.com",
+  "homepage": "https://www.sankohtech.com",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@heroicons/react": "^1.0.6",

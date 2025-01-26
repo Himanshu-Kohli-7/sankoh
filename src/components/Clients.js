@@ -1,4 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { motion } from "framer-motion";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import vardhaman from "../assets/Clients/vardhaman.svg";
 import wipro from "../assets/Clients/wipro.svg";
 import birla from "../assets/Clients/birla.webp";
@@ -13,10 +18,6 @@ import wrigley from "../assets/Clients/Wrigley.png";
 import mondelez from "../assets/Clients/Mondelez.png";
 import nahar from "../assets/Clients/Nahar.jpeg";
 import ruchira from "../assets/Clients/Ruchira.jpg";
-
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const clients = [
   { id: 1, name: "Vardhaman", logo: vardhaman },
@@ -35,17 +36,33 @@ const clients = [
   { id: 14, name: "Ruchira", logo: ruchira },
 ];
 
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
 const Clients = () => {
   const settings = {
     dots: false,
     infinite: true,
-    speed: 2000, // Increased speed for smoother scrolling
+    speed: 2000,
     slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 0, // Set to 0 for continuous scrolling
-    cssEase: "linear", // Use linear easing for smooth continuous scroll
-    arrows: false, // Remove arrows
+    autoplaySpeed: 0,
+    cssEase: "linear",
+    arrows: false,
     pauseOnHover: true,
     responsive: [
       {
@@ -76,7 +93,12 @@ const Clients = () => {
   };
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-gray-100 to-gray-50">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="relative py-20 bg-gradient-to-b from-gray-100 to-gray-50"
+    >
       {/* Subtle Pattern */}
       <div
         className="absolute inset-0 opacity-5"
@@ -88,61 +110,94 @@ const Clients = () => {
 
       <div className="relative container mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+        <motion.div
+          variants={fadeInUp}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+          >
             Our Trusted Partners
-          </h2>
-          <p className="text-gray-600 text-lg">
+          </motion.h2>
+          <motion.p variants={fadeInUp} className="text-gray-600 text-lg">
             Collaborating with industry leaders to deliver excellence
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Clients Slider */}
-        <div className="relative">
+        <motion.div variants={staggerContainer} className="relative">
           <Slider {...settings}>
             {clients.map((client) => (
-              <div key={client.id} className="px-4">
-                <div
+              <motion.div
+                key={client.id}
+                variants={fadeInUp}
+                whileHover={{ y: -8 }}
+                className="px-4"
+              >
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 300,
+                    damping: 20,
+                  }}
                   className="h-28 flex items-center justify-center bg-white 
                   rounded-lg p-6 border border-gray-200
                   hover:border-blue-500/30 transition-all duration-300 
-                  transform hover:-translate-y-1 hover:shadow-lg 
                   shadow-sm group relative overflow-hidden mx-2"
                 >
                   {/* Hover Effect Background */}
-                  <div
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
                     className="absolute inset-0 bg-gradient-to-r from-gray-50/0 
-                    via-gray-50/50 to-gray-50/0 opacity-0 
-                    group-hover:opacity-100 transition-opacity duration-500"
-                  ></div>
+                    via-gray-50/50 to-gray-50/0 transition-opacity duration-500"
+                  />
 
                   {/* Client Logo */}
-                  <img
+                  <motion.img
                     src={client.logo}
                     alt={client.name}
-                    className="max-h-14 w-auto opacity-60 group-hover:opacity-100 
-                    transition-all duration-300 relative z-10 
-                    group-hover:scale-110 object-contain"
+                    initial={{ opacity: 0.6 }}
+                    whileHover={{
+                      opacity: 1,
+                      scale: 1.1,
+                      transition: { duration: 0.3 },
+                    }}
+                    className="max-h-14 w-auto relative z-10 object-contain"
                     onError={(e) => {
                       e.target.src = `https://via.placeholder.com/150x80?text=${client.name}`;
                     }}
                   />
 
                   {/* Shimmer Effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                    <div
-                      className="absolute inset-0 transform -translate-x-full 
-                      animate-shimmer bg-gradient-to-r from-transparent 
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 transition-opacity duration-700"
+                  >
+                    <motion.div
+                      animate={{
+                        x: ["100%", "-100%"],
+                        transition: {
+                          repeat: Infinity,
+                          duration: 1.5,
+                          ease: "linear",
+                        },
+                      }}
+                      className="absolute inset-0 bg-gradient-to-r from-transparent 
                       via-blue-50/30 to-transparent"
-                    ></div>
-                  </div>
-                </div>
-              </div>
+                    />
+                  </motion.div>
+                </motion.div>
+              </motion.div>
             ))}
           </Slider>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

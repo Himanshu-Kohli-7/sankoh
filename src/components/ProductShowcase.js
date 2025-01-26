@@ -1,12 +1,25 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Fade from "react-reveal/Fade"; // Import Fade for animations
 import { productCategories } from "../data/products";
 import industrial from "../assets/BackgroundImages/industrial_1.jpg";
+
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 const ProductShowcase = () => {
   const navigate = useNavigate();
@@ -18,13 +31,11 @@ const ProductShowcase = () => {
       "Process Instruments": "instruments",
     };
 
-    // If no product is provided, it's a category-only click
     if (!product) {
       navigate(`/products?category=${categoryMap[category]}`);
       return;
     }
 
-    // For product clicks with subcategories
     const baseUrl = `/products?category=${categoryMap[category]}`;
     if (product.subcategory) {
       navigate(`${baseUrl}&subcategory=${product.subcategoryId}`);
@@ -82,21 +93,31 @@ const ProductShowcase = () => {
 
       <div className="relative container mx-auto px-4">
         {/* Section Header */}
-        <Fade bottom>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Our Products
-            </h2>
-            <p className="text-gray-400 text-lg">
-              Offering Tailored Industrial Solutions Built for Excellence
-            </p>
-          </div>
-        </Fade>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Our Products
+          </h2>
+          <p className="text-gray-400 text-lg">
+            Offering Tailored Industrial Solutions Built for Excellence
+          </p>
+        </motion.div>
 
         {/* Product Categories */}
         <div className="space-y-16">
           {/* Manual Valves */}
-          <Fade bottom delay={200}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ delay: 0.2 }}
+          >
             <div>
               <div className="flex items-center justify-between mb-8 px-4">
                 <h3 className="text-2xl font-bold text-white">Manual Valves</h3>
@@ -123,10 +144,16 @@ const ProductShowcase = () => {
                 </Slider>
               </div>
             </div>
-          </Fade>
+          </motion.div>
 
           {/* Automated Valves */}
-          <Fade bottom delay={400}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ delay: 0.4 }}
+          >
             <div>
               <div className="flex items-center justify-between mb-8 px-4">
                 <h3 className="text-2xl font-bold text-white">
@@ -168,10 +195,16 @@ const ProductShowcase = () => {
                 </Slider>
               </div>
             </div>
-          </Fade>
+          </motion.div>
 
           {/* Process Instruments */}
-          <Fade bottom delay={600}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            transition={{ delay: 0.6 }}
+          >
             <div>
               <div className="flex items-center justify-between mb-8 px-4">
                 <h3 className="text-2xl font-bold text-white">
@@ -207,55 +240,66 @@ const ProductShowcase = () => {
                 </Slider>
               </div>
             </div>
-          </Fade>
+          </motion.div>
         </div>
 
         {/* CTA Button */}
-        <Fade bottom delay={800}>
-          <div className="text-center mt-16">
-            <Link
-              to="/products"
-              className="group inline-flex items-center gap-2 bg-blue-600/90 text-white 
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          transition={{ delay: 0.8 }}
+          className="text-center mt-16"
+        >
+          <Link
+            to="/products"
+            className="group inline-flex items-center gap-2 bg-blue-600/90 text-white 
                 px-6 py-3 rounded-lg font-medium transition-all duration-300
                 hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/20
                 backdrop-blur-sm"
-            >
-              Explore Products
-              <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </Fade>
+          >
+            Explore Products
+            <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );
 };
 
-// Product Card Component
 const ProductCard = ({ product, onClick }) => (
-  <div
+  <motion.div
+    initial="hidden"
+    whileInView="visible"
+    viewport={{ once: true }}
+    whileHover={{ y: -4 }}
+    variants={fadeInUp}
     onClick={onClick}
     className="group bg-white rounded-xl overflow-hidden 
       shadow-md hover:shadow-xl transition-all duration-500 
-      transform hover:-translate-y-1
       flex flex-col h-[360px] cursor-pointer"
   >
     {/* Product Image Container */}
     <div className="relative h-[300px] overflow-hidden bg-white">
-      <img
+      <motion.img
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.7 }}
         src={product.image}
         alt={product.name}
-        className="w-full h-full object-contain p-2 
-          transition-transform duration-700 group-hover:scale-105"
+        className="w-full h-full object-contain p-2"
         onError={(e) => {
           e.target.src = `https://via.placeholder.com/400x400?text=${product.name}`;
         }}
       />
 
       {/* Subtle Gradient Overlay */}
-      <div
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
         className="absolute inset-0 bg-gradient-to-t 
-        from-white/50 to-transparent opacity-0 
-        group-hover:opacity-100 transition-opacity duration-500"
+          from-white/50 to-transparent"
       />
     </div>
 
@@ -271,7 +315,7 @@ const ProductCard = ({ product, onClick }) => (
         {product.name}
       </h3>
     </div>
-  </div>
+  </motion.div>
 );
 
 export default ProductShowcase;

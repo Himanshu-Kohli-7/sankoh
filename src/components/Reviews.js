@@ -1,9 +1,9 @@
 import React from "react";
+import { motion } from "framer-motion"; // Replace react-reveal with framer-motion
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaQuoteLeft } from "react-icons/fa";
-import Fade from "react-reveal/Fade"; // Add this import
 import industrial from "../assets/BackgroundImages/industrial_1.jpg";
 
 const reviews = [
@@ -63,6 +63,29 @@ const reviews = [
   },
 ];
 
+// Animation variants
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
 const Reviews = () => {
   const settings = {
     dots: true,
@@ -74,7 +97,6 @@ const Reviews = () => {
     autoplaySpeed: 3000,
     pauseOnHover: true,
     cssEase: "linear",
-    // Enable right-to-left sliding
     responsive: [
       {
         breakpoint: 1024,
@@ -109,75 +131,76 @@ const Reviews = () => {
 
       <div className="relative container mx-auto px-4">
         {/* Section Header */}
-        <Fade bottom>
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Client Testimonials
-            </h2>
-            <p className="text-gray-400 text-lg">
-              What our clients say about us
-            </p>
-          </div>
-        </Fade>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Client Testimonials
+          </h2>
+          <p className="text-gray-400 text-lg">What our clients say about us</p>
+        </motion.div>
 
-        <div className="relative testimonials-slider">
-          {/* Removed gradient overlays */}
-
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="relative testimonials-slider"
+        >
           <Slider {...settings}>
             {reviews.map((review, index) => (
               <div key={review.id} className="px-4 py-2">
-                <Fade bottom>
-                  <div
-                    className="bg-white/95 backdrop-blur-sm rounded-xl border border-gray-200 
+                <motion.div
+                  variants={fadeInUp}
+                  className="bg-white/95 backdrop-blur-sm rounded-xl border border-gray-200 
                     hover:border-blue-500/30 transition-all duration-300 overflow-hidden 
                     group h-[300px] flex flex-col p-6 hover:shadow-xl shadow-lg"
-                  >
-                    <div className="flex-shrink-0">
-                      <FaQuoteLeft className="text-blue-600/50 text-3xl mb-4" />
+                >
+                  <div className="flex-shrink-0">
+                    <FaQuoteLeft className="text-blue-600/50 text-3xl mb-4" />
+                  </div>
+
+                  <p className="text-gray-600 mb-6 flex-grow overflow-y-auto">
+                    {review.review}
+                  </p>
+
+                  <div className="flex items-center mt-auto pt-4 border-t border-gray-200">
+                    <div className="relative">
+                      <div className="w-12 h-12 rounded-full border-2 border-gray-100 overflow-hidden">
+                        <img
+                          src={review.image}
+                          alt={review.name}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            e.target.src =
+                              "https://ui-avatars.com/api/?name=John+Smith&background=2563EB&color=fff";
+                          }}
+                        />
+                      </div>
+                      <div
+                        className="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-600 rounded-full 
+                        border-2 border-white flex items-center justify-center"
+                      >
+                        <div className="w-1.5 h-1.5 bg-blue-200 rounded-full"></div>
+                      </div>
                     </div>
-
-                    <p className="text-gray-600 mb-6 flex-grow overflow-y-auto">
-                      {review.review}
-                    </p>
-
-                    <div className="flex items-center mt-auto pt-4 border-t border-gray-200">
-                      <div className="relative">
-                        <div className="w-12 h-12 rounded-full border-2 border-gray-100 overflow-hidden">
-                          <img
-                            src={review.image}
-                            alt={review.name}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              e.target.src =
-                                "https://ui-avatars.com/api/?name=John+Smith&background=2563EB&color=fff";
-                            }}
-                          />
-                        </div>
-                        <div
-                          className="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-600 rounded-full 
-                          border-2 border-white flex items-center justify-center"
-                        >
-                          <div className="w-1.5 h-1.5 bg-blue-200 rounded-full"></div>
-                        </div>
-                      </div>
-                      <div className="ml-4">
-                        <h3 className="font-semibold text-gray-900">
-                          {review.name}
-                        </h3>
-                        <p className="text-blue-600 text-sm">
-                          {review.position}
-                        </p>
-                        <p className="text-gray-500 text-xs">
-                          {review.company}
-                        </p>
-                      </div>
+                    <div className="ml-4">
+                      <h3 className="font-semibold text-gray-900">
+                        {review.name}
+                      </h3>
+                      <p className="text-blue-600 text-sm">{review.position}</p>
+                      <p className="text-gray-500 text-xs">{review.company}</p>
                     </div>
                   </div>
-                </Fade>
+                </motion.div>
               </div>
             ))}
           </Slider>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
