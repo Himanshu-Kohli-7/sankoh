@@ -1,27 +1,12 @@
-import React, { Suspense, useEffect } from "react";
+import React, { useEffect } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import Hero from "../components/Hero";
-import LazyLoadSection from "../components/LazyLoadSection";
+import About from "../components/About";
+import ProductShowcase from "../components/ProductShowcase";
+import Services from "../components/Services";
+import Reviews from "../components/Reviews";
+import Clients from "../components/Clients";
 import products from "../Data";
-
-// Lazy load components with prefetch
-const About = React.lazy(() => {
-  const component = import("../components/About");
-  return component;
-});
-const ProductShowcase = React.lazy(() =>
-  import("../components/ProductShowcase")
-);
-const Services = React.lazy(() => import("../components/Services"));
-const Reviews = React.lazy(() => import("../components/Reviews"));
-const Clients = React.lazy(() => import("../components/Clients"));
-
-// Enhanced loading fallback
-const LoadingFallback = () => (
-  <div className="w-full h-[400px] flex items-center justify-center bg-white/80 backdrop-blur-sm">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-  </div>
-);
 
 // Optimized animation variants
 const sectionVariants = {
@@ -54,7 +39,7 @@ const Home = React.memo(() => {
     restDelta: 0.001,
   });
 
-  // Prefetch components
+  // Prefetch components (optional)
   useEffect(() => {
     const prefetchComponents = async () => {
       const components = [
@@ -91,28 +76,51 @@ const Home = React.memo(() => {
       </motion.div>
 
       {/* Content Sections */}
-      {[
-        { Component: About, id: "about" },
-        { Component: ProductShowcase, id: "products", props: { products } },
-        { Component: Services, id: "services" },
-        { Component: Reviews, id: "reviews" },
-        { Component: Clients, id: "clients" },
-      ].map(({ Component, id, props = {} }) => (
-        <LazyLoadSection key={id}>
-          <Suspense fallback={<LoadingFallback />}>
-            <motion.section
-              initial="hidden"
-              whileInView="visible"
-              exit="exit"
-              variants={sectionVariants}
-              viewport={{ once: true, amount: 0.2, margin: "-100px" }}
-              className="relative"
-            >
-              <Component {...props} />
-            </motion.section>
-          </Suspense>
-        </LazyLoadSection>
-      ))}
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={sectionVariants}
+        className="relative"
+      >
+        <About />
+      </motion.section>
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={sectionVariants}
+        className="relative"
+      >
+        <ProductShowcase products={products} />
+      </motion.section>
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={sectionVariants}
+        className="relative"
+      >
+        <Services />
+      </motion.section>
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={sectionVariants}
+        className="relative"
+      >
+        <Reviews />
+      </motion.section>
+      <motion.section
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        variants={sectionVariants}
+        className="relative"
+      >
+        <Clients />
+      </motion.section>
     </div>
   );
 });
