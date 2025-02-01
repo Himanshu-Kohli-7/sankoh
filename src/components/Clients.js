@@ -9,7 +9,7 @@ import wipro from "../assets/Clients/wipro.svg";
 import birla from "../assets/Clients/birla.webp";
 import fdc from "../assets/Clients/fdc.svg";
 import godrej from "../assets/Clients/godrej.jpg";
-import hul from "../assets/Clients/hul.svg";
+import hul from "../assets/Clients/hul.webp";
 import indSwift from "../assets/Clients/ind-swift.png";
 import pnbChemical from "../assets/Clients/pnb-chemicals.jpg";
 import scl from "../assets/Clients/scl.png";
