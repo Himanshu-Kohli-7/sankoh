@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaHandshake } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 import { productCategories } from "../data/products";
 import industrial from "../assets/BackgroundImages/industrial_1.jpg";
 
@@ -27,7 +28,6 @@ const ProductsPage = () => {
   const [activeCategory, setActiveCategory] = useState(productCategories[0].id);
   const [activeSubcategory, setActiveSubcategory] = useState(null);
 
-  // Your existing useEffect and helper functions remain the same
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const categoryFromUrl = params.get("category");
@@ -79,8 +79,19 @@ const ProductsPage = () => {
     navigate("/contact");
   };
 
+  const params = new URLSearchParams(location.search);
+  const categoryFromUrl = params.get("category");
+  const subcategoryFromUrl = params.get("subcategory");
+
+  const canonicalUrl = `https://www.sankohtech.com/products${
+    categoryFromUrl ? `?category=${categoryFromUrl}` : ""
+  }${subcategoryFromUrl ? `&subcategory=${subcategoryFromUrl}` : ""}`;
+
   return (
     <div className="bg-white">
+      <Helmet>
+        <link rel="canonical" href={canonicalUrl} />
+      </Helmet>
       {/* Hero Section */}
       <div className="relative h-[400px] overflow-hidden">
         <img
