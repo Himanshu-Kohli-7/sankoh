@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Canonical host is www (existing redirect, kept from the old site).
+[[redirects]]
+  from = "https://sankohtech.com/*"
+  to = "https://www.sankohtech.com/:splat"
+  status = 301
+  force = true
+
+# TODO (Phase 3): functions = "netlify/functions" once the quote function exists.
+# TODO (Phase 4): old-URL 301s from SPEC §10.
