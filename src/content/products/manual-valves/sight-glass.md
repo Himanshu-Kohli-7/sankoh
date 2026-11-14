@@ -6,7 +6,7 @@ images:
   - src: ../../../assets/products/sight-glass.webp
     alt: "Sight glass with a glass tube between tri-clamp ends"
 summary: "A glass-walled fitting that lets you see the flow inside a pipeline."
-operation: manual
+operation: self-acting
 seoTitle: Sight Glass
 metaDescription: Sight glass for seeing the flow, colour and clarity of liquid inside a pipeline, and for checking that steam traps work. Supplied to your specification.
 updated: 2026-11-14

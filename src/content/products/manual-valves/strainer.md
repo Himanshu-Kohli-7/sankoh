@@ -6,7 +6,7 @@ images:
   - src: ../../../assets/products/strainer.jpg
     alt: "Flanged Y-type strainer with a red body"
 summary: "A filter body with a removable screen that traps debris before it reaches valves, pumps and meters."
-operation: manual
+operation: self-acting
 seoTitle: Strainer
 metaDescription: Pipeline strainer with a removable screen that traps scale, rust and debris before it reaches valves, pumps and meters. Supplied to your specification.
 updated: 2026-11-14

@@ -6,7 +6,7 @@ images:
   - src: ../../../assets/products/wafer-type-single-plate-check-valve.webp
     alt: "Wafer-type single plate check valve with the plate open and a lifting eye bolt"
 summary: "A slim check valve with one hinged plate, clamped between two pipe flanges."
-operation: manual
+operation: self-acting
 seoTitle: Wafer Type Single Plate Check Valve
 metaDescription: Wafer type single plate check valve, a slim non-return valve clamped between pipe flanges where space is tight. Supplied to your specification.
 updated: 2026-11-14

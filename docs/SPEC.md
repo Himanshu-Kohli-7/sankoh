@@ -231,7 +231,7 @@ All in `src/content/`, typed with Zod. Shared fields: `title`, `slug`, `seoTitle
 
 **categories** — `division` (`valves` | `instruments`), `order`, `intro` (markdown), `heroImage`, `faqs[]`, `commonlySupplied` (optional, from company; hidden if empty).
 
-**products** — `category` (reference), `order`, `images[]` (with alt), `summary` (1–2 sentences, used in cards and meta), `operation` (`manual` | `pneumatic` | `electric` | `solenoid` | `n/a`), `media[]`, `applications[]`, `industries[]`, `variants[]` (optional, only confirmed), `relatedProducts[]`, `relatedRepair[]`, `faqs[]`, `todo` (optional note, never rendered). Body (markdown): the sections in §5.2.
+**products** — `category` (reference), `order`, `images[]` (with alt), `summary` (1–2 sentences, used in cards and meta), `operation` (`manual` | `self-acting` (check valves, safety valves, steam traps, strainers, sight glasses: nothing to operate) | `pneumatic` | `electric` | `solenoid` | `n/a`), `media[]`, `applications[]`, `industries[]`, `variants[]` (optional, only confirmed), `relatedProducts[]`, `relatedRepair[]`, `faqs[]`, `todo` (optional note, never rendered). Body (markdown): the sections in §5.2.
 
 **repairServices** — `group` (`valve` | `drive`), `icon`, `summary`, `whatWeRepair[]`, `commonFaults[]`, `brandsNote`, `faqs[]`, `relatedProducts[]`.
 
@@ -285,7 +285,7 @@ Positioning, three divisions, own brands and partners, owner/team block (owner p
 
 ### 6.2 Product selector (`/product-selector/`)
 - Static JSON index generated at build from the products collection.
-- Filters: Division, Category, Operation (manual / pneumatic / electric / solenoid), Media (air, water, oil, gas, chemicals, steam), Application. All client-side, instant, with result count and "clear filters".
+- Filters: Division, Category, Operation (manual / self-acting / pneumatic / electric / solenoid), Media (air, water, oil, gas, chemicals, steam), Application. All client-side, instant, with result count and "clear filters".
 - Results link to product pages. Filter state in the URL hash (not query string) so it's shareable without creating crawlable duplicates.
 - Page has a server-rendered intro and the full product list as the no-JS fallback.
 - Pressure/temperature/size/material filters are added later only if confirmed data arrives.

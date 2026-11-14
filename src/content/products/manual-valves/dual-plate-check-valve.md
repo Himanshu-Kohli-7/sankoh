@@ -6,7 +6,7 @@ images:
   - src: ../../../assets/products/dual-plate-check-valve.webp
     alt: "Dual plate wafer check valve with a blue body and spring-loaded plates"
 summary: "A compact wafer check valve with two spring-closed half plates."
-operation: manual
+operation: self-acting
 seoTitle: Dual Plate Check Valve
 metaDescription: Dual plate check valve, a compact wafer non-return valve with two spring-closed plates that shut quickly to reduce slam. Supplied to your specification.
 updated: 2026-11-14

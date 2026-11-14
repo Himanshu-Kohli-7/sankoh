@@ -6,7 +6,7 @@ images:
   - src: ../../../assets/products/safety-valve.jpg
     alt: "Spring-loaded safety valve with a blue body and flanged connections"
 summary: "A spring-loaded valve that opens on its own to relieve excess pressure."
-operation: manual
+operation: self-acting
 seoTitle: Safety Valve
 metaDescription: Spring-loaded safety valve that opens automatically to relieve excess pressure in boilers, vessels and pipelines. Supplied to your specification.
 updated: 2026-11-14

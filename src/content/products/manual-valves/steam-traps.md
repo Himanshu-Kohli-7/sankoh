@@ -6,7 +6,7 @@ images:
   - src: ../../../assets/products/steam-trap.webp
     alt: "Flanged steam trap with a rounded body"
 summary: "An automatic valve that discharges condensate from a steam line while holding back live steam."
-operation: manual
+operation: self-acting
 seoTitle: Steam Traps
 metaDescription: Steam traps that discharge condensate and air from steam lines and equipment while holding back live steam. Supplied to your specification in India.
 updated: 2026-11-14

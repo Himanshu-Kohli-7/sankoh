@@ -6,7 +6,7 @@ images:
   - src: ../../../assets/products/spring-loaded-non-return-valve.webp
     alt: "Wafer-type spring loaded disc check valve"
 summary: "A check valve whose disc is closed by a spring as soon as the flow stops."
-operation: manual
+operation: self-acting
 seoTitle: Spring Loaded Non-Return Valve
 metaDescription: Spring loaded non-return valve with a spring-closed disc that shuts as soon as flow stops, in horizontal or vertical lines. Supplied to your specification.
 updated: 2026-11-14

@@ -6,7 +6,7 @@ images:
   - src: ../../../assets/products/non-return-valve-flanged-end.webp
     alt: "Flanged swing check valve with a bolted cover"
 summary: "Lets flow pass in one direction and closes on its own when the flow reverses."
-operation: manual
+operation: self-acting
 seoTitle: Non-Return Valve (Check Valve) – Flanged End
 metaDescription: Flanged non-return (check) valve that lets flow pass one way and closes on reverse flow, protecting pumps and pipework. Supplied to your specification.
 updated: 2026-11-14

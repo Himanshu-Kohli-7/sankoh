@@ -72,7 +72,7 @@ const products = defineCollection({
       images: z.array(z.object({ src: image(), alt: z.string() })).default([]),
       /** 1–2 sentences, used in cards and under the H1. */
       summary: z.string(),
-      operation: z.enum(['manual', 'pneumatic', 'electric', 'solenoid', 'n/a']),
+      operation: z.enum(['manual', 'self-acting', 'pneumatic', 'electric', 'solenoid', 'n/a']),
       media: z.array(z.enum(['Air', 'Water', 'Oil', 'Gas', 'Chemicals', 'Steam'])).default([]),
       applications: z.array(z.string()).default([]),
       industries: z.array(z.string()).default([]),
