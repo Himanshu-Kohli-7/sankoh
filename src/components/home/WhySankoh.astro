@@ -1,0 +1,75 @@
+---
+/**
+ * Why Sankoh (SPEC §3.7): the six advantages from the company profile.
+ * Every sentence restates a fact from site.ts / CLAUDE.md §4 — nothing else may be added here.
+ */
+import Icon from '../Icon.astro';
+import SectionHeader from '../SectionHeader.astro';
+import { site } from '../../config/site';
+
+const scope = site.service.repairScope;
+const [partnerA, partnerB] = site.brands.authorisedPartners;
+
+const reasons = [
+  {
+    icon: 'search',
+    title: 'The right product',
+    text: 'Tell us your process and we help you select the right valve or instrument. If it isn’t listed, we source it through our vendor network.',
+  },
+  {
+    icon: 'clock',
+    title: 'Quick service response',
+    text: `${site.service.availability}. Workshop repairs are typically done in 2–3 days.`,
+  },
+  {
+    icon: 'wrench',
+    title: 'Any-make repairs',
+    text: `${scope.valves}. ${scope.drives}.`,
+  },
+  {
+    icon: 'check',
+    title: 'Authorised channel partner',
+    text: `We are an authorised channel partner of ${partnerA} and ${partnerB}, alongside our own brands ${site.brands.own.join(' and ')}.`,
+  },
+  {
+    icon: 'pin',
+    title: 'Strategic location',
+    text: `Based in ${site.address.locationWording}. We serve all of India, with the quickest delivery and on-site service across North India.`,
+  },
+  {
+    icon: 'users',
+    title: 'Engineering expertise',
+    text: 'Qualified engineers and professionals handle product selection, delivery, installation and testing.',
+  },
+];
+---
+
+<section class="why">
+  <div class="container-content section-y">
+    <SectionHeader eyebrow="Why Sankoh" title="Six reasons to work with us" />
+    <ul class="grid">
+      {reasons.map((reason) => (
+        <li data-reveal>
+          <span class="icon"><Icon name={reason.icon} size={26} /></span>
+          <h3>{reason.title}</h3>
+          <p>{reason.text}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .why { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+  .grid { display: grid; margin-top: 2.5rem; border-top: 1px solid var(--color-line); border-left: 1px solid var(--color-line); background: var(--color-white); }
+  li { padding: 1.5rem; border-right: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); }
+  .icon { display: grid; place-items: center; width: 3rem; height: 3rem; border: 1.5px solid var(--color-navy); border-radius: 2px; color: var(--color-navy); }
+  h3 { margin-top: 1.125rem; font-size: 1.25rem; }
+  p { margin-top: 0.5rem; color: var(--color-slate); font-size: 1rem; line-height: 1.55; }
+
+  @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+    li { padding: 2rem; }
+  }
+</style>

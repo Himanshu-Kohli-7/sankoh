@@ -1,0 +1,54 @@
+---
+/**
+ * Homepage FAQ (SPEC §3.11): ordering, sourcing, repair and delivery area.
+ * Answers restate confirmed facts from site.ts only (CLAUDE.md §2.1).
+ */
+import FAQ, { type FaqItem } from '../FAQ.astro';
+import SectionHeader from '../SectionHeader.astro';
+import { site } from '../../config/site';
+
+const scope = site.service.repairScope;
+const [partnerA, partnerB] = site.brands.authorisedPartners;
+
+const items: FaqItem[] = [
+  {
+    question: 'How do I order or get a quote?',
+    answer: `Call ${site.primaryPhone.display}, send a WhatsApp message to ${site.whatsapp.display}, or fill in the quote form. Tell us the size, pressure, temperature, media and quantity you need, and we will help you select the right product.`,
+  },
+  {
+    question: 'Can you supply a product that is not listed on this website?',
+    answer: 'Yes. We trade through a vendor network and can source products that are not listed here, to your specification. We also supply surplus and discontinued valves and parts, and reconditioned components.',
+  },
+  {
+    question: 'Do you manufacture valves or only supply them?',
+    answer: `Both. ${site.brands.own.join(' and ')} are our own brands. We are also an authorised channel partner of ${partnerA} and ${partnerB}, and we source other products through our vendor network.`,
+  },
+  {
+    question: 'Do you repair valves and drives made by other companies?',
+    answer: `Yes. We repair ${scope.valves.toLowerCase()}, and ${scope.drives}.`,
+  },
+  {
+    question: 'How long does a repair take?',
+    answer: `${site.service.repairTurnaround}.`,
+  },
+  {
+    question: 'Which areas do you deliver to and service?',
+    answer: `We serve all of India, with the quickest delivery and on-site service across North India. We are based in ${site.address.locationWording}. ${site.service.availability}.`,
+  },
+];
+---
+
+<section class="faq">
+  <div class="container-content section-y layout">
+    <SectionHeader eyebrow="FAQ" title="Common questions" intro="Ordering, sourcing, repairs and where we deliver." />
+    <FAQ items={items} schema />
+  </div>
+</section>
+
+<style>
+  .faq { background: var(--color-paper); border-top: 1px solid var(--color-line); }
+  .layout { display: grid; gap: 2rem; }
+  @media (min-width: 1024px) {
+    .layout { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 4rem; align-items: start; }
+  }
+</style>

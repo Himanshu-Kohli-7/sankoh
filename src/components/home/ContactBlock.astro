@@ -1,0 +1,163 @@
+---
+/**
+ * Catalogue download + contact block with a lazy map (SPEC §3.10, §6.5, §6.6).
+ * The map is a drawing until the visitor asks for the interactive one, so nothing
+ * third-party loads before interaction. The catalogue card appears only when the PDF exists.
+ */
+import Button from '../Button.astro';
+import Icon from '../Icon.astro';
+import SectionHeader from '../SectionHeader.astro';
+import { site, telHref, waHref, mapsHref } from '../../config/site';
+import { catalogue } from '../../config/catalogue';
+
+const { address } = site;
+const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(`${site.name}, ${address.oneLine}`)}&output=embed`;
+---
+
+<section class="container-content section-y" id="contact">
+  <SectionHeader
+    eyebrow="Contact"
+    title="Talk to us"
+    intro={`Call, WhatsApp or email. ${site.service.availability}.`}
+  />
+
+  <div class="layout">
+    <div class="details">
+      <dl>
+        <div>
+          <dt><Icon name="phone" size={20} />Phone</dt>
+          <dd>
+            {site.phones.map((phone) => (
+              <a class="mono" href={telHref(phone)} data-event="click_call">{phone.display}</a>
+            ))}
+          </dd>
+        </div>
+        <div>
+          <dt><Icon name="whatsapp" size={20} />WhatsApp</dt>
+          <dd>
+            <a class="mono" href={waHref(`Hello ${site.name}, I have an enquiry.`)} data-event="click_whatsapp">{site.whatsapp.display}</a>
+          </dd>
+        </div>
+        <div>
+          <dt><Icon name="mail" size={20} />Email</dt>
+          <dd><a href={`mailto:${site.email.primary}`}>{site.email.primary}</a></dd>
+        </div>
+        <div>
+          <dt><Icon name="pin" size={20} />Address</dt>
+          <dd>
+            <address>
+              {site.name}<br />
+              {address.line1}, {address.line2}<br />
+              {address.locality} – {address.postalCode}, {address.district}<br />
+              {address.region}, {address.country}
+            </address>
+          </dd>
+        </div>
+        <div>
+          <dt><Icon name="report" size={20} />GSTIN</dt>
+          <dd><span class="mono">{site.gstin}</span></dd>
+        </div>
+      </dl>
+      <div class="actions">
+        <Button href="/request-a-quote/" icon="quote">Get a quote</Button>
+        <Button href="/contact/" variant="secondary">Contact page</Button>
+      </div>
+    </div>
+
+    <div class="side">
+      <div class="map" data-map data-src={embedSrc}>
+        <svg class="drawing" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+          <g class="roads">
+            <path d="M-10 190 C80 170 150 150 200 120 S330 60 410 40"></path>
+            <path d="M60 250 C90 190 120 150 200 120"></path>
+            <path d="M200 120 C230 160 280 200 420 215"></path>
+            <path d="M-10 70 C70 80 140 100 200 120"></path>
+          </g>
+          <g class="pin" transform="translate(200 120)">
+            <path d="M0 0 C-14 -16 -20 -26 -20 -38 a20 20 0 1 1 40 0 C20 -26 14 -16 0 0z"></path>
+            <circle cx="0" cy="-38" r="7"></circle>
+          </g>
+        </svg>
+        <div class="map-card">
+          <p class="eyebrow">Location</p>
+          <p class="place">{address.locationWording}</p>
+          <div class="map-actions">
+            <a href={mapsHref()} target="_blank" rel="noopener">Open in Google Maps<Icon name="arrow-right" size={18} /></a>
+            <button type="button" data-map-load hidden>Load interactive map</button>
+          </div>
+        </div>
+      </div>
+
+      {catalogue.available && (
+        <div class="catalogue">
+          <div>
+            <h3>Product catalogue</h3>
+            <p>Our valves, automation and instruments in one PDF.</p>
+          </div>
+          <Button href={catalogue.href} variant="secondary" icon="download" download data-event="download_catalogue">Download PDF</Button>
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  // Swap the map drawing for the interactive embed only when asked (SPEC §6.6).
+  document.querySelectorAll('[data-map]').forEach((map) => {
+    const button = map.querySelector('[data-map-load]');
+    if (!button) return;
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      const frame = document.createElement('iframe');
+      frame.src = map.dataset.src;
+      frame.title = 'Map showing the Sankoh Technical Solutions office';
+      frame.loading = 'lazy';
+      frame.referrerPolicy = 'no-referrer-when-downgrade';
+      map.replaceChildren(frame);
+      frame.focus();
+    });
+  });
+</script>
+
+<style>
+  .layout { display: grid; gap: 2rem; margin-top: 2.5rem; }
+  dl { border-top: 1px solid var(--color-line); }
+  dl > div { display: grid; gap: 0.25rem; padding-block: 1rem; border-bottom: 1px solid var(--color-line); }
+  dt { display: flex; align-items: center; gap: 0.5rem; color: var(--color-slate); font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  dt :global(svg) { color: var(--color-blue); }
+  dd { display: flex; flex-wrap: wrap; gap: 0 1.5rem; color: var(--color-ink); }
+  dd a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-navy); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+  dd a:hover { color: var(--color-blue); text-decoration: underline; text-underline-offset: 4px; }
+  .mono { font-family: var(--font-mono); font-weight: 500; font-size: 1.0625rem; }
+  address { padding-block: 0.375rem; font-style: normal; line-height: 1.55; }
+  dd > span.mono { padding-block: 0.375rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+
+  .side { display: flex; flex-direction: column; gap: 1.25rem; }
+  .map { position: relative; flex: 1; min-height: 26rem; overflow: hidden; border: 1px solid var(--color-line); border-radius: 2px; background:
+    linear-gradient(rgb(10 120 184 / 0.1) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, rgb(10 120 184 / 0.1) 1px, transparent 1px) 0 0 / 32px 32px,
+    var(--color-paper); }
+  .map :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .drawing { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .roads path { fill: none; stroke: var(--color-cyan); stroke-width: 2; stroke-linecap: round; }
+  .roads path:first-child { stroke: var(--color-blue); stroke-width: 3; }
+  .pin path { fill: var(--color-amber); stroke: var(--color-navy); stroke-width: 1.5; stroke-linejoin: round; }
+  .pin circle { fill: var(--color-navy); }
+  .map-card { position: absolute; left: 1rem; right: 1rem; bottom: 1rem; padding: 1rem 1.25rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; background: var(--color-white); }
+  .map-card .eyebrow { color: var(--color-slate); }
+  .place { margin-top: 0.125rem; color: var(--color-navy); font-size: 1.125rem; font-weight: 600; line-height: 1.3; }
+  .map-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0 1.5rem; margin-top: 0.25rem; }
+  .map-actions a, .map-actions button { display: inline-flex; align-items: center; gap: 0.375rem; min-height: 2.75rem; color: var(--color-blue); font-weight: 600; font-size: 0.9375rem; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+  .map-actions [hidden] { display: none; }
+
+  .catalogue { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding: 1.25rem 1.5rem; border: 1px solid var(--color-line); border-top: 4px solid var(--color-navy); border-radius: 2px; }
+  .catalogue h3 { font-size: 1.25rem; }
+  .catalogue p { margin-top: 0.25rem; color: var(--color-slate); font-size: 0.9375rem; }
+
+  @media (min-width: 1024px) {
+    .layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 4rem; }
+    .map { min-height: 26rem; }
+    .map-card { right: auto; min-width: 26rem; }
+  }
+</style>

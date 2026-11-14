@@ -1,26 +1,35 @@
 ---
-/* Placeholder inside the global shell. The real homepage (SPEC §3) is built in the next step. */
+/* Homepage: the eleven sections of SPEC §3, in order. Each lives in components/home/. */
 import Base from '../layouts/Base.astro';
-import BlueprintGrid from '../components/BlueprintGrid.astro';
-import Button from '../components/Button.astro';
-import { site, telHref, quoteHref } from '../config/site';
+import CTABand from '../components/CTABand.astro';
+import Hero from '../components/home/Hero.astro';
+import Divisions from '../components/home/Divisions.astro';
+import CategoryGrid from '../components/home/CategoryGrid.astro';
+import RepairBand from '../components/home/RepairBand.astro';
+import SelectorTeaser from '../components/home/SelectorTeaser.astro';
+import BrandsStrip from '../components/home/BrandsStrip.astro';
+import WhySankoh from '../components/home/WhySankoh.astro';
+import Applications from '../components/home/Applications.astro';
+import Trust from '../components/home/Trust.astro';
+import ContactBlock from '../components/home/ContactBlock.astro';
+import HomeFaq from '../components/home/HomeFaq.astro';
+import { site } from '../config/site';
 ---
 
 <Base
   title={`${site.name} – Valves, Instruments & Repair, India`}
-  description={`${site.positioning} ${site.address.locationWording}.`}
+  description="Industrial valves, valve automation and process instruments, plus valve, VFD, servo drive and HMI repair of any make. Derabassi, Punjab. Serving India."
 >
-  <section class="relative">
-    <BlueprintGrid />
-    <div class="container-content section-y relative">
-      <p class="eyebrow text-slate">Valves · Automation · Instruments · Repair</p>
-      <h1 class="mt-4 max-w-3xl">{site.name}</h1>
-      <p class="mt-5 max-w-2xl text-lg text-slate">{site.positioning}</p>
-      <p class="mt-2 text-slate">{site.address.locationWording}</p>
-      <div class="mt-8 flex flex-wrap gap-3">
-        <Button href={telHref()} icon="phone" data-event="click_call">Call now</Button>
-        <Button href={quoteHref()} variant="secondary">Get a quote</Button>
-      </div>
-    </div>
-  </section>
+  <Hero />
+  <Divisions />
+  <CategoryGrid />
+  <RepairBand />
+  <SelectorTeaser />
+  <BrandsStrip />
+  <WhySankoh />
+  <Applications />
+  <Trust />
+  <ContactBlock />
+  <HomeFaq />
+  <CTABand />
 </Base>

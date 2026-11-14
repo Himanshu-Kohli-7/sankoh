@@ -1,0 +1,49 @@
+---
+/**
+ * Trust (SPEC §3.9, §6.3): client logos and reviews, exactly as on the old site.
+ * Certifications join this section once src/content/certifications/ has entries.
+ */
+import { getCollection } from 'astro:content';
+import ClientLogoStrip from '../ClientLogoStrip.astro';
+import ReviewCard from '../ReviewCard.astro';
+import SectionHeader from '../SectionHeader.astro';
+
+const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) => a.data.order - b.data.order;
+const clients = (await getCollection('clients')).sort(byOrder).map((entry) => entry.data);
+const reviews = (await getCollection('reviews')).sort(byOrder).map((entry) => entry.data);
+---
+
+<section class="trust">
+  <div class="container-content section-y">
+    <SectionHeader eyebrow="Clients" title="Companies we work with" />
+    <div class="logos-wrap"><ClientLogoStrip clients={clients} /></div>
+
+    <h3 class="reviews-title">What their engineers say</h3>
+    <ul class="reviews" tabindex="0" aria-label="Client reviews">
+      {reviews.map((review) => (
+        <li>
+          <ReviewCard quote={review.quote} name={review.name} role={review.role} company={review.company} logo={review.logo} />
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .trust { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+  .logos-wrap { margin-top: 2rem; }
+  .reviews-title { margin-top: 3rem; }
+  /* Phones: one swipeable row, so six reviews don't add six screens of scrolling. */
+  .reviews { display: flex; gap: 0.75rem; margin-top: 1.25rem; margin-inline: calc(var(--gutter) * -1); padding: 0.25rem var(--gutter) 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); }
+  .reviews li { flex: none; width: 84%; max-width: 22rem; scroll-snap-align: start; }
+
+  @media (min-width: 768px) {
+    .reviews { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-inline: 0; padding: 0; overflow: visible; }
+    .reviews li { width: auto; max-width: none; }
+  }
+  @media (min-width: 1024px) {
+    .reviews { grid-template-columns: repeat(3, 1fr); }
+    /* 14 logos: two even rows of seven. */
+    .logos-wrap :global(.logos) { grid-template-columns: repeat(7, 1fr); }
+  }
+</style>

@@ -45,6 +45,8 @@ How to use: when something is confirmed, tell Claude "X is confirmed: …". It u
 | 20 | Certifications / test reports (ISO, Udyam/MSME etc.) | Section hidden |
 | 21 | Repair / project photos (optional, later) | Repair gallery and projects hidden |
 | 22 | Original vector logo file (optional) | Traced SVGs used |
+| 23 | Logo files for Stolzel®, Scientific Devices and UPC | Homepage brands strip shows these three as text names |
+| 24 | Catalogue PDF (`public/downloads/sankoh-technical-solutions-catalogue.pdf`) | Catalogue card and download links stay hidden until the file is added |
 
 ## Confirmed (moved to CLAUDE.md §4)
 

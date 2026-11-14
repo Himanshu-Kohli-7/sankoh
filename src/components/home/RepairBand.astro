@@ -1,0 +1,95 @@
+---
+/**
+ * Repair Hub band (SPEC §3.4). Repair is a headline offering (CLAUDE.md §3), so this is the one
+ * full navy section on the page, with amber as its accent. Facts only from site.ts.
+ */
+import BlueprintGrid from '../BlueprintGrid.astro';
+import Button from '../Button.astro';
+import DivisionBadge from '../DivisionBadge.astro';
+import Icon from '../Icon.astro';
+import ProcessSteps from '../ProcessSteps.astro';
+import TrustStats from '../TrustStats.astro';
+import { site, telHref, waHref } from '../../config/site';
+import { repairGroups } from '../../config/nav';
+
+const scope = site.service.repairScope;
+const whatsappText = `Hello ${site.name}, I have a valve to send for repair.`;
+---
+
+<section class="repair" id="repair">
+  <BlueprintGrid tone="dark" fade="none" />
+  <div class="container-content inner">
+    <div class="lead">
+      <div>
+        <DivisionBadge division="repair" label="Repair hub" class="badge-on-dark" />
+        <h2>Any make. Any model. <span>Typically back in 2–3 days.</span></h2>
+        <p class="intro">
+          We repair {scope.valves.toLowerCase()}, plus VFDs, servo drives and HMIs: {site.service.vfdBrands}.{' '}
+          {site.service.repairTurnaround}.
+        </p>
+        <div class="actions">
+          <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">Send us your valve</Button>
+          <Button href={telHref()} variant="on-dark" icon="phone" data-event="click_call">Call the repair desk</Button>
+        </div>
+      </div>
+
+      <div class="types">
+        {repairGroups.map((group) => (
+          <div class="type-group">
+            <h3><a href={group.href}>{group.label}<Icon name="arrow-right" size={18} /></a></h3>
+            <ul>
+              {group.links.map((link) => (
+                <li>
+                  <a href={link.href}><Icon name={link.icon ?? 'wrench'} size={20} />{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="facts" data-reveal><TrustStats tone="dark" /></div>
+
+    <div class="process" data-reveal>
+      <h3 class="eyebrow process-title">How a workshop repair runs</h3>
+      <ProcessSteps tone="dark" headingLevel="h4" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .repair { position: relative; background: var(--color-navy); border-top: 6px solid var(--color-amber); color: var(--color-white); }
+  .inner { position: relative; padding-block: var(--section-y); }
+  .repair :global(.badge-on-dark) { color: var(--color-amber); }
+  .repair :global(:focus-visible) { outline-color: var(--color-amber); }
+
+  h2 { margin-top: 1rem; color: var(--color-white); font-size: clamp(2rem, 1.5rem + 2.2vw, 3.25rem); line-height: 1.1; text-wrap: balance; }
+  h2 span { color: var(--color-amber); }
+  .intro { margin-top: 1.25rem; max-width: 36rem; color: rgb(255 255 255 / 0.85); font-size: 1.125rem; line-height: 1.55; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+
+  .lead { display: grid; gap: 2.5rem; }
+  .types { display: grid; gap: 1.5rem; align-content: start; padding: 1.5rem; border: 1px solid rgb(255 255 255 / 0.28); border-left: 4px solid var(--color-amber); border-radius: 2px; background: rgb(255 255 255 / 0.04); }
+  .type-group h3 { font-size: 1.125rem; }
+  .type-group h3 a { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; color: var(--color-amber); text-decoration: none; }
+  .type-group h3 a:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .type-group ul { display: grid; border-top: 1px solid rgb(255 255 255 / 0.2); }
+  .type-group li a { display: flex; align-items: center; gap: 0.625rem; min-height: 2.75rem; color: var(--color-white); font-size: 1rem; text-decoration: none; }
+  .type-group li a:hover { color: var(--color-amber); }
+  .type-group li :global(svg) { flex: none; color: var(--color-cyan); }
+
+  .facts { margin-top: 3rem; }
+  .process { margin-top: 3rem; }
+  .process-title { margin-bottom: 1.5rem; color: rgb(255 255 255 / 0.78); }
+
+  @media (max-width: 479px) {
+    .actions :global(.btn) { flex: 1 1 100%; }
+  }
+  @media (min-width: 640px) {
+    .type-group ul { grid-template-columns: repeat(2, 1fr); column-gap: 1.5rem; }
+  }
+  @media (min-width: 1024px) {
+    .lead { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 4rem; align-items: start; }
+  }
+</style>
