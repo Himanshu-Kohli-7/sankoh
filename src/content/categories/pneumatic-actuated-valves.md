@@ -30,7 +30,7 @@ faqs:
   - question: Can you supply a pneumatic valve that is not listed here?
     answer: Yes. We source through a vendor network and can supply automated valves that are not on this site, built to your specification. Tell us the duty and we will find the right valve.
   - question: Do you repair pneumatic actuated valves?
-    answer: Yes. We repair valves, pneumatic actuators, power cylinders and positioners of any make. Workshop repairs typically take 2–3 days.
+    answer: Yes. We repair valves, pneumatic actuators, power cylinders and positioners of any make, and a typical workshop repair is done in 2–3 days.
 relatedRepair:
   - /valve-repair/actuator-cylinder-repair/
   - /valve-repair/control-valve-repair/
@@ -44,4 +44,4 @@ Pneumatic actuated valves use compressed air to open, close or position a valve,
 
 The range covers quarter-turn ball, butterfly and plug valves for automatic isolation, globe control valves for regulating flow, pressure and temperature, Y-type angle seat valves for steam and hot water, sanitary tri-clover and corrosion-resistant UPVC valves, and power cylinders that drive dampers.
 
-Sankoh Technical Solutions makes valves and valve automation under its own Sankoh® and Stolzel® brands, supplies complete valve and actuator packages to your specification and sources anything else through its vendor network. We deliver anywhere in India, fastest across North India.
+Sankoh Technical Solutions is the manufacturer behind the Sankoh® and Stolzel® brands of valves and valve automation. We supply complete valve and actuator packages to your specification and source anything else through our vendor network. We deliver anywhere in India, fastest across North India.
