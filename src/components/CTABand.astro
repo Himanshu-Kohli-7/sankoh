@@ -1,0 +1,62 @@
+---
+/**
+ * Amber call-to-action band (SPEC §1). On amber the primary button is solid navy,
+ * since an amber button would disappear.
+ */
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { site, telHref, waHref, quoteHref } from '../config/site';
+
+interface Props {
+  title?: string;
+  text?: string;
+  /** Product slug to prefill on the quote form. */
+  quoteProduct?: string;
+  quoteLabel?: string;
+  /** Prefilled WhatsApp message. */
+  whatsappText?: string;
+  headingLevel?: 'h2' | 'h3';
+}
+const {
+  title = 'Tell us what you need',
+  text = `Call, WhatsApp or send the details. ${site.service.availability}.`,
+  quoteProduct,
+  quoteLabel = 'Get a quote',
+  whatsappText = `Hello ${site.name}, I have an enquiry.`,
+  headingLevel: Tag = 'h2',
+} = Astro.props;
+---
+
+<section class="band">
+  <div class="container-content inner">
+    <div class="copy">
+      <Tag class="title">{title}</Tag>
+      <p>{text}</p>
+    </div>
+    <div class="actions">
+      <a class="number" href={telHref()} data-event="click_call">
+        <Icon name="phone" size={26} />{site.primaryPhone.display}
+      </a>
+      <div class="buttons">
+        <Button href={quoteHref(quoteProduct)} variant="navy" icon="quote">{quoteLabel}</Button>
+        <Button href={waHref(whatsappText)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .band { background: var(--color-amber); color: var(--color-navy); }
+  .inner { display: grid; gap: 1.75rem; padding-block: 3rem; }
+  .title { font-size: var(--text-h2); }
+  .copy p { margin-top: 0.5rem; max-width: 34rem; font-size: 1.125rem; line-height: 1.5; }
+  .actions { display: grid; gap: 1rem; }
+  .number { display: inline-flex; align-items: center; gap: 0.625rem; width: fit-content; min-height: 2.75rem; color: var(--color-navy); font-family: var(--font-mono); font-weight: 500; font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2rem); line-height: 1.2; text-decoration: none; white-space: nowrap; }
+  .number:hover { text-decoration: underline; text-underline-offset: 6px; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .band :global(:focus-visible) { outline-color: var(--color-navy); }
+
+  @media (min-width: 900px) {
+    .inner { grid-template-columns: 1fr auto; align-items: center; gap: 3rem; padding-block: 3.5rem; }
+  }
+</style>

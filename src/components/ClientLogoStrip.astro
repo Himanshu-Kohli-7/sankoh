@@ -1,0 +1,33 @@
+---
+/** Client logos: greyscale, colour on hover (SPEC §6.3). Only clients with permission (CLAUDE.md §4). */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+export interface Client {
+  name: string;
+  logo: ImageMetadata;
+}
+
+interface Props {
+  clients: Client[];
+}
+const { clients } = Astro.props;
+---
+
+<ul class="logos">
+  {clients.map((client) => (
+    <li>
+      <Image src={client.logo} alt={client.name} height={96} loading="lazy" />
+    </li>
+  ))}
+</ul>
+
+<style>
+  .logos { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--color-line); border-left: 1px solid var(--color-line); }
+  li { display: grid; place-items: center; height: 6rem; padding: 1.25rem; background: var(--color-white); border-right: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); }
+  li :global(img) { width: auto; height: auto; max-width: 100%; max-height: 3rem; object-fit: contain; filter: grayscale(1); opacity: 0.75; transition: filter 0.2s, opacity 0.2s; }
+  li:hover :global(img) { filter: none; opacity: 1; }
+
+  @media (min-width: 560px) { .logos { grid-template-columns: repeat(3, 1fr); } }
+  @media (min-width: 1024px) { .logos { grid-template-columns: repeat(6, 1fr); } }
+</style>

@@ -1,0 +1,36 @@
+---
+/** Breadcrumb trail for inner pages. The matching BreadcrumbList JSON-LD comes from SEO.astro. */
+import type { Crumb } from './SEO.astro';
+import type { DivisionKey } from '../config/nav';
+
+interface Props {
+  items: Crumb[];
+  division?: DivisionKey;
+}
+const { items, division } = Astro.props;
+const trail = [{ label: 'Home', href: '/' }, ...items];
+---
+
+<nav class="crumbs" aria-label="Breadcrumb" data-division={division}>
+  <ol>
+    {trail.map((item, i) => (
+      <li>
+        {i < trail.length - 1 && item.href ? (
+          <a href={item.href}>{item.label}</a>
+        ) : (
+          <span aria-current="page">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<style>
+  .crumbs { font-size: var(--text-small); color: var(--color-slate); }
+  ol { display: flex; flex-wrap: wrap; align-items: center; }
+  li { display: inline-flex; align-items: center; }
+  li + li::before { content: '/'; margin-inline: 0.5rem; color: var(--division, var(--color-cyan)); font-family: var(--font-mono); }
+  a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-slate); text-decoration: none; }
+  a:hover { color: var(--color-blue); text-decoration: underline; }
+  [aria-current] { color: var(--color-ink); font-weight: 600; }
+</style>

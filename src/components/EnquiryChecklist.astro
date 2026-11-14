@@ -1,0 +1,30 @@
+---
+/** "What to tell us when you enquire" — the per-category checklist from SPEC §5.2. */
+interface Props {
+  kind: 'valve' | 'instrument';
+  title?: string;
+  headingLevel?: 'h2' | 'h3';
+}
+const { kind, title = 'What to tell us when you enquire', headingLevel: Tag = 'h2' } = Astro.props;
+
+const lists = {
+  valve: ['Size', 'Pressure', 'Temperature', 'Media', 'Body material', 'End connection', 'Actuation', 'Quantity'],
+  instrument: ['Range', 'Accuracy', 'Process connection', 'Output signal', 'Display', 'Media', 'Quantity'],
+};
+---
+
+<section class="checklist">
+  <Tag class="title">{title}</Tag>
+  <ul>
+    {lists[kind].map((item) => <li>{item}</li>)}
+  </ul>
+</section>
+
+<style>
+  .checklist { padding: 1.5rem; background: var(--color-paper); border: 1px solid var(--color-line); border-radius: 2px; }
+  .title { font-size: var(--text-h3); }
+  ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.25rem 1.5rem; margin-top: 1rem; }
+  li { display: flex; align-items: center; gap: 0.75rem; min-height: 2.5rem; color: var(--color-ink); }
+  /* An empty tick box, as on an enquiry form. */
+  li::before { content: ''; flex: none; width: 1rem; height: 1rem; background: var(--color-white); border: 1.5px solid var(--color-navy); border-radius: 2px; }
+</style>

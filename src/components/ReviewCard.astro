@@ -1,0 +1,41 @@
+---
+/**
+ * Client review. Plain HTML only — no Review/AggregateRating schema (SPEC §6.3).
+ * Wording comes verbatim from the reviews content; never edit it here.
+ */
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  quote: string;
+  name: string;
+  role: string;
+  company: string;
+  logo?: ImageMetadata;
+}
+const { quote, name, role, company, logo } = Astro.props;
+---
+
+<figure class="review">
+  <blockquote>
+    <p>{quote}</p>
+  </blockquote>
+  <figcaption>
+    <span class="who">
+      <span class="name">{name}</span>
+      <span class="role">{role}, {company}</span>
+    </span>
+    {logo && <Image class="logo" src={logo} alt="" height={40} loading="lazy" />}
+  </figcaption>
+</figure>
+
+<style>
+  .review { display: flex; flex-direction: column; height: 100%; padding: 1.5rem; background: var(--color-white); border: 1px solid var(--color-line); border-left: 4px solid var(--color-cyan); border-radius: 2px; }
+  blockquote { flex: 1; }
+  blockquote p { color: var(--color-ink); font-size: 1.0625rem; line-height: 1.6; }
+  figcaption { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--color-line); }
+  .who { display: grid; }
+  .name { color: var(--color-navy); font-weight: 600; }
+  .role { color: var(--color-slate); font-size: var(--text-small); }
+  figcaption :global(.logo) { flex: none; width: auto; height: 2.25rem; max-width: 6rem; object-fit: contain; }
+</style>

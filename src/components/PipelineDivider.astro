@@ -1,0 +1,23 @@
+---
+/** Thin pipeline line with a valve symbol, used between sections (CLAUDE.md §6). Decorative. */
+interface Props {
+  class?: string;
+}
+const { class: cls } = Astro.props;
+---
+
+<div class:list={['pipeline', cls]} aria-hidden="true">
+  <svg class="line" width="100%" height="2">
+    <line x1="0" y1="1" x2="100%" y2="1" stroke="var(--color-cyan)" stroke-width="2"></line>
+    <line class="pipe-flow" x1="0" y1="1" x2="100%" y2="1" stroke="var(--color-blue)" stroke-width="2"></line>
+  </svg>
+  <svg class="valve" viewBox="0 0 36 28" width="36" height="28">
+    <path d="M3 10v16l15-8-15-8z M33 10v16l-15-8 15-8z M18 18V5 M12 5h12"></path>
+  </svg>
+</div>
+
+<style>
+  .pipeline { position: relative; display: flex; align-items: center; height: 28px; }
+  .line { display: block; margin-top: 8px; }
+  .valve { position: absolute; left: 50%; top: 0; transform: translateX(-50%); fill: var(--color-white); stroke: var(--color-navy); stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
+</style>

@@ -1,0 +1,34 @@
+---
+/** Section heading: optional mono eyebrow, heading, optional intro (SPEC §1). */
+import DivisionBadge from './DivisionBadge.astro';
+import type { DivisionKey } from '../config/nav';
+
+interface Props {
+  title: string;
+  eyebrow?: string;
+  intro?: string;
+  division?: DivisionKey;
+  as?: 'h1' | 'h2' | 'h3';
+  id?: string;
+  /** Use on navy backgrounds. */
+  tone?: 'default' | 'on-dark';
+  class?: string;
+}
+const { title, eyebrow, intro, division = 'valves', as: Tag = 'h2', id, tone = 'default', class: cls } = Astro.props;
+---
+
+<header class:list={['section-header', cls]} data-tone={tone}>
+  {eyebrow && <DivisionBadge division={division} label={eyebrow} class="eyebrow-row" />}
+  <Tag id={id}>{title}</Tag>
+  {intro && <p class="intro">{intro}</p>}
+  <slot />
+</header>
+
+<style>
+  .section-header { max-width: 46rem; }
+  .section-header :global(.eyebrow-row) { margin-bottom: 0.875rem; }
+  .intro { margin-top: 1rem; color: var(--color-slate); font-size: 1.125rem; line-height: 1.55; }
+  [data-tone='on-dark'] :is(h1, h2, h3) { color: var(--color-white); }
+  [data-tone='on-dark'] .intro { color: rgb(255 255 255 / 0.82); }
+  [data-tone='on-dark'] :global(.eyebrow-row) { color: var(--color-white); }
+</style>

@@ -1,0 +1,20 @@
+---
+/** Small label naming a division, with its colour as a square swatch. */
+import { site } from '../config/site';
+import type { DivisionKey } from '../config/nav';
+
+interface Props {
+  division: DivisionKey;
+  /** Override the label, e.g. `REPAIR / 02`. */
+  label?: string;
+  class?: string;
+}
+const { division, label, class: cls } = Astro.props;
+---
+
+<span class:list={['badge eyebrow', cls]} data-division={division}>{label ?? site.divisions[division].name}</span>
+
+<style>
+  .badge { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--division-text); }
+  .badge::before { content: ''; flex: none; width: 0.625rem; height: 0.625rem; background: var(--division); }
+</style>

@@ -1,0 +1,33 @@
+---
+/** Category tile for hubs and the homepage grid: line icon, name, short description. */
+import Icon from './Icon.astro';
+import type { DivisionKey } from '../config/nav';
+
+interface Props {
+  title: string;
+  href: string;
+  icon: string;
+  description?: string;
+  /** Shown as "18 products" when given. */
+  count?: number;
+  division?: DivisionKey;
+  headingLevel?: 'h2' | 'h3';
+}
+const { title, href, icon, description, count, division = 'valves', headingLevel: Tag = 'h3' } = Astro.props;
+---
+
+<article class="card cat" data-division={division}>
+  <span class="icon"><Icon name={icon} size={32} /></span>
+  <Tag class="title"><a class="card-link" href={href}>{title}</a></Tag>
+  {description && <p class="desc">{description}</p>}
+  {count !== undefined && <p class="count">{count} {count === 1 ? 'product' : 'products'}</p>}
+</article>
+
+<style>
+  .cat { padding: 1.25rem 1.25rem 1.5rem; }
+  .icon { display: block; margin-bottom: 1rem; color: var(--division-text); }
+  .title { font-size: 1.125rem; line-height: 1.3; }
+  .card:hover .title { color: var(--color-blue); }
+  .desc { margin-top: 0.5rem; color: var(--color-slate); font-size: 0.9375rem; line-height: 1.5; }
+  .count { margin-top: auto; padding-top: 1rem; color: var(--color-slate); font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500; }
+</style>

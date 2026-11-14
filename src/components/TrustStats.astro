@@ -1,0 +1,46 @@
+---
+/**
+ * Fact strip. Confirmed facts only (CLAUDE.md §4) — never add counts, years or ratings here.
+ */
+import Icon from './Icon.astro';
+
+interface Props {
+  tone?: 'light' | 'dark';
+}
+const { tone = 'light' } = Astro.props;
+
+const facts = [
+  { icon: 'wrench', label: 'Any make', detail: 'Valves, actuators, VFDs, servo drives and HMIs' },
+  { icon: 'clock', label: 'Typically 2–3 days', detail: 'For workshop repairs' },
+  { icon: 'calendar', label: '365 days a year', detail: 'Service availability' },
+  { icon: 'users', label: 'Qualified engineers', detail: 'And professionals on the team' },
+];
+---
+
+<ul class="facts" data-tone={tone}>
+  {facts.map((fact) => (
+    <li>
+      <Icon name={fact.icon} size={28} />
+      <span class="label">{fact.label}</span>
+      <span class="detail">{fact.detail}</span>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .facts { --rule: var(--color-line); --strong: var(--color-navy); --soft: var(--color-slate); --accent: var(--color-blue); display: grid; grid-template-columns: repeat(2, 1fr); border: 1px solid var(--rule); border-radius: 2px; }
+  .facts[data-tone='dark'] { --rule: rgb(255 255 255 / 0.28); --strong: var(--color-white); --soft: rgb(255 255 255 / 0.78); --accent: var(--color-cyan); }
+  li { display: grid; gap: 0.25rem; align-content: start; padding: 1.25rem 1rem; border-color: var(--rule); border-style: solid; border-width: 0; }
+  li:nth-child(even) { border-left-width: 1px; }
+  li:nth-child(n + 3) { border-top-width: 1px; }
+  li :global(svg) { margin-bottom: 0.5rem; color: var(--accent); }
+  .label { color: var(--strong); font-size: 1.125rem; font-weight: 600; line-height: 1.25; }
+  .detail { color: var(--soft); font-size: var(--text-small); line-height: 1.45; }
+
+  @media (min-width: 900px) {
+    .facts { grid-template-columns: repeat(4, 1fr); }
+    li { padding: 1.5rem; }
+    li:nth-child(n) { border-top-width: 0; border-left-width: 1px; }
+    li:first-child { border-left-width: 0; }
+  }
+</style>
