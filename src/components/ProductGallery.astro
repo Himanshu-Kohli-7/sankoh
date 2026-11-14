@@ -16,6 +16,18 @@ const { images, caption } = Astro.props;
 const [main, ...rest] = images;
 ---
 
+{!main && (
+  <figure class="gallery">
+    <div class="tile">
+      <span class="mark tl"></span><span class="mark tr"></span><span class="mark bl"></span><span class="mark br"></span>
+      <svg class="placeholder" viewBox="0 0 120 90" aria-hidden="true">
+        <path d="M30 30v30l30-15-30-15z M90 30v30L60 45l30-15z M60 45V24 M48 24h24 M10 45h20 M90 45h20" />
+      </svg>
+    </div>
+    {caption && <figcaption class="eyebrow">{caption}</figcaption>}
+  </figure>
+)}
+
 {main && (
   <figure class="gallery">
     <div class="tile">
@@ -43,6 +55,8 @@ const [main, ...rest] = images;
 <style>
   .tile { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3; background: var(--color-paper); border: 1px solid var(--color-line); border-radius: 2px; }
   .tile :global(img) { position: absolute; inset: 1.25rem; width: calc(100% - 2.5rem); height: calc(100% - 2.5rem); object-fit: contain; mix-blend-mode: multiply; }
+  /* Same drawing as the card placeholder, for products without a (correct) photo. */
+  .placeholder { width: 45%; fill: none; stroke: #b9c6d3; stroke-width: 1.5; stroke-linejoin: round; stroke-linecap: round; }
   /* Corner marks, as on a drawing sheet. */
   .mark { position: absolute; width: 0.75rem; height: 0.75rem; border: 0 solid var(--color-navy); }
   .tl { top: 0.5rem; left: 0.5rem; border-top-width: 1.5px; border-left-width: 1.5px; }
