@@ -6,8 +6,10 @@ import Icon from './Icon.astro';
 
 interface Props {
   tone?: 'light' | 'dark';
+  /** 2 keeps the 2×2 grid at every width, for narrow columns. */
+  columns?: 2 | 4;
 }
-const { tone = 'light' } = Astro.props;
+const { tone = 'light', columns = 4 } = Astro.props;
 
 const facts = [
   { icon: 'wrench', label: 'Any make', detail: 'Valves, actuators, VFDs, servo drives and HMIs' },
@@ -17,7 +19,7 @@ const facts = [
 ];
 ---
 
-<ul class="facts" data-tone={tone}>
+<ul class:list={['facts', columns === 4 && 'wide']} data-tone={tone}>
   {facts.map((fact) => (
     <li>
       <Icon name={fact.icon} size={28} />
@@ -38,9 +40,9 @@ const facts = [
   .detail { color: var(--soft); font-size: var(--text-small); line-height: 1.45; }
 
   @media (min-width: 900px) {
-    .facts { grid-template-columns: repeat(4, 1fr); }
     li { padding: 1.5rem; }
-    li:nth-child(n) { border-top-width: 0; border-left-width: 1px; }
-    li:first-child { border-left-width: 0; }
+    .wide { grid-template-columns: repeat(4, 1fr); }
+    .wide li:nth-child(n) { border-top-width: 0; border-left-width: 1px; }
+    .wide li:first-child { border-left-width: 0; }
   }
 </style>

@@ -1,0 +1,68 @@
+---
+/**
+ * Header of every inner page: blueprint grid, breadcrumbs, division eyebrow, H1 and lead text.
+ * Default slot = content under the lead (buttons, intro). `aside` slot = right column on desktop.
+ */
+import BlueprintGrid from './BlueprintGrid.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import DivisionBadge from './DivisionBadge.astro';
+import type { Crumb } from './SEO.astro';
+import type { DivisionKey } from '../config/nav';
+
+interface Props {
+  breadcrumbs: Crumb[];
+  division: DivisionKey;
+  /** Defaults to the division name. */
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+  /** `dark` = navy with an amber rule, used by the repair hubs. */
+  tone?: 'light' | 'dark';
+}
+const { breadcrumbs, division, eyebrow, title, lead, tone = 'light' } = Astro.props;
+const hasAside = Astro.slots.has('aside');
+/** "Main — accent": the part after the dash is set off in the dark hero. */
+const [titleMain, titleAccent] = title.split(' — ');
+---
+
+<section class="hero" data-tone={tone} data-division={division}>
+  <BlueprintGrid tone={tone} fade={tone === 'dark' ? 'none' : 'bottom'} />
+  <div class="container-content inner">
+    <Breadcrumbs items={breadcrumbs} division={division} />
+    <div class:list={['layout', hasAside && 'has-aside']}>
+      <div class="copy">
+        <DivisionBadge division={division} label={eyebrow} class="hero-badge" />
+        <h1>{titleAccent ? <>{titleMain} — <span class="accent">{titleAccent}</span></> : title}</h1>
+        {lead && <p class="lead">{lead}</p>}
+        <slot />
+      </div>
+      {hasAside && <div class="aside"><slot name="aside" /></div>}
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero { position: relative; border-bottom: 1px solid var(--color-line); }
+  .inner { position: relative; padding-block: 0.25rem 3rem; }
+  .layout { display: grid; gap: 2rem; margin-top: 1rem; }
+  .copy { min-width: 0; }
+  h1 { margin-top: 0.875rem; font-size: clamp(2.125rem, 1.6rem + 2.4vw, 3.25rem); text-wrap: balance; }
+  .lead { margin-top: 1.125rem; max-width: 40rem; color: var(--color-slate); font-size: 1.1875rem; line-height: 1.5; }
+
+  .hero[data-tone='dark'] { background: var(--color-navy); border-top: 6px solid var(--color-amber); border-bottom: 0; color: var(--color-white); }
+  [data-tone='dark'] h1 { color: var(--color-white); }
+  [data-tone='dark'] .accent { display: block; color: var(--color-amber); }
+  [data-tone='dark'] .lead { color: rgb(255 255 255 / 0.85); }
+  [data-tone='dark'] :global(.hero-badge) { color: var(--color-amber); }
+  [data-tone='dark'] :global(.crumbs),
+  [data-tone='dark'] :global(.crumbs a) { color: rgb(255 255 255 / 0.78); }
+  [data-tone='dark'] :global(.crumbs a:hover),
+  [data-tone='dark'] :global(.crumbs [aria-current]) { color: var(--color-white); }
+  [data-tone='dark'] :global(:focus-visible) { outline-color: var(--color-amber); }
+
+  @media (min-width: 1024px) {
+    .inner { padding-block: 0.75rem 4.5rem; }
+    .layout { margin-top: 2rem; }
+    .layout.has-aside { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 4rem; align-items: start; }
+  }
+</style>

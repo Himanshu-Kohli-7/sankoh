@@ -1,0 +1,261 @@
+---
+/**
+ * Product page, no-datasheet pattern (SPEC §5.2). One page per product that has a body;
+ * stubs (frontmatter only) are skipped until their content is written.
+ */
+import { getCollection, render } from 'astro:content';
+import { getImage } from 'astro:assets';
+import Base from '../../../layouts/Base.astro';
+import Button from '../../../components/Button.astro';
+import CTABand from '../../../components/CTABand.astro';
+import EnquiryChecklist from '../../../components/EnquiryChecklist.astro';
+import FAQ from '../../../components/FAQ.astro';
+import Icon from '../../../components/Icon.astro';
+import PageHero from '../../../components/PageHero.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import ProductGallery from '../../../components/ProductGallery.astro';
+import RepairServiceCard from '../../../components/RepairServiceCard.astro';
+import SpecTable from '../../../components/SpecTable.astro';
+import { site, telHref, waHref, quoteHref } from '../../../config/site';
+import { productsHref } from '../../../config/nav';
+import {
+  categoryInfo, isPublished, pageTitle, productLink, productSlug, productsById, repairLinks, type Product,
+} from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products', isPublished);
+  return products.map((product) => ({
+    params: { category: product.data.category, product: productSlug(product) },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: Product;
+}
+const { product } = Astro.props;
+const { data } = product;
+const { Content } = await render(product);
+
+if (!data.metaDescription) throw new Error(`${product.id}: a published product needs a metaDescription`);
+
+const slug = productSlug(product);
+const category = categoryInfo(data.category);
+const related = await productsById(data.relatedProducts);
+const repairs = repairLinks(data.relatedRepair);
+/** Category "commonly supplied" data, shown beside any confirmed variants. Empty until PENDING #13. */
+const categoryEntry = (await getCollection('categories', (c) => c.id === data.category))[0];
+const specRows = [...data.variants, ...(categoryEntry?.data.commonlySupplied ?? [])];
+
+const isInstrument = category.division === 'instruments';
+const breadcrumbs = [
+  { label: 'Products', href: productsHref },
+  { label: category.label, href: category.href },
+  { label: data.title },
+];
+const whatsappText = `Hello ${site.name}, I have an enquiry about: ${data.title}`;
+
+const mainImage = data.images[0];
+const schemaImage = mainImage ? new URL((await getImage({ src: mainImage.src, width: 720 })).src, site.url).href : undefined;
+/** No brand, offers or ratings: brand is unconfirmed (PENDING #25) and there are no prices (SPEC §7). */
+const schema = [
+  {
+    '@type': 'Product',
+    name: data.title,
+    description: data.summary,
+    category: category.label,
+    ...(schemaImage ? { image: schemaImage } : {}),
+    url: new URL(Astro.url.pathname, site.url).href,
+  },
+];
+---
+
+<Base
+  title={pageTitle(data.seoTitle ?? data.title)}
+  description={data.metaDescription}
+  pageName={data.title}
+  quoteProduct={slug}
+  {breadcrumbs}
+  {schema}
+>
+  <PageHero {breadcrumbs} division={category.division} eyebrow={category.label} title={data.title} lead={data.summary}>
+    <div class="actions">
+      <Button href={quoteHref(slug)} icon="quote">Get a quote for this product</Button>
+      <Button href={telHref()} variant="secondary" icon="phone" data-event="click_call">Call</Button>
+      <Button href={waHref(whatsappText)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+    </div>
+    <p class="avail">{site.service.availability} · Delivered across India</p>
+    <ProductGallery slot="aside" images={data.images} caption={data.title} />
+  </PageHero>
+
+  <div class="container-content body" data-division={category.division}>
+    <div class="main">
+      <section class="block">
+        <h2>What it is and how it works</h2>
+        <div class="prose"><Content /></div>
+      </section>
+
+      {(data.applications.length > 0 || data.media.length > 0) && (
+        <section class="block">
+          <h2>Typical applications &amp; media</h2>
+          <div class="uses">
+            {data.applications.length > 0 && (
+              <div>
+                <h3 class="eyebrow">Typical applications</h3>
+                <ul class="ticks">
+                  {data.applications.map((item) => <li><Icon name="check" size={20} />{item}</li>)}
+                </ul>
+              </div>
+            )}
+            {data.media.length > 0 && (
+              <div>
+                <h3 class="eyebrow">Media</h3>
+                <ul class="chips">
+                  {data.media.map((item) => <li>{item}</li>)}
+                </ul>
+                <p class="note">The right body and seat materials depend on the media, so tell us what is in the line.</p>
+              </div>
+            )}
+          </div>
+        </section>
+      )}
+
+      <section class="block">
+        <h2>Available to your specification</h2>
+        <p class="prose">
+          We supply this in a range of sizes, body materials, pressure ratings and end connections to match your process.
+          Tell us your requirement and our engineers will recommend the right option.
+        </p>
+        <div class="spec"><SpecTable rows={specRows} caption="Commonly supplied" /></div>
+      </section>
+
+      <section class="block">
+        <EnquiryChecklist kind={isInstrument ? 'instrument' : 'valve'} />
+      </section>
+
+      {data.faqs.length > 0 && (
+        <section class="block">
+          <h2>{data.title}: common questions</h2>
+          <div class="faq"><FAQ items={data.faqs} schema /></div>
+        </section>
+      )}
+    </div>
+
+    <aside class="enquire" aria-label="Enquire about this product">
+      <p class="eyebrow">Enquire</p>
+      <p class="enquire-title">{data.title}</p>
+      <a class="number" href={telHref()} data-event="click_call"><Icon name="phone" size={22} />{site.primaryPhone.display}</a>
+      <Button href={quoteHref(slug)} icon="quote">Get a quote</Button>
+      <Button href={waHref(whatsappText)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+      <p class="enquire-note">{site.service.availability}.</p>
+    </aside>
+  </div>
+
+  {(related.length > 0 || repairs.length > 0) && (
+    <section class="related">
+      <div class="container-content section-y">
+        {related.length > 0 && (
+          <div data-division={category.division}>
+            <h2>Related products</h2>
+            <ul class="grid">
+              {related.map((item) => (
+                <li>
+                  <ProductCard
+                    division={categoryInfo(item.data.category).division}
+                    title={item.data.title}
+                    href={productLink(item)}
+                    summary={item.data.summary}
+                    image={item.data.images[0]?.src}
+                    imageAlt={item.data.images[0]?.alt}
+                    headingLevel="h3"
+                  />
+                </li>
+              ))}
+              <li class="more">
+                <a href={category.href}>All {category.label.toLowerCase()}<Icon name="arrow-right" size={20} /></a>
+              </li>
+            </ul>
+          </div>
+        )}
+        {repairs.length > 0 && (
+          <div class="repair-block">
+            <h2>Related repair services</h2>
+            <p class="repair-intro">We repair valves and actuators of any make. {site.service.repairTurnaround}.</p>
+            <ul class="repairs">
+              {repairs.map((link) => (
+                <li><RepairServiceCard title={link.label} href={link.href} icon={link.icon ?? 'wrench'} /></li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <CTABand
+    title={`Get a quote for a ${data.title.toLowerCase()}`}
+    quoteProduct={slug}
+    quoteLabel="Get a quote for this product"
+    {whatsappText}
+  />
+</Base>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+  .avail { margin-top: 1.25rem; color: var(--color-slate); font-size: var(--text-small); }
+
+  .body { display: grid; gap: 3rem; padding-block: 3rem var(--section-y); }
+  .main { min-width: 0; }
+  .block + .block { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--color-line); }
+  .block > h2 { margin-bottom: 1.25rem; }
+  .block .prose { color: var(--color-ink); }
+
+  .uses { display: grid; gap: 2rem; }
+  .uses h3 { margin-bottom: 0.875rem; color: var(--color-slate); font-size: var(--text-eyebrow); }
+  .ticks { display: grid; gap: 0.625rem; }
+  .ticks li { display: flex; gap: 0.625rem; line-height: 1.45; }
+  .ticks :global(svg) { flex: none; margin-top: 0.125rem; color: var(--color-blue); }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .chips li { padding: 0.375rem 0.75rem; background: var(--color-paper); border: 1px solid var(--color-line); border-radius: 2px; color: var(--color-navy); font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; }
+  .note { margin-top: 1rem; color: var(--color-slate); font-size: 0.9375rem; line-height: 1.5; }
+  .spec:not(:empty) { max-width: 44rem; margin-top: 1.5rem; }
+  .faq { margin-top: -0.25rem; }
+
+  /* Desktop side panel; phones have the action bar instead. */
+  .enquire { display: none; }
+
+  .related { background: var(--color-paper); border-top: 1px solid var(--color-line); }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 1.5rem; }
+  .grid li { display: grid; }
+  .more a { display: flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 4rem; padding: 1rem; border: 1.5px dashed var(--color-blue); border-radius: 2px; font-weight: 600; text-align: center; text-decoration: none; }
+  .more a :global(svg) { flex: none; }
+  .more a:hover { background: var(--color-white); text-decoration: underline; }
+  .repair-block { margin-top: 3.5rem; }
+  .repair-intro { margin-top: 0.75rem; color: var(--color-slate); }
+  .repairs { display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+  .repairs li { display: grid; }
+
+  @media (max-width: 479px) {
+    .actions :global(.btn) { flex: 1 1 calc(50% - 0.375rem); }
+    .actions :global(.btn:first-child) { flex-basis: 100%; }
+  }
+  @media (max-width: 639px) {
+    .grid :global(.summary) { display: none; }
+    .grid :global(.title) { font-size: 1rem; }
+  }
+  @media (min-width: 640px) {
+    .uses { grid-template-columns: 1.4fr 1fr; gap: 3rem; }
+    .grid { gap: 1rem; }
+    .repairs { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .body { grid-template-columns: minmax(0, 1fr) 20rem; gap: 4rem; padding-top: 4rem; }
+    .enquire { position: sticky; top: 6.5rem; display: grid; gap: 0.75rem; align-self: start; padding: 1.5rem; background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--color-amber); border-radius: 2px; }
+    .enquire .eyebrow { color: var(--color-slate); }
+    .enquire-title { color: var(--color-navy); font-size: 1.25rem; font-weight: 600; line-height: 1.25; }
+    .number { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; color: var(--color-navy); font-family: var(--font-mono); font-size: 1.25rem; font-weight: 500; text-decoration: none; }
+    .number:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .enquire-note { color: var(--color-slate); font-size: var(--text-small); }
+    .grid { grid-template-columns: repeat(4, 1fr); }
+  }
+</style>

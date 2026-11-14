@@ -1,0 +1,74 @@
+title: Valve Repair
+h1: Valve Repair Services — Any Make, Any Model
+seoTitle: Valve Repair Services
+metaDescription: Valve repair for any make and model – control valves, actuators, positioners, globe, gate, butterfly, ball and plug valves. Typically back in 2–3 days.
+updated: 2026-11-14
+group: valve
+serviceType: Industrial valve repair
+intro: >-
+  Sankoh Technical Solutions repairs valves, actuators, cylinders and positioners of any make.
+  Workshop repairs typically take 2–3 days, and service is available 365 days a year.
+  Send us a photo of the valve and its nameplate and our engineers will tell you what it needs.
+
+# One line per subpage: the symptoms that bring each type in. General knowledge only.
+services:
+  - href: /valve-repair/control-valve-repair/
+    summary: For control valves that leak through, stick or hunt around the set point.
+  - href: /valve-repair/actuator-cylinder-repair/
+    summary: For pneumatic and electric actuators and power cylinders that leak air, lose force or fail to stroke.
+  - href: /valve-repair/positioner-repair-calibration/
+    summary: For positioners that drift, hunt or no longer follow the control signal.
+  - href: /valve-repair/globe-valve-repair/
+    summary: For globe valves that pass when shut, leak at the gland or are hard to turn.
+  - href: /valve-repair/gate-valve-repair/
+    summary: For gate valves with a jammed gate, a damaged stem or a leaking gland.
+  - href: /valve-repair/butterfly-valve-repair/
+    summary: For butterfly valves with a worn seat, a leaking shaft seal or a stiff disc.
+  - href: /valve-repair/ball-valve-repair/
+    summary: For ball valves that leak through the seats, leak at the stem or have seized.
+  - href: /valve-repair/plug-valve-repair/
+    summary: For plug valves that have seized, pass when shut or leak at the stem.
+
+repairVsReplace:
+  intro: >-
+    A repair is usually worth it when the valve body is sound and the fault is in parts that wear.
+    Replacing makes more sense when the body itself is damaged or the valve no longer suits the duty.
+    If you are not sure, send us a photo and the nameplate details and we will advise.
+  repair:
+    - The body and bonnet are sound, and the fault is in wearing parts such as seats, seals, packing or trim.
+    - The valve is a large, special or automated unit that is costly or slow to buy new.
+    - The make or model is discontinued and a like-for-like replacement is hard to find.
+    - You need the line back quickly. Workshop repairs typically take 2–3 days.
+  replace:
+    - The body is cracked, badly corroded or eroded.
+    - The valve was the wrong type, size or material for the service and keeps failing.
+    - It is a small, standard valve and a new one costs less than the repair.
+    - The process conditions have changed since the valve was installed.
+
+# Company facts only (CLAUDE.md §4). The fact strip above already covers make, turnaround, availability and team.
+whySankoh:
+  - icon: box
+    title: Repair or replacement from one place
+    text: If a valve is beyond repair, we supply new valves, surplus and discontinued valves and parts, and reconditioned components, and source other items through our vendor network.
+  - icon: pin
+    title: On-site service across North India
+    text: We are based in Derabassi, Punjab (near Chandigarh) and serve all of India, with the quickest delivery and on-site service across North India.
+  - icon: search
+    title: Advice before you spend
+    text: Our Valve Selection & Maintenance Advisory gives expert advice on choosing, maintaining and managing all types of valves.
+
+faqs:
+  - question: Which makes of valve do you repair?
+    answer: Any make. We repair valves, actuators, cylinders and positioners of any make and model.
+  - question: How long does a valve repair take?
+    answer: Workshop repairs typically take 2–3 days.
+  - question: How do I send a valve for repair?
+    answer: Call us or send a WhatsApp photo of the valve and its nameplate, and tell us what is wrong with it. We will tell you what to do next and where to send it.
+  - question: Do you repair actuators and positioners as well as valves?
+    answer: Yes. We repair pneumatic and electric actuators, power cylinders and positioners of any make, on their own or together with the valve.
+  - question: Do you offer on-site service?
+    answer: Yes. We offer on-site service across North India. Workshop repairs typically take 2–3 days.
+  - question: Is the valve tested after repair?
+    answer: Yes. Every unit is tested before dispatch, and you get a report of the work done.
+  - question: What if the valve cannot be repaired?
+    answer: We will tell you, and can supply a replacement. We supply new valves, surplus and discontinued valves and parts, and reconditioned components.

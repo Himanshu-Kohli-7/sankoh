@@ -1,0 +1,221 @@
+---
+/**
+ * Category page (SPEC §5.1): intro, product grid, how to choose, related repair, FAQs,
+ * sourcing block, CTA. One page per entry in content/categories/.
+ */
+import { getCollection, render } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Button from '../../../components/Button.astro';
+import CTABand from '../../../components/CTABand.astro';
+import FAQ from '../../../components/FAQ.astro';
+import Icon from '../../../components/Icon.astro';
+import PageHero from '../../../components/PageHero.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import RepairServiceCard from '../../../components/RepairServiceCard.astro';
+import SectionHeader from '../../../components/SectionHeader.astro';
+import SourcingBlock from '../../../components/SourcingBlock.astro';
+import SpecTable from '../../../components/SpecTable.astro';
+import { site, telHref, quoteHref } from '../../../config/site';
+import { productsHref } from '../../../config/nav';
+import { catalogue } from '../../../config/catalogue';
+import { isPublished, pageTitle, productHref, productLink, productsIn, repairLinks, type Category } from '../../../lib/content';
+
+export async function getStaticPaths() {
+  const categories = await getCollection('categories');
+  return categories.map((category) => ({ params: { category: category.id }, props: { category } }));
+}
+
+interface Props {
+  category: Category;
+}
+const { category } = Astro.props;
+const { data } = category;
+const { Content } = await render(category);
+
+const products = await productsIn(category.id);
+const repairs = repairLinks(data.relatedRepair);
+const divisionName = site.divisions[data.division].name;
+const breadcrumbs = [{ label: 'Products', href: productsHref }, { label: data.title }];
+
+const abs = (path: string) => new URL(path, site.url).href;
+const published = products.filter(isPublished);
+const schema = published.length
+  ? [
+      {
+        '@type': 'ItemList',
+        name: data.title,
+        itemListElement: published.map((p, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: p.data.title,
+          url: abs(productHref(p)),
+        })),
+      },
+    ]
+  : [];
+---
+
+<Base
+  title={pageTitle(data.seoTitle)}
+  description={data.metaDescription}
+  pageName={data.title}
+  quoteProduct={category.id}
+  {breadcrumbs}
+  {schema}
+>
+  <PageHero {breadcrumbs} division={data.division} title={data.title}>
+    <div class="prose intro"><Content /></div>
+
+    <dl class="sheet" slot="aside">
+      <div><dt>Division</dt><dd>{divisionName}</dd></div>
+      <div><dt>Products</dt><dd>{products.length}</dd></div>
+      {data.operationNote && <div><dt>Operation</dt><dd>{data.operationNote}</dd></div>}
+      <div><dt>Supply</dt><dd>To your specification</dd></div>
+      <div class="sheet-actions">
+        <Button href={quoteHref(category.id)} icon="quote">Get a quote</Button>
+        <Button href={telHref()} variant="secondary" icon="phone" data-event="click_call">Call {site.primaryPhone.display}</Button>
+      </div>
+    </dl>
+  </PageHero>
+
+  <section class="container-content section-y" id="products" data-division={data.division}>
+    <SectionHeader
+      eyebrow={`${products.length} products`}
+      division={data.division}
+      title={`${data.title} we supply`}
+      intro="Each one is available to your specification. Tell us the size, pressure, temperature and media."
+    />
+    <ul class="grid">
+      {products.map((product) => (
+        <li>
+          <ProductCard
+            division={data.division}
+            title={product.data.title}
+            href={productLink(product)}
+            summary={product.data.summary}
+            image={product.data.images[0]?.src}
+            imageAlt={product.data.images[0]?.alt}
+            headingLevel="h3"
+          />
+        </li>
+      ))}
+    </ul>
+    {data.commonlySupplied.length > 0 && (
+      <div class="supplied"><SpecTable rows={data.commonlySupplied} caption="Commonly supplied" /></div>
+    )}
+    {catalogue.available && (
+      <p class="catalogue">
+        <a href={catalogue.href} download data-event="download_catalogue"><Icon name="download" size={20} />Download the product catalogue (PDF)</a>
+      </p>
+    )}
+  </section>
+
+  {data.howToChoose.length > 0 && (
+    <section class="choose">
+      <div class="container-content section-y">
+        <SectionHeader
+          eyebrow="Selection guide"
+          division={data.division}
+          title={`How to choose ${data.title.toLowerCase()}`}
+          intro="Five things decide which valve fits. If you are unsure about any of them, our engineers will help you select."
+        />
+        <ol class="guide">
+          {data.howToChoose.map((point, i) => (
+            <li>
+              <span class="num">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{point.title}</h3>
+              <p>{point.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )}
+
+  {repairs.length > 0 && (
+    <section class="container-content section-y">
+      <SectionHeader
+        eyebrow="Repair & service"
+        division="repair"
+        title="Need one repaired instead?"
+        intro={`We repair valves of any make. ${site.service.repairTurnaround}.`}
+      />
+      <ul class="repairs">
+        {repairs.map((link) => (
+          <li><RepairServiceCard title={link.label} href={link.href} icon={link.icon ?? 'wrench'} /></li>
+        ))}
+      </ul>
+      <p class="all-repair"><a href="/valve-repair/">All valve repair services<Icon name="arrow-right" size={20} /></a></p>
+    </section>
+  )}
+
+  {data.faqs.length > 0 && (
+    <section class="faqs">
+      <div class="container-content section-y faq-layout">
+        <SectionHeader eyebrow="FAQ" division={data.division} title={`${data.title}: common questions`} />
+        <FAQ items={data.faqs} schema />
+      </div>
+    </section>
+  )}
+
+  <section class="container-content sourcing"><SourcingBlock /></section>
+
+  <CTABand
+    title={`Get a quote for ${data.title.toLowerCase()}`}
+    quoteProduct={category.id}
+    whatsappText={`Hello ${site.name}, I have an enquiry about ${data.title.toLowerCase()}.`}
+  />
+</Base>
+
+<style>
+  .intro { margin-top: 1.25rem; color: var(--color-slate); }
+  .intro :global(p:first-child) { color: var(--color-ink); font-size: 1.1875rem; line-height: 1.5; }
+
+  /* Spec-sheet panel: mono labels, ruled rows. */
+  .sheet { background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--division); border-radius: 2px; }
+  .sheet > div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 0.875rem 1.25rem; border-bottom: 1px solid var(--color-line); }
+  .sheet dt { color: var(--color-slate); font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; line-height: 1.7; text-transform: uppercase; }
+  .sheet dd { color: var(--color-navy); font-weight: 600; }
+  .sheet .sheet-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 1.25rem; border-bottom: 0; }
+  .sheet-actions :global(.btn) { flex: 1 1 auto; }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 2.5rem; }
+  .grid li { display: grid; }
+  .supplied { max-width: 44rem; margin-top: 3rem; }
+  .catalogue { margin-top: 2rem; }
+  .catalogue a, .all-repair a { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; font-weight: 600; }
+
+  .choose, .faqs { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+  .guide { display: grid; margin-top: 2.5rem; border-top: 1px solid var(--color-line); border-left: 1px solid var(--color-line); background: var(--color-white); }
+  .guide li { padding: 1.5rem; border-right: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); }
+  .num { color: var(--color-blue); font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; }
+  .guide h3 { margin-top: 0.5rem; font-size: 1.25rem; }
+  .guide p { margin-top: 0.5rem; color: var(--color-slate); font-size: 1rem; line-height: 1.55; }
+
+  .repairs { display: grid; gap: 0.75rem; margin-top: 2.5rem; }
+  .repairs li { display: grid; }
+  .all-repair { margin-top: 1.25rem; }
+
+  .faq-layout { display: grid; gap: 2rem; }
+  .sourcing { padding-block: var(--section-y); }
+
+  /* Two narrow columns on phones: keep the tiles to image + name. */
+  @media (max-width: 639px) {
+    .grid :global(.summary) { display: none; }
+    .grid :global(.title) { font-size: 1rem; }
+  }
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .guide, .repairs { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .grid { grid-template-columns: repeat(4, 1fr); }
+    .guide { grid-template-columns: repeat(6, 1fr); }
+    .guide li { grid-column: span 2; padding: 2rem; }
+    /* Five points: the last row of two spans the full width. */
+    .guide li:nth-child(4):nth-last-child(2), .guide li:nth-child(5):last-child { grid-column: span 3; }
+    .repairs { grid-template-columns: repeat(4, 1fr); }
+    .repairs :global(.repair) { flex-direction: column; }
+    .faq-layout { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 4rem; align-items: start; }
+  }
+</style>

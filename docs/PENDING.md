@@ -27,6 +27,10 @@ How to use: when something is confirmed, tell Claude "X is confirmed: …". It u
 | 12 | Which product ranges come from Scientific Devices and UPC | Brands page describes them as authorised partners only |
 | 13 | Category-level "commonly supplied" info: typical sizes, body materials, end connections, pressure classes | Product pages say "available to your specification"; spec table hidden |
 | 14 | Pressure / temperature / size / material data for the product selector | Selector filters by type, operation, media, application only |
+| 25 | Which products are sold under Sankoh® or Stolzel® (the pneumatic ball valve photo shows a Stolzel-marked actuator) | Product structured data carries no brand |
+| 26 | "Typical applications" on the Pneumatic Actuated Ball Valve page are general typical uses, not company-stated | Shown as drafted; company to review or replace |
+| 27 | Low-resolution photos: Ball Valve – Flanged End (270px), Spring Loaded Non-Return Valve (150px) | Legacy images used; they look soft on large screens |
+| 28 | "Flush Bottom Valve" legacy photo looks like a wafer-pattern ball valve, not a flush bottom valve | Legacy image used with a neutral alt text; confirm or send the right photo |
 
 ## Repair & services
 
@@ -47,6 +51,7 @@ How to use: when something is confirmed, tell Claude "X is confirmed: …". It u
 | 22 | Original vector logo file (optional) | Traced SVGs used |
 | 23 | Logo files for Stolzel®, Scientific Devices and UPC | Homepage brands strip shows these three as text names |
 | 24 | Catalogue PDF (`public/downloads/sankoh-technical-solutions-catalogue.pdf`) | Catalogue card and download links stay hidden until the file is added |
+| 29 | Wrigley: the logo image says "Mars Wrigley" but the client name is listed as "Wrigley". Which does the company prefer? | Name and alt text say "Wrigley"; make both match once confirmed |
 
 ## Confirmed (moved to CLAUDE.md §4)
 

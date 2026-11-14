@@ -15,14 +15,15 @@ interface Props {
   breadcrumbs?: Crumb[];
   /** Product slug: prefills the quote form from the mobile action bar. */
   quoteProduct?: string;
+  /** Name used in the prefilled WhatsApp message. Defaults to the title without the site suffix. */
+  pageName?: string;
   noindex?: boolean;
   ogImage?: string;
   schema?: Record<string, unknown>[];
 }
 
 const { title, description, breadcrumbs, quoteProduct, noindex, ogImage, schema } = Astro.props;
-/** Page name without the site suffix, for the prefilled WhatsApp message. */
-const pageName = title.split(' | ')[0];
+const pageName = Astro.props.pageName ?? title.split(' | ')[0];
 ---
 
 <!doctype html>
