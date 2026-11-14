@@ -49,10 +49,7 @@ const secondPhone = site.phones[1];
 
             <div class="mega" id="mega-products">
               <div class="container-content mega-grid">
-                <svg class="trunk" width="100%" height="2" aria-hidden="true">
-                  <line x1="0" y1="1" x2="100%" y2="1" stroke="var(--color-cyan)" stroke-width="2"></line>
-                  <line class="pipe-flow" x1="0" y1="1" x2="100%" y2="1" stroke="var(--color-blue)" stroke-width="2"></line>
-                </svg>
+                <div class="trunk" aria-hidden="true"></div>
 
                 {productGroups.map((group) => (
                   <div class="branch" data-division={group.division}>
@@ -186,7 +183,10 @@ const secondPhone = site.phones[1];
   .mega { position: absolute; left: 0; right: 0; top: 100%; background: var(--color-white); border-bottom: 1px solid var(--color-line); box-shadow: 0 24px 40px -24px rgb(16 42 76 / 0.28); visibility: hidden; opacity: 0; transition: opacity 0.15s, visibility 0s 0.15s; }
   .has-mega:hover .mega, .has-mega[data-open] .mega { visibility: visible; opacity: 1; transition-delay: 0s; }
   .mega-grid { display: grid; grid-template-columns: 1fr 1fr 18.5rem; column-gap: 3rem; padding-top: 2rem; padding-bottom: 2.5rem; }
-  .trunk { grid-column: 1 / 3; display: block; }
+  /* Static trunk line. It runs from the first branch pipe to the last: each pipe's centre is
+     7px in from its column edge (6px branch padding + half the 2px pipe), and the trunk is drawn
+     1px past each centre so the 2px corners close cleanly. */
+  .trunk { grid-column: 1 / 3; height: 2px; margin-left: 6px; width: calc(50% + 1.5rem + 2px); background: var(--color-cyan); }
   .rail { grid-column: 3; grid-row: 1 / 3; }
 
   /* Each division drops off the trunk as a branch; categories sit on it at valve nodes. */
