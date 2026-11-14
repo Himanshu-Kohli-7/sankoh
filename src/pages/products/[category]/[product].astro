@@ -54,6 +54,8 @@ const breadcrumbs = [
   { label: data.title },
 ];
 const whatsappText = `Hello ${site.name}, I have an enquiry about: ${data.title}`;
+/** "a gate valve", but "forged valves" and "steam traps": no article before a plural title ("sight glass" is singular). */
+const ctaName = `${/[^s]s$/i.test(data.title) ? '' : 'a '}${data.title.toLowerCase()}`;
 
 const mainImage = data.images[0];
 const schemaImage = mainImage ? new URL((await getImage({ src: mainImage.src, width: 720 })).src, site.url).href : undefined;
@@ -193,7 +195,7 @@ const schema = [
   )}
 
   <CTABand
-    title={`Get a quote for a ${data.title.toLowerCase()}`}
+    title={`Get a quote for ${ctaName}`}
     quoteProduct={slug}
     quoteLabel="Get a quote for this product"
     {whatsappText}
