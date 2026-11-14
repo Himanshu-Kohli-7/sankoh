@@ -35,8 +35,8 @@ faqs:
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #34). The photo nameplate shows one Stolzel model''s data; not used on the page (PENDING #36). Related repair is Actuator & Cylinder only: confirm whether valve body repair is offered (PENDING #35).'
 ---
 
-A Y-type angle seat valve is an on/off valve driven by a compressed-air piston. Its body is shaped like a Y: the stem and seat sit at an angle to the pipe instead of at right angles, as they would in an ordinary globe valve. That angle gives the media a smoother, almost straight path through the valve, so more flows for its size than through a globe valve.
+A Y-type angle seat valve is an on/off valve driven by a compressed-air piston. In its Y-shaped body the stem and seat sit at an angle to the pipe instead of at right angles. That angle gives the media a smoother, almost straight path through the valve, so more flows for its size than through a globe valve of the same bore.
 
 The actuator sits on top of the angled bonnet. When air enters the cylinder, the piston lifts the stem and disc off the seat. On the common spring-return version, releasing the air lets a spring push the disc back down. The stroke is short, so the valve opens and shuts quickly and is suited to lines that switch many times a day.
 
-Air to the piston is usually switched by a [solenoid valve](/products/solenoid-valves/), and a [position sensor](/products/valve-automation-accessories/) can be fitted where the control system needs confirmation.
+Air to the piston is usually switched by a [solenoid valve](/products/solenoid-valves/), and a [position sensor](/products/valve-automation-accessories/) can be fitted for feedback to the panel.
