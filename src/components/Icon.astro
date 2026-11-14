@@ -1,0 +1,78 @@
+---
+/**
+ * One icon set, one line style: 24px grid, 1.5px stroke, round caps and joins.
+ * Icons are decorative by default (aria-hidden); pass `label` for a standalone icon.
+ */
+import type { HTMLAttributes } from 'astro/types';
+
+const paths = {
+  // Interface
+  phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z',
+  whatsapp:
+    'M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21 M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1',
+  quote: 'M14 3v4a1 1 0 0 0 1 1h4 M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z M9 13h6 M9 17h6',
+  menu: 'M4 7h16 M4 12h16 M4 17h16',
+  close: 'M6 6l12 12 M18 6L6 18',
+  'chevron-down': 'M6 9l6 6 6-6',
+  'chevron-right': 'M9 6l6 6-6 6',
+  'arrow-right': 'M5 12h14 M13 6l6 6-6 6',
+  plus: 'M12 5v14 M5 12h14',
+  check: 'M5 12.5l4.5 4.5L19 7.5',
+  pin: 'M12 21s-6-5.6-6-10.5a6 6 0 1 1 12 0C18 15.4 12 21 12 21z M12 13a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+  mail: 'M4 6h16v12H4z M4 7l8 6 8-6',
+  download: 'M12 4v11 M7 11l5 5 5-5 M5 20h14',
+  search: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z M20 20l-4-4',
+  calendar: 'M5 6h14v14H5z M5 10h14 M9 4v4 M15 4v4',
+  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z M12 7v5l3 2',
+  users: 'M9 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z M3 20a6 6 0 0 1 12 0 M16 4.5a3.5 3.5 0 0 1 0 6.5 M18 14.5a6 6 0 0 1 3 5.5',
+  box: 'M3 8l9-5 9 5v8l-9 5-9-5V8z M3 8l9 5 9-5 M12 13v8',
+  truck:
+    'M3 6h11v10H3z M14 9h4l3 3v4h-7 M7.5 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z M17.5 19a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z',
+  report: 'M6 3h12v18H6z M9 8h6 M9 12h6 M9 16h3',
+  // Products and repair
+  valve: 'M3 9v8l9-4-9-4z M21 9v8l-9-4 9-4z M12 13V7 M9 7h6',
+  actuator: 'M4 13v6l8-3-8-3z M20 13v6l-8-3 8-3z M12 16v-5 M7 4h10v7H7z',
+  electric: 'M4 13v6l8-3-8-3z M20 13v6l-8-3 8-3z M12 16v-5 M7 4h10v7H7z M12.5 5.5l-2 2.5h3l-2 2.5',
+  solenoid: 'M4 13v6l8-3-8-3z M20 13v6l-8-3 8-3z M12 16v-5 M8 4h8v7H8z M10 9l4-3',
+  accessory: 'M5 5h14v14H5z M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M12 9V7',
+  flow: 'M2 12h4 M18 12h4 M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M9.5 12h5 M12.5 10l2 2-2 2',
+  pressure: 'M12 17a7 7 0 1 0 0-14 7 7 0 0 0 0 14z M12 10l3-3 M12 17v4 M9 21h6',
+  temperature: 'M10 13.5V5a2 2 0 1 1 4 0v8.5a4 4 0 1 1-4 0z M12 9v8',
+  level: 'M5 4v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4 M5 12c2.3-1.5 4.7 1.5 7 0s4.7-1.5 7 0',
+  analyzer: 'M9 3h6 M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3 M7.5 15h9',
+  drive: 'M6 3h12v18H6z M9 8c1-2.5 2-2.5 3 0s2 2.5 3 0 M9 14h6 M9 17h6',
+  servo: 'M4 8h11v8H4z M15 10h3v4h-3 M18 12h3 M7 8V6h5v2',
+  hmi: 'M3 5h18v12H3z M7 9h6 M7 13h3 M16 9v4 M9 21h6 M12 17v4',
+  wrench:
+    'M14.5 6.5a4 4 0 0 0-5.2 5.2L4 17l3 3 5.3-5.3a4 4 0 0 0 5.2-5.2l-2.6 2.6-2.4-.6-.6-2.4 2.6-2.6z',
+} as const;
+
+export type IconName = keyof typeof paths;
+
+interface Props extends HTMLAttributes<'svg'> {
+  name: IconName | (string & {});
+  size?: number;
+  label?: string;
+}
+
+const { name, size = 24, label, ...rest } = Astro.props;
+const d = (paths as Record<string, string>)[name] ?? paths.valve;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  width={size}
+  height={size}
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+  {...rest}
+>
+  <path d={d}></path>
+</svg>

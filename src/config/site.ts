@@ -127,6 +127,10 @@ export const telHref = (phone: { e164: string } = site.primaryPhone): string => 
 export const waHref = (text?: string): string =>
   `https://wa.me/${site.whatsapp.number}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
 
+/** Quote form link; `product` is the only query string the site allows (SPEC §6.1). */
+export const quoteHref = (product?: string): string =>
+  `/request-a-quote/${product ? `?product=${encodeURIComponent(product)}` : ''}`;
+
 /** Google Maps search link for the address (until a Business Profile URL exists). */
 export const mapsHref = (): string =>
   site.pending.googleBusinessProfileUrl ??

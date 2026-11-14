@@ -10,7 +10,7 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   build: { format: 'directory' },
-  integrations: [preact(), sitemap()],
+  integrations: [preact(), sitemap({ filter: (page) => !page.includes('/styleguide/') })],
   vite: {
     plugins: [tailwindcss()],
   },

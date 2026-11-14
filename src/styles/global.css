@@ -56,7 +56,12 @@
   /* Responsive gutters and section padding (SPEC §3): 16 / 24 / 32px; 64 / 96px */
   --gutter: 1rem;
   --section-y: 4rem;
+  /* Height of the fixed mobile action bar; 0 above 768px. */
+  --action-bar-h: 0px;
   color-scheme: light;
+}
+@media (max-width: 768px) {
+  :root { --action-bar-h: calc(56px + env(safe-area-inset-bottom, 0px)); }
 }
 @media (min-width: 640px) {
   :root { --gutter: 1.5rem; }
@@ -77,7 +82,9 @@
     font-size: var(--text-body);
     line-height: 1.6;
     font-weight: 400;
+    padding-bottom: var(--action-bar-h);
   }
+  [id] { scroll-margin-top: 5.5rem; }
   h1, h2, h3 {
     color: var(--color-navy);
     font-weight: 600;
@@ -109,6 +116,85 @@
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
+
+  /* Division colour: set data-division on any element; children read --division.
+     Amber fails contrast as text on white, so --division-text falls back to navy. */
+  [data-division='valves'] { --division: var(--color-navy); --division-text: var(--color-navy); }
+  [data-division='instruments'] { --division: var(--color-blue); --division-text: var(--color-blue); }
+  [data-division='repair'] { --division: var(--color-amber); --division-text: var(--color-navy); }
+
+  /* Buttons: amber primary, navy outline secondary (SPEC §3). 2px corners, 48px tall. */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.625rem 1.25rem;
+    border: 2px solid transparent;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .btn-sm { min-height: 2.75rem; padding: 0.5rem 1rem; font-size: 0.9375rem; }
+  .btn-primary { background: var(--color-amber); color: var(--color-navy); }
+  .btn-primary:hover { background: #f0b632; }
+  .btn-secondary { border-color: var(--color-navy); color: var(--color-navy); background: transparent; }
+  .btn-secondary:hover { background: var(--color-navy); color: var(--color-white); }
+  .btn-navy { background: var(--color-navy); color: var(--color-white); }
+  .btn-navy:hover { background: #0b1f3a; }
+  .btn-on-dark { border-color: rgb(255 255 255 / 0.55); color: var(--color-white); }
+  .btn-on-dark:hover { background: var(--color-white); color: var(--color-navy); }
+
+  /* Cards: hairline border, 4px division top border, no shadow kit. */
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    border: 1px solid var(--color-line);
+    border-top: 4px solid var(--division, var(--color-navy));
+    border-radius: 2px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .card:hover { transform: translateY(-3px); border-color: #b9c6d3; border-top-color: var(--division, var(--color-navy)); }
+  /* Whole card is one link target; the title link stretches over it. */
+  .card-link { color: inherit; text-decoration: none; }
+  .card-link::after { content: ''; position: absolute; inset: 0; }
+  .card-link:focus-visible { outline: none; }
+  .card:has(.card-link:focus-visible) { outline: 3px solid var(--color-blue); outline-offset: 2px; }
+
+  /* Pipeline: a thin line with dashes that drift along it. */
+  .pipe-flow {
+    stroke-dasharray: 6 14;
+    animation: pipe-flow 2.4s linear infinite;
+  }
+
+  /* Scroll reveal: opt in with data-reveal; a small script in Base adds .is-in. */
+  .js [data-reveal] { opacity: 0; transform: translateY(12px); transition: opacity 0.5s, transform 0.5s; }
+  .js [data-reveal].is-in { opacity: 1; transform: none; }
+
+  .skip-link {
+    position: absolute;
+    left: 0.5rem;
+    top: -4rem;
+    z-index: 100;
+    padding: 0.625rem 1rem;
+    background: var(--color-navy);
+    color: var(--color-white);
+    font-weight: 600;
+    border-radius: 2px;
+  }
+  .skip-link:focus { top: 0.5rem; }
+}
+
+@keyframes pipe-flow {
+  to { stroke-dashoffset: -40; }
 }
 
 @media (prefers-reduced-motion: reduce) {

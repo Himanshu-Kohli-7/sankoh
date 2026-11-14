@@ -1,0 +1,18 @@
+---
+/** Link styled as a button: amber primary, navy outline secondary (SPEC §3). */
+import Icon from './Icon.astro';
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'a'> {
+  href: string;
+  variant?: 'primary' | 'secondary' | 'navy' | 'on-dark';
+  size?: 'md' | 'sm';
+  icon?: string;
+}
+const { href, variant = 'primary', size = 'md', icon, class: cls, ...rest } = Astro.props;
+---
+
+<a href={href} class:list={['btn', `btn-${variant}`, size === 'sm' && 'btn-sm', cls]} {...rest}>
+  {icon && <Icon name={icon} size={20} />}
+  <slot />
+</a>

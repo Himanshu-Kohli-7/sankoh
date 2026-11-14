@@ -1,19 +1,26 @@
 ---
+/* Placeholder inside the global shell. The real homepage (SPEC §3) is built in the next step. */
 import Base from '../layouts/Base.astro';
-import { site, telHref, waHref } from '../config/site';
+import BlueprintGrid from '../components/BlueprintGrid.astro';
+import Button from '../components/Button.astro';
+import { site, telHref, quoteHref } from '../config/site';
 ---
 
 <Base
   title={`${site.name} – Valves, Instruments & Repair, India`}
   description={`${site.positioning} ${site.address.locationWording}.`}
 >
-  <main class="container-content section-y">
-    <p class="eyebrow text-blue">Phase 0 scaffold</p>
-    <h1>{site.name}</h1>
-    <p class="text-slate mt-4 max-w-prose">{site.positioning}</p>
-    <p class="mt-4">
-      {site.address.locationWording} · <a href={telHref()}>{site.primaryPhone.display}</a>{" · "}
-      <a href={waHref()}>WhatsApp</a>
-    </p>
-  </main>
+  <section class="relative">
+    <BlueprintGrid />
+    <div class="container-content section-y relative">
+      <p class="eyebrow text-slate">Valves · Automation · Instruments · Repair</p>
+      <h1 class="mt-4 max-w-3xl">{site.name}</h1>
+      <p class="mt-5 max-w-2xl text-lg text-slate">{site.positioning}</p>
+      <p class="mt-2 text-slate">{site.address.locationWording}</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <Button href={telHref()} icon="phone" data-event="click_call">Call now</Button>
+        <Button href={quoteHref()} variant="secondary">Get a quote</Button>
+      </div>
+    </div>
+  </section>
 </Base>

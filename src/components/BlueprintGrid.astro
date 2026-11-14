@@ -1,0 +1,38 @@
+---
+/**
+ * Faint blueprint grid (CLAUDE.md §6): 8px minor / 64px major lines, CSS only.
+ * Place inside a `position: relative` parent; content must sit above it (e.g. `relative`).
+ */
+interface Props {
+  tone?: 'light' | 'dark';
+  /** Fade the grid out towards the bottom, right or not at all. */
+  fade?: 'bottom' | 'right' | 'none';
+  class?: string;
+}
+const { tone = 'light', fade = 'bottom', class: cls } = Astro.props;
+---
+
+<div class:list={['blueprint', cls]} data-tone={tone} data-fade={fade} aria-hidden="true"></div>
+
+<style>
+  .blueprint {
+    --minor: rgb(10 120 184 / 0.07);
+    --major: rgb(10 120 184 / 0.13);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--major) 1px, transparent 1px),
+      linear-gradient(90deg, var(--major) 1px, transparent 1px),
+      linear-gradient(var(--minor) 1px, transparent 1px),
+      linear-gradient(90deg, var(--minor) 1px, transparent 1px);
+    background-size: 64px 64px, 64px 64px, 16px 16px, 16px 16px;
+    background-position: center top;
+  }
+  .blueprint[data-tone='dark'] {
+    --minor: rgb(255 255 255 / 0.035);
+    --major: rgb(255 255 255 / 0.07);
+  }
+  .blueprint[data-fade='bottom'] { mask-image: linear-gradient(to bottom, #000 30%, transparent); }
+  .blueprint[data-fade='right'] { mask-image: linear-gradient(to right, #000 20%, transparent 85%); }
+</style>
