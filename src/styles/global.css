@@ -1,0 +1,121 @@
+@import 'tailwindcss';
+
+/* Fonts: self-hosted via Fontsource, latin subset only (3 files, SPEC §8). */
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-400-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../../node_modules/@fontsource/ibm-plex-sans/files/ibm-plex-sans-latin-600-normal.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+}
+
+/* Design tokens (CLAUDE.md §6). Tailwind generates utilities and :root CSS variables from @theme. */
+@theme {
+  --color-navy: #102a4c;
+  --color-blue: #0a78b8;
+  --color-cyan: #0fb5d8;
+  --color-amber: #e5a823;
+  --color-ink: #0b1726;
+  --color-slate: #4a5b70;
+  --color-line: #dce3ea;
+  --color-paper: #f5f8fb;
+  --color-white: #ffffff;
+
+  --font-sans: 'IBM Plex Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Fluid type scale (SPEC §3) */
+  --text-h1: clamp(2.5rem, 1.9rem + 2.4vw, 3.5rem);
+  --text-h2: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem);
+  --text-body: 1.0625rem;
+  --text-small: 0.875rem;
+  --text-eyebrow: 0.75rem;
+
+  /* Layout */
+  --container-content: 1200px;
+  --spacing-gutter: 1rem;
+  --spacing-section: 4rem;
+}
+
+:root {
+  /* Responsive gutters and section padding (SPEC §3): 16 / 24 / 32px; 64 / 96px */
+  --gutter: 1rem;
+  --section-y: 4rem;
+  color-scheme: light;
+}
+@media (min-width: 640px) {
+  :root { --gutter: 1.5rem; }
+}
+@media (min-width: 1024px) {
+  :root { --gutter: 2rem; --section-y: 6rem; }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-white);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+  h1, h2, h3 {
+    color: var(--color-navy);
+    font-weight: 600;
+    line-height: 1.15;
+  }
+  h1 { font-size: var(--text-h1); }
+  h2 { font-size: var(--text-h2); }
+  h3 { font-size: var(--text-h3); line-height: 1.25; }
+  small { font-size: var(--text-small); }
+  a { color: var(--color-blue); }
+  :focus-visible {
+    outline: 3px solid var(--color-blue);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .container-content {
+    max-width: var(--container-content);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+  .section-y { padding-block: var(--section-y); }
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: var(--text-eyebrow);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
