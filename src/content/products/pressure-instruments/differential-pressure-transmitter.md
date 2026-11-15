@@ -31,6 +31,7 @@ faqs:
     answer: Yes. With the low side vented it works as a gauge pressure transmitter, which is a common way to measure level in an open tank.
   - question: What happens if one side is overpressurised?
     answer: Many DP transmitters are designed to survive full line pressure on one side, but the zero can still shift afterwards. Open and close the manifold valves in the right order to avoid it.
+relatedRepair: []
 todo: 'Applications and media are general typical uses (PENDING #48). Ranges, static pressure ratings, manifolds and outputs supplied are not confirmed (PENDING #49). No repair or calibration link (PENDING #52).'
 ---
 

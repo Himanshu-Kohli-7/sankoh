@@ -30,6 +30,7 @@ faqs:
     answer: Gas versions exist, but they are a separate design. A meter built for liquids will not read a gas line.
   - question: Why do bubbles upset the reading?
     answer: Air and heavy solids scatter the sound pulses so the transducers lose the signal. Fit the meter away from pump suctions and high points where air gathers.
+relatedRepair: []
 todo: 'Photo is only 180px wide and looks soft on large screens (PENDING #50). Applications and media are general typical uses (PENDING #48). Inline vs clamp-on forms, sizes and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
 ---
 

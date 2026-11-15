@@ -31,6 +31,7 @@ faqs:
     answer: Many can. Mechanical meters can carry a pulse output, and electronic meters usually offer a range of outputs. Tell us what the reading needs to connect to.
   - question: Can it be used on hot water?
     answer: Only if it is built for it. Hot water meters use different materials and parts, so mention the water temperature when you enquire.
+relatedRepair: []
 todo: 'What the company means by "Water Meter" as distinct from "Mechanical Water Meter" is unconfirmed; this page is written as the general water meter page (PENDING #7). Photo carries a partner mark; the text names no brand (PENDING #12). Applications are general typical uses (PENDING #48). Sizes, end connections and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
 ---
 

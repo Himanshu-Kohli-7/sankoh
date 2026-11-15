@@ -26,6 +26,7 @@ faqs:
     answer: Both work the same way. The choice comes down to the space around the tapping and whether the gauge must stand upright from a horizontal or a vertical pipe. Tell us how the tapping is arranged and we will suggest the right one.
   - question: Should there be a valve between the siphon and the gauge?
     answer: Usually yes. A needle valve or gauge cock lets the gauge be removed while the line stays under pressure, and the water in the loop stays in place.
+relatedRepair: []
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses (PENDING #48). Materials, end connections and pressure classes supplied, and which of the U and Q forms, are not confirmed (PENDING #49). No repair link (PENDING #52).'
 ---
 

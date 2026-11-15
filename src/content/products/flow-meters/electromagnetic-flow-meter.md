@@ -30,6 +30,7 @@ faqs:
     answer: The measuring signal is tiny and needs a stable reference to the liquid itself. On metal pipe the pipe provides it; on plastic or lined pipe, earthing rings or an earthing electrode do the same job.
   - question: Does it cause a pressure drop?
     answer: Practically none when it is the same size as the pipe, because the bore is clear. If it is sized down to raise the velocity, the reducers add a small loss.
+relatedRepair: []
 todo: 'Photo carries a partner mark; the text names no brand (PENDING #12). Applications and media are general typical uses (PENDING #48). Liner and electrode materials, sizes and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
 ---
 

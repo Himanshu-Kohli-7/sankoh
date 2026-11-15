@@ -28,6 +28,7 @@ faqs:
     answer: The same way as a gauge, with a siphon or impulse line that lets condensate cool before it reaches the sensor. Check the process temperature limit of the transmitter when you enquire.
   - question: What does "turndown" mean on a transmitter?
     answer: It is how far the measuring range can be narrowed from the sensor's maximum while staying accurate. A high turndown lets one model cover many ranges, which helps with spares.
+relatedRepair: []
 todo: 'No photo: the legacy photo shows a third-party maker''s logo on the display, so the page uses the placeholder drawing (PENDING #11, #50). Applications and media are general typical uses (PENDING #48). Ranges, outputs, protocols, enclosures and hazardous-area versions supplied are not confirmed (PENDING #49). No repair or calibration link (PENDING #52).'
 ---
 

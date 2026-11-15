@@ -27,6 +27,7 @@ faqs:
     answer: Yes, with a siphon in front of it so the switch element is kept away from live steam, just as with a gauge.
   - question: Is the contact rated to switch a motor directly?
     answer: Usually it is not meant to. Most switches should drive a contactor or relay, or a PLC input, rather than carry motor current. Tell us what the contact has to switch.
+relatedRepair: []
 todo: 'No photo: the legacy photo carries a third-party maker''s nameplate and model label, so the page uses the placeholder drawing (PENDING #11, #50). Applications and media are general typical uses (PENDING #48). Ranges, contact types, enclosures and connections supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
 ---
 

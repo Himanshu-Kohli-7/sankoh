@@ -30,6 +30,7 @@ faqs:
     answer: Slugs of air make the rotor overspeed, which wears the bearings and can damage it. Fill the line slowly and keep air out of the meter.
   - question: Will the meter wear out over time?
     answer: The bearings do wear, so readings can drift over the years. Periodic checks against a reference meter catch this before it matters.
+relatedRepair: []
 todo: 'Applications and media are general typical uses (PENDING #48). Sizes, bearing types, end connections and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
 ---
 

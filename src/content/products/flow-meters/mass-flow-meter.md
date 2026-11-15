@@ -27,6 +27,7 @@ faqs:
     answer: No. It relies on a gas carrying heat away from a warm sensor, and is meant for air and clean, dry gases of a known make-up.
   - question: Does pipe vibration affect a Coriolis meter?
     answer: It can. Brace the pipework firmly either side of the meter, and keep it away from strong vibration sources such as reciprocating pumps and compressors.
+relatedRepair: []
 todo: 'No photo: the legacy "mass-flowmeter.png" shows a straight-tube meter that looks like a turbine meter, so the page uses the placeholder drawing (PENDING #11, #50). Applications and media are general typical uses (PENDING #48). Whether Coriolis, thermal or both are supplied is not confirmed (PENDING #49). No repair link (PENDING #52).'
 ---
 
