@@ -90,6 +90,19 @@ export const serviceLinks: NavLink[] = [
   { label: 'Surplus & Discontinued Valves', href: '/services/surplus-discontinued-valves/' },
 ];
 
+/** Third mega-menu column: repair is a headline offering alongside the two product divisions (CLAUDE.md §3). */
+export const repairServiceGroup: NavGroup = {
+  key: 'repair-service',
+  division: 'repair',
+  label: 'Repair & Service',
+  href: '/services/',
+  links: [
+    { label: 'Valve Repair', href: '/valve-repair/' },
+    { label: 'VFD Repair', href: '/vfd-repair/' },
+    ...serviceLinks,
+  ],
+};
+
 /** Top-level header items after "Products". */
 export const primaryLinks: NavLink[] = [
   { label: 'Valve Repair', href: '/valve-repair/' },
