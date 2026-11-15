@@ -83,7 +83,9 @@ const schema = published.length
       eyebrow={`${products.length} products`}
       division={data.division}
       title={`${data.title} we supply`}
-      intro="Each one is available to your specification. Tell us the size, pressure, temperature and media."
+      intro={data.division === 'instruments'
+        ? 'Each one is available to your specification. Tell us the media, range, process connection and output you need.'
+        : 'Each one is available to your specification. Tell us the size, pressure, temperature and media.'}
     />
     <ul class="grid">
       {products.map((product) => (
