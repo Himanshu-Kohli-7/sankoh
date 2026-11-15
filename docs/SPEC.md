@@ -177,7 +177,7 @@ Vibration sensors are not sold: no page.
 
 **New products (approved list).** Before writing each one, check for overlap with existing pages and merge or differentiate instead of adding a near-duplicate.
 
-Batch A (first): Pressure Reducing Valve, Diaphragm Valve, Foot Valve, 3-Way Ball Valve, Plug Valve, Basket Strainer, Thermodynamic Steam Trap, Ball Float Steam Trap (manual valves); Pneumatic Rotary Actuator (pneumatic); Electric Actuator (electric); Rotameter, Metal Tube Rotameter, Oval Gear Flow Meter, Orifice Plate & Flange Assembly (flow); Thermocouple (temperature); Magnetic Level Indicator, Level Gauge Glass, Hydrostatic Level Transmitter (level); ORP Analyzer, Chlorine Analyzer (analytical).
+Batch A (first): Pressure Reducing Valve, Diaphragm Valve, Foot Valve, 3-Way Ball Valve, Plug Valve, Basket Strainer, Thermodynamic Steam Trap, Ball Float Steam Trap (manual valves); Pneumatic Rotary Actuator, Electric Actuator (valve automation accessories, as stand-alone units so they do not compete with the actuated valve pages); Rotameter, Metal Tube Rotameter, Oval Gear Flow Meter, Orifice Plate & Flange Assembly (flow); Thermocouple (temperature); Magnetic Level Indicator, Level Gauge Glass, Hydrostatic Level Transmitter (level); ORP Analyzer, Chlorine Analyzer (analytical).
 
 Batch B (later): Float Valve, Moisture Separator, Pneumatic Cylinder, Pneumatic Knife Gate Valve, Mini Motorised Valve, Electric Diaphragm Valve, NAMUR Solenoid Valve, Air Filter Regulator, Open Channel Flow Meter, Flow Switch, Manometer, Temperature Switch, Conductivity Level Switch, Cable Float Switch, Multi-parameter Water Quality Analyzer.
 

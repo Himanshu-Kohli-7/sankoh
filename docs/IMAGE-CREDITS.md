@@ -26,6 +26,14 @@ Where every product photo that is not from the old site came from. Rules are in 
 | `pressure-transmitter.jpg` | Pressure Transmitter | /product/smart-pressure-transmitter/ | /wp-content/uploads/2024/07/Smart-Pressure-Transmitter.jpg |
 | `conductivity-tds-analyzer.jpg` | Conductivity & TDS Analyzer | /product/conductivity-meter/ | /wp-content/uploads/2024/07/Conductivity-Meter.jpg |
 | `ph-transmitter.jpg` | pH Transmitter | /product/ph-analyzer/ | /wp-content/uploads/2024/09/pH-Analyzer1-2.jpg |
+| `rotameter.jpg` | Rotameter | /product/glass-tube-rotameters/ | /wp-content/uploads/2023/11/Glass-Tube-Rotameters.jpg |
+| `metal-tube-rotameter.jpg` | Metal Tube Rotameter | /product/metal-tube-rotameters/ | /wp-content/uploads/2023/11/Metal-Tube-Rotameters-3.jpg |
+| `oval-gear-flow-meter.jpg` | Oval Gear Flow Meter | /product/oval-gear-flowmeter/ | /wp-content/uploads/2024/09/Oval-Meter-Flowmeter.jpg |
+| `orifice-plate-flange-assembly.jpg` | Orifice Plate & Flange Assembly | /product/orifice-plates-flange-assembly/ | /wp-content/uploads/2023/11/Orifice-Plates-Flange-Assembly.jpg |
+| `magnetic-level-indicator.jpg` | Magnetic Level Indicator | /product/side-mounted-level-indicator/ | /wp-content/uploads/2023/11/Side-Mounted-Level-Indicator.jpg |
+| `level-gauge-glass.jpg` | Level Gauge Glass | /product/reflex-level-gauges/ | /wp-content/uploads/2023/11/Reflex-Level-Gauges.jpg |
+| `hydrostatic-level-transmitter.jpg` | Hydrostatic Level Transmitter | /product/hydrostatic-level-transmitter/ | /wp-content/uploads/2023/11/Hydrostatic-Level-Transmitter.jpg |
+| `chlorine-analyzer.jpg` | Chlorine Analyzer | /product/chlorine-meter/ | /wp-content/uploads/2024/07/Chlorine-Meter.jpg |
 
 ### UPC Instruments Pvt Ltd — unitechmeter.com
 
@@ -34,6 +42,9 @@ Where every product photo that is not from the old site came from. Rules are in 
 | `mechanical-water-meter.webp` | Mechanical Water Meter | /product/water-meter/woltman-type-water-meter-cold | /storage/products/upc-wmc-110-67dd58886a1a4.webp |
 | `dissolved-oxygen-do-analyzer.webp` | Dissolved Oxygen (DO) Analyzer | /product/analytical-instruments/do-meter | /storage/products/do-130-69c3828a83dab.webp |
 | `ball-valve-flanged-end.webp` | Ball Valve – Flanged End | /product/valves/wcb-two-piece-flange-end-ball-valve | /storage/products/upc-feb-466-6818678982993.webp |
+| `basket-strainer.webp` | Basket Strainer | /product/valves/cast-iron-t-type-strainer | /storage/products/upc-tst-492-69c3887ccd70f.webp |
+| `thermodynamic-steam-trap.webp` | Thermodynamic Steam Trap | /product/valves/thermodynamic-steam-trap-ss-body | /storage/products/upc-tst-471-69c39bf60fe2c.webp |
+| `ball-float-steam-trap.webp` | Ball Float Steam Trap | /product/valves/ball-float-steam-trap | /storage/products/upc-bst-444-6800a0c83eb71.webp |
 
 ### Stolzel — stolzelvalves.com
 
@@ -42,6 +53,8 @@ Where every product photo that is not from the old site came from. Rules are in 
 | `limit-switch-box.png` | Limit Switch Box | /aboutpic/Limit Switch.png |
 | `motorised-globe-valve.png` | Motorised Globe Valve | /aboutpic/04e8f8e8-ed4b-4a9e-8675-9803154f8703.png |
 | `pneumatic-power-cylinder-for-dampers.jpg` | Pneumatic Power Cylinder for Dampers | /aboutpic/pc.jpg |
+| `electric-actuator.png` | Electric Actuator | /aboutpic/EA.png |
+| `pneumatic-rotary-actuator.jpg` | Pneumatic Rotary Actuator | /aboutpic/Quarter.jpg |
 
 Not used from the Stolzel site, because they do not pass CLAUDE.md §2.3: the Electric Gate Valve image (file name says it is AI-generated), the positioner image (another maker's product), and the gearbox, air filter regulator, butterfly valve and angle seat valve images (file names point to other makers or marketplaces).
 
@@ -62,4 +75,4 @@ Not used from the Stolzel site, because they do not pass CLAUDE.md §2.3: the El
 
 ## 5. Still on the placeholder drawing
 
-No partner photo and no openly licensed photo without a visible brand was found for: Pressure Gauge, Pressure Switch, Siphon, pH Sensor, Turbidity Analyzer, Mass Flow Meter, Flush Bottom Valve, Pneumatic Plug Valve, Motorised Plug Valve, Motorised Gate Valve, Pulse Jet Dust Collector Valve, Solenoid Coils, Smart Valve Positioner, I/P Converter, Air Release Valve, Position Feedback & Local Control Units. Wikimedia Commons was searched for each; the results were antique or branded items, diagrams, or unrelated photos.
+No partner photo and no openly licensed photo without a visible brand was found for: Pressure Gauge, Pressure Switch, Siphon, pH Sensor, Turbidity Analyzer, Mass Flow Meter, Flush Bottom Valve, Pneumatic Plug Valve, Motorised Plug Valve, Motorised Gate Valve, Pulse Jet Dust Collector Valve, Solenoid Coils, Smart Valve Positioner, I/P Converter, Air Release Valve, Position Feedback & Local Control Units, and the new Pressure Reducing Valve, Diaphragm Valve, Foot Valve, 3-Way Ball Valve, Plug Valve, Thermocouple and ORP Analyzer pages. Wikimedia Commons was searched for each; the results were antique or branded items, diagrams, or unrelated photos.

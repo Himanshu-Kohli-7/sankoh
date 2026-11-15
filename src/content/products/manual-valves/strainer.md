@@ -18,6 +18,7 @@ applications:
   - Steam, condensate and water lines
   - New or modified pipework, which carries weld scale and dirt
 relatedProducts:
+  - manual-valves/basket-strainer
   - manual-valves/steam-traps
   - manual-valves/sight-glass
   - manual-valves/non-return-valve-flanged-end

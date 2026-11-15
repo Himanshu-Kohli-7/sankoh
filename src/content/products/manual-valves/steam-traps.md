@@ -18,6 +18,8 @@ applications:
   - Dryers, coils and other steam-heated equipment
   - Ahead of control valves and at the ends of steam lines
 relatedProducts:
+  - manual-valves/thermodynamic-steam-trap
+  - manual-valves/ball-float-steam-trap
   - manual-valves/strainer
   - manual-valves/sight-glass
   - manual-valves/piston-valve
