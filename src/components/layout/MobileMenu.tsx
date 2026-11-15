@@ -203,7 +203,7 @@ export default function MobileMenu({ currentPath, catalogueHref }: Props) {
               Catalogue (PDF)
             </a>
           )}
-          <p class="pt-5 text-small text-slate">{site.service.availability}</p>
+          <p class="pt-5 text-small text-slate">{site.service.supportLine}</p>
         </nav>
 
         <div class="grid flex-none grid-cols-2 gap-2 border-t border-line bg-paper p-4 pb-[calc(1rem+env(safe-area-inset-bottom,0px))]">

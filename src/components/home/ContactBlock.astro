@@ -18,7 +18,7 @@ const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(`${site.nam
   <SectionHeader
     eyebrow="Contact"
     title="Talk to us"
-    intro={`Call, WhatsApp or email. ${site.service.availability}.`}
+    intro={`Call, WhatsApp or email. ${site.service.supportLine}.`}
   />
 
   <div class="layout">
@@ -51,6 +51,15 @@ const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(`${site.nam
               {address.locality} – {address.postalCode}, {address.district}<br />
               {address.region}, {address.country}
             </address>
+          </dd>
+        </div>
+        <div>
+          <dt><Icon name="clock" size={20} />Office hours</dt>
+          <dd>
+            <p class="hours">
+              {site.hours.display}. {site.hours.closed}.<br />
+              <strong>{site.service.supportLine}.</strong>
+            </p>
           </dd>
         </div>
         <div>
@@ -131,6 +140,8 @@ const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(`${site.nam
   .mono { font-family: var(--font-mono); font-weight: 500; font-size: 1.0625rem; }
   address { padding-block: 0.375rem; font-style: normal; line-height: 1.55; }
   dd > span.mono { padding-block: 0.375rem; }
+  .hours { padding-block: 0.375rem; line-height: 1.55; }
+  .hours strong { color: var(--color-navy); font-weight: 600; }
   .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
 
   .side { display: flex; flex-direction: column; gap: 1.25rem; }

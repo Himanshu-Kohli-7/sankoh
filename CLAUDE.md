@@ -12,16 +12,23 @@ Goals, in priority order:
 3. **Credibility** — a modern, clean, engineering-grade site that makes the company look established and professional.
 4. **Speed** — fast on mid-range Android phones on 4G.
 
-The old site is a client-side Create React App with 5 URLs and no per-product pages. The new site has ~115 indexable pages.
+The old site is a client-side Create React App with 5 URLs and no per-product pages. The new site has ~130 indexable pages.
 
 ## 2. Hard rules (never break these)
 
 1. **Never invent facts.** No made-up specs, pressure/temperature ratings, sizes, materials, certifications, standards (ISO, API, ATEX, SIL…), years in business, customer counts, project numbers, awards or claims. Only state company facts listed in §4 or in content files. If a page needs a fact we don't have, put a `TODO:` in the content file and tell the user — never fill the gap yourself.
    - The old repo's `src/Data.js` contains placeholder certifications and specs. **Never migrate anything from it.**
 2. **General product knowledge is allowed; company-specific claims are not.** "A butterfly valve regulates flow with a rotating disc" is fine. "We supply 2–24 inch butterfly valves in SS316" is not, unless it is in §4 or a content file.
-3. **No fake imagery.** No AI-generated or stock photos presented as Sankoh's workshop, team, projects or repairs. Use line illustrations and icons for processes. Real product images from the old repo are fine.
-4. **No third-party brand logos** except own brands (Sankoh, Stolzel), authorised partners (Scientific Devices, UPC) and clients with permission (§4). Every other brand is plain text only.
-5. **24/7 is false.** Never write "24/7", "round the clock" or "any time of day". The correct claim is **"Service available 365 days a year."**
+   - Product pages may carry a **"Typical options"** table of general industry ranges (sizes, materials, end connections, pressure classes, output signals), framed as "available to your specification". It is general information, not a stock claim, and each table must be specific to its product type: never the same table on every page.
+   - Still never claim certifications, compliance with a named standard as a company claim, years in business, counts or awards. Never print nameplate or dial data from a photo as a spec.
+3. **No fake imagery.** No AI-generated or stock photos presented as Sankoh's workshop, team, projects or repairs. Use line illustrations and icons for processes. Product photo sources, in this order:
+   1. Real product images from the old repo that carry no mark other than Sankoh's or an authorised partner's.
+   2. The official sites or catalogues of the authorised partners (Flowtech, UPC, Stolzel); their logos may show. **Provisional until each partner has agreed in writing** (docs/PENDING.md): no launch before that.
+   3. Wikimedia Commons or other openly licensed images: public domain, CC0, CC BY or CC BY-SA only, **never NC or ND**. Same kind of product, no brand visible. Record author, licence and URL in `docs/IMAGE-CREDITS.md`; the site has an Image credits page.
+   4. The placeholder drawing. Any photo that fails the mark check falls back to this, never to a marked photo.
+   - Never use images from marketplaces, competitors or other manufacturers, even if no logo shows. A photo only needs to be the same kind of product, not an exact model.
+4. **No third-party brand logos or marks** except the own brand (Sankoh), authorised partners (Stolzel, UPC, Flowtech) and clients with permission (§4). Every other brand is plain text only.
+5. **24/7 is false.** Never write "24/7", "round the clock", "any time of day" or "365 days". The only availability claim is **"Urgent breakdown support 7 days a week"** (short form "7-day breakdown support"), next to the office hours in §4. `npm run check:claims` enforces this.
 6. **No client-only rendering for content.** Pages are static HTML. JavaScript only in small islands (quote form, product selector, mobile menu).
 7. **Work on branch `astro-rebuild` only.** Never commit to or push `master`. Never force-push.
 8. **Ask before adding any npm dependency** not listed in §5.
@@ -29,12 +36,12 @@ The old site is a client-side Create React App with 5 URLs and no per-product pa
 
 ## 3. Positioning (use this framing everywhere)
 
-> Sankoh Technical Solutions **manufactures** (Sankoh®, Stolzel®), **supplies and sources** industrial valves, valve automation and process instruments, and **repairs** valves, actuators, VFDs, servo drives and HMIs of any make.
+> Sankoh Technical Solutions **manufactures** (Sankoh®), **supplies and sources** industrial valves, valve automation and process instruments as an authorised partner of Stolzel, UPC and Flowtech, and **repairs** valves, actuators, positioners and VFDs of any make, on site or in its workshop.
 
 Three divisions, each with its own colour (§6):
 - **Valves & Automation** — manual, pneumatic, electric and solenoid valves, automation accessories.
 - **Instruments & Analyzers** — flow, pressure, temperature, level and analytical instruments.
-- **Repair & Service** — valve repair, drive/HMI repair, valve selection & maintenance advisory, product sourcing, surplus/discontinued valves.
+- **Repair & Service** — valve repair, VFD repair, technical advice (valve selection & maintenance advisory), installation & commissioning, product sourcing, surplus/discontinued valves.
 
 **Repair is a headline offering, not a footnote.** It gets equal weight with products in the nav, on the homepage and in internal links.
 
@@ -53,15 +60,19 @@ Three divisions, each with its own colour (§6):
 | Email (current) | sankoh.techsol@gmail.com, piyush.sankoh@gmail.com — will be replaced by a domain email before launch, so keep it in one config value |
 | Marketing contact | Piyush Kohli — Marketing Head |
 | GSTIN | 03AKSPK5866E1ZW (footer) |
-| Own brands (manufacturer) | Sankoh®, Stolzel® |
-| Authorised channel partner of | Scientific Devices, UPC |
+| Own brand (manufacturer) | Sankoh® only |
+| Authorised partner of | Stolzel, UPC, Flowtech Measuring Instruments Pvt Ltd |
 | Service area | All of India; quickest delivery and on-site service across North India |
 | Team | Qualified engineers and professionals |
-| Service availability | 365 days a year (**not** 24/7) |
+| Office hours | Monday to Saturday, 9:00 AM to 6:00 PM. Sunday closed |
+| Support line | "Urgent breakdown support 7 days a week", Sundays included (**not** 24/7) |
 | Repair turnaround | Typically 2–3 days for workshop repairs |
-| Repair scope | Valves, actuators, cylinders and positioners of **any make**; VFDs, servo drives and HMIs of **any make** |
-| VFD brands to name | ABB "and all other makes" (second brand pending — see §10) |
-| Also offers | Help selecting the right product; delivery, installation and testing; new valves, surplus and discontinued valves and parts, reconditioned components; sourcing through a vendor network |
+| On-site repair | Offered, as well as workshop repair |
+| Repair scope | Valves of **any make**, manual and automated, including actuators and cylinders; positioners; VFDs of **any make**. **No** servo drive or HMI repair |
+| VFD brands to name | ABB, Danfoss "and all other makes" |
+| Warranty | 6 months on repaired valves; 3 months on repaired VFDs; 1 year on new products |
+| Also offers | Help selecting the right product; technical advice; delivery, installation and testing; setting up and commissioning valve and automation systems for factories; new valves, surplus and discontinued valves and parts, reconditioned components; sourcing through a vendor network |
+| Not sold | Vibration sensors |
 | Advisory service | "Valve Selection & Maintenance Advisory" — expert advice on choosing, maintaining and managing all types of valves |
 | Clients (logos + reviews permitted) | Exactly as in the old repo's reviews and client-logo components |
 | Applications named by the company | Water treatment, HVAC, building automation, industrial automation, water/milk ATMs |
@@ -116,14 +127,14 @@ Logos: `public/brand/sankoh-logo-full.svg` (icon + wordmark) and `public/brand/s
 /                                     Home
 /products/                            All products hub
 /products/<category>/                 10 category pages
-/products/<category>/<product>/       ~81 product pages
+/products/<category>/<product>/       ~81 product pages, plus new ones in batches (SPEC §2.2)
 /product-selector/                    Product selector tool
 /valve-repair/                        Valve repair hub
 /valve-repair/<service>/              8 valve repair pages
-/drive-repair/                        VFD / servo / HMI repair hub
-/drive-repair/<service>/              3 drive repair pages
+/vfd-repair/                          VFD repair (one page, no hub)
 /services/                            Services overview
 /services/valve-selection-maintenance-advisory/
+/services/installation-commissioning/
 /services/product-sourcing/
 /services/surplus-discontinued-valves/
 /brands/                              Own brands + authorised partners
@@ -131,6 +142,7 @@ Logos: `public/brand/sankoh-logo-full.svg` (icon + wordmark) and `public/brand/s
 /contact/                             Contact + map
 /request-a-quote/                     Quote form
 /privacy-policy/
+/image-credits/
 /404
 /downloads/sankoh-technical-solutions-catalogue.pdf
 ```
@@ -159,7 +171,8 @@ These render **only if their content folder has entries** — no empty headings 
 
 ## 10. Open items
 
-Everything unconfirmed is tracked in **`docs/PENDING.md`**. Rules:
-- Until an item is confirmed, build around it: leave a `TODO:` in the content file, hide the section, or use the safe wording given in PENDING.md. Never guess.
-- Whenever you add a new `TODO:` anywhere, add a matching line to `docs/PENDING.md` in the same commit.
+`docs/PENDING.md` holds only what the site cannot be finished without (keys, URLs, partner permission, the catalogue PDF) and real fact questions. Rules:
+- Image, description, type, option and application choices are made with best judgement and not listed there.
+- Until a fact is confirmed, build around it: hide the section or use safe wording that makes no claim. Never guess.
+- Whenever you add a new `TODO:` for a missing fact, add a matching line to `docs/PENDING.md` in the same commit.
 - When the user confirms an item, update §4 of this file and the content, then tick it off in PENDING.md.

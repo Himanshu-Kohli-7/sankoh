@@ -32,11 +32,11 @@ const divisions = [
     code: '03',
     name: site.divisions.repair.name,
     href: valveRepair.href,
-    text: 'Valves, actuators, cylinders and positioners of any make. VFDs, servo drives and HMIs of any make.',
+    text: 'Valves of any make, with their actuators, cylinders and positioners. VFDs of any make. On site or in our workshop.',
     cta: 'See valve repair',
     links: [
       { label: valveRepair.label, href: valveRepair.href },
-      { label: `${driveRepair.label} (VFD, servo, HMI)`, href: driveRepair.href },
+      { label: driveRepair.label, href: driveRepair.href },
       { label: site.service.advisory.name, href: '/services/valve-selection-maintenance-advisory/' },
       { label: 'Product Sourcing', href: '/services/product-sourcing/' },
       { label: 'Surplus & Discontinued Valves', href: '/services/surplus-discontinued-valves/' },
@@ -49,7 +49,7 @@ const divisions = [
   <SectionHeader
     eyebrow="What we do"
     title="Three divisions under one roof"
-    intro="We manufacture, supply and source industrial valves, valve automation and process instruments, and repair valves and drives of any make."
+    intro="We manufacture, supply and source industrial valves, valve automation and process instruments, and repair valves and VFDs of any make."
   />
   <ul class="grid">
     {divisions.map((d) => (

@@ -21,7 +21,7 @@ Contents
 
 **Header (sticky, compact on scroll)**
 - Left: full logo (icon-only below 360px).
-- Nav: Products (mega-menu: two columns — Valves & Automation, Instruments & Analyzers — each listing its categories), Valve Repair, Drive Repair, Services, About, Contact.
+- Nav: Products (mega-menu: two columns — Valves & Automation, Instruments & Analyzers — each listing its categories), Valve Repair, VFD Repair, Services, About, Contact.
 - Right: phone number as a `tel:` link (desktop), amber **Get a Quote** button.
 - Mobile: hamburger → full-height menu (Preact island), accordion for product categories.
 
@@ -33,7 +33,8 @@ Contents
 **Footer (navy)**
 - Logo + one-line positioning, address, phones, email, GSTIN.
 - Columns: Valves & Automation categories, Instruments categories, Repair & Services links, Company (About, Brands, Contact, Catalogue PDF, Privacy).
-- "Service available 365 days a year · Repairs typically in 2–3 days".
+- Office hours (Monday to Saturday, 9:00 AM to 6:00 PM · Sunday closed), with "Urgent breakdown support 7 days a week · Repairs typically in 2–3 days" directly under them.
+- Company column also links to Image credits.
 - Copyright with current year.
 
 **Shared components**
@@ -50,20 +51,22 @@ Contents
 | `/products/` | Hub of 10 categories, grouped by division | "industrial valves and instruments supplier India" |
 | `/product-selector/` | Filter tool (§6.2) | — (noindex not needed; it's a real page with intro text) |
 | `/valve-repair/` | Valve repair hub | "valve repair service", "control valve repair India" |
-| `/drive-repair/` | Drive & HMI repair hub | "VFD repair", "servo drive repair", "HMI repair" |
+| `/vfd-repair/` | VFD repair, one page (ABB, Danfoss and all other makes) | "VFD repair", "AC drive repair", "ABB / Danfoss VFD repair" |
 | `/services/` | All services overview | — |
-| `/services/valve-selection-maintenance-advisory/` | Advisory | "valve selection help", "valve maintenance services" |
+| `/services/valve-selection-maintenance-advisory/` | Technical advice and advisory | "valve selection help", "valve maintenance services" |
+| `/services/installation-commissioning/` | Setting up and commissioning valve and automation systems for factories | "valve installation and commissioning" |
 | `/services/product-sourcing/` | Sourcing to customer spec | "industrial valve sourcing", "hard to find valves" |
 | `/services/surplus-discontinued-valves/` | Surplus, obsolete, reconditioned | "discontinued valve replacement", "obsolete valve parts" |
-| `/brands/` | Sankoh, Stolzel, Scientific Devices, UPC | brand names |
+| `/brands/` | Sankoh (own brand); Stolzel, UPC, Flowtech (authorised partners) | brand names |
 | `/about/` | Story, team, positioning, trust section | brand name |
-| `/contact/` | All contact details, map, hours | "Sankoh Derabassi contact" |
+| `/contact/` | All contact details, map, office hours with the support line under them | "Sankoh Derabassi contact" |
 | `/request-a-quote/` | Quote form | — |
 | `/privacy-policy/` | What the form collects and why | — |
+| `/image-credits/` | Author, licence and source of openly licensed photos (from `docs/IMAGE-CREDITS.md`) | — |
 
 ### 2.2 Product categories and products (~81)
 
-Names below are the **page titles**. Slugs are the kebab-case of the name unless given. Items marked † are from the company profile but not on the old site — they get pages but need images (use a clean placeholder illustration until then). Items marked ? need confirmation (CLAUDE.md §10).
+Names below are the **page titles**. Slugs are the kebab-case of the name unless given. Items marked † are from the company profile but not on the old site. Image sources follow CLAUDE.md §2.3; the placeholder drawing is the last resort.
 
 **Division: Valves & Automation**
 
@@ -85,7 +88,7 @@ Names below are the **page titles**. Slugs are the kebab-case of the name unless
 15. Needle Valve
 16. Strainer
 17. Sight Glass
-18. Steam Traps ?
+18. Steam Traps
 
 `/products/pneumatic-actuated-valves/` — Pneumatic Actuated Valves
 1. Pneumatic Actuated Ball Valve
@@ -93,10 +96,10 @@ Names below are the **page titles**. Slugs are the kebab-case of the name unless
 3. Pneumatic Globe Control Valve (also targets "control valve")
 4. Pneumatic Plug Valve †
 5. Y-Type Angle Seat Valve
-6. Pneumatic Tri-Clover Ball Valve ?
-7. Pneumatic Tri-Clover Butterfly Valve ?
-8. Pneumatic UPVC Ball Valve ?
-9. Pneumatic UPVC Butterfly Valve ?
+6. Pneumatic Tri-Clover Ball Valve
+7. Pneumatic Tri-Clover Butterfly Valve
+8. Pneumatic UPVC Ball Valve
+9. Pneumatic UPVC Butterfly Valve
 10. Pneumatic Spherical Disc Butterfly Valve
 11. Pneumatic Power Cylinder for Dampers
 
@@ -116,7 +119,7 @@ Names below are the **page titles**. Slugs are the kebab-case of the name unless
 1. Direct Acting Solenoid Valve (2/2 & 3/2 Way)
 2. Pilot Operated Diaphragm Solenoid Valve † (legacy image `pilot-type.png`)
 3. Semi-Lift Diaphragm Solenoid Valve (General & Steam) † (legacy image `Semilift.png`)
-4. Pilot Operated Piston Type Steam Solenoid Valve † (check legacy `ssv.png`)
+4. Pilot Operated Piston Type Steam Solenoid Valve † (legacy image `ssv.png`)
 5. Pulse Jet Dust Collector Valve †
 6. Solenoid Coils †
 
@@ -135,7 +138,7 @@ Names below are the **page titles**. Slugs are the kebab-case of the name unless
 3. Turbine Flow Meter
 4. Ultrasonic Flow Meter
 5. Mass Flow Meter
-6. Water Meter ? (confirm how it differs from #7)
+6. Water Meter (the general page; #7 explains mechanical meters)
 7. Mechanical Water Meter
 
 `/products/pressure-instruments/` — Pressure Instruments
@@ -170,7 +173,13 @@ Names below are the **page titles**. Slugs are the kebab-case of the name unless
 6. Dissolved Oxygen (DO) Analyzer †
 7. Turbidity Analyzer †
 
-Vibration sensor ? — add to a category only once confirmed.
+Vibration sensors are not sold: no page.
+
+**New products (approved list).** Before writing each one, check for overlap with existing pages and merge or differentiate instead of adding a near-duplicate.
+
+Batch A (first): Pressure Reducing Valve, Diaphragm Valve, Foot Valve, 3-Way Ball Valve, Plug Valve, Basket Strainer, Thermodynamic Steam Trap, Ball Float Steam Trap (manual valves); Pneumatic Rotary Actuator (pneumatic); Electric Actuator (electric); Rotameter, Metal Tube Rotameter, Oval Gear Flow Meter, Orifice Plate & Flange Assembly (flow); Thermocouple (temperature); Magnetic Level Indicator, Level Gauge Glass, Hydrostatic Level Transmitter (level); ORP Analyzer, Chlorine Analyzer (analytical).
+
+Batch B (later): Float Valve, Moisture Separator, Pneumatic Cylinder, Pneumatic Knife Gate Valve, Mini Motorised Valve, Electric Diaphragm Valve, NAMUR Solenoid Valve, Air Filter Regulator, Open Channel Flow Meter, Flow Switch, Manometer, Temperature Switch, Conductivity Level Switch, Cable Float Switch, Multi-parameter Water Quality Analyzer.
 
 Cross-links: Needle Valve and Siphon/Thermowell appear as "accessories" on the gauge pages; Solenoid valves and accessories cross-link from every automated valve page.
 
@@ -186,10 +195,9 @@ Cross-links: Needle Valve and Siphon/Thermowell appear as "accessories" on the g
 7. Ball Valve Repair
 8. Plug Valve Repair
 
-`/drive-repair/<slug>/` (3):
-1. VFD Repair (name ABB "and all other makes")
-2. Servo Drive Repair
-3. HMI Repair
+`/vfd-repair/` (one page, no hub): VFD Repair. Name ABB, Danfoss "and all other makes". There is no servo drive or HMI repair.
+
+Every repair page and the hub state the warranty (6 months on repaired valves, 3 months on repaired VFDs), that on-site repair is offered, and the support line.
 
 ---
 
@@ -207,8 +215,8 @@ Cross-links: Needle Valve and Siphon/Thermowell appear as "accessories" on the g
 3. **Product categories grid** (10 tiles, two groups).
 4. **Repair Hub band** (amber accent): "Any make. Any model. Typically back in 2–3 days." List of repair types, 5-step process strip, CTA "Send us your valve" (WhatsApp) + "Call the repair desk".
 5. **Product selector teaser**: a mini filter row that links into `/product-selector/` with the choice applied.
-6. **Brands strip**: Sankoh, Stolzel (own), Scientific Devices, UPC (authorised partners) — labelled as such.
-7. **Why Sankoh**: six advantages from the company profile (right product, quick service response, any-make repairs, authorised channel partner, strategic location, engineering expertise).
+6. **Brands strip**: Sankoh (own brand); Stolzel, UPC, Flowtech (authorised partners) — labelled as such.
+7. **Why Sankoh**: six advantages from the company profile (right product, quick service response, any-make repairs, authorised partner, strategic location, engineering expertise).
 8. **Applications**: water treatment, HVAC, building automation, industrial automation, water/milk ATMs (icons, no pages in phase 1).
 9. **Trust**: client logo strip + review cards (+ certifications if present).
 10. **Catalogue download** card + **Contact** block with lazy map.
@@ -216,8 +224,8 @@ Cross-links: Needle Valve and Siphon/Thermowell appear as "accessories" on the g
 
 **Repair section without photos** — make it feel professional through structure, not stock images:
 - Illustrated **5-step process**: Receive & inspect → Strip down & assess → Repair / replace parts → Test & calibrate → Report & dispatch. Line illustrations, numbered mono labels.
-- "What we repair" grid with line-art icons per valve/drive type.
-- Fact strip: **Any make** · **Typically 2–3 days** · **365 days a year** · **Qualified engineers**.
+- "What we repair" grid with line-art icons per valve type.
+- Fact strip: **Any make** · **Typically 2–3 days** · **7-day breakdown support** · **Qualified engineers**.
 - "Repair vs replace" explainer and FAQs.
 - A conditional gallery block that appears when `repair-gallery/` gets real photos.
 
@@ -231,9 +239,9 @@ All in `src/content/`, typed with Zod. Shared fields: `title`, `slug`, `seoTitle
 
 **categories** — `division` (`valves` | `instruments`), `order`, `intro` (markdown), `heroImage`, `faqs[]`, `commonlySupplied` (optional, from company; hidden if empty).
 
-**products** — `category` (reference), `order`, `images[]` (with alt), `summary` (1–2 sentences, used in cards and meta), `operation` (`manual` | `self-acting` (check valves, safety valves, steam traps, strainers, sight glasses: nothing to operate) | `pneumatic` | `electric` | `solenoid` | `n/a`), `media[]`, `applications[]`, `industries[]`, `variants[]` (optional, only confirmed), `relatedProducts[]`, `relatedRepair[]`, `faqs[]`, `todo` (optional note, never rendered). Body (markdown): the sections in §5.2.
+**products** — `category` (reference), `order`, `images[]` (with alt), `typicalOptions[]` (label + value rows of general industry ranges, specific to the product type), `summary` (1–2 sentences, used in cards and meta), `operation` (`manual` | `self-acting` (check valves, safety valves, steam traps, strainers, sight glasses: nothing to operate) | `pneumatic` | `electric` | `solenoid` | `n/a`), `media[]`, `applications[]`, `industries[]`, `variants[]` (optional, only confirmed), `relatedProducts[]`, `relatedRepair[]`, `faqs[]`, `todo` (optional note, never rendered). Body (markdown): the sections in §5.2.
 
-**repairServices** — `group` (`valve` | `drive`), `icon`, `summary`, `whatWeRepair[]`, `commonFaults[]`, `brandsNote`, `faqs[]`, `relatedProducts[]`.
+**repairServices** — `group` (`valve` | `vfd`), `icon`, `summary`, `whatWeRepair[]`, `commonFaults[]`, `brandsNote`, `faqs[]`, `relatedProducts[]`.
 
 **services** — advisory, sourcing, surplus pages.
 
@@ -241,7 +249,7 @@ All in `src/content/`, typed with Zod. Shared fields: `title`, `slug`, `seoTitle
 
 **clients** — `name`, `logo`, `order`.
 
-**brands** — `name`, `relationship` (`own` | `authorised-partner`), `logo`, `description`.
+**brands** — `name`, `relationship` (`own` | `authorised-partner`), `logo`, `description`. Own: Sankoh. Authorised partners: Stolzel, UPC, Flowtech.
 
 **certifications**, **projects**, **repairGallery** — empty folders with schemas; sections render only when non-empty.
 
@@ -256,19 +264,19 @@ H1 = category name + "Supplier in India" variant in `seoTitle` only. Intro (120�
 1. Breadcrumbs, division eyebrow, H1, summary, image gallery, buttons **Get a quote for this product** / **Call** / **WhatsApp**.
 2. **What it is and how it works** (80–150 words, general knowledge).
 3. **Typical applications & media** (bullets; use company-stated applications/media where they exist, otherwise general typical uses — flag these for the user to review).
-4. **Available to your specification**: "We supply this in a range of sizes, body materials, pressure ratings and end connections to match your process. Tell us your requirement and our engineers will recommend the right option." If `variants[]` or category `commonlySupplied` exists, show it as a spec-style table.
+4. **Available to your specification**: "We supply this in a range of sizes, body materials, pressure ratings and end connections to match your process. Tell us your requirement and our engineers will recommend the right option." Under it, a **Typical options** table from `typicalOptions[]`: general industry ranges for that product type (sizes, materials, end connections, pressure classes, output signals), captioned as general information that is available to your specification, not a stock list. Each product's table is its own; never one shared table. No named standard as a company claim. If `variants[]` or category `commonlySupplied` exists (confirmed company data), show it as a second table.
 5. **What to tell us when you enquire** — `EnquiryChecklist` tailored per category (valves: size, pressure, temperature, media, body material, end connection, actuation, quantity; instruments: media, process connection, range, accuracy, output signal, power supply, hazardous area, quantity; instrument accessories such as siphons and thermowells: media, process connection, gauge or instrument it protects, pressure & temperature, material, quantity; analytical sensors, transmitters and analyzers: sample type & source, parameter & measuring range, sample temperature & pressure, installation (immersion, inline or flow cell), transmitter or sensor it pairs with, output signal & power supply, calibration & cleaning needs, quantity; valve automation accessories: make & model it fits, valve type & size, control signal, supply voltage, mounting, location & enclosure, quantity). Instrument pages never ask valve questions.
 6. **FAQs** (3–4, product-specific, original).
 7. **Related products** (3–4) and **Related repair service** (where one exists).
 8. CTABand.
 
-Word count target: 300–500 words of unique text per product. No boilerplate paragraphs repeated across pages except the short "available to your specification" line and the checklist.
+Word count target: 300–500 words of unique text per product. No boilerplate paragraphs repeated across pages except the short "available to your specification" line, the checklist and the warranty line (1 year on new products).
 
 ### 5.3 Repair hub
 H1 "Valve Repair Services — Any Make, Any Model". Intro, fact strip, "What we repair" grid → subpages, process steps, "Repair vs replace" section, why Sankoh, FAQs, conditional gallery, CTA (call / WhatsApp a photo of the valve / quote form with "Repair" selected).
 
 ### 5.4 Repair service page
-What it covers, common faults/symptoms, how the repair works (process), testing/calibration step described generally, turnaround (2–3 days typical), any-make statement, FAQs, related products, CTA.
+What it covers, common faults/symptoms, how the repair works (process), testing/calibration step described generally, turnaround (2–3 days typical), on-site repair, warranty, the support line, any-make statement, FAQs, related products, CTA.
 
 ### 5.5 About
 Positioning, three divisions, own brands and partners, owner/team block (owner photo + name/title once confirmed), Why Sankoh, trust section (clients, reviews, certifications if present), location.
@@ -319,10 +327,10 @@ Static map image/illustration with a "Open in Google Maps" link to the Business 
 - Image alt text describes the actual product ("Pneumatic actuated ball valve with double-acting actuator"), file names kebab-case and descriptive.
 
 **Structured data (JSON-LD)**
-- Site-wide: `Organization` + `LocalBusiness` (name, address, geo, phones, email, url, logo, areaServed: India, `sameAs` once URLs are known, openingHours once known). Use one `@id` and reference it everywhere.
+- Site-wide: `Organization` + `LocalBusiness` (name, address, geo, phones, email, url, logo, areaServed: India, `sameAs` once URLs are known, `openingHoursSpecification` from the office hours in `site.ts`). Use one `@id` and reference it everywhere.
 - `WebSite` on home.
 - `BreadcrumbList` on all inner pages.
-- `Product` on product pages: name, description, image, brand (only when it's Sankoh/Stolzel or a confirmed partner range), category, `offers` omitted (no prices). Don't add fake ratings.
+- `Product` on product pages: name, description, image, brand (only when a product is confirmed as Sankoh® or as a named partner's range), category, `offers` omitted (no prices). Don't add fake ratings.
 - `Service` on repair/service pages: serviceType, provider (Organization `@id`), areaServed.
 - `FAQPage` where FAQs are visible on the page.
 - Validate with Google Rich Results Test and the Schema.org validator before launch.

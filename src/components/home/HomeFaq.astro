@@ -5,10 +5,10 @@
  */
 import FAQ, { type FaqItem } from '../FAQ.astro';
 import SectionHeader from '../SectionHeader.astro';
-import { site } from '../../config/site';
+import { site, listAnd } from '../../config/site';
 
 const scope = site.service.repairScope;
-const [partnerA, partnerB] = site.brands.authorisedPartners;
+const partners = listAnd(site.brands.authorisedPartners);
 
 const items: FaqItem[] = [
   {
@@ -21,19 +21,23 @@ const items: FaqItem[] = [
   },
   {
     question: 'Do you manufacture valves or only supply them?',
-    answer: `Both. ${site.brands.own.join(' and ')} are our own brands. We are also an authorised channel partner of ${partnerA} and ${partnerB}, and we source other products through our vendor network.`,
+    answer: `Both. ${site.brands.own[0]} is our own brand. We are also an authorised partner of ${partners}, and we source other products through our vendor network.`,
   },
   {
     question: 'Do you repair valves and drives made by other companies?',
-    answer: `Yes. We repair ${scope.valves.toLowerCase()}, and ${scope.drives}.`,
+    answer: `Yes. We repair ${scope.valves.toLowerCase()}, and VFDs: ${site.service.vfdBrands}.`,
   },
   {
     question: 'How long does a repair take?',
-    answer: `${site.service.repairTurnaround}.`,
+    answer: `${site.service.repairTurnaround}. On-site repair is offered as well.`,
+  },
+  {
+    question: 'Is there a warranty?',
+    answer: `Yes: ${site.service.warranty.newProducts}, ${site.service.warranty.repairedValves} and ${site.service.warranty.repairedVfds}.`,
   },
   {
     question: 'Which areas do you deliver to and service?',
-    answer: `We serve all of India, with the quickest delivery and on-site service across North India. We are based in ${site.address.locationWording}. ${site.service.availability}.`,
+    answer: `We serve all of India, with the quickest delivery and on-site service across North India. We are based in ${site.address.locationWording}. Office hours are ${site.hours.display}, with ${site.service.supportLine.toLowerCase()}.`,
   },
 ];
 ---

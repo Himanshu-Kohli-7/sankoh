@@ -1,15 +1,15 @@
 ---
 /**
- * Brands strip (SPEC §3.6): own brands and authorised partners, labelled as such.
- * Only the Sankoh logo file exists; the other three are text until their logo files arrive
- * (docs/PENDING.md). No other third-party logos, ever (CLAUDE.md §2.4).
+ * Brands strip (SPEC §3.6): our own brand and the authorised partners, labelled as such.
+ * Only the Sankoh logo file exists; partners are text names until each has agreed to its logo
+ * being shown (docs/PENDING.md). No other third-party logos, ever (CLAUDE.md §2.4).
  */
 import Icon from '../Icon.astro';
 import { site } from '../../config/site';
 
 const groups = [
-  { label: 'Own brands', note: 'Manufactured by us', names: site.brands.own },
-  { label: 'Authorised channel partner of', note: 'Supplied as an authorised partner', names: site.brands.authorisedPartners },
+  { key: 'own', label: 'Own brand', names: site.brands.own },
+  { key: 'partners', label: 'Authorised partner of', names: site.brands.authorisedPartners },
 ];
 ---
 
@@ -21,7 +21,7 @@ const groups = [
     </div>
     <div class="groups">
       {groups.map((group) => (
-        <div class="group">
+        <div class="group" data-key={group.key}>
           <p class="eyebrow label">{group.label}</p>
           <ul>
             {group.names.map((name) => (
@@ -49,13 +49,15 @@ const groups = [
   .groups { display: grid; gap: 1.25rem; margin-top: 1.25rem; }
   .group { border: 1px solid var(--color-line); border-radius: 2px; }
   .label { padding: 0.75rem 1.25rem; border-bottom: 1px solid var(--color-line); background: var(--color-paper); color: var(--color-slate); }
-  ul { display: grid; grid-template-columns: repeat(2, 1fr); }
-  li { display: grid; place-items: center; min-height: 6rem; padding: 1rem; text-align: center; }
-  li + li { border-left: 1px solid var(--color-line); }
-  .wordmark { color: var(--color-navy); font-size: 1.375rem; font-weight: 600; letter-spacing: 0.01em; line-height: 1.2; }
+  ul { display: grid; }
+  li { display: grid; place-items: center; min-height: 5.5rem; padding: 1rem; text-align: center; }
+  li + li { border-top: 1px solid var(--color-line); }
+  .wordmark { color: var(--color-navy); font-size: 1.25rem; font-weight: 600; letter-spacing: 0.01em; line-height: 1.2; }
   img { width: auto; height: 2.25rem; max-width: 100%; }
 
   @media (min-width: 900px) {
-    .groups { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .groups { grid-template-columns: minmax(0, 1fr) minmax(0, 3fr); gap: 1.5rem; }
+    [data-key='partners'] ul { grid-template-columns: repeat(3, 1fr); }
+    [data-key='partners'] li + li { border-top: 0; border-left: 1px solid var(--color-line); }
   }
 </style>

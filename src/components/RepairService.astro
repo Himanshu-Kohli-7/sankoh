@@ -128,7 +128,7 @@ const schema = [
       <a class="number" href={telHref()} data-event="click_call"><Icon name="phone" size={22} />{site.primaryPhone.display}</a>
       <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">WhatsApp a photo</Button>
       <Button href={quoteHref(slug)} variant="secondary" icon="quote">Repair request form</Button>
-      <p class="enquire-note">{site.service.availability}.</p>
+      <p class="enquire-note">{site.service.supportLine}.</p>
     </aside>
   </div>
 
@@ -139,7 +139,7 @@ const schema = [
       <ul class="terms">
         <li><Icon name="clock" size={22} />{site.service.repairTurnaround}</li>
         <li><Icon name="pin" size={22} />On-site service across North India</li>
-        <li><Icon name="calendar" size={22} />{site.service.availability}</li>
+        <li><Icon name="calendar" size={22} />{site.service.supportLine}</li>
       </ul>
     </div>
   </section>
@@ -219,7 +219,7 @@ const schema = [
 
   <CTABand
     title="Request repair"
-    text={`Call the repair desk, WhatsApp a photo of the ${thing} and its ${label}, or use the repair request form. ${site.service.availability}.`}
+    text={`Call the repair desk, WhatsApp a photo of the ${thing} and its ${label}, or use the repair request form. ${site.service.supportLine}.`}
     quoteProduct={slug}
     quoteLabel="Repair request form"
     {whatsappText}

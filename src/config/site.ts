@@ -42,7 +42,7 @@ export const site = {
   primaryPhone: phones[0],
   whatsapp,
 
-  /** TODO: replace with a domain email before launch (docs/PENDING.md #1). Keep it as the only place email is set. */
+  /** TODO: replace with a domain email before launch (docs/PENDING.md). Keep it as the only place email is set. */
   email: {
     primary: 'sankoh.techsol@gmail.com',
     secondary: 'piyush.sankoh@gmail.com',
@@ -54,9 +54,10 @@ export const site = {
   },
 
   brands: {
-    own: ['Sankoh®', 'Stolzel®'],
-    /** Authorised channel partner of. Which ranges come from them is unconfirmed (PENDING #12). */
-    authorisedPartners: ['Scientific Devices', 'UPC'],
+    /** The only own brand. */
+    own: ['Sankoh®'],
+    /** Authorised partners. Their logos and product photos may be shown (CLAUDE.md §2.4); no other brand's may. */
+    authorisedPartners: ['Stolzel', 'UPC', 'Flowtech Measuring Instruments Pvt Ltd'],
   },
 
   divisions: {
@@ -67,19 +68,33 @@ export const site = {
 
   service: {
     area: 'All of India; quickest delivery and on-site service across North India',
-    /** Never "24/7" or "round the clock" (CLAUDE.md §2.5). */
-    availability: 'Service available 365 days a year',
+    /**
+     * The only availability claim the site makes (CLAUDE.md §2.5). The office keeps the hours above;
+     * breakdown support runs every day. `npm run check:claims` bans the old wordings.
+     */
+    supportLine: 'Urgent breakdown support 7 days a week',
+    /** Short form for fact strips. */
+    supportLineShort: '7-day breakdown support',
     team: 'Qualified engineers and professionals',
     repairTurnaround: 'Typically 2–3 days for workshop repairs',
+    /** On-site repair is offered as well as workshop repair. */
+    onSiteRepair: 'On-site repair available',
     repairScope: {
-      valves: 'Valves, actuators, cylinders and positioners of any make',
-      drives: 'VFDs, servo drives and HMIs of any make',
+      valves: 'Valves of any make, manual and automated, including actuators, cylinders and positioners',
+      vfds: 'VFDs of any make',
     },
-    /** Second VFD brand pending (PENDING #15). */
-    vfdBrands: 'ABB and all other makes',
+    vfdBrands: 'ABB, Danfoss and all other makes',
+    /** Warranty terms, as confirmed by the company. State them only in these words. */
+    warranty: {
+      repairedValves: '6 months on repaired valves',
+      repairedVfds: '3 months on repaired VFDs',
+      newProducts: '1 year on new products',
+    },
     alsoOffers: [
       'Help selecting the right product',
+      'Technical advice',
       'Delivery, installation and testing',
+      'Setting up and commissioning valve and automation systems for factories',
       'New valves, surplus and discontinued valves and parts, reconditioned components',
       'Sourcing through a vendor network',
     ],
@@ -99,17 +114,24 @@ export const site = {
   /** Media named by the company for automated and solenoid valves. */
   media: ['Air', 'Water', 'Oil', 'Gas', 'Chemicals', 'Steam'],
 
-  /** Not yet provided — see docs/PENDING.md #2–5. Leave empty/undefined until confirmed. */
+  /** Office hours, the one place they are set: footer, Contact page and LocalBusiness schema read this. */
+  hours: {
+    days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+    opens: '09:00',
+    closes: '18:00',
+    display: 'Monday to Saturday, 9:00 AM to 6:00 PM',
+    closed: 'Sunday closed',
+  },
+
+  /** Not yet provided — see docs/PENDING.md. Leave empty/undefined until confirmed. */
   pending: {
-    // TODO: business hours (PENDING #2) — hidden until confirmed.
-    hours: undefined as string | undefined,
-    // TODO: Google Business Profile URL (PENDING #3). Until then maps links use a search for the address.
+    // TODO: Google Business Profile URL (docs/PENDING.md). Until then maps links use a search for the address.
     googleBusinessProfileUrl: undefined as string | undefined,
-    // TODO: LinkedIn / IndiaMART / other profile URLs (PENDING #4) — used for schema sameAs.
+    // TODO: LinkedIn / IndiaMART / other profile URLs (docs/PENDING.md) — used for schema sameAs.
     sameAs: [] as string[],
   },
 
-  /** TODO: IDs from the user (PENDING #5). Analytics and verification are off while empty. */
+  /** TODO: IDs from the user (docs/PENDING.md). Analytics and verification are off while empty. */
   integrations: {
     ga4MeasurementId: '' as string,
     searchConsoleVerification: '' as string,
@@ -119,6 +141,10 @@ export const site = {
 } as const;
 
 export type Site = typeof site;
+
+/** "A", "A and B", "A, B and C". */
+export const listAnd = (items: readonly string[]): string =>
+  items.length < 2 ? items.join('') : `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 
 /** `tel:` link for a phone entry. */
 export const telHref = (phone: { e164: string } = site.primaryPhone): string => `tel:${phone.e164}`;

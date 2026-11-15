@@ -86,7 +86,7 @@ const schema = [
       <Button href={telHref()} variant="secondary" icon="phone" data-event="click_call">Call</Button>
       <Button href={waHref(whatsappText)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
     </div>
-    <p class="avail">{site.service.availability} · Delivered across India</p>
+    <p class="avail">Delivered across India · Warranty: {site.service.warranty.newProducts}</p>
     <ProductGallery slot="aside" images={data.images} caption={data.title} division={category.division} />
   </PageHero>
 
@@ -177,7 +177,7 @@ const schema = [
       <a class="number" href={telHref()} data-event="click_call"><Icon name="phone" size={22} />{site.primaryPhone.display}</a>
       <Button href={quoteHref(slug)} icon="quote">Get a quote</Button>
       <Button href={waHref(whatsappText)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
-      <p class="enquire-note">{site.service.availability}.</p>
+      <p class="enquire-note">Warranty: {site.service.warranty.newProducts}. {site.service.supportLine}.</p>
     </aside>
   </div>
 
@@ -210,7 +210,7 @@ const schema = [
         {repairs.length > 0 && (
           <div class="repair-block">
             <h2>Related repair services</h2>
-            <p class="repair-intro">We repair valves and actuators of any make. {site.service.repairTurnaround}.</p>
+            <p class="repair-intro">We repair valves and actuators of any make. {site.service.repairTurnaround}. Warranty: {site.service.warranty.repairedValves}.</p>
             <ul class="repairs">
               {repairs.map((link) => (
                 <li><RepairServiceCard title={link.label} href={link.href} icon={link.icon ?? 'wrench'} /></li>

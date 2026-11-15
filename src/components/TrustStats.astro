@@ -3,6 +3,7 @@
  * Fact strip. Confirmed facts only (CLAUDE.md §4) — never add counts, years or ratings here.
  */
 import Icon from './Icon.astro';
+import { site } from '../config/site';
 
 interface Props {
   tone?: 'light' | 'dark';
@@ -12,9 +13,9 @@ interface Props {
 const { tone = 'light', columns = 4 } = Astro.props;
 
 const facts = [
-  { icon: 'wrench', label: 'Any make', detail: 'Valves, actuators, VFDs, servo drives and HMIs' },
+  { icon: 'wrench', label: 'Any make', detail: 'Valves, actuators, positioners and VFDs' },
   { icon: 'clock', label: 'Typically 2–3 days', detail: 'For workshop repairs' },
-  { icon: 'calendar', label: '365 days a year', detail: 'Service availability' },
+  { icon: 'calendar', label: site.service.supportLineShort, detail: 'Urgent support, Sundays included' },
   { icon: 'users', label: 'Qualified engineers', detail: 'And professionals on the team' },
 ];
 ---

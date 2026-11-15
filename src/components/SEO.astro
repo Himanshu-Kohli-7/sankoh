@@ -2,7 +2,7 @@
 /**
  * Head tags + JSON-LD (SPEC §7). One Organization/LocalBusiness node with a stable @id,
  * referenced by every other schema on the site.
- * Only confirmed facts go in: no geo, opening hours or sameAs until they are provided.
+ * Only confirmed facts go in: office hours from site.ts; no geo or sameAs until they are provided.
  */
 import { site } from '../config/site';
 
@@ -47,6 +47,9 @@ const organization = {
     addressCountry: site.address.countryCode,
   },
   areaServed: { '@type': 'Country', name: 'India' },
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: site.hours.days, opens: site.hours.opens, closes: site.hours.closes },
+  ],
   ...(site.pending.sameAs.length ? { sameAs: site.pending.sameAs } : {}),
 };
 

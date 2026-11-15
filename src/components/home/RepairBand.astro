@@ -24,8 +24,8 @@ const whatsappText = `Hello ${site.name}, I have a valve to send for repair.`;
         <DivisionBadge division="repair" label="Repair hub" class="badge-on-dark" />
         <h2>Any make. Any model. <span>Typically back in 2–3 days.</span></h2>
         <p class="intro">
-          We repair {scope.valves.toLowerCase()}, plus VFDs, servo drives and HMIs: {site.service.vfdBrands}.{' '}
-          {site.service.repairTurnaround}.
+          We repair {scope.valves.toLowerCase()}, plus VFDs: {site.service.vfdBrands}.{' '}
+          {site.service.repairTurnaround}, and on-site repair is offered too.
         </p>
         <div class="actions">
           <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">Send us your valve</Button>

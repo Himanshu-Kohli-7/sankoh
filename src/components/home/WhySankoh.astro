@@ -5,10 +5,10 @@
  */
 import Icon from '../Icon.astro';
 import SectionHeader from '../SectionHeader.astro';
-import { site } from '../../config/site';
+import { site, listAnd } from '../../config/site';
 
 const scope = site.service.repairScope;
-const [partnerA, partnerB] = site.brands.authorisedPartners;
+const partners = listAnd(site.brands.authorisedPartners);
 
 const reasons = [
   {
@@ -19,17 +19,17 @@ const reasons = [
   {
     icon: 'clock',
     title: 'Quick service response',
-    text: `${site.service.availability}. Workshop repairs are typically done in 2–3 days.`,
+    text: `${site.service.supportLine}. Workshop repairs are typically done in 2–3 days.`,
   },
   {
     icon: 'wrench',
     title: 'Any-make repairs',
-    text: `${scope.valves}. ${scope.drives}.`,
+    text: `${scope.valves}. VFDs too: ${site.service.vfdBrands}.`,
   },
   {
     icon: 'check',
-    title: 'Authorised channel partner',
-    text: `We are an authorised channel partner of ${partnerA} and ${partnerB}, alongside our own brands ${site.brands.own.join(' and ')}.`,
+    title: 'Authorised partner',
+    text: `We are an authorised partner of ${partners}, alongside our own brand ${site.brands.own[0]}.`,
   },
   {
     icon: 'pin',
@@ -39,7 +39,7 @@ const reasons = [
   {
     icon: 'users',
     title: 'Engineering expertise',
-    text: 'Qualified engineers and professionals handle product selection, delivery, installation and testing.',
+    text: 'Qualified engineers and professionals handle product selection, technical advice, delivery, installation, testing and commissioning.',
   },
 ];
 ---
