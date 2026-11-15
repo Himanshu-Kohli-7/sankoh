@@ -51,6 +51,11 @@ export const site = {
     own: ['Sankoh®'],
     /** Authorised partners. Their logos and product photos may be shown (CLAUDE.md §2.4); no other brand's may. */
     authorisedPartners: ['Stolzel', 'UPC', 'Flowtech Measuring Instruments Pvt Ltd'],
+    /**
+     * Written permission on file to show each partner's logo (docs/PENDING.md #5). While false, the
+     * partner is shown by name only. When it turns true, add the logo as public/brand/partners/<key>.svg.
+     */
+    partnerLogoPermission: { stolzel: false, upc: false, flowtech: false } as Record<string, boolean>,
   },
 
   divisions: {

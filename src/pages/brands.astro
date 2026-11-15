@@ -1,0 +1,150 @@
+---
+/**
+ * Brands (SPEC §2.1): Sankoh® own brand; Stolzel, UPC and Flowtech as authorised partners.
+ * Partner logos only where written permission is on file (site.brands.partnerLogoPermission);
+ * otherwise names only. No other brand's logo, ever (CLAUDE.md §2.4).
+ */
+import Base from '../layouts/Base.astro';
+import CTABand from '../components/CTABand.astro';
+import FAQ, { type FaqItem } from '../components/FAQ.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { site, listAnd } from '../config/site';
+import { pageTitle } from '../lib/content';
+
+const own = site.brands.own[0];
+const partnerNames = listAnd(site.brands.authorisedPartners);
+const keyOf = (name: string) => name.split(' ')[0].toLowerCase();
+const partners = site.brands.authorisedPartners.map((name) => ({
+  name,
+  key: keyOf(name),
+  logo: site.brands.partnerLogoPermission[keyOf(name)] ? `/brand/partners/${keyOf(name)}.svg` : undefined,
+}));
+
+const faqs: FaqItem[] = [
+  {
+    question: `What is ${own}?`,
+    answer: `${own} is our own brand: the products ${site.name} manufactures carry it. It is the only brand we manufacture under.`,
+  },
+  {
+    question: 'Which companies are you an authorised partner of?',
+    answer: `We are an authorised partner of ${partnerNames}.`,
+  },
+  {
+    question: 'Can you supply brands that are not listed here?',
+    answer:
+      'Yes. Other makes can be sourced through our vendor network to your specification. Send the make, model or a nameplate photo.',
+  },
+  {
+    question: 'Do you repair other brands?',
+    answer: `Yes. We repair valves of any make and VFDs from ${site.service.vfdBrands}.`,
+  },
+];
+
+const breadcrumbs = [{ label: 'Brands' }];
+---
+
+<Base
+  title={pageTitle('Brands & Authorised Partners')}
+  description={`${own} is our own brand. We are an authorised partner of Stolzel, UPC and Flowtech, and source other makes through our vendor network.`}
+  pageName="Brands"
+  {breadcrumbs}
+>
+  <PageHero
+    {breadcrumbs}
+    division="valves"
+    eyebrow="Company"
+    title="Brands & authorised partners"
+    lead={`We manufacture under our own brand, ${own}, and supply as an authorised partner of ${partnerNames}. Anything else, we source to your specification.`}
+  />
+
+  <section class="container-content section-y">
+    <SectionHeader eyebrow="Own brand" title={own} />
+    <div class="own">
+      <div class="own-logo">
+        <img src="/brand/sankoh-logo-full.svg" width="280" height="60" alt={own} loading="lazy" />
+      </div>
+      <div class="prose">
+        <p>
+          {own} is the brand of {site.name}, based in {site.address.locationWording}. It is the only brand we manufacture
+          under, alongside the valves, valve automation and process instruments we supply and source.
+        </p>
+        <p>
+          Tell us the duty in your enquiry and our engineers will recommend the right product, whichever brand it carries.
+        </p>
+        <p><a href="/products/">Browse all product categories</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container-content section-y">
+      <SectionHeader
+        eyebrow="Authorised partner of"
+        title="Authorised partners"
+        intro={`${site.name} is an authorised partner of the three companies below. Ask us about their products in the same enquiry as everything else.`}
+      />
+      <ul class="partners">
+        {partners.map((p) => (
+          <li data-key={p.key}>
+            <p class="eyebrow">Authorised partner</p>
+            {p.logo ? <img src={p.logo} alt={p.name} height="48" loading="lazy" /> : <p class="wordmark">{p.name}</p>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="container-content section-y">
+    <div class="other">
+      <div>
+        <h2>Another make?</h2>
+        <p>
+          Other brands are named on this site as text only. If you need one, we can source it through our vendor network, and
+          we repair valves and VFDs of any make.
+        </p>
+      </div>
+      <p class="links">
+        <a href="/services/product-sourcing/">Product sourcing<Icon name="arrow-right" size={20} /></a>
+        <a href="/valve-repair/">Valve repair<Icon name="arrow-right" size={20} /></a>
+        <a href="/vfd-repair/">VFD repair<Icon name="arrow-right" size={20} /></a>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container-content section-y faq-layout">
+      <SectionHeader eyebrow="FAQ" title="Questions about brands" />
+      <FAQ items={faqs} schema />
+    </div>
+  </section>
+
+  <CTABand />
+</Base>
+
+<style>
+  .own { display: grid; gap: 2rem; margin-top: 2rem; }
+  .own-logo { display: grid; place-items: center; padding: 2.5rem 2rem; background: var(--color-paper); border: 1px solid var(--color-line); border-top: 4px solid var(--color-navy); border-radius: 2px; }
+  .own-logo img { width: min(100%, 17.5rem); height: auto; }
+  .band { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+  .partners { display: grid; gap: 0.75rem; margin-top: 2rem; }
+  .partners li { display: grid; align-content: space-between; gap: 1.5rem; min-height: 9rem; padding: 1.5rem; background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--color-blue); border-radius: 2px; }
+  .partners .eyebrow { color: var(--color-slate); }
+  .wordmark { color: var(--color-navy); font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+  .other { display: grid; gap: 1rem; padding: 1.75rem; border: 1px dashed #b9c6d3; border-radius: 2px; }
+  .other h2 { font-size: var(--text-h3); }
+  .other p { margin-top: 0.5rem; color: var(--color-slate); max-width: 40rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+  .links a { display: inline-flex; align-items: center; gap: 0.375rem; min-height: 2.75rem; font-weight: 600; }
+  .faq-layout { display: grid; gap: 2rem; }
+
+  @media (min-width: 768px) {
+    .own { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: center; gap: 3rem; }
+    .partners { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .other { grid-template-columns: 1fr auto; align-items: center; gap: 2rem; }
+    .faq-layout { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 4rem; align-items: start; }
+  }
+</style>
