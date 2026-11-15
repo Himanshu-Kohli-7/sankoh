@@ -22,7 +22,7 @@ faqs:
   - question: Which manual valve is best for on/off isolation?
     answer: Ball valves and butterfly valves are the usual choice for quick quarter-turn isolation, and gate valves for a straight, full-bore passage. The best fit depends on your line size, media, pressure and temperature, so send us those details and we will recommend one.
   - question: What is the difference between a gate valve and a globe valve?
-    answer: A gate valve lifts a gate out of the flow path. It is meant to be fully open or fully closed and gives very little resistance when open. A globe valve moves a plug against a seat, which makes it suited to regulating flow, at the cost of a higher pressure drop.
+    answer: A gate valve lifts a gate out of the flow path. It is built for on/off duty rather than regulation, and gives very little resistance when open. A globe valve moves a plug against a seat, which makes it suited to regulating flow, at the cost of a higher pressure drop.
   - question: What is the difference between a ball valve and a butterfly valve?
     answer: Both are quarter-turn valves. A ball valve seals with a bored ball and gives a tight shut-off, and is common on smaller lines. A butterfly valve uses a disc that stays in the flow path. It is lighter and more compact, which is why it is often chosen for larger pipe sizes.
   - question: Can a manual valve be automated later?
@@ -30,7 +30,7 @@ faqs:
   - question: Can you supply a manual valve that is not listed here?
     answer: Yes. We trade through a vendor network and can source valves that are not listed on this site, to your specification. We also supply surplus and discontinued valves and parts.
   - question: Do you repair manual valves?
-    answer: Yes. We repair valves of any make, including gate, globe, ball, butterfly and plug valves. Workshop repairs typically take 2–3 days.
+    answer: Yes. Gate, globe, ball, butterfly and plug valves of any make are all repaired, with a typical workshop turnaround of 2–3 days.
 relatedRepair:
   - /valve-repair/gate-valve-repair/
   - /valve-repair/globe-valve-repair/

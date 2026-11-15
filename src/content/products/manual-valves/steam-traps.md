@@ -8,7 +8,7 @@ images:
 summary: "An automatic valve that discharges condensate from a steam line while holding back live steam."
 operation: self-acting
 seoTitle: Steam Traps
-metaDescription: Steam traps that discharge condensate and air from steam lines and equipment while holding back live steam. Supplied to your specification in India.
+metaDescription: Steam traps that discharge condensate and air from steam lines and equipment while holding back live steam. Sized for your steam system, supplied in India.
 updated: 2026-11-14
 media: [Steam]
 applications:

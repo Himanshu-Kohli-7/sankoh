@@ -1,7 +1,7 @@
 ---
 title: Pneumatic Plug Valve
 seoTitle: Pneumatic Plug Valve
-metaDescription: Pneumatic actuated plug valve for automatic on/off and flow diversion on oil, gas, chemical and slurry lines. Supplied to your specification across India.
+metaDescription: Pneumatic actuated plug valve for automatic on/off and flow diversion on oil, gas, chemical and slurry lines. Matched to your duty and supplied India-wide.
 updated: 2026-11-15
 category: pneumatic-actuated-valves
 order: 4

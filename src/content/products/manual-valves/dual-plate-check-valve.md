@@ -25,7 +25,7 @@ faqs:
   - question: Why does a dual plate check valve close faster than a swing check valve?
     answer: Each half plate is small and light, travels a short distance and is pushed shut by a spring. The plates start to close as the flow slows, so they are usually seated before the flow reverses.
   - question: Can it be installed in horizontal and vertical lines?
-    answer: Generally yes, in horizontal lines and in vertical lines with upward flow. In a horizontal line the hinge pin should stand vertical, so that both plates work evenly.
+    answer: Generally yes, as it suits horizontal runs and vertical pipes where the flow rises. In a horizontal line the hinge pin should stand vertical, so that both plates work evenly.
   - question: Does a dual plate check valve stop water hammer?
     answer: It reduces the slam caused by a check valve closing late. It does not remove water hammer that has other causes, such as a valve being shut too quickly elsewhere in the line.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). No related repair page shown (PENDING #32).'

@@ -1,7 +1,7 @@
 ---
 title: Y-Type Angle Seat Valve
 seoTitle: Y-Type Angle Seat Valve (Pneumatic)
-metaDescription: Pneumatic Y-type angle seat valve for fast, frequent on/off switching of steam, hot water and air. Supplied to your specification across India.
+metaDescription: Pneumatic Y-type angle seat valve for fast, frequent on/off switching of steam, hot water and air. Specified to your process and supplied across India.
 updated: 2026-11-15
 category: pneumatic-actuated-valves
 order: 5

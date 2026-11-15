@@ -1,7 +1,7 @@
 ---
 title: Pneumatic Wafer Butterfly Valve
 seoTitle: Pneumatic Wafer Butterfly Valve
-metaDescription: Pneumatic wafer butterfly valve for automatic isolation of water, air and process lines, especially on larger pipe sizes. Supplied to your specification.
+metaDescription: Pneumatic wafer butterfly valve for automatic isolation of water, air and process lines, especially on large-bore lines. Supplied to your specification.
 updated: 2026-11-15
 category: pneumatic-actuated-valves
 order: 2

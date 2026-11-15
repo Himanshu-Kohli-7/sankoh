@@ -1,7 +1,7 @@
 ---
 title: Pneumatic Actuated Ball Valve
 seoTitle: Pneumatic Actuated Ball Valve
-metaDescription: Pneumatic actuated ball valve for automatic on/off control of air, water, oil, gas, chemicals and steam. Supplied to your specification across India.
+metaDescription: Pneumatic actuated ball valve for automatic on/off control of air, water, oil, gas, chemicals and steam. Supplied to match your process, anywhere in India.
 updated: 2026-11-14
 category: pneumatic-actuated-valves
 order: 1
@@ -32,11 +32,11 @@ faqs:
   - question: Can a pneumatic ball valve be used for flow control?
     answer: A standard ball valve is mainly an on/off valve. With a positioner fitted, the actuator can hold positions in between for modulating duty. For precise throttling, a globe control valve is often the better choice.
   - question: Do you repair pneumatic actuated ball valves?
-    answer: Yes. We repair ball valves and pneumatic actuators of any make. Workshop repairs typically take 2–3 days.
+    answer: Yes, both the ball valve and its pneumatic actuator, whatever the make. In our workshop the job typically takes 2–3 days.
 todo: 'Applications are general typical uses, not company-stated: review (PENDING #26). Brand (Sankoh/Stolzel) not confirmed, so Product schema has no brand (PENDING #25).'
 ---
 
-A pneumatic actuated ball valve is a ball valve with a compressed-air actuator in place of a hand lever, so it can be opened and closed by a control system rather than by hand. Inside the body, a ball with a hole through it turns a quarter turn. In line with the pipe, the valve is open. Across it, the valve is shut.
+A pneumatic actuated ball valve is a ball valve with a compressed-air actuator in place of a hand lever, so it can be opened and closed by a control system rather than by hand. Inside the body sits a ball bored straight through, which the actuator rotates a quarter turn. In line with the pipe, the valve is open. Across it, the valve is shut.
 
 The actuator turns air pressure into that quarter turn. A double-acting actuator uses air to open and air to close. A spring-return actuator uses air one way and a spring the other, so the valve moves to a set position if the air supply or the signal fails.
 

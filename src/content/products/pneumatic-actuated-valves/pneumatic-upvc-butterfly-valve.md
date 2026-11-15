@@ -1,7 +1,7 @@
 ---
 title: Pneumatic UPVC Butterfly Valve
 seoTitle: Pneumatic UPVC Butterfly Valve
-metaDescription: Pneumatic UPVC butterfly valve for automatic isolation of larger plastic water, effluent and chemical lines. Supplied to your specification across India.
+metaDescription: Pneumatic UPVC butterfly valve for automatic isolation of larger plastic water, effluent and chemical lines. Supplied to your requirement across India.
 updated: 2026-11-15
 category: pneumatic-actuated-valves
 order: 9

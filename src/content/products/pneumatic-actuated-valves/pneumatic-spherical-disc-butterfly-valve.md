@@ -1,7 +1,7 @@
 ---
 title: Pneumatic Spherical Disc Butterfly Valve
 seoTitle: Pneumatic Spherical Disc Butterfly Valve
-metaDescription: Pneumatic spherical disc butterfly valve with a rounded disc edge for a closer seal and less seat wear. Supplied to your specification across India.
+metaDescription: Pneumatic spherical disc butterfly valve with a rounded disc edge for a closer seal and less seat wear. Specified to your duty and delivered across India.
 updated: 2026-11-15
 category: pneumatic-actuated-valves
 order: 10

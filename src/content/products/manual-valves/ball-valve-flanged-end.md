@@ -8,7 +8,7 @@ images:
 summary: "A quarter-turn shut-off valve with a bored ball, bolted into the line between flanges."
 operation: manual
 seoTitle: Ball Valve – Flanged End
-metaDescription: Flanged-end ball valve for tight quarter-turn shut-off on water, air, oil, gas, chemical and steam lines. Supplied to your specification across India.
+metaDescription: Flanged-end ball valve for tight quarter-turn shut-off on water, air, oil, gas, chemical and steam lines. Sizes and materials to your specification.
 updated: 2026-11-14
 media: [Water, Air, Oil, Gas, Chemicals, Steam]
 applications:
@@ -27,11 +27,11 @@ faqs:
   - question: What is the difference between a full bore and a reduced bore ball valve?
     answer: In a full bore valve the hole through the ball is the same size as the pipe, so flow passes with almost no pressure drop. A reduced bore valve has a smaller ball and port. It is lighter and costs less, with a slightly higher pressure drop.
   - question: Can a ball valve be used for throttling?
-    answer: It is best kept fully open or fully closed. Left part open, the flow cuts across the seats and wears them, and the valve may then leak when shut. Use a globe valve to regulate flow.
+    answer: It is best kept fully open or fully closed. Left part open, the flow cuts across the seats and wears them, and the valve may then leak when shut. For throttling duty, a globe valve is the better choice.
   - question: When should I choose flanged ends instead of screwed ends?
     answer: Flanged ends suit larger line sizes and lines where the valve has to be removed for service, because it unbolts without disturbing the pipe. Screwed ends are common on smaller lines.
   - question: Do you repair ball valves?
-    answer: Yes. We repair ball valves of any make. Workshop repairs typically take 2–3 days.
+    answer: Yes. We repair ball valves of any make, and one sent to our workshop is typically ready in 2–3 days.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Image is low resolution (270px): ask for a better photo (PENDING #27).'
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Pneumatic Power Cylinder for Dampers
 seoTitle: Pneumatic Power Cylinder for Dampers
-metaDescription: Pneumatic power cylinder for driving boiler, fan and duct dampers, with positioner for modulating control. Supplied to your specification across India.
+metaDescription: Pneumatic power cylinder for driving boiler, fan and duct dampers, with positioner for modulating control. Supplied to suit your damper, across India.
 updated: 2026-11-15
 category: pneumatic-actuated-valves
 order: 11

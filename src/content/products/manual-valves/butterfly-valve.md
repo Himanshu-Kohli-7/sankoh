@@ -8,7 +8,7 @@ images:
 summary: "A quarter-turn valve that opens, closes or throttles flow with a rotating disc."
 operation: manual
 seoTitle: Butterfly Valve
-metaDescription: Manual butterfly valve for isolating and regulating water, air and other fluids on larger pipe sizes. Supplied to your specification across India.
+metaDescription: Manual butterfly valve for isolating and regulating water, air and other fluids on larger pipe sizes. Specified to suit your line, supplied across India.
 updated: 2026-11-14
 media: [Water, Air, Gas, Oil, Chemicals]
 applications:

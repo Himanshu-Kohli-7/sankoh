@@ -38,7 +38,7 @@ repairVsReplace:
     - The body and bonnet are sound, and the fault is in wearing parts such as seats, seals, packing or trim.
     - The valve is a large, special or automated unit that is costly or slow to buy new.
     - The make or model is discontinued and a like-for-like replacement is hard to find.
-    - You need the line back quickly. Workshop repairs typically take 2–3 days.
+    - You need the line back quickly. A typical workshop repair is done in 2–3 days.
   replace:
     - The body is cracked, badly corroded or eroded.
     - The valve was the wrong type, size or material for the service and keeps failing.
@@ -61,13 +61,13 @@ faqs:
   - question: Which makes of valve do you repair?
     answer: Any make. We repair valves, actuators, cylinders and positioners of any make and model.
   - question: How long does a valve repair take?
-    answer: Workshop repairs typically take 2–3 days.
+    answer: Typically 2–3 days when the valve is repaired at our workshop.
   - question: How do I send a valve for repair?
     answer: Call us or send a WhatsApp photo of the valve and its nameplate, and tell us what is wrong with it. We will tell you what to do next and where to send it.
   - question: Do you repair actuators and positioners as well as valves?
     answer: Yes. We repair pneumatic and electric actuators, power cylinders and positioners of any make, on their own or together with the valve.
   - question: Do you offer on-site service?
-    answer: Yes. We offer on-site service across North India. Workshop repairs typically take 2–3 days.
+    answer: Yes, across North India. Where the work needs our workshop, a typical repair takes 2–3 days.
   - question: Is the valve tested after repair?
     answer: Yes. Every unit is tested before dispatch, and you get a report of the work done.
   - question: What if the valve cannot be repaired?

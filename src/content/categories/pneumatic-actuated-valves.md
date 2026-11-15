@@ -30,7 +30,7 @@ faqs:
   - question: Can you supply a pneumatic valve that is not listed here?
     answer: Yes. We source through a vendor network and can supply automated valves that are not on this site, built to your specification. Tell us the duty and we will find the right valve.
   - question: Do you repair pneumatic actuated valves?
-    answer: Yes. We repair valves, pneumatic actuators, power cylinders and positioners of any make, and a typical workshop repair is done in 2–3 days.
+    answer: Yes. Valves, pneumatic actuators, power cylinders and positioners are all repaired whatever the make, and a workshop job typically takes 2–3 days.
 relatedRepair:
   - /valve-repair/actuator-cylinder-repair/
   - /valve-repair/control-valve-repair/

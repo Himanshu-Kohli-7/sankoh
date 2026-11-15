@@ -8,7 +8,7 @@ images:
 summary: "A shut-off valve that seals with a piston sliding through sealing rings instead of a seat."
 operation: manual
 seoTitle: Piston Valve
-metaDescription: Piston valve for tight, low-maintenance shut-off on steam, condensate, thermal oil and other hot lines. Supplied to your specification across India.
+metaDescription: Piston valve for tight, low-maintenance shut-off on steam, condensate, thermal oil and other hot lines. Supplied across India to suit your process.
 updated: 2026-11-14
 media: [Steam, Water, Oil, Gas, Air]
 applications:

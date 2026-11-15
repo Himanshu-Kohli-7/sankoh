@@ -8,7 +8,7 @@ images:
 summary: "A linear valve that regulates flow by moving a plug against a seat."
 operation: manual
 seoTitle: Globe Valve
-metaDescription: Manual globe valve for regulating and shutting off steam, water, oil and gas lines with fine handwheel control. Supplied to your specification in India.
+metaDescription: Manual globe valve for regulating and shutting off steam, water, oil and gas lines with fine handwheel control. Specified for your line, sent across India.
 updated: 2026-11-14
 media: [Steam, Water, Oil, Gas, Air]
 applications:
@@ -32,7 +32,7 @@ faqs:
   - question: Can flow regulation be automated?
     answer: Yes. A globe-pattern control valve with a pneumatic actuator and positioner does the same job from a control signal. We supply pneumatic globe control valves as well.
   - question: Do you repair globe valves?
-    answer: Yes. We repair globe valves of any make. Workshop repairs typically take 2–3 days.
+    answer: Yes. Globe valves of any make are repaired at our workshop, typically within 2–3 days.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30).'
 ---
 
