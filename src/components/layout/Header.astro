@@ -12,7 +12,6 @@ import { catalogue } from '../../config/catalogue';
 
 const path = Astro.url.pathname;
 const isCurrent = (href: string) => path.startsWith(href);
-const secondPhone = site.phones[1];
 ---
 
 <div class="util">
@@ -22,8 +21,8 @@ const secondPhone = site.phones[1];
       <span class="util-item">{site.service.supportLine}</span>
     </p>
     <p class="util-group">
-      <a class="util-item" href={`mailto:${site.email.primary}`}><Icon name="mail" size={16} />{site.email.primary}</a>
-      <a class="util-item util-mono" href={telHref(secondPhone)}>{secondPhone.display}</a>
+      <a class="util-item" href={`mailto:${site.email}`}><Icon name="mail" size={16} />{site.email}</a>
+      <a class="util-item util-mono" href={telHref()} data-event="click_call">{site.phone.display}</a>
     </p>
   </div>
 </div>
@@ -94,7 +93,7 @@ const secondPhone = site.phones[1];
 
       <div class="actions">
         <a class="phone" href={telHref()} data-event="click_call">
-          <Icon name="phone" size={18} /><span>{site.primaryPhone.display}</span>
+          <Icon name="phone" size={18} /><span>{site.phone.display}</span>
         </a>
         <a class="btn btn-primary btn-sm quote" href={quoteHref()}>Get a Quote</a>
         <div class="menu-slot">

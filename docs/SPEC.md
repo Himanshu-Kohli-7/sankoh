@@ -31,7 +31,7 @@ Contents
 - On desktop: no bar; instead a small floating WhatsApp button bottom-right.
 
 **Footer (navy)**
-- Logo + one-line positioning, address, phones, email, GSTIN.
+- Logo + one-line positioning, address, phone, email, GSTIN.
 - Columns: Valves & Automation categories, Instruments categories, Repair & Services links, Company (About, Brands, Contact, Catalogue PDF, Privacy).
 - Office hours (Monday to Saturday, 9:00 AM to 6:00 PM · Sunday closed), with "Urgent breakdown support 7 days a week · Repairs typically in 2–3 days" directly under them.
 - Company column also links to Image credits.
@@ -327,7 +327,7 @@ Static map image/illustration with a "Open in Google Maps" link to the Business 
 - Image alt text describes the actual product ("Pneumatic actuated ball valve with double-acting actuator"), file names kebab-case and descriptive.
 
 **Structured data (JSON-LD)**
-- Site-wide: `Organization` + `LocalBusiness` (name, address, geo, phones, email, url, logo, areaServed: India, `sameAs` once URLs are known, `openingHoursSpecification` from the office hours in `site.ts`). Use one `@id` and reference it everywhere.
+- Site-wide: `Organization` + `LocalBusiness` (name, address, geo, phone, email, url, logo, areaServed: India, `sameAs` once URLs are known, `openingHoursSpecification` from the office hours in `site.ts`). Use one `@id` and reference it everywhere.
 - `WebSite` on home.
 - `BreadcrumbList` on all inner pages.
 - `Product` on product pages: name, description, image, brand (only when a product is confirmed as Sankoh® or as a named partner's range), category, `offers` omitted (no prices). Don't add fake ratings.

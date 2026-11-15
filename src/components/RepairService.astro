@@ -134,7 +134,7 @@ const schema = [
     <aside class="enquire" aria-label="Request this repair">
       <p class="eyebrow">Request repair</p>
       <p class="enquire-title">{data.title}</p>
-      <a class="number" href={telHref()} data-event="click_call"><Icon name="phone" size={22} />{site.primaryPhone.display}</a>
+      <a class="number" href={telHref()} data-event="click_call"><Icon name="phone" size={22} />{site.phone.display}</a>
       <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">WhatsApp a photo</Button>
       <Button href={quoteHref(slug)} variant="secondary" icon="quote">Repair request form</Button>
       <p class="enquire-note">{site.service.supportLine}.</p>

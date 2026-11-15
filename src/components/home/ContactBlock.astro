@@ -27,9 +27,7 @@ const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(`${site.nam
         <div>
           <dt><Icon name="phone" size={20} />Phone</dt>
           <dd>
-            {site.phones.map((phone) => (
-              <a class="mono" href={telHref(phone)} data-event="click_call">{phone.display}</a>
-            ))}
+            <a class="mono" href={telHref()} data-event="click_call">{site.phone.display}</a>
           </dd>
         </div>
         <div>
@@ -40,7 +38,7 @@ const embedSrc = `https://www.google.com/maps?q=${encodeURIComponent(`${site.nam
         </div>
         <div>
           <dt><Icon name="mail" size={20} />Email</dt>
-          <dd><a href={`mailto:${site.email.primary}`}>{site.email.primary}</a></dd>
+          <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
         </div>
         <div>
           <dt><Icon name="pin" size={20} />Address</dt>

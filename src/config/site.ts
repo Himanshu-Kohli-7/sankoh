@@ -1,13 +1,11 @@
 /**
  * Single source of truth for company facts (CLAUDE.md §4).
- * Import from here everywhere. Never hard-code phones, address, email or GSTIN in components.
+ * Import from here everywhere. Never hard-code the phone, address, email or GSTIN in components.
  * Add only facts confirmed in CLAUDE.md §4 — anything else is a TODO tracked in docs/PENDING.md.
  */
 
-const phones = [
-  { display: '+91 62834 92019', e164: '+916283492019' },
-  { display: '+91 98884 91527', e164: '+919888491527' },
-] as const;
+/** The only company phone. It is also the WhatsApp number. */
+const phone = { display: '+91 98884 91527', e164: '+919888491527' } as const;
 
 const whatsapp = { display: '+91 98884 91527', number: '919888491527' } as const;
 
@@ -37,20 +35,15 @@ export const site = {
     locationWording: 'Derabassi, Punjab (near Chandigarh)',
   },
 
-  phones,
-  /** Primary number: used for the header, the mobile Call button and schema. */
-  primaryPhone: phones[0],
+  /** The only number: header, footer, Call buttons, mobile action bar and schema. */
+  phone,
   whatsapp,
 
   /** TODO: replace with a domain email before launch (docs/PENDING.md). Keep it as the only place email is set. */
-  email: {
-    primary: 'sankoh.techsol@gmail.com',
-    secondary: 'piyush.sankoh@gmail.com',
-  },
+  email: 'sankoh.techsol@gmail.com',
 
   people: {
     proprietor: { name: 'Sanjay Kohli', title: 'Proprietor' },
-    marketing: { name: 'Piyush Kohli', title: 'Marketing Head' },
   },
 
   brands: {
@@ -147,7 +140,7 @@ export const listAnd = (items: readonly string[]): string =>
   items.length < 2 ? items.join('') : `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 
 /** `tel:` link for a phone entry. */
-export const telHref = (phone: { e164: string } = site.primaryPhone): string => `tel:${phone.e164}`;
+export const telHref = (p: { e164: string } = site.phone): string => `tel:${p.e164}`;
 
 /** `wa.me` link, optionally with a prefilled message (e.g. the page title). */
 export const waHref = (text?: string): string =>

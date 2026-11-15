@@ -54,11 +54,9 @@ Three divisions, each with its own colour (§6):
 | Name | Sankoh Technical Solutions |
 | Address | 254, 1st Floor, Hansa Industrial Park, Barwala Road, Derabassi – 140507, Distt. SAS Nagar, Punjab, India |
 | Location wording | "Derabassi, Punjab (near Chandigarh)" |
-| Phones | +91 62834 92019, +91 98884 91527 |
-| WhatsApp | +91 98884 91527 (use for every `wa.me` link) |
+| Phone | +91 98884 91527, the only company number. It is also the WhatsApp number (use for every `tel:` and `wa.me` link) |
 | Proprietor | Sanjay Kohli — Proprietor (About page, with the owner photo from legacy `src/assets/Others/sankoh_owner.JPG`) |
-| Email (current) | sankoh.techsol@gmail.com, piyush.sankoh@gmail.com — will be replaced by a domain email before launch, so keep it in one config value |
-| Marketing contact | Piyush Kohli — Marketing Head |
+| Email (current) | sankoh.techsol@gmail.com, the only email. It will be replaced by a domain email before launch, so keep it in one config value |
 | GSTIN | 03AKSPK5866E1ZW (footer) |
 | Own brand (manufacturer) | Sankoh® only |
 | Authorised partner of | Stolzel, UPC, Flowtech Measuring Instruments Pvt Ltd |
@@ -78,7 +76,7 @@ Three divisions, each with its own colour (§6):
 | Applications named by the company | Water treatment, HVAC, building automation, industrial automation, water/milk ATMs |
 | Media named by the company (automated + solenoid valves) | Air, water, oil, gas, chemicals, steam |
 
-Single source of truth: `src/config/site.ts`. Import from it everywhere. Never hard-code phone numbers, address, email or GSTIN in components.
+Single source of truth: `src/config/site.ts`. Import from it everywhere. Never hard-code the phone number, address, email or GSTIN in components.
 
 ## 5. Stack
 

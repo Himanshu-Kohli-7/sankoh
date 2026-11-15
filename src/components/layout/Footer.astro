@@ -73,7 +73,7 @@ const { address } = site;
       <div class="cell">
         <dt>Phone</dt>
         <dd class="mono">
-          {site.phones.map((p) => <a href={telHref(p)} data-event="click_call">{p.display}</a>)}
+          <a href={telHref()} data-event="click_call">{site.phone.display}</a>
         </dd>
       </div>
       <div class="cell">
@@ -82,7 +82,7 @@ const { address } = site;
       </div>
       <div class="cell">
         <dt>Email</dt>
-        <dd><a href={`mailto:${site.email.primary}`}>{site.email.primary}</a></dd>
+        <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
       </div>
       <div class="cell">
         <dt>GSTIN</dt>

@@ -1,10 +1,16 @@
 #!/usr/bin/env node
 /**
  * Claims check (CLAUDE.md §2.4, §2.5, §4): finds wording the site must never ship.
- * Scans everything under src/ and public/ that is text. Exits 1 on any hit.
+ * Exits 1 on any hit.
  *
- * Local only: run `npm run check:claims` before commits. Like check:repeats it is NOT part
- * of `npm run build`, so a false positive can never block a deploy.
+ * Runs as `prebuild`, so any hit fails `npm run build` (and the Netlify build).
+ * Run it on its own with `npm run check:claims`.
+ *
+ * - BANNED scans the site's own files (src/, public/).
+ * - FORMER (the former contact's name, title, number and email) also scans docs, scripts and
+ *   CLAUDE.md, because they must not appear anywhere in the project. The docs are spared the
+ *   BANNED list because they quote those wordings in order to forbid them.
+ * This file is skipped: it holds the lists.
  *
  * "warranty" is allowed: the terms are confirmed and come from src/config/site.ts.
  */
@@ -12,7 +18,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const ROOTS = ['src', 'public'];
-const TEXT = /\.(astro|md|mdx|ya?ml|ts|tsx|js|mjs|css|json|txt|html|webmanifest|svg)$/;
+/** Project files scanned for the FORMER bans only. */
+const DOC_ROOTS = ['docs', 'scripts', 'CLAUDE.md', 'README.md', 'netlify.toml', 'astro.config.mjs', 'package.json'];
+const SELF = path.normalize('scripts/check-claims.mjs');
+const TEXT = /\.(astro|md|mdx|ya?ml|ts|tsx|js|mjs|css|json|txt|html|webmanifest|svg|toml)$/;
 
 /** [pattern, why]. Case-insensitive unless the pattern says otherwise. */
 const BANNED = [
@@ -29,22 +38,35 @@ const BANNED = [
   [/Stolzel®|own brands/i, 'Sankoh® is the only own brand; Stolzel is an authorised partner'],
 ];
 
-function walk(dir, out = []) {
-  if (!fs.existsSync(dir)) return out;
-  for (const name of fs.readdirSync(dir)) {
-    const p = path.join(dir, name);
-    if (fs.statSync(p).isDirectory()) walk(p, out);
-    else if (TEXT.test(name)) out.push(p);
+/** Former contact, no longer with the company. Never his name, title, number or email, anywhere. */
+const FORMER = [
+  [/piyush/i, 'Former contact: never name him or use his email'],
+  [/62834|6283492019|916283492019/, 'Former phone number: the only number is +91 98884 91527'],
+  [/marketing head/i, 'Former contact title: there is no Marketing Head contact'],
+];
+
+function walk(target, out = []) {
+  if (!fs.existsSync(target)) return out;
+  if (fs.statSync(target).isFile()) {
+    if (TEXT.test(target)) out.push(target);
+    return out;
   }
+  for (const name of fs.readdirSync(target)) walk(path.join(target, name), out);
   return out;
 }
 
+const jobs = [
+  ...ROOTS.flatMap((r) => walk(r)).map((file) => [file, [...BANNED, ...FORMER]]),
+  ...DOC_ROOTS.flatMap((r) => walk(r))
+    .filter((file) => path.normalize(file) !== SELF)
+    .map((file) => [file, FORMER]),
+];
+
 let hits = 0;
-const files = ROOTS.flatMap((r) => walk(r));
-for (const file of files) {
+for (const [file, bans] of jobs) {
   const lines = fs.readFileSync(file, 'utf8').split(/\r?\n/);
   lines.forEach((line, i) => {
-    for (const [pattern, why] of BANNED) {
+    for (const [pattern, why] of bans) {
       if (!pattern.test(line)) continue;
       hits++;
       console.log(`${file.split(path.sep).join('/')}:${i + 1}  ${why}\n    ${line.trim().slice(0, 160)}`);
@@ -52,5 +74,5 @@ for (const file of files) {
   });
 }
 
-console.log(hits ? `\n${hits} banned claim(s) in ${files.length} files.` : `No banned claims in ${files.length} files.`);
+console.log(hits ? `\n${hits} banned claim(s) in ${jobs.length} files.` : `No banned claims in ${jobs.length} files.`);
 process.exit(hits ? 1 : 0);
