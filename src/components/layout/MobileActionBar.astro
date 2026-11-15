@@ -1,25 +1,25 @@
 ---
 /**
- * Fixed bottom bar at ≤768px (SPEC §1): Call · WhatsApp · Quote.
+ * Fixed bottom bar at ≤768px (SPEC §1): two labelled buttons, Call and WhatsApp, no digits.
+ * The number is in each link's accessible name. From 769px the header strip shows the number
+ * instead, so at every width one Call route is visible.
  * The page's matching bottom padding is --action-bar-h in global.css.
  */
 import Icon from '../Icon.astro';
-import { site, telHref, waHref, quoteHref } from '../../config/site';
+import { site, telHref, waHref, callAria, whatsappAria } from '../../config/site';
 
 interface Props {
   pageName: string;
   /** Overrides the default message. */
   whatsappText?: string;
-  quoteProduct?: string;
 }
-const { pageName, quoteProduct, whatsappText } = Astro.props;
+const { pageName, whatsappText } = Astro.props;
 const message = whatsappText ?? `Hello ${site.name}, I have an enquiry about: ${pageName}`;
 ---
 
 <nav class="actionbar" aria-label="Quick contact">
-  <a href={telHref()} data-event="click_call"><Icon name="phone" size={22} />Call</a>
-  <a href={waHref(message)} data-event="click_whatsapp"><Icon name="whatsapp" size={22} />WhatsApp</a>
-  <a class="quote" href={quoteHref(quoteProduct)}><Icon name="quote" size={22} />Quote</a>
+  <a href={telHref()} data-event="click_call" aria-label={callAria('Call')}><Icon name="phone" size={22} />Call</a>
+  <a class="wa" href={waHref(message)} data-event="click_whatsapp" aria-label={whatsappAria('WhatsApp')}><Icon name="whatsapp" size={22} />WhatsApp</a>
 </nav>
 
 <style>
@@ -30,7 +30,7 @@ const message = whatsappText ?? `Hello ${site.name}, I have an enquiry about: ${
       inset: auto 0 0 0;
       z-index: 50;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       padding-bottom: env(safe-area-inset-bottom, 0px);
       background: var(--color-white);
       border-top: 1px solid var(--color-line);
@@ -47,10 +47,9 @@ const message = whatsappText ?? `Hello ${site.name}, I have an enquiry about: ${
       font-size: 1rem;
       text-decoration: none;
     }
-    a + a { border-left: 1px solid var(--color-line); }
-    a :global(svg) { color: var(--color-blue); }
-    .quote { background: var(--color-amber); border-left-color: var(--color-amber); }
-    .quote :global(svg) { color: var(--color-navy); }
+    a:first-child { background: var(--color-amber); }
+    a:first-child :global(svg) { color: var(--color-navy); }
+    .wa :global(svg) { color: var(--color-blue); }
     a:focus-visible { outline-offset: -3px; }
   }
 </style>

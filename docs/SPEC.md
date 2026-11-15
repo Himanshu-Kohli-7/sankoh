@@ -20,24 +20,26 @@ Contents
 ## 1. Global layout & components
 
 **Header (sticky, compact on scroll)**
+- Top strip (navy, ≥769px): hours on the left (`Mon–Sat 9:30 AM–6:30 PM · 7-day breakdown support`), phone icon + the full primary number on the right. It switches on at the same width the mobile action bar switches off, so at every width either the number or a Call button is visible.
 - Left: full logo (icon-only below 360px).
 - Nav: Products (mega-menu: two columns — Valves & Automation, Instruments & Analyzers — each listing its categories), Valve Repair, VFD Repair, Services, About, Contact.
-- Right: phone number as a `tel:` link (desktop), amber **Get a Quote** button.
-- Mobile: hamburger → full-height menu (Preact island), accordion for product categories.
+- Right: amber **Get a Quote** button (≥769px). No number in the bar.
+- Mobile (≤768px): logo and menu only. Hamburger → full-height menu (Preact island), accordion for product categories, and one **Request a quote** button.
 
 **Mobile action bar** (≤768px, fixed bottom, always visible)
-- Three equal buttons: **Call** (`tel:` primary number), **WhatsApp** (`https://wa.me/<number>?text=<prefilled message with page title>`), **Quote** (`/request-a-quote/`, product prefilled when on a product page).
+- Two equal labelled buttons, no digits: **Call** (`tel:` primary number) and **WhatsApp** (`https://wa.me/<number>?text=<prefilled message with page title>`). The number is in each aria-label.
 - 56px tall, safe-area padding, page gets matching bottom padding so content isn't hidden.
-- On desktop: no bar; instead a small floating WhatsApp button bottom-right.
+- From 769px: no bar; instead a small icon-only floating WhatsApp button bottom-right.
 
 **Footer (navy)**
-- Logo + one-line positioning, address, phone (primary, with the sales backup line under it), email, GSTIN.
+- Logo + one-line positioning, address, the full primary number once with a WhatsApp icon and a smaller "Sales: +91 98779 38373" line under it, email, GSTIN.
 - Columns: Valves & Automation categories, Instruments categories, Repair & Services links, Company (About, Brands, Contact, Catalogue PDF, Privacy).
 - Office hours (Monday to Saturday, 9:30 AM to 6:30 PM · Sunday closed), with "Urgent breakdown support 7 days a week · Repairs typically in 2–3 days" directly under them.
 - Company column also links to Image credits.
 - Copyright with current year.
 
 **Shared components**
+Contact (`src/components/contact/`): `CallButton`, `WhatsAppButton`, `QuoteButton` (variants primary · secondary · ghost · icon; tones light · dark · amber; labels like "Call us", never digits), `PhoneNumber` (the only component that prints the primary digits), `SalesLine`, `ContactCard` (`full` on the Contact page, `summary` on the home page).
 `SEO` (head tags + JSON-LD), `Breadcrumbs`, `SectionHeader` (mono eyebrow + h2 + intro), `DivisionBadge`, `ProductCard`, `CategoryCard`, `RepairServiceCard`, `ProcessSteps`, `FAQ` (native `<details>`), `CTABand` (amber), `SourcingBlock`, `ReviewCard`, `ClientLogoStrip`, `TrustStats` (only confirmed facts), `EnquiryChecklist`, `PipelineDivider`, `BlueprintGrid`, `Icon`.
 
 ---
@@ -210,16 +212,16 @@ Every repair page and the hub state the warranty (6 months on repaired valves an
 **Division colour usage**: each product/repair page uses its division colour for the eyebrow, breadcrumb accent, icon strokes and a 4px top border on cards. Buttons are always amber (primary) or navy outline (secondary) regardless of division.
 
 **Homepage** (top to bottom)
-1. **Hero** on a blueprint grid: eyebrow `VALVES · AUTOMATION · INSTRUMENTS · REPAIR`; h1 "Industrial Valves, Instruments & Repairs — Any Make, Any Model"; one-line sub ("Manufacturer, supplier and repair partner from Derabassi, serving industries across India"); buttons **Call now** and **Get a quote**; right side: a composed cluster of 3–4 real product cut-outs connected by thin pipeline lines.
+1. **Hero** on a blueprint grid: eyebrow `VALVES · AUTOMATION · INSTRUMENTS · REPAIR`; h1 "Industrial Valves, Instruments & Repairs — Any Make, Any Model"; one-line sub ("Manufacturer, supplier and repair partner from Derabassi, serving industries across India"); buttons **Get a quote** (primary) and **Call us**; right side: a composed cluster of 3–4 real product cut-outs connected by thin pipeline lines.
 2. **Three division cards** (navy / blue / amber), each linking to its hub.
 3. **Product categories grid** (10 tiles, two groups).
-4. **Repair Hub band** (amber accent): "Any make. Any model. Typically back in 2–3 days." List of repair types, 5-step process strip, CTA "Send us your valve" (WhatsApp) + "Call the repair desk".
+4. **Repair Hub band** (amber accent): "Any make. Any model. Typically back in 2–3 days." List of repair types, 5-step process strip, CTAs **Request repair** + **WhatsApp a photo**.
 5. **Product selector teaser**: a mini filter row that links into `/product-selector/` with the choice applied.
 6. **Brands strip**: Sankoh (own brand); Stolzel, UPC, Flowtech (authorised partners) — labelled as such.
 7. **Why Sankoh**: six advantages from the company profile (right product, quick service response, any-make repairs, authorised partner, strategic location, engineering expertise).
 8. **Applications**: water treatment, HVAC, building automation, industrial automation, water/milk ATMs (icons, no pages in phase 1).
 9. **Trust**: client logo strip + review cards (+ certifications if present).
-10. **Catalogue download** card + **Contact** block with lazy map.
+10. **Catalogue download** card + **Contact** block (address, hours, Get a quote / Call us / WhatsApp us buttons, no number) with lazy map.
 11. **FAQ** (5–6 questions about ordering, sourcing, repair, delivery area).
 
 **Repair section without photos** — make it feel professional through structure, not stock images:
@@ -261,7 +263,7 @@ All in `src/content/`, typed with Zod. Shared fields: `title`, `slug`, `seoTitle
 H1 = category name + "Supplier in India" variant in `seoTitle` only. Intro (120–200 words: what these products do, where they're used, that Sankoh manufactures/supplies/sources them), product grid, "How to choose" short guide (general knowledge), FAQs (4–6), related repair services, SourcingBlock, CTABand.
 
 ### 5.2 Product page (no-datasheet pattern)
-1. Breadcrumbs, division eyebrow, H1, summary, image gallery, buttons **Get a quote for this product** / **Call** / **WhatsApp**.
+1. Breadcrumbs, division eyebrow, H1, summary, image gallery, buttons **Get a quote for [product]** / **WhatsApp**. The side panel has the same two buttons and no number.
 2. **What it is and how it works** (80–150 words, general knowledge).
 3. **Typical applications & media** (bullets; use company-stated applications/media where they exist, otherwise general typical uses — flag these for the user to review).
 4. **Available to your specification**: "We supply this in a range of sizes, body materials, pressure ratings and end connections to match your process. Tell us your requirement and our engineers will recommend the right option." Under it, a **Typical options** table from `typicalOptions[]`: general industry ranges for that product type (sizes, materials, end connections, pressure classes, output signals), captioned as general information that is available to your specification, not a stock list. Each product's table is its own; never one shared table. No named standard as a company claim. If `variants[]` or category `commonlySupplied` exists (confirmed company data), show it as a second table.
@@ -289,7 +291,8 @@ Positioning, three divisions, own brands and partners, owner/team block (owner p
 - Fields: Enquiry type (Product / Repair / Sourcing / Advisory), Product or service (prefilled via `?product=<slug>` — the only allowed query string, page has a canonical without it), Name*, Company, Phone* (Indian mobile validation), Email, City/State, Requirement details* (textarea with placeholder showing the checklist), Quantity, File upload (optional: drawing/photo/nameplate; ≤5 MB; pdf/jpg/png), consent line.
 - Works without JS (plain POST to the function, redirect to `/request-a-quote/thank-you/`); JS island adds inline validation and a loading state.
 - Function: validates, verifies Turnstile, checks honeypot, sends (a) an enquiry email to the company with all fields + page source + UTM params, reply-to = customer email; (b) an acknowledgement to the customer if email given. From address = company address, never the customer's.
-- Thank-you page: confirms receipt, shows phone/WhatsApp for urgent needs. Fires GA4 `generate_lead`.
+- Thank-you page: confirms receipt, Call us / WhatsApp us buttons for urgent needs. Fires GA4 `generate_lead`.
+- Failure state (send failed): shows both numbers in full (primary and Sales) inside an element marked `data-contact-exempt`, the only place outside the Contact page where `check:contact` allows them.
 
 ### 6.2 Product selector (`/product-selector/`)
 - Static JSON index generated at build from the products collection.
@@ -302,7 +305,7 @@ Positioning, three divisions, own brands and partners, owner/team block (owner p
 Client logo strip (greyscale, colour on hover), review cards (name, role, company), conditional certifications and projects. Review markup: **no** self-serving AggregateRating/Review schema (Google ignores it for a business's own reviews); plain HTML only.
 
 ### 6.4 Call & WhatsApp
-`tel:` and `wa.me` links everywhere via one component reading `site.ts`. GA4 events: `click_call`, `click_whatsapp`, `download_catalogue`, `generate_lead` — mark these as conversions.
+`tel:` and `wa.me` links everywhere via `src/components/contact/` reading `site.ts`. Buttons show short labels ("Call us", "WhatsApp us", "Get a quote", "Request repair"); the full number is in the aria-label ("Call us on +91 98884 91527"; icon-only: "Call Sankoh on …"). The full primary number appears at most twice per page (header strip, footer), except the Contact page and error states; the sales number only in the footer, Contact page and error states. Placement: category pages Get a quote + Call us; repair pages Request repair + Call us + WhatsApp a photo; service pages Request [service] + Call us; CTA band Get a quote + Call us + WhatsApp with one hours line; 404 and privacy buttons only. `npm run check:contact` enforces this on `dist/`. GA4 events: `click_call`, `click_whatsapp`, `download_catalogue`, `generate_lead` — mark these as conversions.
 
 ### 6.5 Catalogue download
 `/downloads/sankoh-technical-solutions-catalogue.pdf`, compressed, PDF title/author metadata set, linked from header mega-menu, homepage, every category page and footer. Direct download, no email gate.

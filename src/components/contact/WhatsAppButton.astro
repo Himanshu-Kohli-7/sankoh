@@ -1,0 +1,44 @@
+---
+/**
+ * WhatsApp button: wa.me link to the primary number with a WhatsApp icon. It never prints digits;
+ * the number is in its accessible name ("WhatsApp us on +91 98884 91527").
+ */
+import ActionLink from './ActionLink.astro';
+import type { Variant, Tone } from './types';
+import { site, waHref, whatsappAria } from '../../config/site';
+
+interface Props {
+  label?: string;
+  /** Prefilled message. */
+  text?: string;
+  variant?: Variant;
+  tone?: Tone;
+  size?: 'md' | 'sm';
+  class?: string;
+  /** Open in a new tab (floating button). */
+  newTab?: boolean;
+}
+const {
+  label = 'WhatsApp us',
+  text = `Hello ${site.name}, I have an enquiry.`,
+  variant = 'secondary',
+  tone,
+  size,
+  class: cls,
+  newTab = false,
+} = Astro.props;
+---
+
+<ActionLink
+  href={waHref(text)}
+  icon="whatsapp"
+  {label}
+  {variant}
+  {tone}
+  {size}
+  class={cls}
+  aria-label={whatsappAria(variant === 'icon' ? undefined : label)}
+  data-event="click_whatsapp"
+  target={newTab ? '_blank' : undefined}
+  rel={newTab ? 'noopener' : undefined}
+/>

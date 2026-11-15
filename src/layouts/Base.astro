@@ -13,8 +13,6 @@ interface Props {
   description: string;
   /** Trail after "Home". The last item is the current page. */
   breadcrumbs?: Crumb[];
-  /** Product slug: prefills the quote form from the mobile action bar. */
-  quoteProduct?: string;
   /** Name used in the prefilled WhatsApp message. Defaults to the title without the site suffix. */
   pageName?: string;
   /** Full prefilled WhatsApp message, e.g. on repair pages. Overrides the message built from pageName. */
@@ -24,7 +22,7 @@ interface Props {
   schema?: Record<string, unknown>[];
 }
 
-const { title, description, breadcrumbs, quoteProduct, noindex, ogImage, schema, whatsappText } = Astro.props;
+const { title, description, breadcrumbs, noindex, ogImage, schema, whatsappText } = Astro.props;
 const pageName = Astro.props.pageName ?? title.split(' | ')[0];
 ---
 
@@ -53,7 +51,7 @@ const pageName = Astro.props.pageName ?? title.split(' | ')[0];
     </main>
     <Footer />
     <FloatingWhatsApp {pageName} {whatsappText} />
-    <MobileActionBar {pageName} {quoteProduct} {whatsappText} />
+    <MobileActionBar {pageName} {whatsappText} />
 
     <script is:inline>
       // Scroll reveal for [data-reveal] (SPEC §3). Skipped under reduced motion.

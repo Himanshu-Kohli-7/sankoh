@@ -6,6 +6,8 @@
  */
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import CallButton from '../components/contact/CallButton.astro';
+import WhatsAppButton from '../components/contact/WhatsAppButton.astro';
 import { site } from '../config/site';
 import { pageTitle } from '../lib/content';
 
@@ -33,8 +35,12 @@ const breadcrumbs = [{ label: 'Privacy policy' }];
 
       <h2>Who we are</h2>
       <p>
-        {site.name}, {site.address.oneLine}. Email <a href={`mailto:${site.email}`}>{site.email}</a>, phone{' '}
-        <a href={`tel:${site.phone.e164}`}>{site.phone.display}</a>.
+        {site.name}, {site.address.oneLine}. Email <a href={`mailto:${site.email}`}>{site.email}</a>, or call
+        or WhatsApp us.
+      </p>
+      <p class="policy-actions">
+        <CallButton size="sm" />
+        <WhatsAppButton size="sm" />
       </p>
 
       <h2>What we collect</h2>
@@ -87,4 +93,6 @@ const breadcrumbs = [{ label: 'Privacy policy' }];
 <style>
   .policy { max-width: 44rem; }
   .updated { color: var(--color-slate); font-family: var(--font-mono); font-size: 0.875rem; }
+  .policy-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .policy-actions :global(.btn) { text-decoration: none; }
 </style>

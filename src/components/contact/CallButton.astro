@@ -1,0 +1,21 @@
+---
+/**
+ * Call button: tel: link to the primary number with a phone icon. It never prints digits; the
+ * number is in its accessible name ("Call us on +91 98884 91527"). Use it only where the number is
+ * also visible (header strip ≥769px, mobile bar below), since a desktop may have no phone app.
+ */
+import ActionLink from './ActionLink.astro';
+import type { Variant, Tone } from './types';
+import { callAria, telHref } from '../../config/site';
+
+interface Props {
+  label?: string;
+  variant?: Variant;
+  tone?: Tone;
+  size?: 'md' | 'sm';
+  class?: string;
+}
+const { label = 'Call us', variant = 'secondary', tone, size, class: cls } = Astro.props;
+---
+
+<ActionLink href={telHref()} icon="phone" {label} {variant} {tone} {size} class={cls} aria-label={callAria(variant === 'icon' ? undefined : label)} data-event="click_call" />

@@ -6,10 +6,12 @@
  */
 import Base from '../layouts/Base.astro';
 import Button from '../components/Button.astro';
+import CallButton from '../components/contact/CallButton.astro';
+import WhatsAppButton from '../components/contact/WhatsAppButton.astro';
 import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
-import { site, telHref, waHref } from '../config/site';
+import { site } from '../config/site';
 import { pageTitle } from '../lib/content';
 
 const whatsappText = `Hello ${site.name}, I would like a quote.`;
@@ -47,7 +49,7 @@ const breadcrumbs = [{ label: 'Request a quote' }];
 
 <Base
   title={pageTitle('Request a Quote')}
-  description={`Request a quote from ${site.name}: call or WhatsApp ${site.phone.display}, or email your requirement for products, repair, sourcing or advice.`}
+  description={`Request a quote from ${site.name}: call, WhatsApp or email us your requirement for products, valve and VFD repair, sourcing or technical advice.`}
   pageName="Request a quote"
   {whatsappText}
   {breadcrumbs}
@@ -66,7 +68,7 @@ const breadcrumbs = [{ label: 'Request a quote' }];
         <Icon name="whatsapp" size={28} />
         <h2>WhatsApp</h2>
         <p>Best for photos of a nameplate, a drawing or a faulty unit.</p>
-        <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">{site.whatsapp.display}</Button>
+        <WhatsAppButton text={whatsappText} variant="primary" />
       </li>
       <li>
         <Icon name="mail" size={28} />
@@ -78,7 +80,7 @@ const breadcrumbs = [{ label: 'Request a quote' }];
         <Icon name="phone" size={28} />
         <h2>Phone</h2>
         <p>{site.hours.display}. {site.service.supportLine}.</p>
-        <Button href={telHref()} variant="secondary" icon="phone" data-event="click_call">{site.phone.display}</Button>
+        <CallButton />
       </li>
     </ul>
   </section>

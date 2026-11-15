@@ -8,6 +8,7 @@ icon: valve
 serviceType: Surplus, discontinued and reconditioned valves and parts
 summary: When a valve or its parts are no longer made, we help you keep the line running. We supply surplus and discontinued valves and parts, reconditioned components and new valves, and we repair valves of any make when a repair is the better route.
 cardSummary: Surplus and discontinued valves and parts, reconditioned components, and new valves when the old model is gone.
+ctaLabel: Request surplus valves
 whatWeDo:
   - Surplus valves and parts
   - Discontinued valves and their parts

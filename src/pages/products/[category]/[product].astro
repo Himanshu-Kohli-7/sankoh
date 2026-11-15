@@ -6,7 +6,6 @@
 import { getCollection, render } from 'astro:content';
 import { getImage } from 'astro:assets';
 import Base from '../../../layouts/Base.astro';
-import Button from '../../../components/Button.astro';
 import CTABand from '../../../components/CTABand.astro';
 import EnquiryChecklist from '../../../components/EnquiryChecklist.astro';
 import FAQ from '../../../components/FAQ.astro';
@@ -16,7 +15,9 @@ import ProductCard from '../../../components/ProductCard.astro';
 import ProductGallery from '../../../components/ProductGallery.astro';
 import RepairServiceCard from '../../../components/RepairServiceCard.astro';
 import SpecTable from '../../../components/SpecTable.astro';
-import { site, telHref, waHref, quoteHref } from '../../../config/site';
+import QuoteButton from '../../../components/contact/QuoteButton.astro';
+import WhatsAppButton from '../../../components/contact/WhatsAppButton.astro';
+import { site } from '../../../config/site';
 import { productsHref } from '../../../config/nav';
 import {
   categoryInfo, isPublished, pageTitle, productLink, productSlug, productsById, repairLinks, titleInSentence, type Product,
@@ -76,15 +77,13 @@ const schema = [
   title={pageTitle(data.seoTitle ?? data.title)}
   description={data.metaDescription}
   pageName={data.title}
-  quoteProduct={slug}
   {breadcrumbs}
   {schema}
 >
   <PageHero {breadcrumbs} division={category.division} eyebrow={category.label} title={data.title} lead={data.summary}>
     <div class="actions">
-      <Button href={quoteHref(slug)} icon="quote">Get a quote for this product</Button>
-      <Button href={telHref()} variant="secondary" icon="phone" data-event="click_call">Call</Button>
-      <Button href={waHref(whatsappText)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+      <QuoteButton label={`Get a quote for ${data.title}`} product={slug} class="quote-long" />
+      <WhatsAppButton label="WhatsApp" text={whatsappText} />
     </div>
     <p class="avail">Delivered across India · Warranty: {site.service.warranty.newProducts}</p>
     <ProductGallery slot="aside" images={data.images} caption={data.title} division={category.division} />
@@ -183,9 +182,8 @@ const schema = [
     <aside class="enquire" aria-label="Enquire about this product">
       <p class="eyebrow">Enquire</p>
       <p class="enquire-title">{data.title}</p>
-      <a class="number" href={telHref()} data-event="click_call"><Icon name="phone" size={22} />{site.phone.display}</a>
-      <Button href={quoteHref(slug)} icon="quote">Get a quote</Button>
-      <Button href={waHref(whatsappText)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+      <QuoteButton product={slug} />
+      <WhatsAppButton label="WhatsApp" text={whatsappText} />
       <p class="enquire-note">Warranty: {site.service.warranty.newProducts}. {site.service.supportLine}.</p>
     </aside>
   </div>
@@ -234,13 +232,14 @@ const schema = [
   <CTABand
     title={`Get a quote for ${ctaName}`}
     quoteProduct={slug}
-    quoteLabel="Get a quote for this product"
     {whatsappText}
   />
 </Base>
 
 <style>
   .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+  /* Product names can be long: let "Get a quote for …" wrap rather than overflow. */
+  .actions :global(.quote-long) { white-space: normal; text-align: left; }
   .avail { margin-top: 1.25rem; color: var(--color-slate); font-size: var(--text-small); }
 
   .body { display: grid; gap: 3rem; padding-block: 3rem var(--section-y); }
@@ -293,8 +292,6 @@ const schema = [
     .enquire { position: sticky; top: 6.5rem; display: grid; gap: 0.75rem; align-self: start; padding: 1.5rem; background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--color-amber); border-radius: 2px; }
     .enquire .eyebrow { color: var(--color-slate); }
     .enquire-title { color: var(--color-navy); font-size: 1.25rem; font-weight: 600; line-height: 1.25; }
-    .number { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; color: var(--color-navy); font-family: var(--font-mono); font-size: 1.25rem; font-weight: 500; text-decoration: none; }
-    .number:hover { text-decoration: underline; text-underline-offset: 4px; }
     .enquire-note { color: var(--color-slate); font-size: var(--text-small); }
     .grid { grid-template-columns: repeat(4, 1fr); }
   }

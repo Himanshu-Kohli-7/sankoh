@@ -1,11 +1,11 @@
 ---
 /** 404 (SPEC §2.1): noindex, out of the sitemap, with the main routes and call / WhatsApp. */
 import Base from '../layouts/Base.astro';
-import Button from '../components/Button.astro';
 import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
-import SalesLine from '../components/SalesLine.astro';
-import { site, telHref, waHref } from '../config/site';
+import CallButton from '../components/contact/CallButton.astro';
+import WhatsAppButton from '../components/contact/WhatsAppButton.astro';
+import { site } from '../config/site';
 
 const links = [
   { label: 'Products', href: '/products/', icon: 'valve' },
@@ -24,10 +24,9 @@ const links = [
 >
   <PageHero breadcrumbs={[{ label: 'Page not found' }]} division="valves" eyebrow="Error 404" title="Page not found" lead="The page you asked for is not here. It may have moved when our site was rebuilt. Try one of these, or call us.">
     <div class="actions">
-      <Button href={telHref()} icon="phone" data-event="click_call">Call {site.phone.display}</Button>
-      <Button href={waHref(`Hello ${site.name}, I could not find a page on your website.`)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+      <CallButton variant="primary" />
+      <WhatsAppButton text={`Hello ${site.name}, I could not find a page on your website.`} />
     </div>
-    <SalesLine class="nf-sales" />
   </PageHero>
 
   <section class="container-content section-y">
@@ -41,7 +40,6 @@ const links = [
 
 <style>
   .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-  :global(.nf-sales) { margin-top: 1rem; }
   .links { display: grid; gap: 0.75rem; }
   .links a { display: flex; align-items: center; gap: 0.75rem; min-height: 3.5rem; padding: 0.75rem 1.25rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-navy); border-radius: 2px; color: var(--color-navy); font-weight: 600; text-decoration: none; }
   .links a :global(svg:first-child) { color: var(--color-blue); }

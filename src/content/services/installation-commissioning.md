@@ -8,6 +8,7 @@ icon: factory
 serviceType: Valve and automation system installation and commissioning
 summary: We deliver, install and test valves and process instruments, and we set up and commission valve and automation systems for factories. Our engineers fit the equipment and check that it works as intended before it is handed over to your team.
 cardSummary: Delivery, installation and testing, and setting up and commissioning valve and automation systems for factories.
+ctaLabel: Request installation
 whatWeDo:
   - Delivery of the valves, instruments and accessories on your order
   - Installation and testing at your site

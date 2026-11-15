@@ -175,6 +175,8 @@ const services = defineCollection({
     summary: z.string(),
     /** One line for the Services overview card. */
     cardSummary: z.string(),
+    /** Short label for the page's main quote button, e.g. "Request sourcing". */
+    ctaLabel: z.string().max(28).optional(),
     /** "What we do" list. */
     whatWeDo: z.array(z.string()).min(3),
     /** Short named sections, e.g. "Technical advice" on the advisory page. */

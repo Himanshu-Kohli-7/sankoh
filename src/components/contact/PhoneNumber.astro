@@ -1,0 +1,46 @@
+---
+/**
+ * The only component that prints the primary number's digits: a phone icon and the mono number
+ * as a tel: link, with an optional small WhatsApp icon link beside it.
+ * Used once per page in the desktop header strip and once in the footer; the Contact page card
+ * also uses it. `npm run check:contact` counts it (data-contact-number).
+ */
+import Icon from '../Icon.astro';
+import { site, telHref, waHref, whatsappAria } from '../../config/site';
+
+interface Props {
+  withWhatsApp?: boolean;
+  /** light: navy text on white · dark: white text on navy */
+  tone?: 'light' | 'dark';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+}
+const { withWhatsApp = false, tone = 'light', size = 'md', class: cls } = Astro.props;
+---
+
+<span class:list={['phone-number', cls]} data-tone={tone} data-size={size}>
+  <a class="num" href={telHref()} data-event="click_call" data-contact-number>
+    <Icon name="phone" size={size === 'lg' ? 22 : 16} />{site.phone.display}
+  </a>
+  {withWhatsApp && (
+    <a class="wa" href={waHref(`Hello ${site.name}, I have an enquiry.`)} data-event="click_whatsapp" aria-label={whatsappAria()}>
+      <Icon name="whatsapp" size={size === 'lg' ? 22 : 18} />
+    </a>
+  )}
+</span>
+
+<style>
+  .phone-number { display: inline-flex; align-items: center; gap: 0.5rem; }
+  .num { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.75rem; color: var(--color-navy); font-family: var(--font-mono); font-weight: 500; text-decoration: none; white-space: nowrap; }
+  .num:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .num :global(svg) { color: var(--color-blue); }
+  [data-size='sm'] .num { min-height: 2.25rem; font-size: 0.8125rem; }
+  [data-size='md'] .num { font-size: 1rem; }
+  [data-size='lg'] .num { font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem); }
+  .wa { display: inline-grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; color: var(--color-navy); }
+  [data-size='sm'] .wa { width: 2.25rem; height: 2.25rem; }
+  .wa:hover { background: rgb(16 42 76 / 0.08); }
+  [data-tone='dark'] .num, [data-tone='dark'] .wa { color: var(--color-white); }
+  [data-tone='dark'] .num :global(svg) { color: var(--color-cyan); }
+  [data-tone='dark'] .wa:hover { background: rgb(255 255 255 / 0.12); }
+</style>

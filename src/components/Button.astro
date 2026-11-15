@@ -1,11 +1,15 @@
 ---
-/** Link styled as a button: amber primary, navy outline secondary (SPEC §3). */
+/**
+ * Link styled as a button: amber primary, navy outline secondary (SPEC §3), plus navy (on amber),
+ * on-dark (on navy) and ghost. For Call / WhatsApp / quote actions use components/contact/*,
+ * which set the link, icon, analytics event and accessible name.
+ */
 import Icon from './Icon.astro';
 import type { HTMLAttributes } from 'astro/types';
 
 interface Props extends HTMLAttributes<'a'> {
   href: string;
-  variant?: 'primary' | 'secondary' | 'navy' | 'on-dark';
+  variant?: 'primary' | 'secondary' | 'navy' | 'on-dark' | 'ghost';
   size?: 'md' | 'sm';
   icon?: string;
 }

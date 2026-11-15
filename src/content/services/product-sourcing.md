@@ -8,6 +8,7 @@ icon: box
 serviceType: Industrial valve and instrument sourcing
 summary: If a valve, instrument or part is not listed on our site, we can source it for you. We trade through a vendor network and find products to your specification, so one enquiry can cover both what we list and what we don't.
 cardSummary: Products not listed on our site, sourced to your specification through our vendor network.
+ctaLabel: Request sourcing
 whatWeDo:
   - Valves, automation and instruments not listed on this site
   - Sizes, materials and end connections outside the usual range

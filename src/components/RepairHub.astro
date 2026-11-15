@@ -8,7 +8,6 @@ import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Button from './Button.astro';
 import CTABand from './CTABand.astro';
 import EnquiryChecklist from './EnquiryChecklist.astro';
 import FAQ from './FAQ.astro';
@@ -18,7 +17,10 @@ import ProcessSteps from './ProcessSteps.astro';
 import RepairServiceCard from './RepairServiceCard.astro';
 import SectionHeader from './SectionHeader.astro';
 import TrustStats from './TrustStats.astro';
-import { site, telHref, waHref, quoteHref } from '../config/site';
+import CallButton from './contact/CallButton.astro';
+import WhatsAppButton from './contact/WhatsAppButton.astro';
+import QuoteButton from './contact/QuoteButton.astro';
+import { site } from '../config/site';
 import { groupName, groupThing, repairSteps, repairWhatsApp } from '../config/repair';
 import { pageTitle, repairLinks } from '../lib/content';
 
@@ -61,16 +63,15 @@ const schema = [
   title={pageTitle(data.seoTitle)}
   description={data.metaDescription}
   pageName={data.title}
-  quoteProduct={quoteSlug}
   {whatsappText}
   {breadcrumbs}
   {schema}
 >
   <PageHero {breadcrumbs} division="repair" eyebrow="Repair & Service" title={data.h1} lead={data.intro} tone="dark">
     <div class="actions">
-      <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">WhatsApp a photo of your {thing}</Button>
-      <Button href={telHref()} variant="on-dark" icon="phone" data-event="click_call">Call the repair desk</Button>
-      <Button href={quoteHref(quoteSlug)} variant="on-dark" icon="quote">Request repair</Button>
+      <QuoteButton label="Request repair" product={quoteSlug} tone="dark" />
+      <CallButton tone="dark" />
+      <WhatsAppButton label="WhatsApp a photo" text={whatsappText} tone="dark" />
     </div>
     <div class="facts" slot="aside"><TrustStats tone="dark" columns={2} /></div>
   </PageHero>
@@ -170,8 +171,8 @@ const schema = [
       items={data.whatToSend}
     >
       <p class="send-actions">
-        <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">WhatsApp the details</Button>
-        <Button href={quoteHref(quoteSlug)} variant="secondary" icon="quote">Repair request form</Button>
+        <WhatsAppButton label="WhatsApp the details" text={whatsappText} variant="primary" />
+        <QuoteButton label="Repair request form" product={quoteSlug} variant="secondary" />
       </p>
     </EnquiryChecklist>
   </section>
@@ -183,9 +184,9 @@ const schema = [
 
   <CTABand
     title="Request repair"
-    text={`Call the repair desk, WhatsApp a photo of the ${thing} and its ${label}, or use the repair request form. ${site.service.supportLine}.`}
     quoteProduct={quoteSlug}
-    quoteLabel="Repair request form"
+    quoteLabel="Request repair"
+    whatsappLabel="WhatsApp a photo"
     {whatsappText}
   />
 </Base>

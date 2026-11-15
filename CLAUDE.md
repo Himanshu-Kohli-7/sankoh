@@ -54,8 +54,8 @@ Three divisions, each with its own colour (§6):
 | Name | Sankoh Technical Solutions |
 | Address | 254, 1st Floor, Hansa Industrial Park, Barwala Road, Derabassi – 140507, Distt. SAS Nagar, Punjab, India |
 | Location wording | "Derabassi, Punjab (near Chandigarh)" |
-| Phone (primary) | +91 98884 91527, the owner's number. The main number for calling and WhatsApp: every Call button, `tel:` link, header button, mobile action bar and `wa.me` link uses it |
-| Phone (sales, backup) | +91 98779 38373, the company sales line (not any one person's), labelled "Sales". Used when the primary can't be reached. Shown only as a secondary line ("Can't get through? Call Sales: …") in the footer, Contact page, home contact block, 404 and CTA bands; never a button, never in place of the primary. In JSON-LD as a `ContactPoint` with `contactType: "sales"` |
+| Phone (primary) | +91 98884 91527, the owner's number. The target of every Call and WhatsApp button, `tel:` link and `wa.me` link. Buttons are short labels ("Call us", "WhatsApp us") and **never print digits**; the number is in their aria-label. The full number is printed only in the desktop header strip and the footer (at most twice per page), plus the Contact page card and error states. Never in body text, FAQs or intros |
+| Phone (sales, backup) | +91 98779 38373, the company sales line (not any one person's), labelled "Sales". Used when the primary can't be reached. Small secondary text only: "Sales: …" in the footer, "If you can't reach us" on the Contact page, and in error states (quote form failure). Never a button, never in place of the primary. In JSON-LD as a `ContactPoint` with `contactType: "sales"` |
 | Proprietor | Sanjay Kohli — Proprietor (About page, with the owner photo from legacy `src/assets/Others/sankoh_owner.JPG`) |
 | Email (current) | sankoh.techsol@gmail.com, the only email. It will be replaced by a domain email before launch, so keep it in one config value |
 | GSTIN | 03AKSPK5866E1ZW (footer) |
@@ -77,7 +77,7 @@ Three divisions, each with its own colour (§6):
 | Applications named by the company | Water treatment, HVAC, building automation, industrial automation, water/milk ATMs |
 | Media named by the company (automated + solenoid valves) | Air, water, oil, gas, chemicals, steam |
 
-Single source of truth: `src/config/site.ts`. Import from it everywhere. Never hard-code the phone number, address, email or GSTIN in components.
+Single source of truth: `src/config/site.ts`. Import from it everywhere. Never hard-code the phone number, address, email or GSTIN in components. Every Call, WhatsApp and quote action uses `src/components/contact/` (`CallButton`, `WhatsAppButton`, `QuoteButton`, `PhoneNumber`, `SalesLine`, `ContactCard`); `npm run check:contact` enforces the number rules on `dist/`.
 
 ## 5. Stack
 
@@ -160,7 +160,7 @@ These render **only if their content folder has entries** — no empty headings 
 ## 9. How to work
 
 1. **Plan first.** For anything bigger than one component, use plan mode and get the plan approved.
-2. **One section at a time.** Build → `npm run build` and `npx astro check` → Playwright screenshots at **390px** and **1440px** → critique against this file and SPEC.md → fix → commit.
+2. **One section at a time.** Build → `npm run build`, `npx astro check` and `npm run check:all` (claims, repeats, links, contact; run it before every push) → Playwright screenshots at **390px** and **1440px** → critique against this file and SPEC.md → fix → commit.
 3. **Design before scale.** Get the design system, homepage, one category page, one product page and the valve repair hub approved before generating the rest.
 4. **Commit after every working step**, small commits, clear messages.
 5. **Check the performance budget** (SPEC.md §8) after each template.

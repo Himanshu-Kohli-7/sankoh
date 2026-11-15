@@ -5,7 +5,6 @@
  */
 import { getCollection, render } from 'astro:content';
 import Base from '../../../layouts/Base.astro';
-import Button from '../../../components/Button.astro';
 import CTABand from '../../../components/CTABand.astro';
 import FAQ from '../../../components/FAQ.astro';
 import Icon from '../../../components/Icon.astro';
@@ -15,7 +14,9 @@ import RepairServiceCard from '../../../components/RepairServiceCard.astro';
 import SectionHeader from '../../../components/SectionHeader.astro';
 import SourcingBlock from '../../../components/SourcingBlock.astro';
 import SpecTable from '../../../components/SpecTable.astro';
-import { site, telHref, quoteHref } from '../../../config/site';
+import CallButton from '../../../components/contact/CallButton.astro';
+import QuoteButton from '../../../components/contact/QuoteButton.astro';
+import { site } from '../../../config/site';
 import { productsHref } from '../../../config/nav';
 import { catalogue } from '../../../config/catalogue';
 import { isPublished, pageTitle, productHref, productLink, productsIn, repairLinks, type Category } from '../../../lib/content';
@@ -59,7 +60,6 @@ const schema = published.length
   title={pageTitle(data.seoTitle)}
   description={data.metaDescription}
   pageName={data.title}
-  quoteProduct={category.id}
   {breadcrumbs}
   {schema}
 >
@@ -72,8 +72,8 @@ const schema = published.length
       {data.operationNote && <div><dt>Operation</dt><dd>{data.operationNote}</dd></div>}
       <div><dt>Supply</dt><dd>To your specification</dd></div>
       <div class="sheet-actions">
-        <Button href={quoteHref(category.id)} icon="quote">Get a quote</Button>
-        <Button href={telHref()} variant="secondary" icon="phone" data-event="click_call">Call {site.phone.display}</Button>
+        <QuoteButton product={category.id} />
+        <CallButton />
       </div>
     </dl>
   </PageHero>

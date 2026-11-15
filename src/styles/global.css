@@ -152,6 +152,13 @@
   .btn-navy:hover { background: #0b1f3a; }
   .btn-on-dark { border-color: rgb(255 255 255 / 0.55); color: var(--color-white); }
   .btn-on-dark:hover { background: var(--color-white); color: var(--color-navy); }
+  /* Ghost: text-style action with an icon, still a 44px target. Inherits colour from its context. */
+  .btn-ghost { min-height: 2.75rem; padding-inline: 0.25rem; border: 0; background: transparent; color: var(--color-navy); }
+  .btn-ghost:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .btn-ghost.btn-on-dark-text { color: var(--color-white); }
+  /* Icon-only: square 44px target; the accessible name comes from aria-label. */
+  .btn-icon { width: 2.75rem; min-height: 2.75rem; padding: 0; }
+  .btn-icon.btn-sm { width: 2.5rem; min-height: 2.5rem; }
 
   /* Cards: hairline border, 4px division top border, no shadow kit. */
   .card {

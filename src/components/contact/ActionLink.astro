@@ -1,0 +1,37 @@
+---
+/**
+ * Internal base for CallButton, WhatsAppButton and QuoteButton: one place that maps
+ * variant × tone to the shared .btn classes. Don't use it directly in pages.
+ *
+ * variant: primary (amber, or navy on amber) · secondary (outline) · ghost (text + icon) · icon (icon only)
+ * tone: the background it sits on: light (white/paper) · dark (navy) · amber (CTA band)
+ */
+import Icon from '../Icon.astro';
+import type { HTMLAttributes } from 'astro/types';
+import type { Variant, Tone } from './types';
+
+
+
+
+interface Props extends HTMLAttributes<'a'> {
+  href: string;
+  icon: string;
+  label: string;
+  variant?: Variant;
+  tone?: Tone;
+  size?: 'md' | 'sm';
+}
+const { href, icon, label, variant = 'primary', tone = 'light', size = 'md', class: cls, ...rest } = Astro.props;
+
+const look: Record<Variant, Record<Tone, string>> = {
+  primary: { light: 'btn-primary', dark: 'btn-primary', amber: 'btn-navy' },
+  secondary: { light: 'btn-secondary', dark: 'btn-on-dark', amber: 'btn-secondary' },
+  ghost: { light: 'btn-ghost', dark: 'btn-ghost btn-on-dark-text', amber: 'btn-ghost' },
+  icon: { light: 'btn-secondary btn-icon', dark: 'btn-on-dark btn-icon', amber: 'btn-secondary btn-icon' },
+};
+---
+
+<a href={href} class:list={['btn', look[variant][tone], size === 'sm' && 'btn-sm', cls]} {...rest}>
+  <Icon name={icon} size={20} />
+  {variant !== 'icon' && <span>{label}</span>}
+</a>

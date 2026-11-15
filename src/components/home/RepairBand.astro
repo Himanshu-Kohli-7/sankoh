@@ -4,12 +4,13 @@
  * full navy section on the page, with amber as its accent. Facts only from site.ts.
  */
 import BlueprintGrid from '../BlueprintGrid.astro';
-import Button from '../Button.astro';
 import DivisionBadge from '../DivisionBadge.astro';
 import Icon from '../Icon.astro';
 import ProcessSteps from '../ProcessSteps.astro';
 import TrustStats from '../TrustStats.astro';
-import { site, telHref, waHref } from '../../config/site';
+import QuoteButton from '../contact/QuoteButton.astro';
+import WhatsAppButton from '../contact/WhatsAppButton.astro';
+import { site } from '../../config/site';
 import { repairGroups } from '../../config/nav';
 
 const scope = site.service.repairScope;
@@ -28,8 +29,8 @@ const whatsappText = `Hello ${site.name}, I have a valve to send for repair.`;
           {site.service.repairTurnaround}, and on-site repair is offered too.
         </p>
         <div class="actions">
-          <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">Send us your valve</Button>
-          <Button href={telHref()} variant="on-dark" icon="phone" data-event="click_call">Call the repair desk</Button>
+          <QuoteButton label="Request repair" product="valve-repair" tone="dark" />
+          <WhatsAppButton label="WhatsApp a photo" text={whatsappText} tone="dark" />
         </div>
       </div>
 

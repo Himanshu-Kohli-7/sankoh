@@ -5,8 +5,9 @@
  */
 import Icon from '../Icon.astro';
 import BlueprintGrid from '../BlueprintGrid.astro';
-import SalesLine from '../SalesLine.astro';
-import { site, telHref, waHref, mapsHref } from '../../config/site';
+import PhoneNumber from '../contact/PhoneNumber.astro';
+import SalesLine from '../contact/SalesLine.astro';
+import { site, mapsHref } from '../../config/site';
 import { productGroups, repairGroups, serviceLinks, companyLinks } from '../../config/nav';
 import { catalogue } from '../../config/catalogue';
 
@@ -72,21 +73,17 @@ const { address } = site;
         </dd>
       </div>
       <div class="cell">
-        <dt>Phone</dt>
+        <dt>Phone &amp; WhatsApp</dt>
         <dd>
-          <a class="mono" href={telHref()} data-event="click_call">{site.phone.display}</a>
-          <SalesLine tone="on-dark" class="footer-sales" />
+          <PhoneNumber withWhatsApp tone="dark" />
+          <SalesLine tone="dark" class="footer-sales" />
         </dd>
-      </div>
-      <div class="cell">
-        <dt>WhatsApp</dt>
-        <dd class="mono"><a href={waHref()} data-event="click_whatsapp">{site.whatsapp.display}</a></dd>
       </div>
       <div class="cell">
         <dt>Email</dt>
         <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
       </div>
-      <div class="cell">
+      <div class="cell cell-gstin">
         <dt>GSTIN</dt>
         <dd class="mono">{site.gstin}</dd>
       </div>
@@ -132,15 +129,14 @@ const { address } = site;
   .maplink { gap: 0.375rem; margin-top: 0.25rem; color: rgb(255 255 255 / 0.82); font-size: 0.875rem; text-decoration: underline; text-underline-offset: 3px; }
   .maplink :global(svg) { color: var(--color-cyan); }
 
-  dd :global(.footer-sales) { margin-top: 0.25rem; font-size: 0.8125rem; }
+  dd :global(.footer-sales) { font-size: 0.8125rem; }
   .copyright { padding-top: 1.5rem; font-size: 0.875rem; color: rgb(255 255 255 / 0.7); }
 
   @media (min-width: 560px) {
     .columns { grid-template-columns: 1fr 1fr; }
     .titleblock { grid-template-columns: 1fr 1fr; }
-    .cell-address, .cell-service { grid-column: 1 / -1; }
-    .cell { border-left: 1px solid rgb(255 255 255 / 0.28); }
-    .cell-address, .cell-service, .cell:nth-child(2), .cell:nth-child(4) { border-left: 0; }
+    .cell-address, .cell-gstin, .cell-service { grid-column: 1 / -1; }
+    .cell:nth-child(3) { border-left: 1px solid rgb(255 255 255 / 0.28); }
   }
   @media (min-width: 1024px) {
     .intro { grid-template-columns: auto 1fr; align-items: center; gap: 3rem; }
@@ -148,7 +144,8 @@ const { address } = site;
     .columns li a { min-height: 2.25rem; }
     h2, h2 a { min-height: 2.25rem; }
     dd a { min-height: 2rem; }
-    .titleblock { grid-template-columns: 1.7fr 1fr 1fr 1.25fr 1fr; }
+    .titleblock { grid-template-columns: 1.7fr 1.25fr 1.25fr 1fr; }
+    .cell-gstin { grid-column: auto; }
     .cell-address { grid-column: 1; grid-row: 1 / 3; }
     .cell-service { grid-column: 2 / -1; }
     .cell { border-top: 0; }

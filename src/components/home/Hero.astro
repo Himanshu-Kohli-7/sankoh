@@ -1,9 +1,10 @@
 ---
 /** Homepage hero (SPEC §3.1): blueprint grid, headline, two CTAs and the product cluster. */
 import BlueprintGrid from '../BlueprintGrid.astro';
-import Button from '../Button.astro';
 import HeroCluster from './HeroCluster.astro';
-import { site, telHref, quoteHref } from '../../config/site';
+import CallButton from '../contact/CallButton.astro';
+import QuoteButton from '../contact/QuoteButton.astro';
+import { site } from '../../config/site';
 ---
 
 <section class="hero">
@@ -16,13 +17,10 @@ import { site, telHref, quoteHref } from '../../config/site';
         Manufacturer, supplier and repair partner from Derabassi, serving industries across India.
       </p>
       <div class="actions">
-        <Button href={telHref()} icon="phone" data-event="click_call">Call now</Button>
-        <Button href={quoteHref()} variant="secondary" icon="quote">Get a quote</Button>
+        <QuoteButton />
+        <CallButton />
       </div>
-      <p class="line">
-        <a href={telHref()} data-event="click_call">{site.phone.display}</a>
-        <span>{site.service.supportLine}</span>
-      </p>
+      <p class="line">{site.hours.short} · {site.service.supportLine}</p>
     </div>
     <HeroCluster />
   </div>
@@ -35,15 +33,10 @@ import { site, telHref, quoteHref } from '../../config/site';
   h1 { margin-top: 1rem; text-wrap: balance; }
   .sub { margin-top: 1.25rem; max-width: 34rem; color: var(--color-slate); font-size: 1.1875rem; line-height: 1.5; }
   .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-  .line { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1rem; margin-top: 1.5rem; color: var(--color-slate); font-size: var(--text-small); }
-  .line a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-navy); font-family: var(--font-mono); font-size: 1rem; font-weight: 500; text-decoration: none; }
-  .line a:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .line span { padding-left: 1rem; border-left: 1px solid var(--color-line); }
+  .line { margin-top: 1.25rem; color: var(--color-slate); font-size: var(--text-small); }
 
   @media (max-width: 479px) {
     .actions :global(.btn) { flex: 1 1 100%; }
-    .line { display: grid; gap: 0; }
-    .line span { padding-left: 0; border-left: 0; }
   }
   @media (min-width: 1024px) {
     .inner { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: center; gap: 4rem; padding-block: 4rem 3.5rem; }

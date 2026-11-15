@@ -7,12 +7,13 @@
 /** Primary number (the owner's): every Call button, tel: link and WhatsApp link uses it. */
 const phone = { display: '+91 98884 91527', e164: '+919888491527' } as const;
 /**
- * Company sales line, the backup when the primary can't be reached. Shown only as a secondary line
- * ("Can't get through? Call Sales: …"), never as a button and never in place of the primary.
+ * Company sales line, the backup when the primary can't be reached. Small secondary text only
+ * (components/contact/SalesLine.astro): footer, Contact page and error states. Never a button.
  */
 const salesPhone = { label: 'Sales', display: '+91 98779 38373', e164: '+919877938373' } as const;
 
-const whatsapp = { display: '+91 98884 91527', number: '919888491527' } as const;
+/** WhatsApp uses the primary number. Only `number` (for wa.me) is needed: buttons never print digits. */
+const whatsapp = { number: '919888491527' } as const;
 
 export const site = {
   name: 'Sankoh Technical Solutions',
@@ -40,9 +41,13 @@ export const site = {
     locationWording: 'Derabassi, Punjab (near Chandigarh)',
   },
 
-  /** Primary number: header, Call buttons, mobile action bar, WhatsApp and schema `telephone`. */
+  /**
+   * Primary number: the target of every Call and WhatsApp button and schema `telephone`.
+   * Its digits are printed only by components/contact/PhoneNumber.astro (desktop header strip, footer)
+   * and ContactCard on the Contact page. `npm run check:contact` enforces this.
+   */
   phone,
-  /** Backup sales line: a secondary line in the footer, Contact page, home contact block, 404 and CTA bands. */
+  /** Backup sales line: small secondary text in the footer, on the Contact page and in error states only. */
   salesPhone,
   whatsapp,
 
@@ -128,6 +133,8 @@ export const site = {
     opens: '09:30',
     closes: '18:30',
     display: 'Monday to Saturday, 9:30 AM to 6:30 PM',
+    /** Short form for the header strip and CTA band. */
+    short: 'Mon–Sat 9:30 AM–6:30 PM',
     closed: 'Sunday closed',
   },
 
@@ -156,6 +163,20 @@ export const listAnd = (items: readonly string[]): string =>
 
 /** `tel:` link for a phone entry. */
 export const telHref = (p: { e164: string } = site.phone): string => `tel:${p.e164}`;
+
+/**
+ * Accessible names for Call / WhatsApp buttons. They always start with the visible label
+ * (WCAG 2.5.3 Label in Name) and end with the full number, which the button itself never prints.
+ * Icon-only (no label) and the bare "Call" / "WhatsApp" labels read "Call Sankoh on +91 …".
+ */
+const contactAria = (verb: 'Call' | 'WhatsApp', label?: string): string => {
+  const n = site.phone.display;
+  if (!label || label === verb) return `${verb} ${site.shortName} on ${n}`;
+  if (/ us$/.test(label)) return `${label} on ${n}`;
+  return `${label} to ${n}`;
+};
+export const callAria = (label?: string): string => contactAria('Call', label);
+export const whatsappAria = (label?: string): string => contactAria('WhatsApp', label);
 
 /** `wa.me` link, optionally with a prefilled message (e.g. the page title). */
 export const waHref = (text?: string): string =>

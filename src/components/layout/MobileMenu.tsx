@@ -3,7 +3,7 @@
  * Without JavaScript the trigger is a plain link to the footer navigation.
  */
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { site, telHref, waHref, quoteHref } from '../../config/site';
+import { site, quoteHref } from '../../config/site';
 import { productGroups, repairGroups, primaryLinks, productsHref, type NavGroup } from '../../config/nav';
 
 interface Props {
@@ -16,9 +16,7 @@ const ICONS = {
   menu: 'M4 7h16 M4 12h16 M4 17h16',
   close: 'M6 6l12 12 M18 6L6 18',
   chevron: 'M6 9l6 6 6-6',
-  phone: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z',
-  whatsapp:
-    'M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21 M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1',
+  quote: 'M14 3v4a1 1 0 0 0 1 1h4 M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z M9 13h6 M9 17h6',
 } as const;
 
 function Svg({ d, size = 24, class: cls }: { d: string; size?: number; class?: string }) {
@@ -212,17 +210,10 @@ export default function MobileMenu({ currentPath, catalogueHref }: Props) {
           <p class="pt-5 text-small text-slate">{site.service.supportLine}</p>
         </nav>
 
-        <div class="grid flex-none grid-cols-2 gap-2 border-t border-line bg-paper p-4 pb-[calc(1rem+env(safe-area-inset-bottom,0px))]">
-          <a class="btn btn-secondary" href={telHref()} data-event="click_call">
-            <Svg d={ICONS.phone} size={20} />
-            Call
-          </a>
-          <a class="btn btn-secondary" href={waHref(`Hello ${site.name}`)} data-event="click_whatsapp">
-            <Svg d={ICONS.whatsapp} size={20} />
-            WhatsApp
-          </a>
-          <a class="btn btn-primary col-span-2" href={quoteHref()}>
-            Get a Quote
+        <div class="flex-none border-t border-line bg-paper p-4 pb-[calc(1rem+env(safe-area-inset-bottom,0px))]">
+          <a class="btn btn-primary w-full" href={quoteHref()}>
+            <Svg d={ICONS.quote} size={20} />
+            Request a quote
           </a>
         </div>
       </div>

@@ -5,7 +5,6 @@
  */
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import Button from '../../components/Button.astro';
 import CTABand from '../../components/CTABand.astro';
 import FAQ, { type FaqItem } from '../../components/FAQ.astro';
 import Icon from '../../components/Icon.astro';
@@ -13,7 +12,9 @@ import PageHero from '../../components/PageHero.astro';
 import RepairServiceCard from '../../components/RepairServiceCard.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import TrustStats from '../../components/TrustStats.astro';
-import { site, telHref, waHref, quoteHref } from '../../config/site';
+import CallButton from '../../components/contact/CallButton.astro';
+import QuoteButton from '../../components/contact/QuoteButton.astro';
+import { site, quoteHref } from '../../config/site';
 import { pageTitle } from '../../lib/content';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
@@ -36,7 +37,7 @@ const repairs = [
 
 /** Which way in, by what the visitor needs. Every route is a confirmed offer. */
 const routes = [
-  { icon: 'phone', need: 'A breakdown on your line', action: `Call ${site.phone.display}. ${site.service.supportLine}.` },
+  { icon: 'phone', need: 'A breakdown on your line', action: `Call us. ${site.service.supportLine}.` },
   { icon: 'whatsapp', need: 'A valve or drive to repair', action: 'WhatsApp a photo of it and its nameplate or rating label.' },
   { icon: 'quote', need: 'New products or a part we don’t list', action: 'Send your requirement and we supply or source it.' },
   { icon: 'search', need: 'Not sure what you need', action: 'Ask for valve selection and technical advice.' },
@@ -79,8 +80,8 @@ const breadcrumbs = [{ label: 'Services' }];
     lead={`Besides supplying valves and instruments, ${site.name} repairs valves and VFDs of any make, advises on valve selection and upkeep, installs and commissions systems for factories, and sources what is hard to find.`}
   >
     <div class="actions">
-      <Button href={telHref()} icon="phone" data-event="click_call">Call {site.phone.display}</Button>
-      <Button href={waHref('Hello, I have a question about your services.')} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+      <QuoteButton />
+      <CallButton />
     </div>
   </PageHero>
 

@@ -5,13 +5,15 @@
  * The enquiry form arrives next round at /request-a-quote/.
  */
 import Base from '../layouts/Base.astro';
-import Button from '../components/Button.astro';
-import ContactDetails from '../components/ContactDetails.astro';
+import ContactCard from '../components/contact/ContactCard.astro';
+import CallButton from '../components/contact/CallButton.astro';
+import WhatsAppButton from '../components/contact/WhatsAppButton.astro';
+import QuoteButton from '../components/contact/QuoteButton.astro';
 import CTABand from '../components/CTABand.astro';
 import EnquiryChecklist from '../components/EnquiryChecklist.astro';
 import MapCard from '../components/MapCard.astro';
 import PageHero from '../components/PageHero.astro';
-import { site, telHref, waHref, quoteHref } from '../config/site';
+import { site } from '../config/site';
 import { pageTitle } from '../lib/content';
 
 const breadcrumbs = [{ label: 'Contact' }];
@@ -28,18 +30,18 @@ const breadcrumbs = [{ label: 'Contact' }];
     division="valves"
     eyebrow="Contact"
     title="Contact us"
-    lead={`Call or WhatsApp ${site.phone.display}, or email ${site.email}. Office hours are ${site.hours.display}; ${site.service.supportLine.toLowerCase()}.`}
+    lead={`Call, WhatsApp or email us. Office hours are ${site.hours.display}; ${site.service.supportLine.toLowerCase()}.`}
   >
     <div class="actions">
-      <Button href={telHref()} icon="phone" data-event="click_call">Call {site.phone.display}</Button>
-      <Button href={waHref(`Hello ${site.name}, I have an enquiry.`)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+      <CallButton variant="primary" />
+      <WhatsAppButton />
     </div>
   </PageHero>
 
   <section class="container-content section-y layout">
     <div>
       <h2 class="sr-only">Contact details</h2>
-      <ContactDetails />
+      <ContactCard variant="full" />
     </div>
     <div class="side">
       <MapCard />
@@ -61,8 +63,8 @@ const breadcrumbs = [{ label: 'Contact' }];
         ]}
       >
         <p class="send-actions">
-          <Button href={quoteHref()} icon="quote">Send your requirement</Button>
-          <Button href={telHref()} variant="secondary" icon="phone" data-event="click_call">Urgent? Call {site.phone.display}</Button>
+          <QuoteButton label="Send your requirement" />
+          <CallButton />
         </p>
       </EnquiryChecklist>
     </div>
