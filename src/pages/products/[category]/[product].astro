@@ -19,7 +19,7 @@ import SpecTable from '../../../components/SpecTable.astro';
 import { site, telHref, waHref, quoteHref } from '../../../config/site';
 import { productsHref } from '../../../config/nav';
 import {
-  categoryInfo, isPublished, pageTitle, productLink, productSlug, productsById, repairLinks, type Product,
+  categoryInfo, isPublished, pageTitle, productLink, productSlug, productsById, repairLinks, titleInSentence, type Product,
 } from '../../../lib/content';
 
 export async function getStaticPaths() {
@@ -47,19 +47,15 @@ const repairs = repairLinks(data.relatedRepair);
 const categoryEntry = (await getCollection('categories', (c) => c.id === data.category))[0];
 const specRows = [...data.variants, ...(categoryEntry?.data.commonlySupplied ?? [])];
 
-const isInstrument = category.division === 'instruments';
+/** Which enquiry checklist and spec line the page shows. Accessories and coils are not sized like a valve. */
+const enquiry = data.enquiry ?? (category.division === 'instruments' ? 'instrument' : 'valve');
 const breadcrumbs = [
   { label: 'Products', href: productsHref },
   { label: category.label, href: category.href },
   { label: data.title },
 ];
 const whatsappText = `Hello ${site.name}, I have an enquiry about: ${data.title}`;
-/**
- * "a gate valve", "an electric actuated ball valve", but "forged valves" and "steam traps":
- * no article before a plural title ("sight glass" is singular). "UPVC" is read "you-PVC", so it takes "a".
- */
-const article = /^[aeio]|^u(?!pvc)/i.test(data.title) ? 'an ' : 'a ';
-const ctaName = `${/[^s]s$/i.test(data.title) ? '' : article}${data.title.toLowerCase()}`;
+const ctaName = titleInSentence(data.title);
 
 const mainImage = data.images[0];
 const schemaImage = mainImage ? new URL((await getImage({ src: mainImage.src, width: 720 })).src, site.url).href : undefined;
@@ -128,15 +124,22 @@ const schema = [
 
       <section class="block">
         <h2>Available to your specification</h2>
-        <p class="prose">
-          We supply this in a range of sizes, body materials, pressure ratings and end connections to match your process.
-          Tell us your requirement and our engineers will recommend the right option.
-        </p>
+        {enquiry === 'accessory' ? (
+          <p class="prose">
+            We supply this to suit your valve, actuator and control system.
+            Tell us your requirement and our engineers will recommend the right option.
+          </p>
+        ) : (
+          <p class="prose">
+            We supply this in a range of sizes, body materials, pressure ratings and end connections to match your process.
+            Tell us your requirement and our engineers will recommend the right option.
+          </p>
+        )}
         <div class="spec"><SpecTable rows={specRows} caption="Commonly supplied" /></div>
       </section>
 
       <section class="block">
-        <EnquiryChecklist kind={isInstrument ? 'instrument' : 'valve'} />
+        <EnquiryChecklist kind={enquiry} />
       </section>
 
       {data.faqs.length > 0 && (

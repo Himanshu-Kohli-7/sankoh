@@ -1,7 +1,7 @@
 ---
 /** "What to tell us when you enquire" — the per-category checklist from SPEC §5.2. */
 interface Props {
-  kind: 'valve' | 'instrument';
+  kind: 'valve' | 'instrument' | 'accessory';
   title?: string;
   headingLevel?: 'h2' | 'h3';
 }
@@ -10,6 +10,8 @@ const { kind, title = 'What to tell us when you enquire', headingLevel: Tag = 'h
 const lists = {
   valve: ['Size', 'Pressure', 'Temperature', 'Media', 'Body material', 'End connection', 'Actuation', 'Quantity'],
   instrument: ['Range', 'Accuracy', 'Process connection', 'Output signal', 'Display', 'Media', 'Quantity'],
+  /** Positioners, limit switch boxes, converters, coils: matched to the valve and control system, not the pipe. */
+  accessory: ['Valve type & size', 'Actuator make & model', 'Control signal', 'Supply voltage', 'Mounting', 'Location & enclosure', 'Quantity'],
 };
 ---
 
