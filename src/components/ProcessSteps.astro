@@ -5,6 +5,7 @@
  * Numbers are used because the content is a real sequence.
  */
 import Icon from './Icon.astro';
+import { repairSteps } from '../config/repair';
 
 export interface Step {
   title: string;
@@ -19,15 +20,7 @@ interface Props {
   tone?: 'light' | 'dark';
 }
 
-const repairSteps: Step[] = [
-  { title: 'Receive & inspect', text: 'We receive the unit at our workshop and inspect it.', icon: 'box' },
-  { title: 'Strip down & assess', text: 'It is stripped down and each part is assessed.', icon: 'search' },
-  { title: 'Repair / replace parts', text: 'Worn or damaged parts are repaired or replaced.', icon: 'wrench' },
-  { title: 'Test & calibrate', text: 'The unit is tested before dispatch.', icon: 'pressure' },
-  { title: 'Report & dispatch', text: 'You get a report of the work done and the unit is sent back.', icon: 'truck' },
-];
-
-const { steps = repairSteps, headingLevel: Tag = 'h3', tone = 'light' } = Astro.props;
+const { steps = repairSteps.valve, headingLevel: Tag = 'h3', tone = 'light' } = Astro.props;
 ---
 
 <ol class="steps" data-tone={tone} style={`--count: ${steps.length}`}>

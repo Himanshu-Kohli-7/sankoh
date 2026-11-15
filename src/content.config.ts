@@ -90,7 +90,10 @@ const products = defineCollection({
     }),
 });
 
-/** The two repair hubs (SPEC §5.3): valve repair now, drive repair later. */
+/** A short link shown under "Replacing is the better call when" on a repair hub. */
+const link = z.object({ label: z.string(), href: z.string() });
+
+/** The two repair hubs (SPEC §5.3): /valve-repair/ and /drive-repair/. */
 const repairHubs = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/repair-hubs' }),
   schema: z.object({
@@ -107,9 +110,41 @@ const repairHubs = defineCollection({
       intro: z.string(),
       repair: z.array(z.string()),
       replace: z.array(z.string()),
+      /** Where to go instead of a repair. Only offers confirmed in CLAUDE.md §4; empty for drives (PENDING #61). */
+      links: z.array(link).default([]),
     }),
     whySankoh: z.array(z.object({ icon: z.string(), title: z.string(), text: z.string() })),
+    /** "What to send us" checklist: short labels, not prose. */
+    whatToSend: z.array(z.string()).min(4),
     faqs: z.array(faq),
+  }),
+});
+
+/**
+ * Repair service pages (SPEC §5.4), one folder per group: `valve/ball-valve-repair.md` → /valve-repair/ball-valve-repair/.
+ * The markdown body is "How the repair works", described in general terms only (PENDING #17, #18).
+ */
+const repairServices = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/repair-services' }),
+  schema: z.object({
+    title: z.string(),
+    ...seo,
+    group: z.enum(['valve', 'drive']),
+    /** Answers the page's main question in 2–3 sentences; shown under the H1. */
+    summary: z.string(),
+    /** schema.org serviceType. */
+    serviceType: z.string(),
+    whatWeRepair: z.array(z.string()).min(3),
+    commonFaults: z.array(z.object({ title: z.string(), text: z.string() })).min(3),
+    /** Makes to name, from CLAUDE.md §4 only (VFDs: ABB "and all other makes"). Otherwise "any make". */
+    brandsNote: z.string().optional(),
+    /** "What to send us" checklist: short labels, not prose. */
+    whatToSend: z.array(z.string()).min(4),
+    faqs: z.array(faq).min(3),
+    /** Product ids, e.g. `manual-valves/ball-valve-flanged-end`. Each must list this page in its `relatedRepair`. */
+    relatedProducts: z.array(z.string()).max(4).default([]),
+    /** Internal note, never rendered. Mirror it in docs/PENDING.md. */
+    todo: z.string().optional(),
   }),
 });
 
@@ -151,4 +186,4 @@ const clients = defineCollection({
     }),
 });
 
-export const collections = { categories, products, repairHubs, repairGallery, reviews, clients };
+export const collections = { categories, products, repairHubs, repairServices, repairGallery, reviews, clients };

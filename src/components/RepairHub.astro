@@ -10,6 +10,7 @@ import type { CollectionEntry } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Button from './Button.astro';
 import CTABand from './CTABand.astro';
+import EnquiryChecklist from './EnquiryChecklist.astro';
 import FAQ from './FAQ.astro';
 import Icon from './Icon.astro';
 import PageHero from './PageHero.astro';
@@ -18,7 +19,7 @@ import RepairServiceCard from './RepairServiceCard.astro';
 import SectionHeader from './SectionHeader.astro';
 import TrustStats from './TrustStats.astro';
 import { site, telHref, waHref, quoteHref } from '../config/site';
-import { serviceLinks } from '../config/nav';
+import { groupName, groupThing, repairSteps, repairWhatsApp } from '../config/repair';
 import { pageTitle, repairLinks } from '../lib/content';
 
 interface Props {
@@ -29,15 +30,17 @@ const { data } = hub;
 
 /** The quote form reads the slug and selects enquiry type "Repair" (SPEC §6.1 allows only ?product=). */
 const quoteSlug = hub.id;
-const thing = data.group === 'valve' ? 'valve' : 'drive';
-const whatsappText = `Hello ${site.name}, I have a ${thing} to send for repair. Photo attached.`;
+const thing = groupThing[data.group];
+/** "Hi, I need valve repair. Photo attached." */
+const whatsappText = repairWhatsApp(groupName[data.group]);
+const gridName = data.group === 'valve' ? 'valve' : 'drive and HMI';
+const label = data.group === 'valve' ? 'nameplate' : 'rating label';
 
 const links = repairLinks(data.services.map((s) => s.href));
 const services = data.services.map((s, i) => ({ ...links[i], summary: s.summary }));
 const gallery = (await getCollection('repairGallery', (g) => g.data.group === data.group)).sort(
   (a, b) => a.data.order - b.data.order,
 );
-const [advisory, , surplus] = serviceLinks;
 
 const breadcrumbs = [{ label: data.title }];
 const schema = [
@@ -58,6 +61,7 @@ const schema = [
   description={data.metaDescription}
   pageName={data.title}
   quoteProduct={quoteSlug}
+  {whatsappText}
   {breadcrumbs}
   {schema}
 >
@@ -65,7 +69,7 @@ const schema = [
     <div class="actions">
       <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">WhatsApp a photo of your {thing}</Button>
       <Button href={telHref()} variant="on-dark" icon="phone" data-event="click_call">Call the repair desk</Button>
-      <Button href={quoteHref(quoteSlug)} variant="on-dark" icon="quote">Request a repair quote</Button>
+      <Button href={quoteHref(quoteSlug)} variant="on-dark" icon="quote">Request repair</Button>
     </div>
     <div class="facts" slot="aside"><TrustStats tone="dark" columns={2} /></div>
   </PageHero>
@@ -74,7 +78,7 @@ const schema = [
     <SectionHeader
       eyebrow="What we repair"
       division="repair"
-      title={`${services.length} ${thing} repair services`}
+      title={`${services.length} ${gridName} repair services`}
       intro="Find your unit below, or send us a photo if you are not sure what it is."
     />
     <ul class="services">
@@ -94,7 +98,7 @@ const schema = [
         title="How a workshop repair runs"
         intro={`Five steps from your door and back. ${site.service.repairTurnaround}.`}
       />
-      <div class="steps"><ProcessSteps /></div>
+      <div class="steps"><ProcessSteps steps={repairSteps[data.group]} /></div>
     </div>
   </section>
 
@@ -112,11 +116,11 @@ const schema = [
         <ul>
           {data.repairVsReplace.replace.map((item) => <li><Icon name="arrow-right" size={20} />{item}</li>)}
         </ul>
-        <p class="links">
-          <a href="/products/">New valves</a>
-          <a href={surplus.href}>{surplus.label}</a>
-          <a href={advisory.href}>{advisory.label}</a>
-        </p>
+        {data.repairVsReplace.links.length > 0 && (
+          <p class="links">
+            {data.repairVsReplace.links.map((l) => <a href={l.href}>{l.label}</a>)}
+          </p>
+        )}
       </div>
     </div>
   </section>
@@ -152,16 +156,29 @@ const schema = [
     </section>
   )}
 
+  <section class="container-content section-y send" id="what-to-send">
+    <EnquiryChecklist
+      title="What to send us"
+      intro={`A photo of the ${thing} and its ${label} is enough to start. Add whatever else you know from this list.`}
+      items={data.whatToSend}
+    >
+      <p class="send-actions">
+        <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">WhatsApp the details</Button>
+        <Button href={quoteHref(quoteSlug)} variant="secondary" icon="quote">Repair request form</Button>
+      </p>
+    </EnquiryChecklist>
+  </section>
+
   <section class="container-content section-y faq-layout">
     <SectionHeader eyebrow="FAQ" division="repair" title={`${data.title}: common questions`} />
     <FAQ items={data.faqs} schema />
   </section>
 
   <CTABand
-    title={`Send us your ${thing}`}
-    text={`WhatsApp a photo of the ${thing} and its nameplate, call the repair desk, or request a repair quote. ${site.service.availability}.`}
+    title="Request repair"
+    text={`Call the repair desk, WhatsApp a photo of the ${thing} and its ${label}, or use the repair request form. ${site.service.availability}.`}
     quoteProduct={quoteSlug}
-    quoteLabel="Request a repair quote"
+    quoteLabel="Repair request form"
     {whatsappText}
   />
 </Base>
@@ -197,6 +214,8 @@ const schema = [
   .gallery :global(img) { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--color-line); border-radius: 2px; }
   .gallery figcaption { margin-top: 0.5rem; color: var(--color-slate); font-size: var(--text-small); }
 
+  .send { padding-bottom: 0; }
+  .send-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
   .faq-layout { display: grid; gap: 2rem; }
 
   @media (max-width: 559px) {

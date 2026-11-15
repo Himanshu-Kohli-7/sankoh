@@ -5,9 +5,11 @@ import { site, waHref } from '../../config/site';
 
 interface Props {
   pageName: string;
+  /** Overrides the default message. */
+  whatsappText?: string;
 }
-const { pageName } = Astro.props;
-const message = `Hello ${site.name}, I have an enquiry about: ${pageName}`;
+const { pageName, whatsappText } = Astro.props;
+const message = whatsappText ?? `Hello ${site.name}, I have an enquiry about: ${pageName}`;
 ---
 
 <a class="wa" href={waHref(message)} target="_blank" rel="noopener" data-event="click_whatsapp" aria-label="Chat with us on WhatsApp">

@@ -8,10 +8,12 @@ import { site, telHref, waHref, quoteHref } from '../../config/site';
 
 interface Props {
   pageName: string;
+  /** Overrides the default message. */
+  whatsappText?: string;
   quoteProduct?: string;
 }
-const { pageName, quoteProduct } = Astro.props;
-const message = `Hello ${site.name}, I have an enquiry about: ${pageName}`;
+const { pageName, quoteProduct, whatsappText } = Astro.props;
+const message = whatsappText ?? `Hello ${site.name}, I have an enquiry about: ${pageName}`;
 ---
 
 <nav class="actionbar" aria-label="Quick contact">

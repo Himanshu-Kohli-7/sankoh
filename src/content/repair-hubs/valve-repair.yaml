@@ -44,6 +44,24 @@ repairVsReplace:
     - The valve was the wrong type, size or material for the service and keeps failing.
     - It is a small, standard valve and a new one costs less than the repair.
     - The process conditions have changed since the valve was installed.
+  links:
+    - label: New valves
+      href: /products/
+    - label: Surplus & Discontinued Valves
+      href: /services/surplus-discontinued-valves/
+    - label: Valve Selection & Maintenance Advisory
+      href: /services/valve-selection-maintenance-advisory/
+
+# Checklist labels for "What to send us". Asks the customer for details; makes no claim.
+whatToSend:
+  - Photo of the valve and its nameplate
+  - Make and model
+  - Valve type and size
+  - What is wrong with it
+  - Media, pressure and temperature
+  - Actuator or positioner fitted
+  - Number of units
+  - Your location, for on-site service
 
 # Company facts only (CLAUDE.md §4). The fact strip above already covers make, turnaround, availability and team.
 whySankoh:

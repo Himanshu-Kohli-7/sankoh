@@ -1,11 +1,15 @@
 ---
 /** "What to tell us when you enquire" — the per-category checklist from SPEC §5.2. */
 interface Props {
-  kind: 'valve' | 'instrument' | 'accessory' | 'instrument-accessory' | 'analytical';
+  kind?: 'valve' | 'instrument' | 'accessory' | 'instrument-accessory' | 'analytical';
+  /** Custom list, e.g. a repair page's "What to send us". Overrides `kind`. */
+  items?: string[];
   title?: string;
+  /** One line under the heading. */
+  intro?: string;
   headingLevel?: 'h2' | 'h3';
 }
-const { kind, title = 'What to tell us when you enquire', headingLevel: Tag = 'h2' } = Astro.props;
+const { kind = 'valve', items, title = 'What to tell us when you enquire', intro, headingLevel: Tag = 'h2' } = Astro.props;
 
 const lists = {
   valve: ['Size', 'Pressure', 'Temperature', 'Media', 'Body material', 'End connection', 'Actuation', 'Quantity'],
@@ -24,14 +28,17 @@ const lists = {
 
 <section class="checklist">
   <Tag class="title">{title}</Tag>
+  {intro && <p class="intro">{intro}</p>}
   <ul>
-    {lists[kind].map((item) => <li>{item}</li>)}
+    {(items ?? lists[kind]).map((item) => <li>{item}</li>)}
   </ul>
+  <slot />
 </section>
 
 <style>
   .checklist { padding: 1.5rem; background: var(--color-paper); border: 1px solid var(--color-line); border-radius: 2px; }
   .title { font-size: var(--text-h3); }
+  .intro { margin-top: 0.5rem; color: var(--color-slate); line-height: 1.5; }
   ul { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: 0.25rem 1.5rem; margin-top: 1rem; }
   li { display: flex; align-items: center; gap: 0.75rem; min-height: 2.5rem; color: var(--color-ink); }
   /* An empty tick box, as on an enquiry form. */
