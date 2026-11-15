@@ -5,6 +5,12 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# Quote form endpoint (netlify/functions/quote.ts, served at /api/quote).
+# Set in the Netlify UI only, never in the repo: TURNSTILE_SECRET_KEY, EMAIL_USER, EMAIL_PASS.
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
 # Canonical host is www (existing redirect, kept from the old site).
 [[redirects]]
   from = "https://sankohtech.com/*"
@@ -12,5 +18,4 @@
   status = 301
   force = true
 
-# TODO (Phase 3): functions = "netlify/functions" once the quote function exists.
 # TODO (Phase 4): old-URL 301s from SPEC §10.

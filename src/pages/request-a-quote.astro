@@ -1,20 +1,30 @@
 ---
 /**
- * Request a quote — interim page. The Preact form (SPEC §6.1) replaces it at the same URL next round.
- * Until then: phone, WhatsApp (generic message: this static page does not read ?product=) and email,
- * with what to include for each enquiry type. Canonical is the bare URL (SEO.astro uses the pathname).
+ * Request a quote (SPEC §6.1). Static HTML with a Preact form island.
+ * - Without JavaScript the form is hidden (Turnstile needs JS) and the page offers Call, WhatsApp and email.
+ * - `?product=<slug>` is the only query string the site allows; the canonical is the bare URL.
+ * - The "Please call us" failure block is the one place outside /contact/ that prints both numbers,
+ *   inside data-contact-exempt (scripts/check-contact.mjs skips it).
  */
 import Base from '../layouts/Base.astro';
 import Button from '../components/Button.astro';
 import CallButton from '../components/contact/CallButton.astro';
 import WhatsAppButton from '../components/contact/WhatsAppButton.astro';
+import PhoneNumber from '../components/contact/PhoneNumber.astro';
+import SalesLine from '../components/contact/SalesLine.astro';
 import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
+import QuoteForm from '../components/forms/QuoteForm';
 import { site } from '../config/site';
 import { pageTitle } from '../lib/content';
+import { quoteProductMap } from '../lib/quoteProducts';
+import { turnstileSiteKey } from '../lib/turnstile';
 
+const siteKey = turnstileSiteKey();
+const products = await quoteProductMap();
 const whatsappText = `Hello ${site.name}, I would like a quote.`;
+const photoText = `Hello ${site.name}, I am sending a photo for a quote.`;
 const mailHref = `mailto:${site.email}?subject=${encodeURIComponent('Enquiry')}`;
 
 const types = [
@@ -49,7 +59,7 @@ const breadcrumbs = [{ label: 'Request a quote' }];
 
 <Base
   title={pageTitle('Request a Quote')}
-  description={`Request a quote from ${site.name}: call, WhatsApp or email us your requirement for products, valve and VFD repair, sourcing or technical advice.`}
+  description={`Request a quote from ${site.name} for valves, instruments, valve and VFD repair, sourcing or advice. Send the form, call, WhatsApp or email us.`}
   pageName="Request a quote"
   {whatsappText}
   {breadcrumbs}
@@ -59,35 +69,63 @@ const breadcrumbs = [{ label: 'Request a quote' }];
     division="repair"
     eyebrow="Enquiry"
     title="Request a quote"
-    lead="Send us your requirement by WhatsApp, email or phone. Our engineers will come back with a quote or the questions we need answered first."
+    lead="Tell us what you need: a product, a repair, something to source or a technical question. Our engineers will come back with a quote or the questions we need answered first."
   />
 
   <section class="container-content section-y">
-    <ul class="ways">
-      <li>
-        <Icon name="whatsapp" size={28} />
-        <h2>WhatsApp</h2>
-        <p>Best for photos of a nameplate, a drawing or a faulty unit.</p>
-        <WhatsAppButton text={whatsappText} variant="primary" />
-      </li>
-      <li>
-        <Icon name="mail" size={28} />
-        <h2>Email</h2>
-        <p>Best for datasheets, lists and larger requirements.</p>
-        <Button href={mailHref} variant="secondary" icon="mail">{site.email}</Button>
-      </li>
-      <li>
-        <Icon name="phone" size={28} />
-        <h2>Phone</h2>
-        <p>{site.hours.display}. {site.service.supportLine}.</p>
-        <CallButton />
-      </li>
-    </ul>
+    <div class="layout">
+      <div class="form-col">
+        <h2 class="form-title">Send your requirement</h2>
+        <p class="nojs-note">
+          This form needs JavaScript. Please call, WhatsApp or email us instead: the details are alongside.
+        </p>
+        <div class="form-wrap">
+          <QuoteForm client:load turnstileSiteKey={siteKey}>
+            <WhatsAppButton slot="photo" label="WhatsApp us a photo" text={photoText} size="sm" />
+            <div slot="failure" data-contact-exempt class="failure">
+              <p class="failure-title">Please call us</p>
+              <p>Your enquiry could not be sent. Nothing you typed has been lost: it is still in the form. Call or WhatsApp us, or try again in a few minutes.</p>
+              <PhoneNumber withWhatsApp size="lg" />
+              <SalesLine />
+              <p class="failure-mail">Email <a href={mailHref}>{site.email}</a></p>
+            </div>
+          </QuoteForm>
+        </div>
+      </div>
+
+      <aside class="ways" aria-labelledby="ways-title">
+        <h2 id="ways-title" class="ways-title">Prefer to talk?</h2>
+        <div class="way">
+          <Icon name="phone" size={24} />
+          <div>
+            <h3>Call</h3>
+            <p>{site.hours.display}. {site.service.supportLine}.</p>
+            <CallButton size="sm" />
+          </div>
+        </div>
+        <div class="way">
+          <Icon name="whatsapp" size={24} />
+          <div>
+            <h3>WhatsApp</h3>
+            <p>Best for photos of a nameplate, a drawing or a faulty unit.</p>
+            <WhatsAppButton text={whatsappText} size="sm" />
+          </div>
+        </div>
+        <div class="way">
+          <Icon name="mail" size={24} />
+          <div>
+            <h3>Email</h3>
+            <p>Best for datasheets, lists and larger requirements.</p>
+            <Button href={mailHref} variant="ghost" icon="mail" size="sm">{site.email}</Button>
+          </div>
+        </div>
+      </aside>
+    </div>
   </section>
 
   <section class="band">
     <div class="container-content section-y">
-      <SectionHeader eyebrow="Checklist" division="repair" title="What to include" intro="Pick the kind of enquiry. The details listed help us quote in one go." />
+      <SectionHeader eyebrow="Checklist" division="repair" title="What to include" intro="The details listed help us quote in one go." />
       <ul class="types">
         {types.map((t) => (
           <li>
@@ -104,15 +142,60 @@ const breadcrumbs = [{ label: 'Request a quote' }];
       </ul>
     </div>
   </section>
+
+  <script type="application/json" id="quote-products" set:html={JSON.stringify(products)} />
 </Base>
 
 <style>
-  .ways { display: grid; gap: 0.75rem; }
-  .ways > li { display: grid; align-content: start; gap: 0.75rem; padding: 1.5rem; border: 1px solid var(--color-line); border-top: 4px solid var(--color-amber); border-radius: 2px; }
-  .ways > li > :global(svg) { color: var(--color-blue); }
-  .ways h2 { font-size: var(--text-h3); }
-  .ways p { color: var(--color-slate); font-size: 0.9375rem; line-height: 1.5; }
-  .ways :global(.btn) { justify-self: start; max-width: 100%; overflow-wrap: anywhere; }
+  .layout { display: grid; gap: 3rem; }
+  .form-title { font-size: var(--text-h3); }
+
+  /* No JavaScript: hide the form, point to the contact options. */
+  .nojs-note { margin-top: 1rem; padding: 1rem 1.25rem; border-left: 4px solid var(--color-amber); background: var(--color-paper); }
+  :global(html.js) .nojs-note { display: none; }
+  :global(html:not(.js)) .form-wrap { display: none; }
+  .form-wrap { margin-top: 1.5rem; }
+
+  /* Form island internals. */
+  .form-wrap :global(.qf) { display: grid; gap: 1.25rem; }
+  .form-wrap :global(.qf-grid) { display: grid; gap: 1.25rem; }
+  .form-wrap :global(.qf-field) { display: grid; gap: 0.375rem; align-content: start; }
+  .form-wrap :global(label) { font-weight: 600; color: var(--color-navy); }
+  .form-wrap :global(.qf-req), .form-wrap :global(.qf-opt) { font-weight: 400; color: var(--color-slate); font-size: 0.875rem; }
+  .form-wrap :global(.qf-hint) { color: var(--color-slate); font-size: 0.875rem; line-height: 1.4; }
+  .form-wrap :global(input), .form-wrap :global(textarea) {
+    width: 100%; min-height: 3rem; padding: 0.625rem 0.875rem; border: 1px solid #9fb0c2; border-radius: 2px;
+    background: var(--color-white); color: var(--color-ink); font: inherit; font-size: 1rem; line-height: 1.5;
+  }
+  .form-wrap :global(textarea) { min-height: 9rem; resize: vertical; }
+  .form-wrap :global(input:focus-visible), .form-wrap :global(textarea:focus-visible) { outline: 3px solid var(--color-blue); outline-offset: 1px; border-color: var(--color-blue); }
+  .form-wrap :global([aria-invalid='true']) { border-color: #b42318; border-width: 2px; }
+  .form-wrap :global(.qf-error) { color: #b42318; font-size: 0.875rem; font-weight: 600; }
+  .form-wrap :global(.qf-summary) { color: #b42318; font-weight: 600; }
+
+  .form-wrap :global(.qf-photo) { display: grid; gap: 0.75rem; padding: 1rem 1.25rem; border: 1px dashed #9fb0c2; border-radius: 2px; background: var(--color-paper); font-size: 0.9375rem; line-height: 1.5; }
+  .form-wrap :global(.qf-photo .btn) { justify-self: start; }
+  .form-wrap :global(.qf-hp) { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .form-wrap :global(.qf-turnstile:empty) { display: none; }
+  .form-wrap :global(.qf-submit) { display: grid; gap: 0.75rem; justify-items: start; }
+  .form-wrap :global(.qf-submit .btn) { min-width: 12rem; cursor: pointer; }
+  .form-wrap :global(.qf-submit .btn[disabled]) { opacity: 0.7; cursor: progress; }
+  .form-wrap :global(.qf-note) { color: var(--color-slate); font-size: 0.875rem; }
+  .form-wrap :global(.qf-note a) { color: var(--color-blue); }
+
+  .failure { display: grid; gap: 0.5rem; padding: 1.25rem 1.5rem; border: 1px solid var(--color-line); border-top: 4px solid #b42318; border-radius: 2px; background: #fff7f5; }
+  .failure-title { color: var(--color-navy); font-size: var(--text-h3); font-weight: 600; }
+  .failure-mail a { color: var(--color-blue); font-weight: 600; overflow-wrap: anywhere; }
+  .form-wrap :global(.qf-failure:focus) { outline: none; }
+
+  .ways { display: grid; gap: 0; align-content: start; border: 1px solid var(--color-line); border-top: 4px solid var(--color-amber); border-radius: 2px; }
+  .ways-title { padding: 1.25rem 1.5rem 0.25rem; font-size: 1.25rem; }
+  .way { display: grid; grid-template-columns: auto 1fr; gap: 0.875rem; padding: 1.25rem 1.5rem; border-top: 1px solid var(--color-line); }
+  .ways-title + .way { border-top: 0; }
+  .way > :global(svg) { color: var(--color-blue); margin-top: 0.125rem; }
+  .way h3 { font-size: 1.0625rem; }
+  .way p { margin-block: 0.25rem 0.75rem; color: var(--color-slate); font-size: 0.9375rem; line-height: 1.5; }
+  .way :global(.btn) { max-width: 100%; overflow-wrap: anywhere; }
 
   .band { background: var(--color-paper); border-top: 1px solid var(--color-line); }
   .types { display: grid; gap: 0.75rem; margin-top: 2rem; }
@@ -125,9 +208,15 @@ const breadcrumbs = [{ label: 'Request a quote' }];
   .items li { display: flex; gap: 0.5rem; font-size: 0.9375rem; line-height: 1.4; }
   .items :global(svg) { flex: none; margin-top: 0.0625rem; color: var(--color-blue); }
 
+  @media (min-width: 640px) {
+    .form-wrap :global(.qf-grid) { grid-template-columns: 1fr 1fr; }
+  }
   @media (min-width: 768px) {
-    .ways { grid-template-columns: repeat(3, 1fr); }
     .types { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .layout { grid-template-columns: minmax(0, 1fr) 20rem; gap: 4rem; }
+    .ways { position: sticky; top: 6rem; }
   }
   @media (min-width: 1100px) {
     .types { grid-template-columns: repeat(4, 1fr); }

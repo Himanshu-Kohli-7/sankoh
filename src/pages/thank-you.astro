@@ -1,0 +1,80 @@
+---
+/**
+ * Quote form thank-you page (SPEC §6.1): noindex and left out of the sitemap (astro.config.mjs).
+ * GA4 `generate_lead` fires only when the form set sessionStorage['sankoh-lead'] just before
+ * redirecting here, and the flag is cleared at once, so a reload or a direct visit never counts.
+ */
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CallButton from '../components/contact/CallButton.astro';
+import WhatsAppButton from '../components/contact/WhatsAppButton.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../config/site';
+import { pageTitle } from '../lib/content';
+
+const breadcrumbs = [{ label: 'Request a quote', href: '/request-a-quote/' }, { label: 'Thank you' }];
+const steps = [
+  { icon: 'mail', text: 'Your enquiry has reached our inbox.' },
+  { icon: 'users', text: 'An engineer reads it and calls or emails you back, usually with a quote or the questions we need answered first.' },
+  { icon: 'clock', text: `We answer during office hours: ${site.hours.display}.` },
+];
+---
+
+<Base
+  title={pageTitle('Thank You')}
+  description={`Thank you for your enquiry to ${site.name}. Our engineers will reply soon; for anything urgent, call or WhatsApp us.`}
+  pageName="Thank you"
+  {breadcrumbs}
+  noindex
+>
+  <PageHero {breadcrumbs} division="repair" eyebrow="Enquiry sent" title="Thank you — we have your enquiry" />
+
+  <section class="container-content section-y">
+    <div class="body">
+      <ol class="steps">
+        {steps.map((s) => (
+          <li><Icon name={s.icon} size={24} /><p>{s.text}</p></li>
+        ))}
+      </ol>
+
+      <div class="urgent">
+        <h2>Need it sooner?</h2>
+        <p>For a breakdown or anything urgent, call or WhatsApp us. {site.service.supportLine}.</p>
+        <div class="actions">
+          <CallButton variant="primary" />
+          <WhatsAppButton text={`Hello ${site.name}, I have just sent an enquiry from your website.`} />
+        </div>
+      </div>
+
+      <p class="more">
+        <a href="/products/">Browse all products</a> · <a href="/valve-repair/">Valve repair</a> · <a href="/">Home</a>
+      </p>
+    </div>
+  </section>
+
+  <script is:inline>
+    (() => {
+      let product = null;
+      try {
+        product = sessionStorage.getItem('sankoh-lead');
+        sessionStorage.removeItem('sankoh-lead');
+      } catch (e) {}
+      if (product !== null && typeof window.gtag === 'function') {
+        window.gtag('event', 'generate_lead', { item_name: product });
+      }
+    })();
+  </script>
+</Base>
+
+<style>
+  .body { display: grid; gap: 2.5rem; max-width: 44rem; }
+  .steps { display: grid; gap: 1rem; }
+  .steps li { display: grid; grid-template-columns: auto 1fr; gap: 0.875rem; align-items: start; font-size: 1.0625rem; line-height: 1.5; }
+  .steps :global(svg) { color: var(--color-blue); margin-top: 0.125rem; }
+  .urgent { padding: 1.5rem; border: 1px solid var(--color-line); border-top: 4px solid var(--color-amber); border-radius: 2px; background: var(--color-paper); }
+  .urgent h2 { font-size: var(--text-h3); }
+  .urgent p { margin-top: 0.5rem; color: var(--color-slate); }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
+  .more a { color: var(--color-blue); font-weight: 600; text-underline-offset: 3px; }
+  .more { color: var(--color-slate); }
+</style>

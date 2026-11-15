@@ -31,3 +31,6 @@ yarn-error.log*
 /dist
 /.astro
 .playwright-mcp/
+
+# Source material not for publishing (catalogue.pdf names a former contact)
+/reference/

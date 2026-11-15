@@ -148,10 +148,16 @@ export const site = {
 
   /** TODO: IDs from the user (docs/PENDING.md). Analytics and verification are off while empty. */
   integrations: {
+    /** GA4 "G-…" ID. Empty: components/Analytics.astro renders nothing and no analytics JS ships. */
     ga4MeasurementId: '' as string,
     searchConsoleVerification: '' as string,
     bingVerification: '' as string,
-    turnstileSiteKey: '' as string,
+    /**
+     * Cloudflare Turnstile site key (public). `astro dev` uses Cloudflare's test key instead.
+     * The secret key lives only in Netlify as TURNSTILE_SECRET_KEY, never in the repo.
+     * A production build fails if this is empty or a test key (lib/turnstile.ts).
+     */
+    turnstileSiteKey: '0x4AAAAAAGCFx79y_XT964J_' as string,
   },
 } as const;
 

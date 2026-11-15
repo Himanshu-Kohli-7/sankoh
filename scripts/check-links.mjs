@@ -4,6 +4,9 @@
  * Every root-relative href and src in every HTML page must resolve to a file in dist/
  * (`/x/` → dist/x/index.html, `/x.svg` → dist/x.svg), and every #fragment must match an id
  * on the target page. External links (https:, tel:, mailto:, wa.me) are skipped.
+ * A fragment of the form `#key=value` is filter state (the product selector), not an anchor.
+ * Every `/request-a-quote/?product=<slug>` must use a slug the quote form knows (the JSON map in
+ * dist/request-a-quote/index.html, id="quote-products"), so every quote link prefills the form.
  * Exits 1 on any dead link. No dependencies.
  */
 import fs from 'node:fs';
@@ -46,8 +49,14 @@ function resolve(urlPath) {
 /** Page file → its own URL path, for same-page #fragments and relative links. */
 const urlOf = (file) => '/' + path.relative(DIST, file).split(path.sep).join('/').replace(/index\.html$/, '');
 
+const quotePage = path.join(DIST, 'request-a-quote', 'index.html');
+const quoteMap = fs.existsSync(quotePage)
+  ? JSON.parse(fs.readFileSync(quotePage, 'utf8').match(/id="quote-products">([\s\S]*?)<\/script>/)?.[1] ?? '{}')
+  : {};
+
 const dead = [];
 let checked = 0;
+let quoteLinks = 0;
 for (const page of pages) {
   const html = fs.readFileSync(page, 'utf8');
   const refs = [
@@ -66,7 +75,15 @@ for (const page of pages) {
       dead.push([urlOf(page), ref, 'no such page or file']);
       continue;
     }
-    if (fragment && target.endsWith('.html') && !idsOf(target).has(decodeURIComponent(fragment))) {
+    if (pathPart === '/request-a-quote/') {
+      const product = new URLSearchParams(beforeHash.split('?')[1] ?? '').get('product');
+      if (product !== null) {
+        quoteLinks++;
+        if (!quoteMap[product]) dead.push([urlOf(page), ref, `?product=${product} is not in the quote form's product list`]);
+      }
+    }
+    const isState = fragment !== undefined && fragment.includes('=');
+    if (fragment && !isState && target.endsWith('.html') && !idsOf(target).has(decodeURIComponent(fragment))) {
       dead.push([urlOf(page), ref, `no id="${fragment}" on the target page`]);
     }
   }
@@ -84,6 +101,6 @@ for (const [key, froms] of byLink) {
 console.log(
   dead.length
     ? `\n${byLink.size} dead link target(s), ${dead.length} occurrence(s), in ${pages.length} pages (${checked} internal links checked).`
-    : `No dead links: ${checked} internal links checked in ${pages.length} pages.`,
+    : `No dead links: ${checked} internal links checked in ${pages.length} pages; ${quoteLinks} quote links prefill a known product.`,
 );
 process.exit(dead.length ? 1 : 0);

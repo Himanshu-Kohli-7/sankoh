@@ -2,7 +2,7 @@
 /**
  * Privacy policy (SPEC §2.1): what an enquiry collects and why. Plain language, no named statute
  * and no invented retention period. There is no file upload: customers send photos on WhatsApp.
- * TODO (next round): when the quote form is built, make "What we collect" match its final fields exactly.
+ * "What we collect" must list exactly the quote form's fields (lib/quote.ts QUOTE_FIELDS).
  */
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
@@ -44,13 +44,15 @@ const breadcrumbs = [{ label: 'Privacy policy' }];
       </p>
 
       <h2>What we collect</h2>
-      <p>When you send an enquiry through the quote form, we receive the details you enter:</p>
+      <p>When you send an enquiry through the quote form, we receive the details you enter, and nothing else:</p>
       <ul>
-        <li>your name and, if you give it, your company</li>
+        <li>your name</li>
+        <li>your company, if you give it</li>
         <li>your phone number</li>
         <li>your email address, if you give it</li>
-        <li>your city or state</li>
-        <li>the product or service you are asking about, your requirement and the quantity</li>
+        <li>the product or service you are asking about, if you give it</li>
+        <li>the quantity, if you give it</li>
+        <li>the details of your requirement</li>
       </ul>
       <p>
         The form does not take file uploads. If you want to send photos, drawings or a nameplate picture, you can send them on
@@ -70,15 +72,21 @@ const breadcrumbs = [{ label: 'Privacy policy' }];
         Form enquiries are sent by email to our own inbox. Messages and calls reach our own phones and WhatsApp account. The
         services that carry them (our email provider, WhatsApp and the website host) handle the data only to deliver it.
       </p>
+      <p>
+        If the form cannot send your enquiry, your name, phone number and the product or service you asked about are kept in our
+        website host’s function log for a limited time, so that we can still call you back. The rest of what you typed is not kept
+        there.
+      </p>
 
       <h2>How long we keep it</h2>
       <p>For as long as we need it to answer and follow up your enquiry and to keep the business records that go with an order.</p>
 
       <h2>Analytics and cookies</h2>
       <p>
-        Once we turn on Google Analytics, it may set cookies. It loads only after you interact with a page, and we use it to see
-        which pages are visited, not to identify you. The spam check on the enquiry form may also use a cookie to tell people
-        from automated submissions.
+        Once we turn on Google Analytics, it may set cookies. It loads only after the page has finished loading or you interact
+        with it, and we use it to see which pages are visited and which buttons are used, not to identify you. The spam check on
+        the enquiry form (Cloudflare Turnstile) loads when you start filling in the form and may use a cookie to tell people from
+        automated submissions.
       </p>
 
       <h2>Your choices</h2>
