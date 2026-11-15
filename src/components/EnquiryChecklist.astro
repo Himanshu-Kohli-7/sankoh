@@ -1,7 +1,7 @@
 ---
 /** "What to tell us when you enquire" — the per-category checklist from SPEC §5.2. */
 interface Props {
-  kind: 'valve' | 'instrument' | 'accessory' | 'instrument-accessory';
+  kind: 'valve' | 'instrument' | 'accessory' | 'instrument-accessory' | 'analytical';
   title?: string;
   headingLevel?: 'h2' | 'h3';
 }
@@ -13,6 +13,11 @@ const lists = {
   /** Positioners, limit switch boxes, converters, coils: matched to the valve and control system, not the pipe. */
   /** Siphons and similar fittings that protect a gauge: no range, signal or power to ask about. */
   'instrument-accessory': ['Media', 'Process connection', 'Gauge or instrument it protects', 'Pressure & temperature', 'Material', 'Quantity'],
+  /** pH, BOD, COD and other analyzers: chosen by the sample and how it is presented to the sensor. */
+  analytical: [
+    'Sample type & source', 'Parameter & measuring range', 'Sample temperature & pressure', 'Installation (immersion, inline or flow cell)',
+    'Transmitter or sensor it pairs with', 'Output signal & power supply', 'Calibration & cleaning needs', 'Quantity',
+  ],
   accessory: ['Make & model it fits', 'Valve type & size', 'Control signal', 'Supply voltage', 'Mounting', 'Location & enclosure', 'Quantity'],
 };
 ---

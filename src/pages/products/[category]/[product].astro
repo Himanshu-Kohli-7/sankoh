@@ -116,7 +116,9 @@ const schema = [
                   {data.media.map((item) => <li>{item}</li>)}
                 </ul>
                 <p class="note">
-                  {category.division === 'instruments'
+                  {enquiry === 'analytical'
+                    ? 'Sensor choice depends on the sample, so tell us what the water or liquid contains.'
+                    : category.division === 'instruments'
                     ? 'The right wetted parts depend on the media, so tell us what is in the line.'
                     : 'The right body and seat materials depend on the media, so tell us what is in the line.'}
                 </p>
@@ -136,6 +138,11 @@ const schema = [
         ) : enquiry === 'instrument-accessory' ? (
           <p class="prose">
             We supply this to suit your gauge or instrument, its connection and your process conditions.
+            Tell us your requirement and our engineers will recommend the right option.
+          </p>
+        ) : enquiry === 'analytical' ? (
+          <p class="prose">
+            We supply this to suit your sample, measuring range and installation.
             Tell us your requirement and our engineers will recommend the right option.
           </p>
         ) : enquiry === 'instrument' ? (
