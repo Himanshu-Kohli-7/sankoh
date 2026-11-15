@@ -5,6 +5,9 @@ metaDescription: Limit switch box for quarter-turn actuators that signals open a
 updated: 2026-11-15
 category: valve-automation-accessories
 order: 1
+images:
+  - src: ../../../assets/products/limit-switch-box.png
+    alt: "Limit switch box with a domed open and closed position indicator and a mounting bracket"
 summary: A compact enclosure on top of a quarter-turn actuator that signals when the valve is fully open or fully shut, with an indicator the operator can see.
 operation: n/a
 enquiry: accessory

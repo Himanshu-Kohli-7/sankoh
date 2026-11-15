@@ -6,8 +6,8 @@ updated: 2026-11-15
 category: pneumatic-actuated-valves
 order: 11
 images:
-  - src: ../../../assets/products/pneumatic-power-cylinder-for-dampers.png
-    alt: Pneumatic power cylinder on a mounting frame with lever arm, positioner gauges and position indicator box
+  - src: ../../../assets/products/pneumatic-power-cylinder-for-dampers.jpg
+    alt: "Tie-rod pneumatic cylinder with an aluminium barrel and air ports at both ends"
 summary: A long-stroke pneumatic cylinder with a lever linkage, used to open, close and position dampers on boilers, fans, furnaces and air ducts.
 operation: pneumatic
 applications:

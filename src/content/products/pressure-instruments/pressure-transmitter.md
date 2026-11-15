@@ -5,6 +5,9 @@ metaDescription: Pressure transmitter that converts line pressure into a continu
 updated: 2026-11-15
 category: pressure-instruments
 order: 3
+images:
+  - src: ../../../assets/products/pressure-transmitter.jpg
+    alt: "Pressure transmitter with a round field housing, a display window and a threaded process connection"
 summary: An electronic instrument that measures pressure continuously and sends it as a standard signal to a PLC, controller or recorder, often with a local display as well.
 operation: n/a
 media: [Water, Steam, Air, Oil, Gas, Chemicals]

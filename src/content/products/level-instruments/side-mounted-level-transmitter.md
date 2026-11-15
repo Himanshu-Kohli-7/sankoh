@@ -6,8 +6,8 @@ updated: 2026-11-15
 category: level-instruments
 order: 4
 images:
-  - src: ../../../assets/products/side-mounted-level-transmitter.webp
-    alt: Side mounted float level instrument with a stainless steel float on a hinged arm, a mounting flange and an enclosure behind it
+  - src: ../../../assets/products/side-mounted-level-transmitter.jpg
+    alt: "Side mounted float level instruments with flanged bodies, float arms and terminal housings"
 summary: A float level instrument fitted through the side wall of a tank, whose float swings on a hinged arm as the liquid rises and falls, turning that movement into a level signal.
 operation: n/a
 media: [Water, Oil, Chemicals]

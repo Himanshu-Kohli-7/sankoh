@@ -5,9 +5,6 @@ metaDescription: Dial pressure gauge for a direct local reading of pressure on s
 updated: 2026-11-15
 category: pressure-instruments
 order: 1
-images:
-  - src: ../../../assets/products/pressure-gauge.webp
-    alt: Dial pressure gauge with a polished round case and a threaded bottom connection
 summary: A dial instrument that shows line pressure on the spot, needing no power, usually by means of a curved Bourdon tube that straightens slightly as the pressure rises.
 operation: n/a
 media: [Steam, Water, Air, Oil, Gas, Chemicals]

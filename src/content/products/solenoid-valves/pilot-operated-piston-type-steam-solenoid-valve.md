@@ -5,6 +5,9 @@ metaDescription: Pilot operated piston type solenoid valve for steam, with a met
 updated: 2026-11-15
 category: solenoid-valves
 order: 4
+images:
+  - src: ../../../assets/products/pilot-operated-piston-type-steam-solenoid-valve.png
+    alt: "Steam solenoid valve with a screwed body, a high-temperature coil and a manual override knob"
 summary: A pilot operated solenoid valve with a metal piston in place of a rubber diaphragm, built to stand up to the heat and erosion of steam service.
 operation: solenoid
 media: [Steam, Water]

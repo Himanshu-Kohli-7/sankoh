@@ -1,0 +1,67 @@
+---
+/** Image credits (CLAUDE.md §2.3): author, licence and source of every openly licensed photo. */
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { imageCredits } from '../config/imageCredits';
+import { site, listAnd } from '../config/site';
+import { pageTitle } from '../lib/content';
+
+const breadcrumbs = [{ label: 'Image credits' }];
+const partners = listAnd(site.brands.authorisedPartners);
+---
+
+<Base
+  title={pageTitle('Image Credits')}
+  description="Authors, licences and sources of the openly licensed photographs used on the Sankoh Technical Solutions website, with where each one appears."
+  pageName="Image credits"
+  {breadcrumbs}
+>
+  <PageHero
+    {breadcrumbs}
+    division="valves"
+    eyebrow="Company"
+    title="Image credits"
+    lead="Some product photographs on this site are openly licensed images. Each is credited here with its author, licence and source."
+  />
+
+  <section class="container-content section-y">
+    <div class="prose intro">
+      <p>
+        Product photographs that show the name of {partners} are those companies' own product images. {site.name} is their
+        authorised partner.
+      </p>
+      <p>
+        The photographs below come from Wikimedia Commons and are used under the licences shown. They illustrate the type of
+        product only; they are not photographs of our stock.
+      </p>
+    </div>
+
+    <ul class="credits">
+      {imageCredits.map((credit) => (
+        <li>
+          <h2><a href={credit.usedOn.href}>{credit.usedOn.label}</a></h2>
+          <dl>
+            <div><dt>Image</dt><dd><a href={credit.source} rel="noopener">{credit.title}</a></dd></div>
+            <div><dt>Author</dt><dd>{credit.author}</dd></div>
+            <div><dt>Licence</dt><dd><a href={credit.licenceUrl} rel="license noopener">{credit.licence}</a></dd></div>
+            <div><dt>Changes</dt><dd>{credit.changes}</dd></div>
+          </dl>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .intro { max-width: 44rem; }
+  .credits { display: grid; gap: 1rem; margin-top: 2.5rem; }
+  .credits li { padding: 1.5rem; border: 1px solid var(--color-line); border-top: 4px solid var(--color-navy); border-radius: 2px; }
+  h2 { font-size: 1.25rem; }
+  dl { display: grid; gap: 0.5rem; margin-top: 1rem; }
+  dl > div { display: grid; grid-template-columns: 6rem 1fr; gap: 0.75rem; }
+  dt { color: var(--color-slate); font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; padding-top: 0.125rem; }
+  dd { overflow-wrap: anywhere; }
+  @media (min-width: 768px) {
+    .credits { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>

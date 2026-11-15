@@ -5,6 +5,9 @@ metaDescription: Conductivity and TDS analyzer for RO plants, boilers, cooling t
 updated: 2026-11-15
 category: analytical-instruments
 order: 5
+images:
+  - src: ../../../assets/products/conductivity-tds-analyzer.jpg
+    alt: "Panel-mounted conductivity analyzer with a digital display and a four-button keypad"
 summary: An online analyzer that measures how well water conducts electricity and, from that, estimates its total dissolved solids, for continuous checks on water purity and salt content.
 operation: n/a
 enquiry: analytical

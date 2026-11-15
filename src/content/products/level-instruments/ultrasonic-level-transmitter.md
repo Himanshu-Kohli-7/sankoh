@@ -7,7 +7,7 @@ category: level-instruments
 order: 2
 images:
   - src: ../../../assets/products/ultrasonic-level-transmitter.jpg
-    alt: Ultrasonic level transmitter with a round green housing and display window above a threaded sensor body
+    alt: "Ultrasonic level transmitter with a round display housing and a threaded sensor face"
 summary: A non-contact level transmitter that sends sound pulses down to a surface and times the echo, widely used on water tanks, sumps and open channels.
 operation: n/a
 media: [Water, Chemicals]

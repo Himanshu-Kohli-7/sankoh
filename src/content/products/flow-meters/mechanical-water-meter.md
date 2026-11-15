@@ -7,7 +7,7 @@ category: flow-meters
 order: 7
 images:
   - src: ../../../assets/products/mechanical-water-meter.webp
-    alt: Flanged mechanical water meter with a red body and a dial under a hinged lid
+    alt: "Flanged Woltman-type mechanical water meter with a lidded register on top"
 summary: A water meter driven entirely by the flow itself, in which a vane wheel or helical turbine turns a gear train and dial, with no power supply or electronics needed.
 operation: n/a
 media: [Water]

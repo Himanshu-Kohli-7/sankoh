@@ -4,7 +4,7 @@ category: manual-valves
 order: 2
 images:
   - src: ../../../assets/products/ball-valve-flanged-end.webp
-    alt: "Flanged-end ball valve with a blue lever handle"
+    alt: "Two-piece flanged ball valve with a lever handle"
 summary: "A quarter-turn shut-off valve with a bored ball, bolted into the line between flanges."
 operation: manual
 seoTitle: Ball Valve – Flanged End

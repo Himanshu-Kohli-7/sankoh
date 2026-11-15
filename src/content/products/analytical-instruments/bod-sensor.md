@@ -5,6 +5,9 @@ metaDescription: Online BOD sensor that gives a continuous estimate of biochemic
 updated: 2026-11-15
 category: analytical-instruments
 order: 3
+images:
+  - src: ../../../assets/products/bod-sensor.webp
+    alt: "Stainless steel online immersion probe for water quality measurement, with its cable"
 summary: A probe that estimates the biochemical oxygen demand of wastewater continuously, usually from how the water absorbs light, so operators see changes in load as they happen.
 operation: n/a
 enquiry: analytical

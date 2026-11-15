@@ -7,7 +7,7 @@ category: flow-meters
 order: 1
 images:
   - src: ../../../assets/products/electromagnetic-flow-meter.jpg
-    alt: Flanged electromagnetic flow meter with a lined bore and a display transmitter mounted on top
+    alt: "Flanged electromagnetic flow meter with a display transmitter mounted on top of the meter body"
 summary: A flow meter for liquids that conduct electricity, which reads velocity from the voltage induced as the liquid moves through a magnetic field, with an open bore and no moving parts.
 operation: n/a
 media: [Water, Chemicals]

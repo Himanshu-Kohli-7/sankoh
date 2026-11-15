@@ -5,6 +5,9 @@ metaDescription: Thermowells that hold a temperature gauge or sensor in the line
 updated: 2026-11-15
 category: temperature-instruments
 order: 5
+images:
+  - src: ../../../assets/products/thermowell.png
+    alt: "Stainless steel thermowell with a straight stem and a sanitary clamp flange"
 summary: A closed-ended tube fixed into a pipe or vessel, into which a temperature gauge or sensor slides, so the instrument is shielded from the process and can be changed while it runs.
 operation: n/a
 enquiry: instrument-accessory

@@ -5,6 +5,9 @@ metaDescription: pH transmitter that reads a pH sensor, shows pH and temperature
 updated: 2026-11-15
 category: analytical-instruments
 order: 2
+images:
+  - src: ../../../assets/products/ph-transmitter.jpg
+    alt: "Panel-mounted pH transmitter showing the pH value and sample temperature on its display"
 summary: The electronic unit of a pH loop, which reads the sensor's tiny signal, compensates for temperature, shows the value and passes it on as an output or relay action.
 operation: n/a
 enquiry: analytical

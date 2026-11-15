@@ -104,6 +104,7 @@ export const companyLinks: NavLink[] = [
   { label: 'Brands', href: '/brands/' },
   { label: 'Contact', href: '/contact/' },
   { label: 'Privacy policy', href: '/privacy-policy/' },
+  { label: 'Image credits', href: '/image-credits/' },
 ];
 
 export const productsHref = '/products/';

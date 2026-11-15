@@ -6,8 +6,8 @@ updated: 2026-11-15
 category: flow-meters
 order: 4
 images:
-  - src: ../../../assets/products/ultrasonic-flow-meter.webp
-    alt: Inline ultrasonic flow meter with flanged ends, transducers on the measuring tube and a display transmitter
+  - src: ../../../assets/products/ultrasonic-flow-meter.jpg
+    alt: "Wall-mount ultrasonic flow meter with a keypad transmitter, clamp-on transducers and cables"
 summary: A flow meter that times sound pulses sent with and against the flow to work out its velocity, with no parts inside the stream and clamp-on versions that fit outside the pipe.
 operation: n/a
 media: [Water, Oil, Chemicals]

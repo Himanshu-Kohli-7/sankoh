@@ -5,6 +5,9 @@ metaDescription: Motorised globe valve with a linear electric actuator for stead
 updated: 2026-11-15
 category: electric-actuated-valves
 order: 9
+images:
+  - src: ../../../assets/products/motorised-globe-valve.png
+    alt: "Flanged globe valve fitted with an electric actuator on a yoke"
 summary: A globe valve driven by a linear electric actuator, used as an electric control valve to regulate hot water, chilled water and steam from a controller or BMS.
 operation: electric
 media: [Water, Steam, Air, Oil]

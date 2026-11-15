@@ -5,6 +5,9 @@ metaDescription: Dissolved oxygen analyzer for aeration tanks, sewage and efflue
 updated: 2026-11-15
 category: analytical-instruments
 order: 6
+images:
+  - src: ../../../assets/products/dissolved-oxygen-do-analyzer.webp
+    alt: "Dissolved oxygen meter with a panel display unit and a cabled immersion sensor"
 summary: An online analyzer that measures how much oxygen is dissolved in water, most often used to control aeration blowers in biological treatment and save energy.
 operation: n/a
 enquiry: analytical
