@@ -1,0 +1,29 @@
+---
+/**
+ * Secondary line for the backup sales number: "Can't get through? Call Sales: +91 98779 38373".
+ * Always a line of text under the primary contact, never a button and never in place of the
+ * primary number (site.phone), which every Call and WhatsApp button uses.
+ */
+import { site, telHref } from '../config/site';
+
+interface Props {
+  /** `on-dark` for navy backgrounds (footer). Inherits colour otherwise (amber CTA band, white pages). */
+  tone?: 'default' | 'on-dark';
+  class?: string;
+}
+const { tone = 'default', class: cls } = Astro.props;
+const { salesPhone } = site;
+---
+
+<p class:list={['sales-line', cls]} data-tone={tone}>
+  Can’t get through? Call {salesPhone.label}:{' '}
+  <a href={telHref(salesPhone)} data-event="click_call_sales">{salesPhone.display}</a>
+</p>
+
+<style>
+  .sales-line { font-size: 0.9375rem; line-height: 1.5; color: var(--color-slate); }
+  .sales-line a { font-family: var(--font-mono); font-weight: 500; color: var(--color-navy); white-space: nowrap; text-underline-offset: 3px; }
+  .sales-line[data-tone='on-dark'] { color: rgb(255 255 255 / 0.75); }
+  .sales-line[data-tone='on-dark'] a { color: var(--color-white); }
+  .sales-line a:hover { text-decoration: underline; }
+</style>

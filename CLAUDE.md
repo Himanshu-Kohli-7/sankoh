@@ -54,7 +54,8 @@ Three divisions, each with its own colour (§6):
 | Name | Sankoh Technical Solutions |
 | Address | 254, 1st Floor, Hansa Industrial Park, Barwala Road, Derabassi – 140507, Distt. SAS Nagar, Punjab, India |
 | Location wording | "Derabassi, Punjab (near Chandigarh)" |
-| Phone | +91 98884 91527, the only company number. It is also the WhatsApp number (use for every `tel:` and `wa.me` link) |
+| Phone (primary) | +91 98884 91527, the owner's number. The main number for calling and WhatsApp: every Call button, `tel:` link, header button, mobile action bar and `wa.me` link uses it |
+| Phone (sales, backup) | +91 98779 38373, the company sales line (not any one person's), labelled "Sales". Used when the primary can't be reached. Shown only as a secondary line ("Can't get through? Call Sales: …") in the footer, Contact page, home contact block, 404 and CTA bands; never a button, never in place of the primary. In JSON-LD as a `ContactPoint` with `contactType: "sales"` |
 | Proprietor | Sanjay Kohli — Proprietor (About page, with the owner photo from legacy `src/assets/Others/sankoh_owner.JPG`) |
 | Email (current) | sankoh.techsol@gmail.com, the only email. It will be replaced by a domain email before launch, so keep it in one config value |
 | GSTIN | 03AKSPK5866E1ZW (footer) |

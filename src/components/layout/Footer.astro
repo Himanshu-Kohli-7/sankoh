@@ -5,6 +5,7 @@
  */
 import Icon from '../Icon.astro';
 import BlueprintGrid from '../BlueprintGrid.astro';
+import SalesLine from '../SalesLine.astro';
 import { site, telHref, waHref, mapsHref } from '../../config/site';
 import { productGroups, repairGroups, serviceLinks, companyLinks } from '../../config/nav';
 import { catalogue } from '../../config/catalogue';
@@ -72,8 +73,9 @@ const { address } = site;
       </div>
       <div class="cell">
         <dt>Phone</dt>
-        <dd class="mono">
-          <a href={telHref()} data-event="click_call">{site.phone.display}</a>
+        <dd>
+          <a class="mono" href={telHref()} data-event="click_call">{site.phone.display}</a>
+          <SalesLine tone="on-dark" class="footer-sales" />
         </dd>
       </div>
       <div class="cell">
@@ -130,6 +132,7 @@ const { address } = site;
   .maplink { gap: 0.375rem; margin-top: 0.25rem; color: rgb(255 255 255 / 0.82); font-size: 0.875rem; text-decoration: underline; text-underline-offset: 3px; }
   .maplink :global(svg) { color: var(--color-cyan); }
 
+  dd :global(.footer-sales) { margin-top: 0.25rem; font-size: 0.8125rem; }
   .copyright { padding-top: 1.5rem; font-size: 0.875rem; color: rgb(255 255 255 / 0.7); }
 
   @media (min-width: 560px) {

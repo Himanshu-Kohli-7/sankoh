@@ -1,10 +1,11 @@
 ---
 /**
  * Contact details list, shared by the home contact block and the Contact page.
- * Everything comes from site.ts: one phone (also WhatsApp), one email, address, hours with the
- * support line directly under them, GSTIN.
+ * Everything comes from site.ts: the primary phone (also WhatsApp) with the sales backup line under it,
+ * one email, address, hours with the support line directly under them, GSTIN.
  */
 import Icon from './Icon.astro';
+import SalesLine from './SalesLine.astro';
 import { site, telHref, waHref } from '../config/site';
 
 const { address } = site;
@@ -13,7 +14,10 @@ const { address } = site;
 <dl class="details">
   <div>
     <dt><Icon name="phone" size={20} />Phone</dt>
-    <dd><a class="mono" href={telHref()} data-event="click_call">{site.phone.display}</a></dd>
+    <dd class="stack">
+      <a class="mono" href={telHref()} data-event="click_call">{site.phone.display}</a>
+      <SalesLine />
+    </dd>
   </div>
   <div>
     <dt><Icon name="whatsapp" size={20} />WhatsApp</dt>
@@ -59,6 +63,7 @@ const { address } = site;
   dd { display: flex; flex-wrap: wrap; gap: 0 1.5rem; color: var(--color-ink); }
   dd a { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--color-navy); font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
   dd a:hover { color: var(--color-blue); text-decoration: underline; text-underline-offset: 4px; }
+  dd.stack { flex-direction: column; gap: 0; }
   .mono { font-family: var(--font-mono); font-weight: 500; font-size: 1.0625rem; }
   address { padding-block: 0.375rem; font-style: normal; line-height: 1.55; }
   dd > span.mono { padding-block: 0.375rem; }

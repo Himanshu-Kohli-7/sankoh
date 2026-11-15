@@ -36,7 +36,11 @@ const organization = {
   logo: abs('/web-app-manifest-512x512.png'),
   image: abs('/web-app-manifest-512x512.png'),
   description: site.positioning,
+  /** Primary number first; the sales line follows as a ContactPoint. */
   telephone: site.phone.e164,
+  contactPoint: [
+    { '@type': 'ContactPoint', telephone: site.salesPhone.e164, contactType: 'sales', areaServed: 'IN' },
+  ],
   email: site.email,
   address: {
     '@type': 'PostalAddress',

@@ -23,7 +23,7 @@ How to use: when something is confirmed, tell Claude "X is confirmed: …". It u
 
 ## Confirmed (in CLAUDE.md §4)
 
-- WhatsApp number, proprietor, client reviews and logos, repair turnaround (typically 2–3 days)
+- Primary phone and WhatsApp +91 98884 91527; sales backup line +91 98779 38373; proprietor, client reviews and logos, repair turnaround (typically 2–3 days)
 - Own brand Sankoh® only; authorised partner of Stolzel, UPC and Flowtech Measuring Instruments Pvt Ltd; Scientific Devices is no longer a partner
 - Office hours Monday to Saturday, 9:30 AM to 6:30 PM, Sunday closed (Google Business Profile); "Urgent breakdown support 7 days a week" (never 24/7, round the clock or 365 days)
 - Repair scope: valves of any make (manual and automated, with actuators and cylinders), positioners, VFDs of any make (ABB, Danfoss and all other makes); no servo drive or HMI repair; on-site repair offered

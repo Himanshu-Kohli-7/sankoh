@@ -1,11 +1,16 @@
 /**
  * Single source of truth for company facts (CLAUDE.md §4).
- * Import from here everywhere. Never hard-code the phone, address, email or GSTIN in components.
+ * Import from here everywhere. Never hard-code phone numbers, address, email or GSTIN in components.
  * Add only facts confirmed in CLAUDE.md §4 — anything else is a TODO tracked in docs/PENDING.md.
  */
 
-/** The only company phone. It is also the WhatsApp number. */
+/** Primary number (the owner's): every Call button, tel: link and WhatsApp link uses it. */
 const phone = { display: '+91 98884 91527', e164: '+919888491527' } as const;
+/**
+ * Company sales line, the backup when the primary can't be reached. Shown only as a secondary line
+ * ("Can't get through? Call Sales: …"), never as a button and never in place of the primary.
+ */
+const salesPhone = { label: 'Sales', display: '+91 98779 38373', e164: '+919877938373' } as const;
 
 const whatsapp = { display: '+91 98884 91527', number: '919888491527' } as const;
 
@@ -35,8 +40,10 @@ export const site = {
     locationWording: 'Derabassi, Punjab (near Chandigarh)',
   },
 
-  /** The only number: header, footer, Call buttons, mobile action bar and schema. */
+  /** Primary number: header, Call buttons, mobile action bar, WhatsApp and schema `telephone`. */
   phone,
+  /** Backup sales line: a secondary line in the footer, Contact page, home contact block, 404 and CTA bands. */
+  salesPhone,
   whatsapp,
 
   /** TODO: replace with a domain email before launch (docs/PENDING.md). Keep it as the only place email is set. */

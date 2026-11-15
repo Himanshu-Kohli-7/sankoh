@@ -31,7 +31,7 @@ Contents
 - On desktop: no bar; instead a small floating WhatsApp button bottom-right.
 
 **Footer (navy)**
-- Logo + one-line positioning, address, phone, email, GSTIN.
+- Logo + one-line positioning, address, phone (primary, with the sales backup line under it), email, GSTIN.
 - Columns: Valves & Automation categories, Instruments categories, Repair & Services links, Company (About, Brands, Contact, Catalogue PDF, Privacy).
 - Office hours (Monday to Saturday, 9:30 AM to 6:30 PM · Sunday closed), with "Urgent breakdown support 7 days a week · Repairs typically in 2–3 days" directly under them.
 - Company column also links to Image credits.
