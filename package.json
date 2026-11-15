@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "favicons": "node scripts/make-favicons.mjs"
+    "favicons": "node scripts/make-favicons.mjs",
+    "check:repeats": "node scripts/check-repeats.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.1.0",
