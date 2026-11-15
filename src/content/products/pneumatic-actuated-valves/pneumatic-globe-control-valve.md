@@ -25,6 +25,7 @@ relatedRepair:
   - /valve-repair/control-valve-repair/
   - /valve-repair/positioner-repair-calibration/
   - /valve-repair/globe-valve-repair/
+  - /valve-repair/actuator-cylinder-repair/
 faqs:
   - question: What does the positioner on a control valve do?
     answer: It compares the control signal, usually 4–20 mA from the controller or PLC, with the actual position of the valve stem, and adjusts the air to the actuator until the two agree. That makes the valve settle where it is asked to, despite friction in the packing or changing line pressure.
