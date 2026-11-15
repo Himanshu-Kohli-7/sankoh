@@ -1,0 +1,242 @@
+---
+/**
+ * Service page (SPEC §2.1): advisory, installation & commissioning, sourcing, surplus & discontinued.
+ * Company facts come from site.ts only (CLAUDE.md §4). The work is described in general terms:
+ * no standards, test pressures, certificates, counts or years.
+ */
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Button from './Button.astro';
+import CTABand from './CTABand.astro';
+import EnquiryChecklist from './EnquiryChecklist.astro';
+import FAQ from './FAQ.astro';
+import Icon from './Icon.astro';
+import PageHero from './PageHero.astro';
+import ProcessSteps from './ProcessSteps.astro';
+import ProductCard from './ProductCard.astro';
+import RepairServiceCard from './RepairServiceCard.astro';
+import SectionHeader from './SectionHeader.astro';
+import { site, telHref, waHref, quoteHref } from '../config/site';
+import { categoryInfo, pageTitle, productLink, productsById, repairLinks } from '../lib/content';
+
+interface Props {
+  service: CollectionEntry<'services'>;
+}
+const { service } = Astro.props;
+const { data } = service;
+const { Content } = await render(service);
+
+const slug = service.id;
+const all = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const index = all.findIndex((s) => s.id === service.id);
+const others = all.filter((s) => s.id !== service.id);
+
+const related = await productsById(data.relatedProducts);
+if (related.length !== data.relatedProducts.length) throw new Error(`${service.id}: unknown id in relatedProducts`);
+const repairs = repairLinks(data.relatedRepair);
+
+const whatsappText = `Hi, I have a question about ${data.title}.`;
+const eyebrow = `Services / ${String(index + 1).padStart(2, '0')}`;
+const breadcrumbs = [{ label: 'Services', href: '/services/' }, { label: data.title }];
+const schema = [
+  {
+    '@type': 'Service',
+    name: data.title,
+    serviceType: data.serviceType,
+    description: data.metaDescription,
+    url: new URL(Astro.url.pathname, site.url).href,
+    provider: { '@id': `${site.url}/#organization` },
+    areaServed: { '@type': 'Country', name: 'India' },
+  },
+];
+---
+
+<Base
+  title={pageTitle(data.seoTitle)}
+  description={data.metaDescription}
+  pageName={data.title}
+  quoteProduct={slug}
+  {whatsappText}
+  {breadcrumbs}
+  {schema}
+>
+  <PageHero {breadcrumbs} division="repair" {eyebrow} title={data.title} lead={data.summary}>
+    <div class="actions">
+      <Button href={telHref()} icon="phone" data-event="click_call">Call {site.phone.display}</Button>
+      <Button href={waHref(whatsappText)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+      <Button href={quoteHref(slug)} variant="secondary" icon="quote">Send your requirement</Button>
+    </div>
+  </PageHero>
+
+  <div class="container-content body">
+    <div class="main">
+      <section class="block" id="what-we-do">
+        <h2>What we do</h2>
+        <ul class="ticks">
+          {data.whatWeDo.map((item) => <li><Icon name="check" size={20} />{item}</li>)}
+        </ul>
+      </section>
+
+      {data.sections.map((section) => (
+        <section class="block">
+          <h2>{section.title}</h2>
+          <p class="section-text">{section.text}</p>
+        </section>
+      ))}
+
+      <section class="block" id="how-we-work">
+        <h2>How we work</h2>
+        <div class="prose"><Content /></div>
+      </section>
+    </div>
+
+    <aside class="enquire" aria-label={`Ask about ${data.title}`}>
+      <p class="eyebrow">Talk to us</p>
+      <p class="enquire-title">{data.title}</p>
+      <a class="number" href={telHref()} data-event="click_call"><Icon name="phone" size={22} />{site.phone.display}</a>
+      <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">WhatsApp us</Button>
+      <Button href={quoteHref(slug)} variant="secondary" icon="quote">Send your requirement</Button>
+      <p class="enquire-note">Office hours {site.hours.display}. {site.service.supportLine}.</p>
+    </aside>
+  </div>
+
+  <section class="process">
+    <div class="container-content section-y">
+      <SectionHeader eyebrow="Process" division="repair" title="How it runs" />
+      <div class="steps"><ProcessSteps steps={data.steps} /></div>
+      <ul class="terms">
+        <li><Icon name="users" size={22} />{site.service.team}</li>
+        <li><Icon name="pin" size={22} />{site.service.area}</li>
+        <li><Icon name="calendar" size={22} />{site.service.supportLine}</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="container-content section-y send" id="what-to-send">
+    <EnquiryChecklist title="What to tell us" intro="A few details let our engineers answer quickly and accurately." items={data.whatToSend}>
+      <p class="send-actions">
+        <Button href={waHref(whatsappText)} icon="whatsapp" data-event="click_whatsapp">WhatsApp the details</Button>
+        <Button href={quoteHref(slug)} variant="secondary" icon="quote">Send your requirement</Button>
+      </p>
+    </EnquiryChecklist>
+  </section>
+
+  <section class="container-content section-y faq-layout">
+    <SectionHeader eyebrow="FAQ" division="repair" title={`${data.title}: common questions`} />
+    <FAQ items={data.faqs} schema />
+  </section>
+
+  <section class="related">
+    <div class="container-content section-y">
+      {related.length > 0 && (
+        <div>
+          <h2>Related products</h2>
+          <ul class="grid">
+            {related.map((item) => (
+              <li>
+                <ProductCard
+                  division={categoryInfo(item.data.category).division}
+                  title={item.data.title}
+                  href={productLink(item)}
+                  summary={item.data.summary}
+                  image={item.data.images[0]?.src}
+                  imageAlt={item.data.images[0]?.alt}
+                  headingLevel="h3"
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {repairs.length > 0 && (
+        <div class="spaced">
+          <h2>Related repair services</h2>
+          <ul class="cards">
+            {repairs.map((link) => (
+              <li><RepairServiceCard title={link.label} href={link.href} icon={link.icon ?? 'wrench'} /></li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <div class="spaced">
+        <h2>Other services</h2>
+        <ul class="cards">
+          {others.map((other) => (
+            <li>
+              <RepairServiceCard title={other.data.title} href={`/services/${other.id}/`} icon={other.data.icon} summary={other.data.cardSummary} />
+            </li>
+          ))}
+        </ul>
+        <p class="hubs">
+          <a href="/services/">All services<Icon name="arrow-right" size={20} /></a>
+          <a href="/valve-repair/">Valve repair<Icon name="arrow-right" size={20} /></a>
+          <a href="/vfd-repair/">VFD repair<Icon name="arrow-right" size={20} /></a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CTABand title={`Ask about ${data.title.toLowerCase()}`} quoteProduct={slug} quoteLabel="Send your requirement" {whatsappText} />
+</Base>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+
+  .body { display: grid; gap: 3rem; padding-block: 3rem var(--section-y); }
+  .main { min-width: 0; }
+  .block + .block { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--color-line); }
+  .block > h2 { margin-bottom: 1.25rem; }
+  .section-text { max-width: 44rem; line-height: 1.6; }
+
+  .ticks { display: grid; gap: 0.625rem; }
+  .ticks li { display: flex; gap: 0.625rem; line-height: 1.45; }
+  .ticks :global(svg) { flex: none; margin-top: 0.125rem; color: var(--color-blue); }
+
+  .enquire { display: none; }
+
+  .process { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+  .steps { margin-top: 3rem; }
+  .terms { display: grid; gap: 0.5rem; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--color-line); }
+  .terms li { display: flex; align-items: center; gap: 0.625rem; color: var(--color-navy); font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; }
+  .terms :global(svg) { flex: none; color: var(--color-blue); }
+
+  .send { padding-bottom: 0; }
+  .send-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+  .faq-layout { display: grid; gap: 2rem; }
+
+  .related { background: var(--color-paper); border-top: 1px solid var(--color-line); }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 1.5rem; }
+  .grid li, .cards li { display: grid; }
+  .spaced:not(:first-child) { margin-top: 3.5rem; }
+  .cards { display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+  .hubs { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: 1.25rem; }
+  .hubs a { display: inline-flex; align-items: center; gap: 0.375rem; min-height: 2.75rem; font-weight: 600; }
+
+  @media (max-width: 559px) {
+    .actions :global(.btn) { flex: 1 1 calc(50% - 0.375rem); }
+    .actions :global(.btn:first-child) { flex-basis: 100%; }
+  }
+  @media (max-width: 639px) {
+    .grid :global(.summary) { display: none; }
+    .grid :global(.title) { font-size: 1rem; }
+  }
+  @media (min-width: 640px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+    .grid { gap: 1rem; }
+    .terms { grid-template-columns: repeat(2, auto); justify-content: start; gap: 0.75rem 2.5rem; }
+  }
+  @media (min-width: 1024px) {
+    .body { grid-template-columns: minmax(0, 1fr) 20rem; gap: 4rem; padding-top: 4rem; }
+    .enquire { position: sticky; top: 6.5rem; display: grid; gap: 0.75rem; align-self: start; padding: 1.5rem; background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--color-amber); border-radius: 2px; }
+    .enquire .eyebrow { color: var(--color-slate); }
+    .enquire-title { color: var(--color-navy); font-size: 1.25rem; font-weight: 600; line-height: 1.25; }
+    .number { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; color: var(--color-navy); font-family: var(--font-mono); font-size: 1.25rem; font-weight: 500; text-decoration: none; }
+    .number:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .enquire-note { color: var(--color-slate); font-size: var(--text-small); }
+    .grid { grid-template-columns: repeat(4, 1fr); }
+    .cards { grid-template-columns: repeat(3, 1fr); }
+    .faq-layout { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 4rem; align-items: start; }
+  }
+</style>

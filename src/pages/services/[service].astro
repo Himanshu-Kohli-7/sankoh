@@ -1,0 +1,14 @@
+---
+/** Service pages (SPEC §2.1). Content: src/content/services/<slug>.md → /services/<slug>/. */
+import { getCollection } from 'astro:content';
+import ServicePage from '../../components/ServicePage.astro';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  return services.map((service) => ({ params: { service: service.id }, props: { service } }));
+}
+
+const { service } = Astro.props;
+---
+
+<ServicePage {service} />

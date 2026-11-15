@@ -1,6 +1,6 @@
 /**
  * Content collections (SPEC §4). Collections are added with their content:
- * services, brands, certifications and projects come in later phases.
+ * brands, certifications and projects come in later phases.
  */
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
@@ -156,6 +156,43 @@ const repairServices = defineCollection({
   }),
 });
 
+/**
+ * Service pages (SPEC §2.1): `product-sourcing.md` → /services/product-sourcing/. Company facts come
+ * from CLAUDE.md §4 only; how the work is done is described in general terms. The markdown body is the
+ * main text under "How we work".
+ */
+const services = defineCollection({
+  loader: glob({ pattern: '*.md', base: './src/content/services' }),
+  schema: z.object({
+    title: z.string(),
+    ...seo,
+    /** Order on the Services overview and in nav.ts. */
+    order: z.number(),
+    icon: z.string(),
+    /** schema.org serviceType. */
+    serviceType: z.string(),
+    /** Answers the page's main question in 2–3 sentences; shown under the H1. */
+    summary: z.string(),
+    /** One line for the Services overview card. */
+    cardSummary: z.string(),
+    /** "What we do" list. */
+    whatWeDo: z.array(z.string()).min(3),
+    /** Short named sections, e.g. "Technical advice" on the advisory page. */
+    sections: z.array(z.object({ title: z.string(), text: z.string() })).default([]),
+    /** Process steps, drawn with ProcessSteps. */
+    steps: z.array(z.object({ title: z.string(), text: z.string(), icon: z.string() })).min(3).max(5),
+    /** "What to tell us" checklist: short labels, not prose. */
+    whatToSend: z.array(z.string()).min(4),
+    faqs: z.array(faq).min(3),
+    /** Product ids, e.g. `manual-valves/gate-valve`. */
+    relatedProducts: z.array(z.string()).max(4).default([]),
+    /** Repair page hrefs, as listed in config/nav.ts. */
+    relatedRepair: z.array(z.string()).default([]),
+    /** Internal note, never rendered. Mirror it in docs/PENDING.md. */
+    todo: z.string().optional(),
+  }),
+});
+
 /** Real repair photos only (CLAUDE.md §2.3). Empty until the company sends some; the gallery hides itself. */
 const repairGallery = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/repair-gallery' }),
@@ -194,4 +231,4 @@ const clients = defineCollection({
     }),
 });
 
-export const collections = { categories, products, repairHubs, repairServices, repairGallery, reviews, clients };
+export const collections = { categories, products, repairHubs, repairServices, services, repairGallery, reviews, clients };

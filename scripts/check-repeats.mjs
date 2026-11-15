@@ -18,7 +18,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const ROOTS = ['products', 'categories', 'repair-hubs', 'repair-services'].map((d) => path.join('src/content', d));
+const ROOTS = ['products', 'categories', 'repair-hubs', 'repair-services', 'services'].map((d) => path.join('src/content', d));
 const RUN = 8;
 const MIN_SENTENCE = 6;
 
