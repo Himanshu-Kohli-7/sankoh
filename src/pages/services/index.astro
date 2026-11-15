@@ -1,0 +1,165 @@
+---
+/**
+ * Services overview (SPEC §2.1): repair first (CLAUDE.md §3), then the four services.
+ * Company facts from site.ts only.
+ */
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Button from '../../components/Button.astro';
+import CTABand from '../../components/CTABand.astro';
+import FAQ, { type FaqItem } from '../../components/FAQ.astro';
+import Icon from '../../components/Icon.astro';
+import PageHero from '../../components/PageHero.astro';
+import RepairServiceCard from '../../components/RepairServiceCard.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import TrustStats from '../../components/TrustStats.astro';
+import { site, telHref, waHref, quoteHref } from '../../config/site';
+import { pageTitle } from '../../lib/content';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const { warranty } = site.service;
+
+const repairs = [
+  {
+    title: 'Valve Repair',
+    href: '/valve-repair/',
+    icon: 'wrench',
+    summary: `Valves of any make, manual and automated, with their actuators, cylinders and positioners. Warranty: ${warranty.repairedValves}.`,
+  },
+  {
+    title: 'VFD Repair',
+    href: '/vfd-repair/',
+    icon: 'drive',
+    summary: `Variable frequency drives from ${site.service.vfdBrands}. Warranty: ${warranty.repairedVfds}.`,
+  },
+];
+
+/** Which way in, by what the visitor needs. Every route is a confirmed offer. */
+const routes = [
+  { icon: 'phone', need: 'A breakdown on your line', action: `Call ${site.phone.display}. ${site.service.supportLine}.` },
+  { icon: 'whatsapp', need: 'A valve or drive to repair', action: 'WhatsApp a photo of it and its nameplate or rating label.' },
+  { icon: 'quote', need: 'New products or a part we don’t list', action: 'Send your requirement and we supply or source it.' },
+  { icon: 'search', need: 'Not sure what you need', action: 'Ask for valve selection and technical advice.' },
+];
+
+const faqs: FaqItem[] = [
+  {
+    question: 'What services does Sankoh Technical Solutions offer besides selling products?',
+    answer:
+      'Valve repair and VFD repair for any make, valve selection and maintenance advice, delivery, installation, testing and commissioning, sourcing through our vendor network, and surplus and discontinued valves, parts and reconditioned components.',
+  },
+  {
+    question: 'Do you work at our site?',
+    answer: `Yes. Repairs can be done on site or at our workshop, and installation and commissioning take place at your plant. We serve all of India, quickest across North India.`,
+  },
+  {
+    question: 'What are your office hours?',
+    answer: `${site.hours.display}. ${site.hours.closed}. ${site.service.supportLine}, Sundays included.`,
+  },
+  {
+    question: 'What warranty do repairs carry?',
+    answer: `${warranty.repairedValves[0].toUpperCase()}${warranty.repairedValves.slice(1)}, and ${warranty.repairedVfds}.`,
+  },
+];
+
+const breadcrumbs = [{ label: 'Services' }];
+---
+
+<Base
+  title={pageTitle('Repair & Services')}
+  description="Valve and VFD repair for any make, valve selection advice, installation and commissioning, product sourcing, and surplus and discontinued valves."
+  pageName="Repair & Services"
+  {breadcrumbs}
+>
+  <PageHero
+    {breadcrumbs}
+    division="repair"
+    eyebrow="Repair & Service"
+    title="Repair & Services"
+    lead={`Besides supplying valves and instruments, ${site.name} repairs valves and VFDs of any make, advises on valve selection and upkeep, installs and commissions systems for factories, and sources what is hard to find.`}
+  >
+    <div class="actions">
+      <Button href={telHref()} icon="phone" data-event="click_call">Call {site.phone.display}</Button>
+      <Button href={waHref('Hello, I have a question about your services.')} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+    </div>
+  </PageHero>
+
+  <section class="container-content section-y">
+    <SectionHeader eyebrow="Repair / 01" division="repair" title="Repair" intro="On site or in our workshop, where a repair typically takes 2–3 days." />
+    <ul class="cards two">
+      {repairs.map((r) => (
+        <li><RepairServiceCard title={r.title} href={r.href} icon={r.icon} summary={r.summary} headingLevel="h3" /></li>
+      ))}
+    </ul>
+    <div class="facts"><TrustStats /></div>
+  </section>
+
+  <section class="band">
+    <div class="container-content section-y">
+      <SectionHeader eyebrow="Services / 02" division="repair" title="Services" intro="Help before, during and after you buy." />
+      <ul class="cards four">
+        {services.map((s) => (
+          <li>
+            <RepairServiceCard title={s.data.title} href={`/services/${s.id}/`} icon={s.data.icon} summary={s.data.cardSummary} headingLevel="h3" />
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="container-content section-y">
+    <SectionHeader eyebrow="Contact" division="repair" title="The quickest way in" />
+    <ul class="routes">
+      {routes.map((r) => (
+        <li>
+          <Icon name={r.icon} size={24} />
+          <div>
+            <h3>{r.need}</h3>
+            <p>{r.action}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+    <p class="route-links">
+      <a href={quoteHref()}>Send your requirement<Icon name="arrow-right" size={20} /></a>
+      <a href="/services/valve-selection-maintenance-advisory/">Valve selection & technical advice<Icon name="arrow-right" size={20} /></a>
+    </p>
+  </section>
+
+  <section class="band">
+    <div class="container-content section-y faq-layout">
+      <SectionHeader eyebrow="FAQ" division="repair" title="Questions about our services" />
+      <FAQ items={faqs} schema />
+    </div>
+  </section>
+
+  <CTABand title="Tell us what you need" />
+</Base>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .cards { display: grid; gap: 0.75rem; margin-top: 2rem; }
+  .cards li { display: grid; }
+  .facts { margin-top: 2.5rem; }
+  .band { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+
+  .routes { display: grid; gap: 0.75rem; margin-top: 2rem; }
+  .routes li { display: flex; gap: 1rem; padding: 1.25rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; }
+  .routes :global(svg) { flex: none; color: var(--color-blue); }
+  .routes h3 { font-size: 1.0625rem; line-height: 1.3; }
+  .routes p { margin-top: 0.25rem; color: var(--color-slate); font-size: 0.9375rem; line-height: 1.5; }
+  .route-links { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: 1.25rem; }
+  .route-links a { display: inline-flex; align-items: center; gap: 0.375rem; min-height: 2.75rem; font-weight: 600; }
+  .faq-layout { display: grid; gap: 2rem; }
+
+  @media (max-width: 559px) {
+    .actions :global(.btn) { flex: 1 1 100%; }
+  }
+  @media (min-width: 640px) {
+    .cards.two, .cards.four, .routes { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .cards.four { grid-template-columns: repeat(4, 1fr); }
+    .faq-layout { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 4rem; align-items: start; }
+  }
+</style>
