@@ -30,7 +30,6 @@ faqs:
     answer: It depends on the design. Many swing check valves work in a vertical line only when the flow is upward, and lift check valves are usually made for one orientation. Tell us how your line runs so that the valve suits it.
   - question: Why does a check valve slam?
     answer: Slam happens when the flow reverses before the disc has closed, so the backflow drives the disc shut. A faster-closing design, such as a spring loaded or dual plate check valve, usually cures it.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Swing and lift types are described generally; which the company supplies is not confirmed (PENDING #31). No related repair page shown (PENDING #32).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 25 to DN 300 (1\" to 12\")"

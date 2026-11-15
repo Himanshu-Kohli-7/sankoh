@@ -28,7 +28,6 @@ faqs:
   - question: Is the contact rated to switch a motor directly?
     answer: Usually it is not meant to. Most switches should drive a contactor or relay, or a PLC input, rather than carry motor current. Tell us what the contact has to switch.
 relatedRepair: []
-todo: 'No photo: the legacy photo carries a third-party maker''s nameplate and model label, so the page uses the placeholder drawing (PENDING #11, #50). Applications and media are general typical uses (PENDING #48). Ranges, contact types, enclosures and connections supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
 typicalOptions:
   - label: "Ranges"
     value: "From vacuum up to several hundred bar"

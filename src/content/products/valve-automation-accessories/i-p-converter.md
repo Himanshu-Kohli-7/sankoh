@@ -27,7 +27,6 @@ faqs:
     answer: Close to the valve, on a bracket or panel away from heavy vibration. A short air line to the actuator keeps the response quick.
   - question: Why does the output pressure drift?
     answer: Water, oil or dirt in the supply air, a partly blocked nozzle, or a supply pressure that wanders. A filter regulator ahead of the converter and a regular calibration check keep it steady.
-todo: 'No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses (PENDING #41). Signal and output ranges, enclosure types and mounting styles supplied are not confirmed (PENDING #42). Whether I/P converters are repaired under Positioner Repair & Calibration is not confirmed (PENDING #43).'
 typicalOptions:
   - label: "Input"
     value: "4–20 mA"

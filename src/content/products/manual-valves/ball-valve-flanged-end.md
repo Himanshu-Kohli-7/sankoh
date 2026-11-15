@@ -32,7 +32,6 @@ faqs:
     answer: Flanged ends suit larger line sizes and lines where the valve has to be removed for service, because it unbolts without disturbing the pipe. Screwed ends are common on smaller lines.
   - question: Do you repair ball valves?
     answer: Yes. We repair ball valves of any make, and one sent to our workshop is typically ready in 2–3 days.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Image is low resolution (270px): ask for a better photo (PENDING #27).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 200 (½\" to 8\")"

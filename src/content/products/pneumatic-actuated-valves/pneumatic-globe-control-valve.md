@@ -35,7 +35,6 @@ faqs:
     answer: The media, the minimum, normal and maximum flow, the pressure before and after the valve at those flows, and the temperature. From these the required flow capacity is worked out, which often gives a valve smaller than the pipe it sits in.
   - question: Can you recalibrate or repair an existing control valve?
     answer: Yes. We overhaul control valves of any make, including trim, packing and diaphragm replacement, and set up and calibrate positioners. A typical workshop job takes 2–3 days.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #34). Trim, body and actuator options the company supplies are not confirmed (PENDING #35).'
 typicalOptions:
   - label: "Valve sizes"
     value: "DN 15 to DN 200"

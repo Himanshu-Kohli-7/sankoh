@@ -30,7 +30,6 @@ faqs:
   - question: How far can the transmitter be from the sensor?
     answer: Analogue pH signals are very weak and sensitive to cable length and noise, so keep the cable short and use the cable intended for it. Digital sensors that convert the signal in the sensor head allow longer runs.
 relatedRepair: []
-todo: 'No photo: the legacy photo shows a third-party model name and a smudged-out logo, so the page uses the placeholder drawing (PENDING #11, #55). Applications and media are general typical uses (PENDING #53). Mounting, inputs, outputs, relays and protocols supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Measures"
     value: "pH 0–14; many units also read ORP in mV"

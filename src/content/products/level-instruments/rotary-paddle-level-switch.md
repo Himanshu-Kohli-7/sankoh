@@ -28,7 +28,6 @@ faqs:
   - question: Does it work in liquids?
     answer: It is designed for dry bulk solids. For liquids, a float or vibrating fork switch is the usual choice.
 relatedRepair: []
-todo: 'Old-site name: "Resistance Rotary Level Switch". No media listed: bulk solids are not among the six media values (PENDING #53). Applications are general typical uses (PENDING #53). Paddle types, supply voltages, contact ratings and enclosures supplied are not confirmed (PENDING #54). No repair link (PENDING #56).'
 typicalOptions:
   - label: "Paddle"
     value: "Single vane, multi-vane or folding paddle, chosen by bulk density"

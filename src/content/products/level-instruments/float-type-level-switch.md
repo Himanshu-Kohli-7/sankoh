@@ -29,7 +29,6 @@ faqs:
   - question: Can it switch the pump motor directly?
     answer: Usually not. The contact is meant for a control circuit, so it switches a relay or starter, which then switches the motor.
 relatedRepair: []
-todo: 'Applications and media are general typical uses (PENDING #53). Top or side mounting, stem or cable forms, number of switching points, contact ratings and enclosures supplied are not confirmed (PENDING #54). No repair link (PENDING #56).'
 typicalOptions:
   - label: "Mounting"
     value: "Top mounted on a stem, side mounted, or a cable float"

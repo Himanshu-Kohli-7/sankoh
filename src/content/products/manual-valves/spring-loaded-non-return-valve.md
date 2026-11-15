@@ -28,7 +28,6 @@ faqs:
     answer: In most cases, yes. A spring closes the disc, not gravity, so the valve works in horizontal lines and in vertical lines with the flow going up or down. Check the arrow on the body before fitting.
   - question: Is it suitable for dirty fluids?
     answer: It works best on clean fluids. Solids can lodge between the disc and the seat and hold the valve open, so fit a strainer upstream where the fluid carries debris.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Image is low resolution (150px): ask for a better photo (PENDING #27). No related repair page shown (PENDING #32).'
 typicalOptions:
   - label: "Sizes"
     value: "¼\" to 2\" screwed; up to DN 100 in wafer disc pattern"

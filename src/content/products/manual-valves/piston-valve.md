@@ -28,7 +28,6 @@ faqs:
     answer: Yes. The rings and the piston can generally be replaced with the valve body left in the line, which is one reason piston valves are popular with maintenance teams.
   - question: Can a piston valve regulate flow?
     answer: It is mainly a shut-off valve. Some designs have a regulating piston for throttling duty, so tell us if you need to control flow as well as isolate.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). No related repair page shown (PENDING #32).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 150"

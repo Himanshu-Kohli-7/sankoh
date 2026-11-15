@@ -30,7 +30,6 @@ faqs:
   - question: Can one transmitter work with different sensors?
     answer: Many universal transmitters accept several RTD and thermocouple types and are set up for the one fitted. The range can usually be adjusted too, which keeps spares simple.
 relatedRepair: []
-todo: 'Low-resolution photo (225px): ask for a larger one (PENDING #55). Applications and media are general typical uses (PENDING #53). Mounting forms, inputs, outputs, protocols and housings supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Input"
     value: "Pt100 RTD, thermocouple, or universal"

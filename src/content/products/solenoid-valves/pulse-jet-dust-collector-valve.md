@@ -26,7 +26,6 @@ faqs:
     answer: An integral solenoid sits on the valve itself, which keeps the wiring simple. A remote pilot moves the coils into a separate enclosure away from the heat, dust and vibration on top of the collector, linked to each valve by a small air tube.
   - question: What helps when ordering a replacement?
     answer: The header connection size and style, whether the body is right-angle or straight-through, integral or remote pilot, the coil voltage, and a photo of the old valve with its nameplate if there is one.
-todo: 'No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses, not company-stated (PENDING #41). Body styles, connection types and coil voltages supplied are not confirmed (PENDING #42). No repair page covers solenoid valves (PENDING #43).'
 typicalOptions:
   - label: "Port sizes"
     value: "¾\" to 3\""

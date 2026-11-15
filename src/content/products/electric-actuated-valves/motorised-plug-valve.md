@@ -30,7 +30,6 @@ faqs:
     answer: The plug has an L- or T-shaped passage instead of a straight one. As the actuator turns it to set positions, the passage connects different pairs of ports. The actuator has to be set up for those exact stopping points, so tell us the flow pattern you need.
   - question: Do you repair motorised plug valves?
     answer: Yes. We reseal and resleeve plug valves and overhaul the electric actuators and gearboxes on them, of any make, typically within 2–3 days.
-todo: 'No product photo yet; the page shows the placeholder drawing (PENDING #11). Applications and media are general typical uses (PENDING #39). Sleeved, lubricated and multi-port types, gearboxes and fail-safe options supplied are not confirmed (PENDING #40).'
 typicalOptions:
   - label: "Valve sizes"
     value: "DN 15 to DN 300"

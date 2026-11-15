@@ -28,7 +28,6 @@ faqs:
     answer: Generally yes, as it suits horizontal runs and vertical pipes where the flow rises. In a horizontal line the hinge pin should stand vertical, so that both plates work evenly.
   - question: Does a dual plate check valve stop water hammer?
     answer: It reduces the slam caused by a check valve closing late. It does not remove water hammer that has other causes, such as a valve being shut too quickly elsewhere in the line.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). No related repair page shown (PENDING #32).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 50 to DN 600 (2\" to 24\"); larger on request"

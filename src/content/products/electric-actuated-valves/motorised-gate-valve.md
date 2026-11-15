@@ -30,7 +30,6 @@ faqs:
     answer: Usually a minute or more on large valves, depending on the stem travel and the actuator speed. That slow movement is useful on long water mains, because it keeps pressure surges down when pumps start and stop.
   - question: Do you overhaul motorised gate valves?
     answer: Yes. Seats, wedges, stems and packing are renewed on motorised gate valves of any make, and the electric actuator is overhauled alongside. Workshop work is typically turned round in 2–3 days.
-todo: 'No product photo yet; the page shows the placeholder drawing (PENDING #11). Applications and media are general typical uses; water treatment is company-stated (PENDING #39). Actuator types, supply voltages and integral control options supplied are not confirmed (PENDING #40).'
 typicalOptions:
   - label: "Valve sizes"
     value: "DN 50 to DN 600 and above"

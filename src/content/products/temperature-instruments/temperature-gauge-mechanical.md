@@ -32,7 +32,6 @@ faqs:
   - question: How accurate is a dial temperature gauge?
     answer: Good enough for operators to see whether a process is running normally, but less precise than an electronic sensor. Where a value feeds control or quality records, pair the gauge with an RTD and transmitter.
 relatedRepair: []
-todo: 'Photo dial shows a range and an accuracy class: not used (PENDING #55). A faint, unreadable mark sits under the pivot: confirm it is not a third-party logo (PENDING #55). Applications and media are general typical uses (PENDING #53). Bimetal or filled-system types, dial sizes, ranges, stem lengths and mounting forms supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Type"
     value: "Bimetal, or gas / liquid filled with a capillary for remote reading"

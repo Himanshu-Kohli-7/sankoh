@@ -31,7 +31,6 @@ faqs:
   - question: Why combine it with a flow meter?
     answer: Concentration alone does not tell you how much pollution leaves the site. Multiplying COD by the flow from a flow meter gives the load, which is what treatment design and discharge limits often depend on.
 relatedRepair: []
-todo: 'Applications and media are general typical uses (PENDING #53). Online optical sensor or automatic analyzer, ranges, cleaning options and outputs supplied are not confirmed (PENDING #54, #58). An unused stainless steel probe photo, `cod sensor.webp`, is also in legacy (PENDING #55). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Method"
     value: "UV absorption at 254 nm with turbidity compensation"

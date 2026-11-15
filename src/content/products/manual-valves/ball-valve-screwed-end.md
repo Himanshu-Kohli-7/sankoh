@@ -30,7 +30,6 @@ faqs:
     answer: The name says how many parts make up the body. One-piece and two-piece valves are compact and economical. A three-piece valve has a centre section that comes out between the two end caps, so the seats and seals can be changed while the ends stay screwed into the line.
   - question: When is a flanged ball valve the better choice?
     answer: On larger lines, or where the valve has to be removed often. A flanged valve unbolts from the line, while a screwed valve usually needs a union nearby or the pipe unscrewed.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Body constructions and thread types are described generally; which the company supplies is not confirmed (PENDING #31).'
 typicalOptions:
   - label: "Sizes"
     value: "¼\" to 2\" in most ranges, up to 4\""

@@ -29,7 +29,6 @@ faqs:
   - question: Do liquid and powder applications use the same fork?
     answer: Not usually. Forks for bulk solids are longer and set up for the lower density and the way powders flow around the tines. Tell us what the switch will detect.
 relatedRepair: []
-todo: 'A small, unreadable mark on the enclosure lid in the photo: confirm it is not a third-party logo (PENDING #55). Applications and media are general typical uses (PENDING #53). Fork lengths, outputs, housings and versions for liquids or solids supplied are not confirmed (PENDING #54). No repair link (PENDING #56).'
 typicalOptions:
   - label: "Fork"
     value: "Compact fork, or an extension tube for deep tanks"

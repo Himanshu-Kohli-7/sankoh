@@ -33,7 +33,6 @@ faqs:
     answer: Undo the two clamps and lift the valve out of the line. The body halves then come apart around the seat, so the disc and seat can be checked or replaced and the valve put back the same day.
   - question: Can the actuator be fitted to an existing sanitary butterfly valve?
     answer: Often, if the valve has a suitable top for a mounting bracket. Send us the make and size, or a photo, and we will check what is needed to automate it.
-todo: 'Ball/butterfly assignment taken from the photo, not confirmed by the company (PENDING #6). "Tri-Clover" used as the generic name for clamp ends (PENDING #37). Applications other than milk ATMs are general typical uses (PENDING #34). Seat compounds described generally (PENDING #35).'
 typicalOptions:
   - label: "Sizes"
     value: "1\" to 6\" tube sizes"

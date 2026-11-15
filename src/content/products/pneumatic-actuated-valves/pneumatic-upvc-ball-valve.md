@@ -33,7 +33,6 @@ faqs:
     answer: UPVC resists many acids, alkalis and salt solutions, but not every chemical, and the seals matter as much as the body. Tell us the chemical, its strength and its temperature, and we will check the body and seal materials against it.
   - question: Can you service the valve and actuator?
     answer: Yes. Seats and O-rings can be replaced, and we repair the actuators on any make of valve. A workshop repair usually takes 2–3 days.
-todo: 'Ball/butterfly assignment taken from the photo, not confirmed by the company (PENDING #6). Applications other than water ATMs and water treatment are general typical uses (PENDING #34). True-union ends and seal materials described generally (PENDING #35). Stolzel-marked accessories in the photo, brand not confirmed (PENDING #25).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 100 (½\" to 4\")"

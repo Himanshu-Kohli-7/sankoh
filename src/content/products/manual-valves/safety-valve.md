@@ -30,7 +30,6 @@ faqs:
     answer: The media, the set pressure, the working temperature and the flow the valve has to discharge, along with the connection sizes. A safety valve that is too small cannot protect the equipment, so sizing matters more here than for most valves.
   - question: Can an isolation valve be fitted before a safety valve?
     answer: As a rule, no. Nothing should be able to shut a safety valve off from the equipment it protects. Follow the regulations that apply to your boiler or vessel.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Nothing is said about set-pressure testing, certificates or repair of safety valves: ask the company (PENDING #32).'
 typicalOptions:
   - label: "Inlet sizes"
     value: "½\" to 6\""

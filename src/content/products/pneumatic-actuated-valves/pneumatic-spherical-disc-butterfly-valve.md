@@ -33,7 +33,6 @@ faqs:
     answer: That depends on the seat and body materials, not on the disc shape alone. Tell us the media and the highest temperature and pressure in the line, and we will check whether a particular valve is suitable.
   - question: Can it be fitted with a spring-return actuator?
     answer: Yes. Like other quarter-turn valves it takes either a double-acting or a spring-return actuator. Choose spring-return if the valve must close, or open, by itself when the air fails.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #34). Which seat and body materials and temperature limits the company supplies is not confirmed (PENDING #35). Stolzel-marked actuator in the photo, brand not confirmed for this product (PENDING #25).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 40 to DN 600"

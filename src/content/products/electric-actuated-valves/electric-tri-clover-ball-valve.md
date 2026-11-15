@@ -33,7 +33,6 @@ faqs:
     answer: Switch off and isolate the supply, then release the clamp on each end. The valve and actuator lift out together. Check the clamp gaskets each time and renew any that are flattened, cracked or swollen.
   - question: Can you repair the valve and actuator together?
     answer: Yes. We fit new seats and seals to TC ball valves and repair their electric actuators, whatever the make, normally returning them in 2–3 days.
-todo: 'Ball/butterfly assignment checked against the photo; the old site already named this one "Electrical TC Ball Valve" (PENDING #6). "Tri-Clover" used as the generic name for clamp ends (PENDING #37). Applications other than milk/water ATMs are general typical uses (PENDING #39). The photo shows a supply voltage on the actuator label; not used (PENDING #40). Stolzel-marked body in the photo, brand not confirmed (PENDING #25).'
 typicalOptions:
   - label: "Sizes"
     value: "½\" to 4\" tube sizes"

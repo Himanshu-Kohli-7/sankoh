@@ -32,7 +32,6 @@ faqs:
   - question: What happens if one side is overpressurised?
     answer: Many DP transmitters are designed to survive full line pressure on one side, but the zero can still shift afterwards. Open and close the manifold valves in the right order to avoid it.
 relatedRepair: []
-todo: 'Applications and media are general typical uses (PENDING #48). Ranges, static pressure ratings, manifolds and outputs supplied are not confirmed (PENDING #49). No repair or calibration link (PENDING #52).'
 typicalOptions:
   - label: "DP ranges"
     value: "From a few mbar to tens of bar"

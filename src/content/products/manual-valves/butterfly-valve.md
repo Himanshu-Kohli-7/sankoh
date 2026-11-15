@@ -32,7 +32,6 @@ faqs:
     answer: A hand lever is quick and suits smaller valves. Larger valves need more torque, so they are fitted with a gear operator and handwheel. The gear also closes the valve slowly, which helps to avoid water hammer.
   - question: Can a manual butterfly valve be automated later?
     answer: Often, yes. Most butterfly valves have a top flange that takes a pneumatic or electric actuator in place of the lever. We also supply butterfly valves already fitted with actuators.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Wafer and lug types are described generally; which the company supplies is not confirmed (PENDING #31).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 40 to DN 600 (1½\" to 24\"); larger on request"

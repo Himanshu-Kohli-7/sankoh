@@ -27,7 +27,6 @@ faqs:
     answer: Usually dirt on the seat or a worn seal stops the float from sealing fully. Cleaning or replacing the float and seat normally puts it right.
   - question: Can it be used on sewage lines?
     answer: Raw sewage and sludge foul an ordinary air valve quickly. Wastewater lines use designs with a taller body that keeps solids away from the float mechanism, so tell us what the pipeline carries.
-todo: 'Written as a pipeline air release (air vent) valve; confirm that is the product meant (PENDING #46). No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses (PENDING #41). Orifice types, sizes and body materials supplied are not confirmed (PENDING #42).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 200"

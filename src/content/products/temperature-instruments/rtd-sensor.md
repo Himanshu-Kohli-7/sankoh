@@ -30,7 +30,6 @@ faqs:
   - question: What does Pt100 mean?
     answer: It describes a platinum element with a resistance of 100 ohms at zero degrees Celsius, which is the most widely used type. Other values exist; your controller or transmitter must be set for the one fitted.
 relatedRepair: []
-todo: 'Applications and media are general typical uses (PENDING #53). Element type, wiring, sheath diameters, lengths, heads and connections supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Element"
     value: "Pt100 as standard; Pt1000 on request; simplex or duplex"

@@ -33,7 +33,6 @@ faqs:
     answer: Only as tight as needed to seal. The rubber seat of a wafer butterfly valve also acts as the flange gasket, and over-tightening can crack plastic flanges or squeeze the seat so the disc cannot turn. Tighten evenly, in a cross pattern, and check that the valve opens freely afterwards.
   - question: Do you repair UPVC butterfly valves?
     answer: Yes. We replace seats and discs and repair actuators of any make. Most workshop repairs are finished in 2–3 days.
-todo: 'Ball/butterfly assignment taken from the photo, not confirmed by the company (PENDING #6). Applications other than water treatment are general typical uses (PENDING #34). Disc and seat materials not confirmed (PENDING #35).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 50 to DN 300"

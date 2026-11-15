@@ -34,7 +34,6 @@ faqs:
     answer: Only if the actuator has a fail-safe feature, such as a return spring or a stored-energy module. On steam to a heater, that is usually wise. Without it, the valve stays where it was, so say at enquiry if you need it.
   - question: Can you repair or recalibrate a motorised control valve?
     answer: Yes. We repair globe valve trim, stem seals and linear electric actuators of any make, and set up the stroke and signal response. Most of these jobs leave our workshop in 2–3 days.
-todo: 'No product photo yet; the page shows the placeholder drawing (PENDING #11). Applications and media are general typical uses; company-stated ones (HVAC, building automation, industrial automation) used where they fit (PENDING #39). Two-way/three-way types, control signals and fail-safe options supplied are not confirmed (PENDING #40).'
 typicalOptions:
   - label: "Valve sizes"
     value: "DN 15 to DN 200"

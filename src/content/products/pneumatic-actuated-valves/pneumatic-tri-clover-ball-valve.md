@@ -33,7 +33,6 @@ faqs:
     answer: Hygienic valves are made with smooth internal surfaces so product does not cling. The finish needed depends on your industry and inspection rules. Tell us the requirement and we will match it.
   - question: Do you service TC ball valves and their actuators?
     answer: Yes. We replace seats, seals and clamp gaskets, and repair the actuators fitted to them, on any make of valve. Workshop jobs are usually back with you in 2–3 days.
-todo: 'Ball/butterfly assignment taken from the photo, not confirmed by the company (PENDING #6). "Tri-Clover" used as the generic name for clamp ends (PENDING #37). Applications other than milk/water ATMs are general typical uses (PENDING #34). Stolzel-marked body and solenoid valve in the photo, brand not confirmed (PENDING #25).'
 typicalOptions:
   - label: "Sizes"
     value: "½\" to 4\" tube sizes"

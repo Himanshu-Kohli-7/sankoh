@@ -28,7 +28,6 @@ faqs:
     answer: It shows the highest temperature the winding insulation is built to withstand. Hotter duties, such as steam valves or coils left energised for long periods, call for a higher class.
   - question: Is it normal for a coil to feel hot?
     answer: Yes. A coil that stays energised runs warm and can be too hot to hold. Worry when it smells, discolours or trips the supply, because those point to a fault.
-todo: 'No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses (PENDING #41). Which coil voltages, insulation classes, connector types and fitting ranges are supplied is not confirmed (PENDING #42). Whether coils are repaired or rewound is not confirmed (PENDING #43).'
 typicalOptions:
   - label: "Voltage"
     value: "12 V DC, 24 V DC, 24 V AC, 110 V AC, 230 V AC"

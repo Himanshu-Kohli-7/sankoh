@@ -29,7 +29,6 @@ faqs:
   - question: Can you find a pressure instrument that is not shown here?
     answer: Yes. We source other ranges, connections, materials, outputs and makes through our vendor network, as well as direct replacements for instruments already fitted on your plant.
 relatedRepair: []
-todo: 'Applications are general typical uses (PENDING #48). Types and options supplied are not confirmed (PENDING #49). No instrument repair or calibration service is confirmed, so no repair links (PENDING #52).'
 ---
 
 Pressure instruments tell you what the pressure in a line, vessel or filter is, and what to do about it. A [pressure gauge](/products/pressure-instruments/pressure-gauge/) gives the operator a reading on the spot. A pressure switch acts on a set point, starting a pump or shutting down a compressor. Pressure and differential pressure transmitters send a continuous signal to a PLC or control room. Differential pressure is also widely used to work out flow and level.

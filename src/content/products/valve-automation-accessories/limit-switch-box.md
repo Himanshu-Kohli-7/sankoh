@@ -33,7 +33,6 @@ faqs:
     answer: Usually, provided the actuator has the common top shaft and accessory mounting holes. A bracket and coupling adapt it. Send the actuator make and model and we will confirm.
   - question: Why does the PLC show the valve as neither open nor shut?
     answer: Often the valve has stopped short of its end position, a cam has slipped on the shaft, or a wire has worked loose. A sticking valve gives the same symptom, so check the actuator's travel before blaming the switches.
-todo: 'No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses (PENDING #41). Switch types, enclosure types and mounting kits supplied are not confirmed (PENDING #42). Whether limit switch boxes are repaired, and whether Actuator & Cylinder Repair is the right link, is not confirmed (PENDING #43).'
 typicalOptions:
   - label: "Switches"
     value: "Two mechanical SPDT micro-switches, or inductive proximity sensors"

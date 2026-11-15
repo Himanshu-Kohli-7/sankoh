@@ -29,7 +29,6 @@ faqs:
     answer: A ball valve goes from shut to fully open in a quarter turn and is not meant for adjusting flow. A needle valve takes several turns and gives fine control of small flows, but it passes much less flow for its size.
   - question: Can a needle valve be used for shut-off?
     answer: Yes, it shuts off tightly. Close it by hand only. Forcing the needle into the seat damages both.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). SPEC §2.2 wants this cross-linked from the gauge pages once those are written.'
 typicalOptions:
   - label: "Sizes"
     value: "⅛\" to 1\""

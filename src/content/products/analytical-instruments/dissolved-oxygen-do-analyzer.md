@@ -29,7 +29,6 @@ faqs:
   - question: Where should the sensor go in the tank?
     answer: Somewhere representative of the mixed liquor, away from the diffuser plumes and dead corners, at a depth where it stays submerged. In long tanks, several sensors along the length give better control.
 relatedRepair: []
-todo: 'No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses (PENDING #53). Optical or membrane sensors, ranges, outputs and mountings supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Sensor"
     value: "Optical (luminescent), or membrane type (galvanic / polarographic)"

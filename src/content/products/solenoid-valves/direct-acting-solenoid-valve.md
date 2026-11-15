@@ -31,7 +31,6 @@ faqs:
     answer: Think about the power cut first. A normally closed valve shuts when its coil is de-energised and a normally open one stays open. Choose the form that leaves the process safe, then check which state the valve spends most of its time in, because the coil warms up while it is powered.
   - question: Can it drive a double-acting actuator?
     answer: A 3/2 way valve suits spring-return actuators. A double-acting actuator needs air switched to both sides in turn, which is normally the job of a 5/2 way valve. Tell us the actuator type and we will recommend the right one.
-todo: 'Applications and media are general typical uses, not company-stated (PENDING #41). Which port sizes, NC/NO forms, seal materials and coil voltages are supplied is not confirmed (PENDING #42). The photo shows a Stolzel nameplate; its model data is not used (PENDING #25, #45). No repair page covers solenoid valves (PENDING #43).'
 typicalOptions:
   - label: "Port sizes"
     value: "⅛\" to ½\""

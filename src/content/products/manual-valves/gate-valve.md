@@ -32,7 +32,6 @@ faqs:
     answer: Both isolate a line. A ball valve is quicker, with a quarter turn, and is common on smaller lines. A gate valve opens and closes slowly, which avoids water hammer, and is widely used on larger lines and on steam.
   - question: Do you repair gate valves?
     answer: Yes, whatever the make. A gate valve repaired at our workshop is typically turned round in 2–3 days.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Rising and non-rising stem types are described generally; which the company supplies is not confirmed (PENDING #31).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 600 (½\" to 24\")"

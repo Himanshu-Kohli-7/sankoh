@@ -31,7 +31,6 @@ faqs:
     answer: No. Like other pilot operated valves it needs pressure in the line to open and close reliably. For low-pressure steam, the steam version of a semi-lift valve is often the better fit.
   - question: How should it be installed?
     answer: In a horizontal pipe with the coil on top, with condensate drained away before it reaches the valve and a strainer upstream. Leave room above to lift the coil off for servicing.
-todo: 'Photo: legacy ssv.png may show this valve but is unconfirmed, so the page uses the placeholder drawing (PENDING #44). Applications and media are general typical uses, not company-stated (PENDING #41). Sizes, piston ring materials and coil classes supplied are not confirmed (PENDING #42). No repair page covers solenoid valves (PENDING #43).'
 typicalOptions:
   - label: "Port sizes"
     value: "½\" to 2\""

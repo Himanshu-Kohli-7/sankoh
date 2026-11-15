@@ -33,7 +33,6 @@ faqs:
     answer: Yes. A globe-pattern control valve with a pneumatic actuator and positioner does the same job from a control signal. We supply pneumatic globe control valves as well.
   - question: Do you repair globe valves?
     answer: Yes. Globe valves of any make are repaired at our workshop, typically within 2–3 days.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 300 (½\" to 12\")"

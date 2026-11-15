@@ -31,7 +31,6 @@ faqs:
   - question: Will my existing gauge fit a new thermowell?
     answer: Usually, if the bore suits the stem diameter and the internal thread or fitting matches the gauge. Send us the stem diameter, length and connection of the instrument, or a photo, and we will match the well to it.
 relatedRepair: []
-todo: 'No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses (PENDING #53). Construction (bar-stock or tube), process connections, materials, lengths and bore sizes supplied are not confirmed (PENDING #54). No repair link (PENDING #56).'
 typicalOptions:
   - label: "Construction"
     value: "Machined from bar stock, or fabricated from tube"

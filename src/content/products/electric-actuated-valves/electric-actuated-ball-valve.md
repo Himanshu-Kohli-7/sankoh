@@ -34,7 +34,6 @@ faqs:
     answer: Cams inside the actuator trip limit switches at each end of travel. One set stops the motor, and spare contacts can be wired back to the panel as open and closed signals. The dome indicator on top shows the same thing to anyone standing at the valve.
   - question: Can you repair the actuator as well as the valve?
     answer: Yes. We repair motorised ball valves of any make, from leaking seats to burnt motors, failed switches and stripped gears. A typical workshop turnaround is 2–3 days.
-todo: 'Applications and media are general typical uses; company-stated ones (water treatment, HVAC, building automation, industrial automation, water ATMs) are used where they fit: review (PENDING #39). Body type, supply voltages and fail-safe options supplied are not confirmed (PENDING #40). Stolzel-marked body in the photo, brand not confirmed (PENDING #25).'
 typicalOptions:
   - label: "Valve sizes"
     value: "DN 15 to DN 150"

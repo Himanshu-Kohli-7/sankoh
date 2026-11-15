@@ -29,7 +29,6 @@ faqs:
   - question: What affects the float?
     answer: The liquid density must be high enough for the float to ride on it, and turbulence or waves from the inlet can make it bob. A stilling baffle helps. Tell us the liquid, its density and temperature.
 relatedRepair: []
-todo: 'Photo carries a partner mark; the text names no brand (PENDING #12). The photo shows a float on a hinged arm: confirm whether the product gives a continuous signal (transmitter) or switch contacts, and its outputs (PENDING #57). Applications and media are general typical uses (PENDING #53). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Mounting"
     value: "Flanged to a side nozzle on the tank"

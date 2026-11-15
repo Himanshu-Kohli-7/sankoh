@@ -33,7 +33,6 @@ faqs:
     answer: Each valve opens or shuts one line. To route product, several valves are fitted at a manifold and the PLC opens the right combination, with limit feedback from each one to prove that the other routes are closed.
   - question: Can you service the seat and actuator?
     answer: Yes. We supply and fit new seats, free stiff discs and repair electric actuators of any make, with most workshop jobs complete within 2–3 days.
-todo: 'Ball/butterfly assignment checked against the photo; the old site already named this one "Electrical TC Butterfly Valve" (PENDING #6). "Tri-Clover" used as the generic name for clamp ends (PENDING #37). Applications other than milk ATMs are general typical uses (PENDING #39). Seat compounds and actuator options supplied are not confirmed (PENDING #40).'
 typicalOptions:
   - label: "Sizes"
     value: "1\" to 6\" tube sizes"

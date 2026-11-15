@@ -30,7 +30,6 @@ faqs:
     answer: It depends on how dirty the line is. A rising pressure drop across the strainer is the sign that the screen is filling up. New pipework usually needs the screen cleaned several times in its first weeks.
   - question: Which way round is a Y-strainer installed?
     answer: With the arrow in the direction of flow. On liquid lines the screen pocket points down. On steam and gas lines it is usually turned to the side, so that condensate does not collect in it.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Y-type and basket types are described generally; which the company supplies is not confirmed (PENDING #31).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 300"

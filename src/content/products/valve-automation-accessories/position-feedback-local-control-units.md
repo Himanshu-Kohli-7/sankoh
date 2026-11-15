@@ -28,7 +28,6 @@ faqs:
     answer: A potentiometer gives a varying resistance that a controller close by reads directly. A current transmitter sends a signal that travels over long cable runs without drifting, and it is what most PLCs and building management systems expect.
   - question: Why have a local/remote selector?
     answer: So the person at the valve is in charge while they work on it. In local mode the actuator ignores commands from the control system, and in remote mode the local buttons do nothing.
-todo: 'What the company means by this product (built-in options, separate units, or both) is not confirmed (PENDING #47). No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses (PENDING #41). Feedback signal types and control station options supplied are not confirmed (PENDING #42). Whether these units are repaired, and whether Actuator & Cylinder Repair is the right link, is not confirmed (PENDING #43).'
 typicalOptions:
   - label: "Feedback"
     value: "Potentiometer, or a 4–20 mA position transmitter"

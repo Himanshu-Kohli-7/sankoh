@@ -31,7 +31,6 @@ faqs:
   - question: Why do bubbles upset the reading?
     answer: Air and heavy solids scatter the sound pulses so the transducers lose the signal. Fit the meter away from pump suctions and high points where air gathers.
 relatedRepair: []
-todo: 'Photo is only 180px wide and looks soft on large screens (PENDING #50). Applications and media are general typical uses (PENDING #48). Inline vs clamp-on forms, sizes and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
 typicalOptions:
   - label: "Pipe sizes"
     value: "DN 15 to DN 3000 and above, depending on the transducers"

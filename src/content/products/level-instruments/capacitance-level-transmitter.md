@@ -29,7 +29,6 @@ faqs:
   - question: Can the probe be shortened on site?
     answer: Some rod probes can, but it changes the calibration and, on insulated probes, damages the insulation at the cut end. It is better to order the length the tank needs.
 relatedRepair: []
-todo: 'Low-resolution photo (150px wide) with an unreadable label on the head: ask for a larger photo and confirm the label is not a third-party mark (PENDING #55). Applications and media are general typical uses (PENDING #53). Probe types, lengths, outputs and connections supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Probe"
     value: "Rod or cable; bare for non-conductive liquids, PTFE-insulated for conductive"

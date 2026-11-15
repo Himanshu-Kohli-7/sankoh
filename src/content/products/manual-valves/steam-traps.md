@@ -30,7 +30,6 @@ faqs:
     answer: A trap fails open or closed. Failed open, it blows live steam and wastes fuel. Failed closed, condensate backs up, the equipment heats poorly and water hammer can follow. A sight glass after the trap makes its discharge easy to check.
   - question: Should a strainer be fitted before a steam trap?
     answer: Yes, unless the trap has one built in. Scale and dirt are the most common cause of trap failure.
-todo: 'Legacy name is "Traps": confirm these are steam traps, unpublish if not (PENDING #9). Applications and media are general typical uses, not company-stated: review (PENDING #30). Trap types are described generally; which the company supplies is not confirmed (PENDING #31).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 50"

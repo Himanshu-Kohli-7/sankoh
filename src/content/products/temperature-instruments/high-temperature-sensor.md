@@ -29,7 +29,6 @@ faqs:
   - question: What protects the sensor in a furnace or flue?
     answer: A metal or ceramic protection tube chosen for the temperature and the atmosphere. Ash, sulphur and reducing gases attack some materials, so tell us what the gas contains as well as how hot it gets.
 relatedRepair: []
-todo: 'Written about high-temperature sensing in general; thermocouples are named only as the usual type, not as a type the company supplies (PENDING #54). Unreadable engraving on the photo sheath: confirm it is not a third-party mark (PENDING #55). Applications and media are general typical uses (PENDING #53). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Sensor type"
     value: "Thermocouple types K, N, R, S or B, by temperature"

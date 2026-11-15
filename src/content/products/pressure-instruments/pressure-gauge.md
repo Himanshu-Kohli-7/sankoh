@@ -29,7 +29,6 @@ faqs:
   - question: Should every gauge on a steam line have a siphon?
     answer: Yes. Without one, live steam reaches the element and the heat damages the gauge and spoils its accuracy.
 relatedRepair: []
-todo: 'Photo shows dial markings (standard, material, accuracy class, range) that are not published (PENDING #51) and a partner name; the text names no brand (PENDING #12). Applications and media are general typical uses (PENDING #48). Dial sizes, ranges, fillings, connections and mounting styles supplied are not confirmed (PENDING #49). No repair or calibration link (PENDING #52).'
 typicalOptions:
   - label: "Dial size"
     value: "40 mm to 250 mm; 100 mm and 150 mm are most common"

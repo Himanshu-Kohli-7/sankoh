@@ -30,7 +30,6 @@ faqs:
   - question: How is the probe kept clean?
     answer: Wastewater fouls optical windows quickly. Probes are often fitted with a wiper, brush or air or water jet, and still need a manual clean on a regular schedule. Ask about the cleaning option when you enquire.
 relatedRepair: []
-todo: 'No photo: the legacy photo shows a round maker badge on the probe body, so the page uses the placeholder drawing. An unused legacy file `online-bod-sensor-.webp` may show a BOD probe, but the match is uncertain (PENDING #11, #55). Online optical sensor or automatic analyzer, and measuring principle, not confirmed (PENDING #58). Applications and media are general typical uses (PENDING #53). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Method"
     value: "UV absorption, correlated to laboratory BOD"

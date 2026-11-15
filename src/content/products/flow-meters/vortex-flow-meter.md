@@ -31,7 +31,6 @@ faqs:
   - question: Does a vortex meter need long straight runs?
     answer: Longer than most other types. Bends, reducers and part-open valves upstream distort the vortex pattern, so we check the upstream layout before recommending one.
 relatedRepair: []
-todo: 'Photo has a small, illegible maker label on the body (PENDING #50). Applications and media are general typical uses (PENDING #48). Inline vs insertion forms, sizes, compensation options and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
 typicalOptions:
   - label: "Line sizes"
     value: "DN 15 to DN 300"

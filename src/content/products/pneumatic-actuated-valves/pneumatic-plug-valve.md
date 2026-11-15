@@ -30,7 +30,6 @@ faqs:
     answer: Yes. Multi-port plug valves have three or four connections, and the passage through the plug is shaped to link different pairs of ports as it turns. One actuated valve can then replace two or more on/off valves.
   - question: Why does a plug valve need a larger actuator?
     answer: The friction between plug and sleeve or body is higher than in a ball or butterfly valve of the same size, so it takes more torque to turn. We size the actuator on the actual valve and your air pressure, with a margin for media that may stick.
-todo: 'No product photo yet; the page shows the placeholder drawing (PENDING #11). Applications and media are general typical uses, not company-stated: review (PENDING #34). Sleeved, lubricated and multi-port types are described generally; which the company supplies is not confirmed (PENDING #35).'
 typicalOptions:
   - label: "Valve sizes"
     value: "DN 15 to DN 300"

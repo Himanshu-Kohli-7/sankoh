@@ -29,7 +29,6 @@ faqs:
   - question: Can you find an analyzer that is not shown here?
     answer: Yes. Other parameters such as chlorine, ORP or ammonia, other sensor designs and other makes are available on request through our vendors, along with spare electrodes and sensors for existing installations.
 relatedRepair: []
-todo: 'Applications and media are general typical uses (PENDING #53). Types and options supplied, including online optical sensors or automatic analyzers for BOD and COD, are not confirmed (PENDING #54, #58). No repair or calibration service confirmed for analytical instruments, so no repair links (PENDING #56).'
 ---
 
 Analytical instruments measure what is in water, not just how much of it there is or how hot it is. They tell operators whether water is fit to drink, to feed a boiler or to discharge, and they let treatment plants dose chemicals and run blowers to match the real load.

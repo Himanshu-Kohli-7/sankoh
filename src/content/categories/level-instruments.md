@@ -29,7 +29,6 @@ faqs:
   - question: Can you source a level instrument not shown here?
     answer: Yes. Other principles, such as guided wave radar, magnetic level gauges or conductivity probes, and other makes, can be found for you through our network of vendors.
 relatedRepair: []
-todo: 'Applications and media are general typical uses (PENDING #53). Types and options supplied are not confirmed (PENDING #54). No repair or calibration service confirmed for level instruments, so no repair links (PENDING #56).'
 ---
 
 Level instruments tell you how full a tank, sump or silo is, or warn you when it reaches a limit. They prevent overflows and dry-running pumps, keep stock records honest and let a control system fill and empty vessels on its own.

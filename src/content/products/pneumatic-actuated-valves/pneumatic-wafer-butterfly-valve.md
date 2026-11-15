@@ -34,7 +34,6 @@ faqs:
     answer: From the torque the valve needs to break away from the seat, which depends on its size, the seat material and the pressure across it when it opens, and from the air pressure available. Give us the line pressure and your air pressure and we will match the two.
   - question: Do you repair actuated butterfly valves?
     answer: Yes. We repair butterfly valves and the actuators on them, of any make, from worn seats and damaged discs to actuators that stick or leak air. Most come back from our workshop in 2–3 days.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #34). Wafer and lug bodies are described generally; which the company supplies is not confirmed (PENDING #35).'
 typicalOptions:
   - label: "Valve sizes"
     value: "DN 40 to DN 600"

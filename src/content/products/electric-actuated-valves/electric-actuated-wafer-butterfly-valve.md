@@ -34,7 +34,6 @@ faqs:
     answer: Yes, with a weatherproof actuator, sealed cable glands and the conduit entries facing down so rain cannot run in. Many actuators carry a small internal heater that stops condensation forming inside the housing. Let us know if the valve will stand in the open.
   - question: Do you service motorised butterfly valves?
     answer: Yes. We change seats and discs, free seized shafts and repair the electric actuators on butterfly valves of any make, usually inside 2–3 days in our workshop.
-todo: 'Applications and media are general typical uses; company-stated ones (water treatment, HVAC, building automation, industrial automation) are used where they fit: review (PENDING #39). Wafer pattern and actuator options supplied are not confirmed (PENDING #40). Stolzel-marked actuator in the photo, brand not confirmed (PENDING #25).'
 typicalOptions:
   - label: "Valve sizes"
     value: "DN 50 to DN 600"

@@ -33,7 +33,6 @@ faqs:
     answer: Each actuator motor has a duty rating, and running it more often than that lets it overheat and trip its thermal protection. Tell us how many times an hour the valve will move, and for frequent modulating duty we will select an actuator rated for it.
   - question: Can a worn spherical disc valve be refurbished?
     answer: In most cases. We replace seats and shaft seals, check the disc edge and repair the actuator, on any make of valve. Workshop jobs typically take 2–3 days.
-todo: 'Applications and media are general typical uses; company-stated ones (HVAC, building automation, industrial automation, water treatment) are used where they fit: review (PENDING #39). Body, seat materials and actuator options supplied are not confirmed (PENDING #40). Stolzel-marked actuator in the photo, brand not confirmed (PENDING #25).'
 typicalOptions:
   - label: "Valve sizes"
     value: "DN 40 to DN 600"

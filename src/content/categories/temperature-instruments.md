@@ -29,7 +29,6 @@ faqs:
   - question: Can you supply a temperature instrument that is not listed here?
     answer: Yes. Other sensing elements, lengths, heads, connections and makes can be sourced through our vendor network, including like-for-like replacements for instruments already fitted.
 relatedRepair: []
-todo: 'Applications and media are general typical uses (PENDING #53). Types and options supplied are not confirmed (PENDING #54). No repair or calibration service confirmed for temperature instruments, so no repair links (PENDING #56).'
 ---
 
 Temperature instruments show or signal how hot a process is, so that it can be watched, controlled and kept safe. A [temperature gauge](/products/temperature-instruments/temperature-gauge-mechanical/) gives an on-the-spot dial reading with no power. An [RTD sensor](/products/temperature-instruments/rtd-sensor/) or a [high temperature sensor](/products/temperature-instruments/high-temperature-sensor/) turns heat into an electrical signal for a controller. A [temperature transmitter](/products/temperature-instruments/temperature-transmitter/) converts that signal into a standard output that travels cleanly to a PLC or control room.

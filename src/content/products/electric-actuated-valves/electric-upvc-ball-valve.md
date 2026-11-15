@@ -33,7 +33,6 @@ faqs:
     answer: Low-voltage DC actuators exist and suit remote irrigation, borewell and village water schemes powered by batteries or solar panels. Give us the supply voltage you have and we will check what can be offered for it.
   - question: Can you repair an electric UPVC ball valve?
     answer: Yes. Seats and O-rings on the valve can be renewed, and we repair electric actuators of every make, generally in 2–3 days at our workshop.
-todo: 'Ball/butterfly assignment checked against the photo; the old site already named this one "Electrical UPVC Ball Valve" (PENDING #6). Applications other than water treatment and water ATMs are general typical uses (PENDING #39). End connections, seal materials and DC/solar actuator options supplied are not confirmed (PENDING #40).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 100"

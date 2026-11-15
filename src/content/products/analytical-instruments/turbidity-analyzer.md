@@ -27,7 +27,6 @@ faqs:
   - question: Is turbidity the same as suspended solids?
     answer: Related but not the same. Turbidity measures the optical effect of particles, while suspended solids is their weight. Some analyzers estimate suspended solids from turbidity using a correlation for the specific water.
 relatedRepair: []
-todo: 'No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses; water ATMs is a company-stated application (PENDING #53). Low-range (flow cell) or high-range (immersion) versions, outputs and cleaning options supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Method"
     value: "90° scattered light (nephelometric) or surface scatter"

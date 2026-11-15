@@ -32,7 +32,6 @@ faqs:
     answer: Some knife gate valves seal in one direction only and others in both. Tell us which way the pressure acts and whether the flow ever reverses, so that the valve suits the line.
   - question: Can a knife gate valve be automated?
     answer: Yes. Knife gate valves are commonly fitted with a pneumatic cylinder or an electric actuator in place of the handwheel.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Media list has only Water because slurry is not a selector media value. Linked to Gate Valve Repair: confirm the company repairs knife gate valves under that service (PENDING #32).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 50 to DN 600; larger on request"

@@ -31,7 +31,6 @@ faqs:
     answer: Yes, if the right version is chosen. Single-acting positioners have one air output and double-acting ones have two. Tell us the actuator type and its stroke or rotation.
   - question: Why does my control valve keep hunting around the setpoint?
     answer: Sticky packing, worn linkage, a poor air supply or tuning that is too aggressive are the usual reasons. Putting the mechanics right first usually cures it; retuning alone often does not.
-todo: 'No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses (PENDING #41). Input signals, communication protocols, enclosure types and mounting kits supplied are not confirmed (PENDING #42).'
 typicalOptions:
   - label: "Input signal"
     value: "4–20 mA, two-wire"

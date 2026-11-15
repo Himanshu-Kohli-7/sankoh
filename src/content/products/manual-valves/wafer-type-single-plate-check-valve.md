@@ -28,7 +28,6 @@ faqs:
     answer: A single plate valve has one hinged plate that swings open into the downstream pipe. A dual plate valve has two half plates on a central pin, closed by springs. The single plate design is simpler. The dual plate design closes faster and is often preferred on larger sizes.
   - question: Does it need clear pipe downstream?
     answer: Yes. The plate swings out beyond the body as it opens, so it needs free space in the pipe downstream. Fitted directly against another valve or fitting, the plate may not open fully.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). No related repair page shown (PENDING #32).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 300"

@@ -31,7 +31,6 @@ faqs:
   - question: Can a mechanical meter be read remotely?
     answer: Many accept a pulse output or a reed switch on the register, which can feed a counter, data logger or building management system.
 relatedRepair: []
-todo: 'Difference from "Water Meter" is unconfirmed (PENDING #7). Photo shows dial markings and ratings that are not published (PENDING #51) and a partner mark; the text names no brand (PENDING #12). Applications are general typical uses (PENDING #48). Meter types, sizes and pulse options supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 40 multi-jet; DN 50 to DN 300 Woltman"

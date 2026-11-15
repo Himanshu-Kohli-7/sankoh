@@ -33,7 +33,6 @@ faqs:
     answer: A standard ball valve is mainly an on/off valve. With a positioner fitted, the actuator can hold positions in between for modulating duty. For precise throttling, a globe control valve is often the better choice.
   - question: Do you repair pneumatic actuated ball valves?
     answer: Yes, both the ball valve and its pneumatic actuator, whatever the make. In our workshop the job typically takes 2–3 days.
-todo: 'Applications are general typical uses, not company-stated: review (PENDING #26). Brand (Sankoh/Stolzel) not confirmed, so Product schema has no brand (PENDING #25).'
 typicalOptions:
   - label: "Valve sizes"
     value: "DN 15 to DN 200"

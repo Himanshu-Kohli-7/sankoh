@@ -30,7 +30,6 @@ faqs:
   - question: Which sensor type do I need?
     answer: The right cell depends on how pure or salty the water is. Pure water from RO or DM needs a contacting cell designed for low conductivity; salty, dirty or corrosive liquids are better served by an inductive sensor. Tell us the expected range.
 relatedRepair: []
-todo: 'No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses; water ATMs is a company-stated application (PENDING #53). Sensor types, cell constants, ranges, outputs and mounting supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Cell"
     value: "Two-electrode or four-electrode contacting; inductive (toroidal) for dirty or strong solutions"

@@ -28,7 +28,6 @@ faqs:
     answer: Common types are the tubular sight glass, with a glass tube between the end connections, and the window type, with flat glass on one or both sides of the body. Some have a flap, ball or spinner inside that moves to show flow.
   - question: What limits the pressure and temperature of a sight glass?
     answer: The glass. Its type and thickness set the limits, along with the seals. Tell us the working pressure, the temperature and the media, so that the sight glass is safe for the duty.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Tubular and window types and end connections are described generally; which the company supplies is not confirmed (PENDING #31).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 150"

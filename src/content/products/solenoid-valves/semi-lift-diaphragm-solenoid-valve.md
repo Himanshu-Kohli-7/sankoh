@@ -29,7 +29,6 @@ faqs:
     answer: No. Steam and hot water attack ordinary elastomers and run the coil hotter than it is built for. Use the steam version, and fit it with the coil on top where possible so condensate does not sit in the plunger tube.
   - question: Does it work on a tank that feeds by gravity?
     answer: Yes, that is one of its main uses. Because it can open with almost no pressure behind it, it works on overhead tank outlets and low-head lines where a plain pilot operated valve would stay shut.
-todo: 'Applications and media are general typical uses, not company-stated (PENDING #41). Which sizes, seal and diaphragm materials, and steam coil classes are supplied is not confirmed (PENDING #42). The photo shows a Stolzel nameplate; its model data is not used (PENDING #25, #45). No repair page covers solenoid valves (PENDING #43).'
 typicalOptions:
   - label: "Port sizes"
     value: "⅜\" to 2\""

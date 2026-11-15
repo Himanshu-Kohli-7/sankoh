@@ -32,7 +32,6 @@ faqs:
     answer: That depends on how the cylinder is set up. A lock-up arrangement can trap air in the cylinder so the damper stays where it is, while other arrangements drive it to a safe position. Tell us what your process needs and we will set it up to suit.
   - question: Do you repair power cylinders?
     answer: Yes. We repair power cylinders, actuators and positioners of any make, including seals, rods and linkages, and recalibrate the positioner. Repairs in our workshop usually take 2–3 days.
-todo: 'Applications are general typical uses, not company-stated apart from HVAC, building and industrial automation (PENDING #34). Positioner and lock-up options described generally (PENDING #35). The photo shows a third-party brand name on the position indicator box (PENDING #38).'
 typicalOptions:
   - label: "Bore"
     value: "50 mm to 300 mm"

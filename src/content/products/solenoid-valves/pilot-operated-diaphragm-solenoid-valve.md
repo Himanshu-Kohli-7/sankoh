@@ -31,7 +31,6 @@ faqs:
     answer: It does. The body carries a flow arrow, and fitted backwards the pilot circuit cannot work. A strainer upstream is worth adding too, because grit can block the small bleed and pilot holes and leave the valve stuck open or shut.
   - question: Which parts wear out first?
     answer: Usually the diaphragm, and now and then the plunger seal. Both can be replaced, so a valve that passes when shut or will not close can often be put right without changing the body.
-todo: 'Applications and media are general typical uses, not company-stated (PENDING #41). Port sizes, diaphragm materials and coil voltages supplied are not confirmed (PENDING #42). The photo shows a Stolzel nameplate; its model data is not used (PENDING #25, #45). No repair page covers solenoid valves (PENDING #43).'
 typicalOptions:
   - label: "Port sizes"
     value: "⅜\" to 2\" screwed; flanged above that"

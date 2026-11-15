@@ -91,7 +91,7 @@ const products = defineCollection({
       faqs: z.array(faq).default([]),
       /** Enquiry checklist and spec line. Defaults by division; `accessory` for positioners, switch boxes, coils; `instrument-accessory` for siphons and thermowells; `analytical` for analyzers and their sensors. */
       enquiry: z.enum(['valve', 'instrument', 'accessory', 'instrument-accessory', 'analytical']).optional(),
-      /** Internal note, never rendered. Mirror it in docs/PENDING.md. */
+      /** Internal note for a missing fact, never rendered. Mirror it in docs/PENDING.md. */
       todo: z.string().optional(),
     }),
 });

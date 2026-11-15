@@ -31,7 +31,6 @@ faqs:
     answer: Small forged valves are usually made with screwed ends or socket weld ends, and flanged versions are also made. Tell us how your line is joined so that the valve matches it.
   - question: Which type of forged valve do I need?
     answer: A gate valve to isolate, a globe valve to regulate or a check valve to stop reverse flow. Tell us the duty and our engineers will recommend the type.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Types (gate, globe, check) and end connections are described generally; which the company supplies is not confirmed (PENDING #31).'
 typicalOptions:
   - label: "Sizes"
     value: "¼\" to 2\""

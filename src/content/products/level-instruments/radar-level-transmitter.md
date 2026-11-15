@@ -30,7 +30,6 @@ faqs:
   - question: Where should it be mounted on the tank?
     answer: Away from the inlet stream, ladders, agitator blades and the tank wall, so the beam sees the surface rather than fittings. The antenna should project fully below the nozzle.
 relatedRepair: []
-todo: 'Applications and media are general typical uses (PENDING #53). Frequency bands, antenna types, ranges, outputs, process connections and hazardous-area versions supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Type"
     value: "Non-contact (free space) or guided wave with a rod or cable probe"

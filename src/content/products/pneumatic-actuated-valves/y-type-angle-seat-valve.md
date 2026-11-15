@@ -32,7 +32,6 @@ faqs:
     answer: Yes. The body is marked with an arrow showing which side of the seat the flow should enter. Fitting the valve the wrong way round can stop it sealing properly or cause water hammer when it closes on a liquid line, so tell us the media when you order.
   - question: How is the valve switched from the panel?
     answer: A small solenoid valve, mounted on the actuator or nearby, lets air into the piston on command. A position indicator on top shows whether the valve is open, and some actuators can take a sensor for feedback to the PLC.
-todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #34). The photo nameplate shows one Stolzel model''s data; not used on the page (PENDING #36). Related repair is Actuator & Cylinder only: confirm whether valve body repair is offered (PENDING #35).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 15 to DN 80 (½\" to 3\")"

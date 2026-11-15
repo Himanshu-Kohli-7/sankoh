@@ -33,7 +33,6 @@ faqs:
     answer: Yes, with a modulating actuator that follows a signal from a flow or level controller. Keep the working range away from the nearly closed position, where fast-moving water erodes the seat and control becomes jumpy.
   - question: Do you repair UPVC butterfly valves and their actuators?
     answer: Yes. We replace discs, seats and stem seals and repair electric actuators of any make, typically in 2–3 days at our workshop.
-todo: 'Ball/butterfly assignment checked against the photo; the old site already named this one "Electrical UPVC Butterfly Valve" (PENDING #6). Applications other than water treatment are general typical uses (PENDING #39). Disc, seat and actuator options supplied are not confirmed (PENDING #40). Stolzel-marked actuator in the photo, brand not confirmed (PENDING #25).'
 typicalOptions:
   - label: "Sizes"
     value: "DN 50 to DN 300"

@@ -29,7 +29,6 @@ faqs:
   - question: What if the meter I need is not on this page?
     answer: Ask us anyway. We source other principles, sizes, liners, outputs and makes from our vendor network, and can match a replacement to a meter already on your line.
 relatedRepair: []
-todo: 'Applications are general typical uses (PENDING #48). Types and options supplied are not confirmed (PENDING #49). No instrument repair or calibration service is confirmed, so no repair links (PENDING #52).'
 ---
 
 A flow meter measures how much liquid, gas or steam passes along a pipe, either as a rate or as a running total. Plants use that reading to control dosing and batching, to share utility costs between departments, to track losses and to prove what was delivered.

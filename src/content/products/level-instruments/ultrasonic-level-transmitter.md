@@ -30,7 +30,6 @@ faqs:
   - question: Can it measure flow in an open channel?
     answer: Yes. Mounted above a flume or weir, it reads the water height, and the transmitter or controller converts that height to flow using the shape of the structure.
 relatedRepair: []
-todo: 'Photo carries a partner mark; the text names no brand (PENDING #12). Applications and media are general typical uses (PENDING #53). Ranges, outputs, housings and connections supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
 typicalOptions:
   - label: "Range"
     value: "About 0.3 m to 15 m, by model"

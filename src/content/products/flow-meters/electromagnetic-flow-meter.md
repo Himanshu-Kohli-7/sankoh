@@ -31,7 +31,6 @@ faqs:
   - question: Does it cause a pressure drop?
     answer: Practically none when it is the same size as the pipe, because the bore is clear. If it is sized down to raise the velocity, the reducers add a small loss.
 relatedRepair: []
-todo: 'Photo carries a partner mark; the text names no brand (PENDING #12). Applications and media are general typical uses (PENDING #48). Liner and electrode materials, sizes and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
 typicalOptions:
   - label: "Line sizes"
     value: "DN 10 to DN 1000 and above"
