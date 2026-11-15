@@ -79,7 +79,7 @@ const megaColumns = [...productGroups, repairServiceGroup];
                     <a class="rail-link" href={selectorHref}>Product selector <Icon name="arrow-right" size={18} /></a>
                   )}
                   {catalogue.available && (
-                    <a class="rail-link" href={catalogue.href} download>Catalogue (PDF) <Icon name="download" size={18} /></a>
+                    <a class="rail-link" href={catalogue.href} download data-event="download_catalogue">Catalogue (PDF) <Icon name="download" size={18} /></a>
                   )}
                   <p class="rail-note">
                     Can’t find what you need? <a href="/services/product-sourcing/">We’ll source it</a> to your specification.

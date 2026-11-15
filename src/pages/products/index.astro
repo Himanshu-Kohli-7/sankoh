@@ -10,7 +10,7 @@ import DivisionBadge from '../../components/DivisionBadge.astro';
 import Icon from '../../components/Icon.astro';
 import PageHero from '../../components/PageHero.astro';
 import SourcingBlock from '../../components/SourcingBlock.astro';
-import { categoryBlurbs, productGroups } from '../../config/nav';
+import { categoryBlurbs, productGroups, selectorAvailable, selectorHref } from '../../config/nav';
 import { site, listAnd } from '../../config/site';
 import { isPublished, pageTitle, productHref, productsIn } from '../../lib/content';
 
@@ -45,7 +45,11 @@ const breadcrumbs = [{ label: 'Products' }];
     eyebrow="Products"
     title="Industrial Valves & Instruments"
     lead={`We manufacture under our own brand ${site.brands.own[0]}, and supply and source industrial valves, valve automation and process instruments as an authorised partner of ${listAnd(site.brands.authorisedPartners)}. Choose a category below, or tell us what you need.`}
-  />
+>
+    {selectorAvailable && (
+      <a class="selector-link" href={selectorHref}><Icon name="search" size={20} />Not sure which one? Use the product selector</a>
+    )}
+  </PageHero>
 
   {groups.map((group, i) => (
     <section class:list={['division', i % 2 === 1 && 'alt']} id={anchor(group.href)} data-division={group.division}>
@@ -88,6 +92,7 @@ const breadcrumbs = [{ label: 'Products' }];
 </Base>
 
 <style>
+  .selector-link { display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; margin-top: 1.25rem; color: var(--color-blue); font-weight: 600; text-underline-offset: 4px; }
   .division { scroll-margin-top: 5rem; }
   .alt { background: var(--color-paper); border-block: 1px solid var(--color-line); }
   .group-title { padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-line); font-size: inherit; }

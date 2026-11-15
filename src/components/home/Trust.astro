@@ -1,9 +1,11 @@
 ---
 /**
- * Trust (SPEC §3.9, §6.3): client logos and reviews, exactly as on the old site.
- * Certifications join this section once src/content/certifications/ has entries.
+ * Trust (SPEC §3.9, §6.3): client logos and reviews from the content collections, exactly as on the
+ * old site. Certifications and projects appear only once their collections have real entries
+ * (CLAUDE.md §8): no empty headings. Plain HTML, no Review/AggregateRating schema.
  */
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
 import ClientLogoStrip from '../ClientLogoStrip.astro';
 import ReviewCard from '../ReviewCard.astro';
 import SectionHeader from '../SectionHeader.astro';
@@ -11,6 +13,8 @@ import SectionHeader from '../SectionHeader.astro';
 const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) => a.data.order - b.data.order;
 const clients = (await getCollection('clients')).sort(byOrder).map((entry) => entry.data);
 const reviews = (await getCollection('reviews')).sort(byOrder).map((entry) => entry.data);
+const certifications = (await getCollection('certifications')).sort(byOrder).map((entry) => entry.data);
+const projects = (await getCollection('projects')).sort(byOrder).map((entry) => entry.data);
 ---
 
 <section class="trust">
@@ -18,31 +22,76 @@ const reviews = (await getCollection('reviews')).sort(byOrder).map((entry) => en
     <SectionHeader eyebrow="Clients" title="Companies we work with" />
     <div class="logos-wrap"><ClientLogoStrip clients={clients} /></div>
 
-    <h3 class="reviews-title">What their engineers say</h3>
-    <ul class="reviews" tabindex="0" aria-label="Client reviews">
-      {reviews.map((review) => (
-        <li>
-          <ReviewCard quote={review.quote} name={review.name} role={review.role} company={review.company} logo={review.logo} />
-        </li>
-      ))}
-    </ul>
+    {reviews.length > 0 && (
+      <>
+        <h3 class="block-title">What their engineers say</h3>
+        <ul class="reviews" tabindex="0" aria-label="Client reviews">
+          {reviews.map((review) => (
+            <li>
+              <ReviewCard quote={review.quote} name={review.name} role={review.role} company={review.company} logo={review.logo} />
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+
+    {certifications.length > 0 && (
+      <>
+        <h3 class="block-title">Certifications</h3>
+        <ul class="certs">
+          {certifications.map((c) => (
+            <li>
+              <Image src={c.image} alt={c.alt} widths={[240, 360]} sizes="240px" loading="lazy" />
+              <p class="cert-title">{c.title}</p>
+              <p class="cert-issuer">{c.issuer}</p>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+
+    {projects.length > 0 && (
+      <>
+        <h3 class="block-title">Projects</h3>
+        <ul class="projects">
+          {projects.map((p) => (
+            <li>
+              {p.image && <Image src={p.image} alt={p.alt ?? p.title} widths={[360, 540]} sizes="(min-width: 768px) 360px, 90vw" loading="lazy" />}
+              <p class="cert-title">{p.title}</p>
+              {p.client && <p class="cert-issuer">{p.client}</p>}
+              <p class="project-summary">{p.summary}</p>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
   </div>
 </section>
 
 <style>
   .trust { background: var(--color-paper); border-block: 1px solid var(--color-line); }
   .logos-wrap { margin-top: 2rem; }
-  .reviews-title { margin-top: 3rem; }
+  .block-title { margin-top: 3rem; }
   /* Phones: one swipeable row, so six reviews don't add six screens of scrolling. */
   .reviews { display: flex; gap: 0.75rem; margin-top: 1.25rem; margin-inline: calc(var(--gutter) * -1); padding: 0.25rem var(--gutter) 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); }
   .reviews li { flex: none; width: 84%; max-width: 22rem; scroll-snap-align: start; }
 
+  .certs, .projects { display: grid; gap: 1rem; margin-top: 1.25rem; }
+  .certs { grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); }
+  .certs li, .projects li { padding: 1rem; border: 1px solid var(--color-line); border-radius: 2px; background: var(--color-white); }
+  .certs :global(img), .projects :global(img) { width: 100%; height: auto; }
+  .cert-title { margin-top: 0.75rem; color: var(--color-navy); font-weight: 600; }
+  .cert-issuer { color: var(--color-slate); font-size: 0.875rem; }
+  .project-summary { margin-top: 0.5rem; font-size: 0.9375rem; }
+
   @media (min-width: 768px) {
     .reviews { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-inline: 0; padding: 0; overflow: visible; }
     .reviews li { width: auto; max-width: none; }
+    .projects { grid-template-columns: repeat(2, 1fr); }
   }
   @media (min-width: 1024px) {
     .reviews { grid-template-columns: repeat(3, 1fr); }
+    .projects { grid-template-columns: repeat(3, 1fr); }
     /* 14 logos: two even rows of seven. */
     .logos-wrap :global(.logos) { grid-template-columns: repeat(7, 1fr); }
   }

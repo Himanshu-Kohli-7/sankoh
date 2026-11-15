@@ -4,7 +4,7 @@
  */
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { site, quoteHref } from '../../config/site';
-import { productGroups, repairGroups, primaryLinks, productsHref, type NavGroup } from '../../config/nav';
+import { productGroups, repairGroups, primaryLinks, productsHref, selectorAvailable, selectorHref, type NavGroup } from '../../config/nav';
 
 interface Props {
   currentPath: string;
@@ -182,6 +182,11 @@ export default function MobileMenu({ currentPath, catalogueHref }: Props) {
           <a class={plainLink} href={productsHref}>
             All products
           </a>
+          {selectorAvailable && (
+            <a class={plainLink} href={selectorHref} aria-current={currentPath === selectorHref ? 'page' : undefined}>
+              Product selector
+            </a>
+          )}
 
           <p class="eyebrow pt-6 pb-1 text-slate">Repair</p>
           {repairGroups.map((group) =>
@@ -203,7 +208,7 @@ export default function MobileMenu({ currentPath, catalogueHref }: Props) {
               </a>
             ))}
           {catalogueHref && (
-            <a class={plainLink} href={catalogueHref} download>
+            <a class={plainLink} href={catalogueHref} download data-event="download_catalogue">
               Catalogue (PDF)
             </a>
           )}

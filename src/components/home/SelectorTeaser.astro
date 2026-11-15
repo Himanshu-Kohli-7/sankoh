@@ -12,7 +12,7 @@ const rows = [
   {
     label: 'Operation',
     filter: 'operation',
-    options: ['Manual', 'Pneumatic', 'Electric', 'Solenoid'],
+    options: ['Manual', 'Self-acting', 'Pneumatic', 'Electric', 'Solenoid'],
   },
   {
     label: 'Media',
@@ -20,7 +20,8 @@ const rows = [
     options: [...site.media],
   },
 ];
-const link = (filter: string, value: string) => `${selectorHref}#${filter}=${value.toLowerCase()}`;
+/** Same slugs as lib/selector.ts: "Self-acting" → self-acting. */
+const link = (filter: string, value: string) => `${selectorHref}#${filter}=${value.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 ---
 
 <section class="container-content section-y">

@@ -1,6 +1,6 @@
 /**
- * Content collections (SPEC §4). Collections are added with their content:
- * brands, certifications and projects come in later phases.
+ * Content collections (SPEC §4). Brands are added in a later phase. Certifications, projects and the
+ * repair gallery start empty: their sections render only once real entries exist (CLAUDE.md §8).
  */
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
@@ -208,6 +208,36 @@ const repairGallery = defineCollection({
     }),
 });
 
+/**
+ * Certifications the company actually holds, each with its certificate image (CLAUDE.md §2.1: never
+ * invented). Empty until the company sends them; the trust section hides the block while empty.
+ */
+const certifications = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/certifications' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      issuer: z.string(),
+      image: image(),
+      alt: z.string(),
+      order: z.number(),
+    }),
+});
+
+/** Real projects / case studies, confirmed by the company. Empty until then; the block hides itself. */
+const projects = defineCollection({
+  loader: glob({ pattern: '*.yaml', base: './src/content/projects' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      client: z.string().optional(),
+      summary: z.string(),
+      image: image().optional(),
+      alt: z.string().optional(),
+      order: z.number(),
+    }),
+});
+
 /** Client reviews, migrated verbatim from the legacy site (CLAUDE.md §4). */
 const reviews = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/reviews' }),
@@ -233,4 +263,15 @@ const clients = defineCollection({
     }),
 });
 
-export const collections = { categories, products, repairHubs, repairServices, services, repairGallery, reviews, clients };
+export const collections = {
+  categories,
+  products,
+  repairHubs,
+  repairServices,
+  services,
+  repairGallery,
+  reviews,
+  clients,
+  certifications,
+  projects,
+};
