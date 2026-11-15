@@ -79,7 +79,7 @@ export const site = {
     vfdBrands: 'ABB, Danfoss and all other makes',
     /** Warranty terms, as confirmed by the company. State them only in these words. */
     warranty: {
-      repairedValves: '6 months on repaired valves',
+      repairedValves: '6 months on repaired valves and positioners',
       repairedVfds: '3 months on repaired VFDs',
       newProducts: '1 year on new products',
     },

@@ -1,13 +1,13 @@
 title: Valve Repair
 h1: Valve Repair Services — Any Make, Any Model
 seoTitle: Valve Repair Services
-metaDescription: Valve repair for any make – control, globe, gate, butterfly, ball and plug valves, actuators and positioners. On site or in our workshop, 6-month warranty.
-updated: 2026-11-14
+metaDescription: "Valve repair for any make: control, globe, gate, butterfly, ball and plug valves, actuators, positioners. On site or in our workshop. 6-month warranty."
+updated: 2026-11-15
 group: valve
 serviceType: Industrial valve repair
 intro: >-
   Sankoh Technical Solutions repairs valves of any make, manual and automated, along with their actuators, cylinders and positioners.
-  We repair on site or in our workshop, where a repair typically takes 2–3 days, and repaired valves carry a 6-month warranty.
+  We repair on site or in our workshop, where a repair typically takes 2–3 days, and repaired valves and positioners carry a 6-month warranty.
   Send us a photo of the valve and its nameplate and our engineers will tell you what it needs.
 
 # One line per subpage: the symptoms that bring each type in. General knowledge only.
@@ -88,8 +88,8 @@ faqs:
     answer: Yes. We repair pneumatic and electric actuators, power cylinders and positioners of any make, on their own or together with the valve.
   - question: Do you repair valves on site?
     answer: Yes, on-site repair is offered. Where the work needs our workshop, a typical repair takes 2–3 days.
-  - question: Is there a warranty on a repaired valve?
-    answer: Yes. Repaired valves carry a 6-month warranty.
+  - question: Is there a warranty on a repaired valve or positioner?
+    answer: Yes. Repaired valves and positioners carry a 6-month warranty.
   - question: Do you repair VFDs as well?
     answer: Yes. VFDs from ABB, Danfoss and all other makes are repaired too, with a 3-month warranty. See the VFD repair page.
   - question: What if a valve fails on a Sunday?

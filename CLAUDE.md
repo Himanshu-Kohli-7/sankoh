@@ -68,7 +68,7 @@ Three divisions, each with its own colour (§6):
 | On-site repair | Offered, as well as workshop repair |
 | Repair scope | Valves of **any make**, manual and automated, including actuators and cylinders; positioners; VFDs of **any make**. **No** servo drive or HMI repair |
 | VFD brands to name | ABB, Danfoss "and all other makes" |
-| Warranty | 6 months on repaired valves; 3 months on repaired VFDs; 1 year on new products |
+| Warranty | 6 months on repaired valves and positioners; 3 months on repaired VFDs; 1 year on new products |
 | Also offers | Help selecting the right product; technical advice; delivery, installation and testing; setting up and commissioning valve and automation systems for factories; new valves, surplus and discontinued valves and parts, reconditioned components; sourcing through a vendor network |
 | Not sold | Vibration sensors |
 | Advisory service | "Valve Selection & Maintenance Advisory" — expert advice on choosing, maintaining and managing all types of valves |

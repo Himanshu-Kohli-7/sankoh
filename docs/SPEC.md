@@ -197,7 +197,7 @@ Cross-links: Needle Valve and Siphon/Thermowell appear as "accessories" on the g
 
 `/vfd-repair/` (one page, no hub): VFD Repair. Name ABB, Danfoss "and all other makes". There is no servo drive or HMI repair.
 
-Every repair page and the hub state the warranty (6 months on repaired valves, 3 months on repaired VFDs), that on-site repair is offered, and the support line.
+Every repair page and the hub state the warranty (6 months on repaired valves and positioners, 3 months on repaired VFDs), that on-site repair is offered, and the support line.
 
 ---
 
