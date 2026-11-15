@@ -25,7 +25,7 @@ How to use: when something is confirmed, tell Claude "X is confirmed: …". It u
 |---|---|---|
 | 9 | Is "Traps" = steam traps, and does the company sell them at all? | **Hide if not sold.** The Steam Traps page is written and live as a steam trap page (marked TODO in `manual-valves/steam-traps.md`). If the company does not sell steam traps, unpublish it (remove the body) and drop it from Related products on the Strainer, Sight Glass, Safety Valve and Piston Valve pages, which link to it |
 | 10 | Do they sell vibration sensors? (company profile mentions them) | No page |
-| 11 | Catalogue-only products: images needed (plug valves (the Pneumatic Plug Valve page is live with the placeholder drawing), motorised globe/gate, solenoid types, positioner, limit switch box, I/P converter, air release valve, thermowell, siphon, TDS/conductivity, DO, turbidity analyzers) | Placeholder illustration |
+| 11 | Catalogue-only products: images needed (plug valves (the Pneumatic Plug Valve and Motorised Plug Valve pages are live with the placeholder drawing), motorised globe and gate valves (both pages live with the placeholder drawing), solenoid types, positioner, limit switch box, I/P converter, air release valve, thermowell, siphon, TDS/conductivity, DO, turbidity analyzers) | Placeholder illustration |
 | 12 | Which product ranges come from Scientific Devices and UPC | Brands page describes them as authorised partners only |
 | 13 | Category-level "commonly supplied" info: typical sizes, body materials, end connections, pressure classes | Product pages say "available to your specification"; spec table hidden |
 | 14 | Pressure / temperature / size / material data for the product selector | Selector filters by type, operation, media, application only |
