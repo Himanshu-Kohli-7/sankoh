@@ -6,13 +6,17 @@
  */
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
+import type { DivisionKey } from '../config/nav';
+import { placeholderPath } from '../lib/placeholder';
 
 interface Props {
   images: { src: ImageMetadata; alt: string }[];
   /** Mono caption under the main image, e.g. the product name. */
   caption?: string;
+  /** Picks the placeholder drawing when there is no photo. */
+  division?: DivisionKey;
 }
-const { images, caption } = Astro.props;
+const { images, caption, division = 'valves' } = Astro.props;
 const [main, ...rest] = images;
 ---
 
@@ -21,7 +25,7 @@ const [main, ...rest] = images;
     <div class="tile">
       <span class="mark tl"></span><span class="mark tr"></span><span class="mark bl"></span><span class="mark br"></span>
       <svg class="placeholder" viewBox="0 0 120 90" aria-hidden="true">
-        <path d="M30 30v30l30-15-30-15z M90 30v30L60 45l30-15z M60 45V24 M48 24h24 M10 45h20 M90 45h20" />
+        <path d={placeholderPath(division)} />
       </svg>
     </div>
     {caption && <figcaption class="eyebrow">{caption}</figcaption>}

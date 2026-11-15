@@ -257,7 +257,7 @@ H1 = category name + "Supplier in India" variant in `seoTitle` only. Intro (120�
 2. **What it is and how it works** (80–150 words, general knowledge).
 3. **Typical applications & media** (bullets; use company-stated applications/media where they exist, otherwise general typical uses — flag these for the user to review).
 4. **Available to your specification**: "We supply this in a range of sizes, body materials, pressure ratings and end connections to match your process. Tell us your requirement and our engineers will recommend the right option." If `variants[]` or category `commonlySupplied` exists, show it as a spec-style table.
-5. **What to tell us when you enquire** — `EnquiryChecklist` tailored per category (valves: size, pressure, temperature, media, body material, end connection, actuation, quantity; instruments: range, accuracy, process connection, output signal, display, media, quantity).
+5. **What to tell us when you enquire** — `EnquiryChecklist` tailored per category (valves: size, pressure, temperature, media, body material, end connection, actuation, quantity; instruments: media, process connection, range, accuracy, output signal, power supply, hazardous area, quantity; instrument accessories such as siphons: media, process connection, gauge or instrument it protects, pressure & temperature, material, quantity; valve automation accessories: make & model it fits, valve type & size, control signal, supply voltage, mounting, location & enclosure, quantity). Instrument pages never ask valve questions.
 6. **FAQs** (3–4, product-specific, original).
 7. **Related products** (3–4) and **Related repair service** (where one exists).
 8. CTABand.

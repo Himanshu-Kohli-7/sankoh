@@ -117,7 +117,9 @@ const schema = published.length
           eyebrow="Selection guide"
           division={data.division}
           title={`How to choose ${data.title.toLowerCase()}`}
-          intro="Five things decide which valve fits. If you are unsure about any of them, our engineers will help you select."
+          intro={data.division === 'instruments'
+            ? 'These points decide which instrument fits. If you are unsure about any of them, our engineers will help you select.'
+            : 'Five things decide which valve fits. If you are unsure about any of them, our engineers will help you select.'}
         />
         <ol class="guide">
           {data.howToChoose.map((point, i) => (

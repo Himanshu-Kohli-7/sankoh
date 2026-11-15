@@ -83,8 +83,8 @@ const products = defineCollection({
       /** Repair page hrefs, as listed in config/nav.ts. */
       relatedRepair: z.array(z.string()).default([]),
       faqs: z.array(faq).default([]),
-      /** Enquiry checklist and spec line. Defaults by division; `accessory` for positioners, switch boxes, coils. */
-      enquiry: z.enum(['valve', 'instrument', 'accessory']).optional(),
+      /** Enquiry checklist and spec line. Defaults by division; `accessory` for positioners, switch boxes, coils; `instrument-accessory` for siphons. */
+      enquiry: z.enum(['valve', 'instrument', 'accessory', 'instrument-accessory']).optional(),
       /** Internal note, never rendered. Mirror it in docs/PENDING.md. */
       todo: z.string().optional(),
     }),

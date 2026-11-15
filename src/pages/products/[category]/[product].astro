@@ -87,7 +87,7 @@ const schema = [
       <Button href={waHref(whatsappText)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
     </div>
     <p class="avail">{site.service.availability} · Delivered across India</p>
-    <ProductGallery slot="aside" images={data.images} caption={data.title} />
+    <ProductGallery slot="aside" images={data.images} caption={data.title} division={category.division} />
   </PageHero>
 
   <div class="container-content body" data-division={category.division}>
@@ -115,7 +115,11 @@ const schema = [
                 <ul class="chips">
                   {data.media.map((item) => <li>{item}</li>)}
                 </ul>
-                <p class="note">The right body and seat materials depend on the media, so tell us what is in the line.</p>
+                <p class="note">
+                  {category.division === 'instruments'
+                    ? 'The right wetted parts depend on the media, so tell us what is in the line.'
+                    : 'The right body and seat materials depend on the media, so tell us what is in the line.'}
+                </p>
               </div>
             )}
           </div>
@@ -127,6 +131,16 @@ const schema = [
         {enquiry === 'accessory' ? (
           <p class="prose">
             We supply this to suit your valve, actuator and control system.
+            Tell us your requirement and our engineers will recommend the right option.
+          </p>
+        ) : enquiry === 'instrument-accessory' ? (
+          <p class="prose">
+            We supply this to suit your gauge or instrument, its connection and your process conditions.
+            Tell us your requirement and our engineers will recommend the right option.
+          </p>
+        ) : enquiry === 'instrument' ? (
+          <p class="prose">
+            We supply this in a range of measuring ranges, process connections, wetted materials and output options to match your process.
             Tell us your requirement and our engineers will recommend the right option.
           </p>
         ) : (
