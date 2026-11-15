@@ -31,6 +31,17 @@ faqs:
   - question: Why does a check valve slam?
     answer: Slam happens when the flow reverses before the disc has closed, so the backflow drives the disc shut. A faster-closing design, such as a spring loaded or dual plate check valve, usually cures it.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Swing and lift types are described generally; which the company supplies is not confirmed (PENDING #31). No related repair page shown (PENDING #32).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 25 to DN 300 (1\" to 12\")"
+  - label: "Type"
+    value: "Swing check or lift check"
+  - label: "Body material"
+    value: "Cast iron, cast carbon steel or stainless steel"
+  - label: "Seating"
+    value: "Metal to metal, or a soft-faced disc for tight shut-off"
+  - label: "Flange rating"
+    value: "PN 10 / 16 in cast iron; Class 150 / 300 in steel"
 ---
 
 A non-return valve, also called a check valve or NRV, lets fluid flow in one direction and closes on its own when the flow tries to reverse. It needs no handle, air or power. The flow pushes the disc off its seat. When the flow stops, the weight of the disc and the back pressure close it again.

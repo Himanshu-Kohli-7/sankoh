@@ -1,6 +1,7 @@
 ---
 /**
- * Spec-style table for confirmed variants or a category's "commonly supplied" data (SPEC §5.2).
+ * Spec-style table for a product's typical options, confirmed variants or a category's
+ * "commonly supplied" data (SPEC §5.2).
  * Renders nothing when there are no rows, so pages never show an empty table.
  */
 interface Props {
@@ -28,6 +29,6 @@ const { rows, caption } = Astro.props;
   .spec { width: 100%; border-collapse: collapse; border-top: 2px solid var(--color-navy); }
   caption { padding-bottom: 0.625rem; color: var(--color-slate); text-align: left; }
   th, td { padding: 0.75rem 0; border-bottom: 1px solid var(--color-line); text-align: left; vertical-align: top; }
-  th { width: 40%; padding-right: 1rem; color: var(--color-slate); font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+  th { width: 34%; padding-right: 1rem; color: var(--color-slate); font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
   td { color: var(--color-ink); }
 </style>

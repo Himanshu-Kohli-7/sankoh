@@ -29,6 +29,17 @@ faqs:
   - question: What limits the pressure and temperature of a sight glass?
     answer: The glass. Its type and thickness set the limits, along with the seals. Tell us the working pressure, the temperature and the media, so that the sight glass is safe for the duty.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Tubular and window types and end connections are described generally; which the company supplies is not confirmed (PENDING #31).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 150"
+  - label: "Type"
+    value: "Double window, full-view (tubular), with a flapper, ball or rotor indicator"
+  - label: "Body material"
+    value: "Cast iron, cast carbon steel or stainless steel"
+  - label: "Glass"
+    value: "Toughened or borosilicate glass"
+  - label: "End connection"
+    value: "Flanged, screwed or sanitary clamp ends"
 ---
 
 A sight glass, also called a sight flow indicator, is a fitting with a glass tube or window that lets you look inside a pipeline. It answers questions that no gauge can. Is liquid really flowing? How clear is it, and what colour?

@@ -34,6 +34,17 @@ faqs:
   - question: Can a worn spherical disc valve be refurbished?
     answer: In most cases. We replace seats and shaft seals, check the disc edge and repair the actuator, on any make of valve. Workshop jobs typically take 2–3 days.
 todo: 'Applications and media are general typical uses; company-stated ones (HVAC, building automation, industrial automation, water treatment) are used where they fit: review (PENDING #39). Body, seat materials and actuator options supplied are not confirmed (PENDING #40). Stolzel-marked actuator in the photo, brand not confirmed (PENDING #25).'
+typicalOptions:
+  - label: "Valve sizes"
+    value: "DN 40 to DN 600"
+  - label: "Seat"
+    value: "High-temperature PTFE-based seat ring"
+  - label: "Disc"
+    value: "Stainless steel, spherical sealing edge"
+  - label: "Supply voltage"
+    value: "230 V AC single-phase or 415 V three-phase"
+  - label: "Typical duty"
+    value: "Steam and hot-water lines that need remote operation"
 ---
 
 An electric actuated spherical disc butterfly valve is a butterfly valve built for a closer seal than the standard design, with a motorised drive in place of a lever or gearbox. It keeps the short butterfly body but shuts off more tightly.

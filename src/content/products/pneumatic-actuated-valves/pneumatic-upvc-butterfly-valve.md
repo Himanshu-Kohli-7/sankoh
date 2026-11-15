@@ -34,6 +34,17 @@ faqs:
   - question: Do you repair UPVC butterfly valves?
     answer: Yes. We replace seats and discs and repair actuators of any make. Most workshop repairs are finished in 2–3 days.
 todo: 'Ball/butterfly assignment taken from the photo, not confirmed by the company (PENDING #6). Applications other than water treatment are general typical uses (PENDING #34). Disc and seat materials not confirmed (PENDING #35).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 50 to DN 300"
+  - label: "Body and disc"
+    value: "UPVC; CPVC, PP or PVDF disc for harsher chemicals"
+  - label: "Liner"
+    value: "EPDM or Viton"
+  - label: "Body pattern"
+    value: "Wafer, between plastic or metal flanges"
+  - label: "Actuator"
+    value: "Double acting or spring return, with a low-torque mounting kit"
 ---
 
 A pneumatic UPVC butterfly valve is a wafer butterfly valve with a body made of UPVC, a tough, non-corroding plastic, with an air actuator on top. It opens and closes larger plastic pipelines automatically, where a ball valve of the same bore would be bulky and expensive.

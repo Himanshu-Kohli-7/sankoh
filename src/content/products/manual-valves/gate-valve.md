@@ -33,6 +33,19 @@ faqs:
   - question: Do you repair gate valves?
     answer: Yes, whatever the make. A gate valve repaired at our workshop is typically turned round in 2–3 days.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Rising and non-rising stem types are described generally; which the company supplies is not confirmed (PENDING #31).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 600 (½\" to 24\")"
+  - label: "Stem"
+    value: "Rising stem with outside screw and yoke, or non-rising stem"
+  - label: "Body material"
+    value: "Cast iron, cast carbon steel, stainless steel or bronze"
+  - label: "Wedge"
+    value: "Solid or flexible wedge with metal seats; resilient seated for water"
+  - label: "End connection"
+    value: "Flanged; screwed or socket weld on small sizes"
+  - label: "Pressure rating"
+    value: "PN 10 / 16 in cast iron; Class 150 to Class 600 in steel"
 ---
 
 A gate valve isolates a line by sliding a flat or wedge-shaped gate across the flow path. Turning the handwheel moves the gate on a threaded stem. Fully raised, the gate sits clear of the bore, so fluid passes straight through with very little pressure drop. Fully lowered, it wedges between two seats and shuts the line.

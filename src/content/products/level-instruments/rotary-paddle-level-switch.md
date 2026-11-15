@@ -29,6 +29,17 @@ faqs:
     answer: It is designed for dry bulk solids. For liquids, a float or vibrating fork switch is the usual choice.
 relatedRepair: []
 todo: 'Old-site name: "Resistance Rotary Level Switch". No media listed: bulk solids are not among the six media values (PENDING #53). Applications are general typical uses (PENDING #53). Paddle types, supply voltages, contact ratings and enclosures supplied are not confirmed (PENDING #54). No repair link (PENDING #56).'
+typicalOptions:
+  - label: "Paddle"
+    value: "Single vane, multi-vane or folding paddle, chosen by bulk density"
+  - label: "Shaft"
+    value: "Standard, extended, or flexible cable for top mounting"
+  - label: "Supply"
+    value: "24 V DC, 110 V AC or 230 V AC"
+  - label: "Output"
+    value: "SPDT relay contact"
+  - label: "Mounting"
+    value: "1\" or 1¼\" thread, or a flange; top or side of the silo"
 ---
 
 A rotary paddle level switch tells you when a silo, bin or hopper of bulk solids is full or nearly empty. A small, low-speed motor in the enclosure turns a paddle on a shaft inside the vessel. In air it turns freely.

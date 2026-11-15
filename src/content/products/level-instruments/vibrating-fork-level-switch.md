@@ -30,6 +30,17 @@ faqs:
     answer: Not usually. Forks for bulk solids are longer and set up for the lower density and the way powders flow around the tines. Tell us what the switch will detect.
 relatedRepair: []
 todo: 'A small, unreadable mark on the enclosure lid in the photo: confirm it is not a third-party logo (PENDING #55). Applications and media are general typical uses (PENDING #53). Fork lengths, outputs, housings and versions for liquids or solids supplied are not confirmed (PENDING #54). No repair link (PENDING #56).'
+typicalOptions:
+  - label: "Fork"
+    value: "Compact fork, or an extension tube for deep tanks"
+  - label: "Media"
+    value: "Liquid versions and solids (powder, granule) versions"
+  - label: "Output"
+    value: "Relay, PNP / NPN transistor, or two-wire"
+  - label: "Supply"
+    value: "20–250 V AC / DC universal, or 24 V DC"
+  - label: "Process connection"
+    value: "¾\" or 1\" thread, flange or sanitary clamp"
 ---
 
 A vibrating fork level switch detects when a liquid or powder reaches a set point. Two metal tines, shaped like a tuning fork, are driven to vibrate at their natural frequency by a piezoelectric drive in the base. In air the fork vibrates freely.

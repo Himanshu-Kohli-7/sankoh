@@ -30,6 +30,17 @@ faqs:
   - question: Can a needle valve be used for shut-off?
     answer: Yes, it shuts off tightly. Close it by hand only. Forcing the needle into the seat damages both.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). SPEC §2.2 wants this cross-linked from the gauge pages once those are written.'
+typicalOptions:
+  - label: "Sizes"
+    value: "⅛\" to 1\""
+  - label: "End connection"
+    value: "Male or female BSP / NPT threads, or tube compression ends"
+  - label: "Body material"
+    value: "Stainless steel 316, carbon steel or brass"
+  - label: "Pressure rating"
+    value: "Commonly 3000 or 6000 PSI"
+  - label: "Pattern"
+    value: "Straight or angle; multi-port gauge valves with a vent"
 ---
 
 A needle valve is a small valve that controls flow with a slender, tapered stem tip, the needle, which fits into a matching seat. A fine thread moves the needle a tiny distance for each turn of the handle, so the gap around it, and with it the flow, can be set very precisely.

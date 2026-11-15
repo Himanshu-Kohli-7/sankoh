@@ -32,6 +32,19 @@ faqs:
   - question: Can you repair or recalibrate a motorised control valve?
     answer: Yes. We repair globe valve trim, stem seals and linear electric actuators of any make, and set up the stroke and signal response. Most of these jobs leave our workshop in 2–3 days.
 todo: 'No product photo yet; the page shows the placeholder drawing (PENDING #11). Applications and media are general typical uses; company-stated ones (HVAC, building automation, industrial automation) used where they fit (PENDING #39). Two-way/three-way types, control signals and fail-safe options supplied are not confirmed (PENDING #40).'
+typicalOptions:
+  - label: "Valve sizes"
+    value: "DN 15 to DN 200"
+  - label: "Actuator"
+    value: "Linear electric actuator, or multi-turn on larger valves"
+  - label: "Control"
+    value: "Three-point floating, or modulating on 4–20 mA / 0–10 V"
+  - label: "Body material"
+    value: "Cast iron, cast carbon steel or stainless steel"
+  - label: "Ports"
+    value: "Two-way, or three-way mixing / diverting for HVAC"
+  - label: "Fail position"
+    value: "Stay-put as standard; spring or battery return on request"
 ---
 
 A motorised globe valve is a globe valve with an electric actuator that drives its stem up and down, so it can hold any position between shut and fully open. It is the electric counterpart of an air-operated control valve, widely used for heating and cooling water in buildings without compressed air.

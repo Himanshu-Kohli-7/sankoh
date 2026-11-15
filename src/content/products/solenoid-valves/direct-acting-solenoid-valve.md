@@ -32,6 +32,19 @@ faqs:
   - question: Can it drive a double-acting actuator?
     answer: A 3/2 way valve suits spring-return actuators. A double-acting actuator needs air switched to both sides in turn, which is normally the job of a 5/2 way valve. Tell us the actuator type and we will recommend the right one.
 todo: 'Applications and media are general typical uses, not company-stated (PENDING #41). Which port sizes, NC/NO forms, seal materials and coil voltages are supplied is not confirmed (PENDING #42). The photo shows a Stolzel nameplate; its model data is not used (PENDING #25, #45). No repair page covers solenoid valves (PENDING #43).'
+typicalOptions:
+  - label: "Port sizes"
+    value: "⅛\" to ½\""
+  - label: "Function"
+    value: "2/2 way normally closed or normally open; 3/2 way"
+  - label: "Body material"
+    value: "Brass or stainless steel"
+  - label: "Seal"
+    value: "Nitrile, EPDM, Viton or PTFE"
+  - label: "Coil voltage"
+    value: "12 / 24 V DC, 24 / 110 / 230 V AC"
+  - label: "Pressure"
+    value: "Works from zero pressure; the limit falls as the orifice grows"
 ---
 
 In a direct acting solenoid valve the magnetic pull of the coil does all the work. When the coil is energised, it draws a soft-iron plunger up its tube and the seal on the plunger's tip lifts clear of the orifice. When the power goes off, a spring pushes the plunger back onto the seat and the flow stops.

@@ -29,6 +29,17 @@ faqs:
   - question: Does it need clear pipe downstream?
     answer: Yes. The plate swings out beyond the body as it opens, so it needs free space in the pipe downstream. Fitted directly against another valve or fitting, the plate may not open fully.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). No related repair page shown (PENDING #32).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 300"
+  - label: "Body and plate"
+    value: "Carbon steel or stainless steel 304 / 316"
+  - label: "Closing"
+    value: "Spring-assisted single plate"
+  - label: "Seal"
+    value: "Metal seat, or an O-ring in nitrile, EPDM or Viton"
+  - label: "Fits between"
+    value: "PN 10 to PN 40 or Class 150 / 300 flanges"
 ---
 
 A wafer type single plate check valve is a slim non-return valve with one hinged plate inside a short, ring-shaped body. Forward flow swings the plate open. When the flow stops or reverses, the plate falls back onto its seat and seals the line. Nothing has to be operated by hand.

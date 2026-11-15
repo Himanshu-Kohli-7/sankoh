@@ -29,7 +29,7 @@ const seo = {
   updated: z.coerce.date(),
 };
 
-/** A row of a spec-style table. Confirmed data only (PENDING #13). */
+/** A row of a spec-style table. */
 const specRow = z.object({ label: z.string(), value: z.string() });
 
 /** Product categories. The markdown body is the intro (SPEC §5.1). */
@@ -76,7 +76,13 @@ const products = defineCollection({
       media: z.array(z.enum(['Air', 'Water', 'Oil', 'Gas', 'Chemicals', 'Steam'])).default([]),
       applications: z.array(z.string()).default([]),
       industries: z.array(z.string()).default([]),
-      /** Only confirmed variants. */
+      /**
+       * General industry ranges for this product type (CLAUDE.md §2.2): sizes, materials, end connections,
+       * pressure classes, output signals. Not a stock claim, and specific to the product: `check:repeats`
+       * fails if two products carry the same table.
+       */
+      typicalOptions: z.array(specRow).default([]),
+      /** Only variants confirmed by the company. */
       variants: z.array(specRow).default([]),
       /** Product ids, e.g. `manual-valves/gate-valve`. */
       relatedProducts: z.array(z.string()).default([]),

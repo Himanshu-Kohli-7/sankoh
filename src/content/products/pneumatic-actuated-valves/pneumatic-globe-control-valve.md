@@ -36,6 +36,19 @@ faqs:
   - question: Can you recalibrate or repair an existing control valve?
     answer: Yes. We overhaul control valves of any make, including trim, packing and diaphragm replacement, and set up and calibrate positioners. A typical workshop job takes 2–3 days.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #34). Trim, body and actuator options the company supplies are not confirmed (PENDING #35).'
+typicalOptions:
+  - label: "Valve sizes"
+    value: "DN 15 to DN 200"
+  - label: "Actuator"
+    value: "Spring-opposed diaphragm, air to open or air to close"
+  - label: "Trim"
+    value: "Linear or equal-percentage plug; reduced trim for low flows"
+  - label: "Body material"
+    value: "Cast carbon steel, stainless steel or alloy steel"
+  - label: "Control signal"
+    value: "4–20 mA to an electro-pneumatic positioner, or 0.2–1.0 bar direct"
+  - label: "Flange rating"
+    value: "Class 150 / 300 or PN 16 / 40"
 ---
 
 A pneumatic globe control valve is a globe valve fitted with an air-operated actuator so that it can hold any position between closed and fully open. It is the standard choice where a controller adjusts the valve continuously to keep flow, pressure, level or temperature at a set point.

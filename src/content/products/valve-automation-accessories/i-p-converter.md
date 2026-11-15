@@ -28,6 +28,17 @@ faqs:
   - question: Why does the output pressure drift?
     answer: Water, oil or dirt in the supply air, a partly blocked nozzle, or a supply pressure that wanders. A filter regulator ahead of the converter and a regular calibration check keep it steady.
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses (PENDING #41). Signal and output ranges, enclosure types and mounting styles supplied are not confirmed (PENDING #42). Whether I/P converters are repaired under Positioner Repair & Calibration is not confirmed (PENDING #43).'
+typicalOptions:
+  - label: "Input"
+    value: "4–20 mA"
+  - label: "Output"
+    value: "0.2–1.0 bar (3–15 psi); other ranges on request"
+  - label: "Air supply"
+    value: "About 1.4 bar clean, dry instrument air"
+  - label: "Mounting"
+    value: "Pipe, wall or DIN rail"
+  - label: "Enclosure"
+    value: "Weatherproof or flameproof"
 ---
 
 Much of a plant's control now happens in electronics, but many valves are still moved by air. An I/P converter, short for current-to-pressure, connects the two. It takes the current signal from a controller and gives out an air pressure that rises and falls in step with it.

@@ -30,6 +30,17 @@ faqs:
     answer: Sensors go into a pipe through an inline fitting, into a tank on an immersion pipe, or into a flow cell fed with a sample stream. Retractable fittings let the sensor be pulled out for cleaning while the line keeps running.
 relatedRepair: []
 todo: 'No photo: the legacy photo shows a third-party maker''s name on the electrodes, so the page uses the placeholder drawing (PENDING #11, #55). Applications and media are general typical uses (PENDING #53). Electrode types, connectors, temperature elements and fittings supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Electrode"
+    value: "Combination glass electrode; flat or bulb tip"
+  - label: "Body"
+    value: "Glass or plastic (PPS / epoxy)"
+  - label: "Junction"
+    value: "Ceramic, PTFE or open junction for dirty samples"
+  - label: "Temperature compensation"
+    value: "Built-in Pt100 / Pt1000 on many sensors"
+  - label: "Fitting"
+    value: "Immersion, inline flow-through or retractable"
 ---
 
 A pH sensor measures how acidic or alkaline a liquid is. It is the probe end of a pH measuring loop: the sensor sits in the water or process liquid, and a pH transmitter or controller reads its signal and shows the result.

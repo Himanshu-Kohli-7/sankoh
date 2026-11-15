@@ -33,6 +33,17 @@ faqs:
   - question: Do you repair ball valves?
     answer: Yes. We repair ball valves of any make, and one sent to our workshop is typically ready in 2–3 days.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Image is low resolution (270px): ask for a better photo (PENDING #27).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 200 (½\" to 8\")"
+  - label: "Body construction"
+    value: "One-piece, two-piece or three-piece; full or reduced bore"
+  - label: "Body material"
+    value: "Cast carbon steel, stainless steel 304 / 316 or cast iron"
+  - label: "Seats"
+    value: "PTFE, glass-filled PTFE or metal seats for hot or abrasive duty"
+  - label: "Flange rating"
+    value: "Class 150 and Class 300, or PN 16 and PN 40"
 ---
 
 A ball valve shuts off flow with a ball that has a hole bored through it. A quarter turn of the lever lines the hole up with the pipe to open the valve, or turns it across the pipe to close it. The ball sits between two seats, which press against it and give a tight shut-off. The lever shows the position at a glance. Along the pipe is open and across it is shut.

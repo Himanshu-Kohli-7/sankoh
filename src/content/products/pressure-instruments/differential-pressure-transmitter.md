@@ -33,6 +33,19 @@ faqs:
     answer: Many DP transmitters are designed to survive full line pressure on one side, but the zero can still shift afterwards. Open and close the manifold valves in the right order to avoid it.
 relatedRepair: []
 todo: 'Applications and media are general typical uses (PENDING #48). Ranges, static pressure ratings, manifolds and outputs supplied are not confirmed (PENDING #49). No repair or calibration link (PENDING #52).'
+typicalOptions:
+  - label: "DP ranges"
+    value: "From a few mbar to tens of bar"
+  - label: "Static pressure"
+    value: "Chosen to suit the line pressure"
+  - label: "Output"
+    value: "4–20 mA with HART; square-root output for flow"
+  - label: "Process connection"
+    value: "¼\" NPT on the body, with a 3-valve or 5-valve manifold"
+  - label: "Uses"
+    value: "Flow across an orifice plate, level in closed tanks, filter condition"
+  - label: "Options"
+    value: "Remote diaphragm seals with capillaries"
 ---
 
 A differential pressure transmitter, often shortened to DP transmitter, has two process connections, high and low, and measures the difference between them. That one measurement answers a surprising number of plant questions.

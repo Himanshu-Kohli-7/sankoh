@@ -35,6 +35,19 @@ faqs:
   - question: Do you service motorised butterfly valves?
     answer: Yes. We change seats and discs, free seized shafts and repair the electric actuators on butterfly valves of any make, usually inside 2–3 days in our workshop.
 todo: 'Applications and media are general typical uses; company-stated ones (water treatment, HVAC, building automation, industrial automation) are used where they fit: review (PENDING #39). Wafer pattern and actuator options supplied are not confirmed (PENDING #40). Stolzel-marked actuator in the photo, brand not confirmed (PENDING #25).'
+typicalOptions:
+  - label: "Valve sizes"
+    value: "DN 50 to DN 600"
+  - label: "Supply voltage"
+    value: "24 V DC, 230 V AC single-phase or 415 V three-phase"
+  - label: "Control"
+    value: "On/off or modulating"
+  - label: "Disc and seat"
+    value: "Ductile iron or stainless steel disc; EPDM, nitrile or PTFE seat"
+  - label: "Enclosure"
+    value: "Weatherproof as standard; flameproof on request"
+  - label: "Options"
+    value: "Handwheel override, torque switches, position transmitter"
 ---
 
 An electric actuated wafer butterfly valve pairs a short, lightweight butterfly valve with an electric motor drive. It is the usual way to motorise big-bore water and air lines, as the body stays short and light.

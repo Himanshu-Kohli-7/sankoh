@@ -30,6 +30,17 @@ faqs:
   - question: Does it work on a tank that feeds by gravity?
     answer: Yes, that is one of its main uses. Because it can open with almost no pressure behind it, it works on overhead tank outlets and low-head lines where a plain pilot operated valve would stay shut.
 todo: 'Applications and media are general typical uses, not company-stated (PENDING #41). Which sizes, seal and diaphragm materials, and steam coil classes are supplied is not confirmed (PENDING #42). The photo shows a Stolzel nameplate; its model data is not used (PENDING #25, #45). No repair page covers solenoid valves (PENDING #43).'
+typicalOptions:
+  - label: "Port sizes"
+    value: "⅜\" to 2\""
+  - label: "Operation"
+    value: "Assisted lift: works from zero pressure difference"
+  - label: "Diaphragm"
+    value: "Nitrile or EPDM for general duty; PTFE for steam"
+  - label: "Body material"
+    value: "Brass or stainless steel"
+  - label: "Coil"
+    value: "Class F for general use, class H for steam and hot media"
 ---
 
 A semi-lift solenoid valve, also called assisted lift, combines the two main solenoid principles. Like a pilot operated valve it has a diaphragm with a pilot port, so line pressure helps to open it. Unlike one, its plunger is coupled to the diaphragm, so when the coil pulls in it also lifts the diaphragm off the seat directly.

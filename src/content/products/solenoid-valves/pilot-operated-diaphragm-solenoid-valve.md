@@ -32,6 +32,19 @@ faqs:
   - question: Which parts wear out first?
     answer: Usually the diaphragm, and now and then the plunger seal. Both can be replaced, so a valve that passes when shut or will not close can often be put right without changing the body.
 todo: 'Applications and media are general typical uses, not company-stated (PENDING #41). Port sizes, diaphragm materials and coil voltages supplied are not confirmed (PENDING #42). The photo shows a Stolzel nameplate; its model data is not used (PENDING #25, #45). No repair page covers solenoid valves (PENDING #43).'
+typicalOptions:
+  - label: "Port sizes"
+    value: "⅜\" to 2\" screwed; flanged above that"
+  - label: "Function"
+    value: "2/2 way, normally closed or normally open"
+  - label: "Diaphragm"
+    value: "Nitrile, EPDM or Viton"
+  - label: "Body material"
+    value: "Brass or stainless steel"
+  - label: "Pressure"
+    value: "Needs a minimum pressure difference, commonly about 0.5 bar"
+  - label: "Coil voltage"
+    value: "24 V DC, 110 V AC or 230 V AC"
 ---
 
 A pilot operated diaphragm solenoid valve lets the pressure already in the line do the heavy lifting. A rubber diaphragm separates the inlet from the outlet, and a small bleed hole lets inlet pressure fill the chamber above it, pressing the diaphragm firmly onto its seat.

@@ -31,6 +31,19 @@ faqs:
     answer: It describes a platinum element with a resistance of 100 ohms at zero degrees Celsius, which is the most widely used type. Other values exist; your controller or transmitter must be set for the one fitted.
 relatedRepair: []
 todo: 'Applications and media are general typical uses (PENDING #53). Element type, wiring, sheath diameters, lengths, heads and connections supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Element"
+    value: "Pt100 as standard; Pt1000 on request; simplex or duplex"
+  - label: "Wiring"
+    value: "2-wire, 3-wire or 4-wire"
+  - label: "Sheath"
+    value: "Stainless steel 316, 3 mm to 12 mm diameter"
+  - label: "Range"
+    value: "About −200 °C to 600 °C"
+  - label: "Termination"
+    value: "Head with terminal block, cable, or a head-mounted transmitter"
+  - label: "Process connection"
+    value: "Threaded, flanged or with a thermowell"
 ---
 
 An RTD (resistance temperature detector) measures temperature through the electrical resistance of a fine metal element, almost always platinum. As the element warms, its resistance rises by a precise and well-documented amount. The controller or transmitter passes a small current through it, measures the resistance and works out the temperature.

@@ -34,6 +34,19 @@ faqs:
   - question: Do you service TC ball valves and their actuators?
     answer: Yes. We replace seats, seals and clamp gaskets, and repair the actuators fitted to them, on any make of valve. Workshop jobs are usually back with you in 2–3 days.
 todo: 'Ball/butterfly assignment taken from the photo, not confirmed by the company (PENDING #6). "Tri-Clover" used as the generic name for clamp ends (PENDING #37). Applications other than milk/water ATMs are general typical uses (PENDING #34). Stolzel-marked body and solenoid valve in the photo, brand not confirmed (PENDING #25).'
+typicalOptions:
+  - label: "Sizes"
+    value: "½\" to 4\" tube sizes"
+  - label: "Body"
+    value: "Stainless steel 304 or 316L, three-piece"
+  - label: "Seats"
+    value: "PTFE; cavity-filled seats for hygienic duty"
+  - label: "Ends"
+    value: "Sanitary clamp (TC) ends; weld ends on request"
+  - label: "Internal finish"
+    value: "Polished product-contact surfaces"
+  - label: "Actuator"
+    value: "Aluminium or stainless steel, double acting or spring return"
 ---
 
 A pneumatic tri-clover ball valve is a ball valve built for hygienic service, with tri-clover (TC) clamp ends instead of flanges or threads, turned by an air-powered actuator rather than a handle. It opens and closes product and cleaning lines automatically, on a signal from the plant's control system.

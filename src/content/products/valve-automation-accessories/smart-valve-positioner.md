@@ -32,6 +32,19 @@ faqs:
   - question: Why does my control valve keep hunting around the setpoint?
     answer: Sticky packing, worn linkage, a poor air supply or tuning that is too aggressive are the usual reasons. Putting the mechanics right first usually cures it; retuning alone often does not.
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses (PENDING #41). Input signals, communication protocols, enclosure types and mounting kits supplied are not confirmed (PENDING #42).'
+typicalOptions:
+  - label: "Input signal"
+    value: "4–20 mA, two-wire"
+  - label: "Communication"
+    value: "HART; Profibus or Foundation Fieldbus on some models"
+  - label: "Actuator type"
+    value: "Linear or rotary, single or double acting"
+  - label: "Air supply"
+    value: "1.4 to 7 bar clean instrument air"
+  - label: "Features"
+    value: "Auto-calibration, position feedback, diagnostics"
+  - label: "Enclosure"
+    value: "Weatherproof; intrinsically safe or flameproof versions"
 ---
 
 A control valve is only as good as its ability to go where it is told. Friction in the packing, changing line pressure and the stiffness of the actuator all push it off its setpoint. A valve positioner closes that gap. It reads the control signal, measures the valve's real position through a feedback link, then raises or lowers the air pressure on the actuator until signal and position agree.

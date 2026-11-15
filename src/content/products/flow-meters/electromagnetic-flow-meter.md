@@ -32,6 +32,19 @@ faqs:
     answer: Practically none when it is the same size as the pipe, because the bore is clear. If it is sized down to raise the velocity, the reducers add a small loss.
 relatedRepair: []
 todo: 'Photo carries a partner mark; the text names no brand (PENDING #12). Applications and media are general typical uses (PENDING #48). Liner and electrode materials, sizes and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
+typicalOptions:
+  - label: "Line sizes"
+    value: "DN 10 to DN 1000 and above"
+  - label: "Liner"
+    value: "Hard rubber, PTFE or PFA"
+  - label: "Electrodes"
+    value: "Stainless steel 316L, Hastelloy, titanium or tantalum"
+  - label: "Transmitter"
+    value: "Integral or remote mounted; mains, 24 V DC or battery powered"
+  - label: "Outputs"
+    value: "4–20 mA, pulse, RS-485 Modbus; HART on some models"
+  - label: "Accuracy"
+    value: "Typically ±0.5% of reading"
 ---
 
 An electromagnetic flow meter, often called a mag meter, measures the flow of any liquid that conducts electricity. Nothing projects into the stream and nothing moves, so it handles dirty water, slurries and corrosive chemicals that would clog or wear other meters.

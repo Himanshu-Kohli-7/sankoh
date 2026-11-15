@@ -31,6 +31,19 @@ faqs:
   - question: Do you overhaul motorised gate valves?
     answer: Yes. Seats, wedges, stems and packing are renewed on motorised gate valves of any make, and the electric actuator is overhauled alongside. Workshop work is typically turned round in 2–3 days.
 todo: 'No product photo yet; the page shows the placeholder drawing (PENDING #11). Applications and media are general typical uses; water treatment is company-stated (PENDING #39). Actuator types, supply voltages and integral control options supplied are not confirmed (PENDING #40).'
+typicalOptions:
+  - label: "Valve sizes"
+    value: "DN 50 to DN 600 and above"
+  - label: "Actuator"
+    value: "Multi-turn electric with torque and limit switches"
+  - label: "Supply voltage"
+    value: "415 V three-phase as the norm; single-phase on small valves"
+  - label: "Stem"
+    value: "Rising or non-rising"
+  - label: "Controls"
+    value: "Local push-buttons with remote open, close and stop"
+  - label: "Options"
+    value: "Position transmitter, integral starter, handwheel with declutch"
 ---
 
 A motorised gate valve is a gate valve fitted with a multi-turn electric actuator in place of its handwheel. Large ones take dozens of turns to open, so a motor lets operators work them from a panel or SCADA screen rather than winding by hand.

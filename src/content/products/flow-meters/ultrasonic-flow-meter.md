@@ -32,6 +32,19 @@ faqs:
     answer: Air and heavy solids scatter the sound pulses so the transducers lose the signal. Fit the meter away from pump suctions and high points where air gathers.
 relatedRepair: []
 todo: 'Photo is only 180px wide and looks soft on large screens (PENDING #50). Applications and media are general typical uses (PENDING #48). Inline vs clamp-on forms, sizes and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
+typicalOptions:
+  - label: "Pipe sizes"
+    value: "DN 15 to DN 3000 and above, depending on the transducers"
+  - label: "Sensor type"
+    value: "Clamp-on, insertion or inline spool"
+  - label: "Principle"
+    value: "Transit time for clean liquids; Doppler for dirty ones"
+  - label: "Form"
+    value: "Fixed wall-mount, or a portable battery set for surveys"
+  - label: "Outputs"
+    value: "4–20 mA, pulse, RS-485; built-in data logger on some"
+  - label: "Extras"
+    value: "Heat (BTU) metering with paired temperature sensors"
 ---
 
 An ultrasonic flow meter measures liquid flow with sound. Most process meters use the transit-time method: two transducers send pulses diagonally across the pipe, one pointing downstream and one upstream. Sound travelling with the flow arrives a fraction sooner than sound travelling against it, and that time difference gives the velocity of the liquid.

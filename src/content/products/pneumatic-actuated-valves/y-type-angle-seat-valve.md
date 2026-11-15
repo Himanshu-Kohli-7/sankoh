@@ -33,6 +33,19 @@ faqs:
   - question: How is the valve switched from the panel?
     answer: A small solenoid valve, mounted on the actuator or nearby, lets air into the piston on command. A position indicator on top shows whether the valve is open, and some actuators can take a sensor for feedback to the PLC.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #34). The photo nameplate shows one Stolzel model''s data; not used on the page (PENDING #36). Related repair is Actuator & Cylinder only: confirm whether valve body repair is offered (PENDING #35).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 80 (½\" to 3\")"
+  - label: "Function"
+    value: "Normally closed, normally open or double acting"
+  - label: "Body material"
+    value: "Stainless steel 304 / 316 or gunmetal"
+  - label: "Seat seal"
+    value: "PTFE"
+  - label: "End connection"
+    value: "Screwed, welded, flanged or sanitary clamp ends"
+  - label: "Pilot air"
+    value: "Typically 3 to 8 bar, by actuator size"
 ---
 
 A Y-type angle seat valve is an on/off valve driven by a compressed-air piston. In its Y-shaped body the stem and seat sit at an angle to the pipe instead of at right angles. That angle gives the media a smoother, almost straight path through the valve, so more flows for its size than through a globe valve of the same bore.

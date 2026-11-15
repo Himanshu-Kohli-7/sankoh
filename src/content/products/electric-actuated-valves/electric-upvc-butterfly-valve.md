@@ -34,6 +34,17 @@ faqs:
   - question: Do you repair UPVC butterfly valves and their actuators?
     answer: Yes. We replace discs, seats and stem seals and repair electric actuators of any make, typically in 2–3 days at our workshop.
 todo: 'Ball/butterfly assignment checked against the photo; the old site already named this one "Electrical UPVC Butterfly Valve" (PENDING #6). Applications other than water treatment are general typical uses (PENDING #39). Disc, seat and actuator options supplied are not confirmed (PENDING #40). Stolzel-marked actuator in the photo, brand not confirmed (PENDING #25).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 50 to DN 300"
+  - label: "Body and disc"
+    value: "UPVC, with CPVC, PP or PVDF discs available"
+  - label: "Liner"
+    value: "EPDM or Viton"
+  - label: "Supply voltage"
+    value: "24 V DC, 230 V AC or 415 V three-phase"
+  - label: "Control"
+    value: "On/off or modulating"
 ---
 
 An electric UPVC butterfly valve combines a slim butterfly valve moulded from UPVC, a rigid plastic that does not rust or scale, with an electric actuator. It brings motorised control to large plastic pipelines carrying treated water, effluent or chemicals, in plants with electricity but no air compressor.

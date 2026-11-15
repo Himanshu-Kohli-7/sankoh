@@ -34,6 +34,17 @@ faqs:
   - question: Can you repair an electric UPVC ball valve?
     answer: Yes. Seats and O-rings on the valve can be renewed, and we repair electric actuators of every make, generally in 2–3 days at our workshop.
 todo: 'Ball/butterfly assignment checked against the photo; the old site already named this one "Electrical UPVC Ball Valve" (PENDING #6). Applications other than water treatment and water ATMs are general typical uses (PENDING #39). End connections, seal materials and DC/solar actuator options supplied are not confirmed (PENDING #40).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 100"
+  - label: "Body material"
+    value: "UPVC, CPVC, PP or PVDF"
+  - label: "Ends"
+    value: "True union socket, threaded or flanged"
+  - label: "Supply voltage"
+    value: "24 V DC or 230 V AC"
+  - label: "Seals"
+    value: "EPDM or Viton, chosen for the chemical"
 ---
 
 An electric UPVC ball valve is a ball valve moulded from unplasticised PVC and motorised to open and shut on an electrical command. RO plants, water ATMs and dosing systems use it widely, as they run on plastic pipe, carry corrosive liquids and often lack compressed air.

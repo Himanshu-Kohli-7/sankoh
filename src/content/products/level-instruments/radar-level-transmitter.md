@@ -31,6 +31,17 @@ faqs:
     answer: Away from the inlet stream, ladders, agitator blades and the tank wall, so the beam sees the surface rather than fittings. The antenna should project fully below the nozzle.
 relatedRepair: []
 todo: 'Applications and media are general typical uses (PENDING #53). Frequency bands, antenna types, ranges, outputs, process connections and hazardous-area versions supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Type"
+    value: "Non-contact (free space) or guided wave with a rod or cable probe"
+  - label: "Frequency"
+    value: "26 GHz or 80 GHz on non-contact units"
+  - label: "Range"
+    value: "Up to about 30 m on liquids; further on some solids models"
+  - label: "Output"
+    value: "4–20 mA two-wire with HART; Modbus"
+  - label: "Process connection"
+    value: "Threaded or flanged; lens, horn or rod antenna"
 ---
 
 A radar level transmitter measures the level of a liquid or bulk solid from above, without touching it. Mounted on the roof of a tank or silo, it sends microwave signals down to the surface and picks up the reflection. The time the signal takes to travel down and back gives the distance to the surface; subtracting that from the tank height gives the level.

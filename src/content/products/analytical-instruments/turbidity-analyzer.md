@@ -28,6 +28,17 @@ faqs:
     answer: Related but not the same. Turbidity measures the optical effect of particles, while suspended solids is their weight. Some analyzers estimate suspended solids from turbidity using a correlation for the specific water.
 relatedRepair: []
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses; water ATMs is a company-stated application (PENDING #53). Low-range (flow cell) or high-range (immersion) versions, outputs and cleaning options supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Method"
+    value: "90° scattered light (nephelometric) or surface scatter"
+  - label: "Range"
+    value: "0–10 NTU for drinking water up to 0–4000 NTU for effluent"
+  - label: "Installation"
+    value: "Flow cell with a bubble trap for low range; immersion for high range"
+  - label: "Cleaning"
+    value: "Wiper or air jet"
+  - label: "Outputs"
+    value: "4–20 mA, relays, Modbus"
 ---
 
 A turbidity analyzer measures how cloudy water is. Fine particles of silt, clay, organic matter or microbes scatter light, and the more there are, the cloudier the water. Turbidity is the quickest way to see whether filtration and settling are doing their job.

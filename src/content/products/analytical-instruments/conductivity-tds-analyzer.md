@@ -28,6 +28,17 @@ faqs:
     answer: The right cell depends on how pure or salty the water is. Pure water from RO or DM needs a contacting cell designed for low conductivity; salty, dirty or corrosive liquids are better served by an inductive sensor. Tell us the expected range.
 relatedRepair: []
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses; water ATMs is a company-stated application (PENDING #53). Sensor types, cell constants, ranges, outputs and mounting supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Cell"
+    value: "Two-electrode or four-electrode contacting; inductive (toroidal) for dirty or strong solutions"
+  - label: "Cell constant"
+    value: "0.01, 0.1, 1 or 10, chosen by range"
+  - label: "Reads"
+    value: "Conductivity, TDS, resistivity or salinity"
+  - label: "Outputs"
+    value: "4–20 mA, relays, RS-485"
+  - label: "Mounting"
+    value: "Panel or wall controller with an inline or immersion cell"
 ---
 
 A conductivity and TDS analyzer tells you how much dissolved salt is in water. Pure water conducts electricity poorly; dissolved minerals and salts break into charged ions that carry current. Measuring conductivity therefore gives a fast, continuous indication of purity or concentration.

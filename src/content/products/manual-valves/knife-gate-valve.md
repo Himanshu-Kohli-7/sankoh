@@ -33,6 +33,17 @@ faqs:
   - question: Can a knife gate valve be automated?
     answer: Yes. Knife gate valves are commonly fitted with a pneumatic cylinder or an electric actuator in place of the handwheel.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Media list has only Water because slurry is not a selector media value. Linked to Gate Valve Repair: confirm the company repairs knife gate valves under that service (PENDING #32).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 50 to DN 600; larger on request"
+  - label: "Body pattern"
+    value: "Wafer or lug, uni-directional or bi-directional"
+  - label: "Body and gate"
+    value: "Cast iron, carbon steel or stainless steel body with a stainless steel gate"
+  - label: "Seat"
+    value: "Metal seated, or resilient in EPDM, nitrile or Viton"
+  - label: "Operation"
+    value: "Handwheel, lever, chain wheel or gear; pneumatic cylinder on request"
 ---
 
 A knife gate valve isolates a line with a thin metal gate whose lower edge is bevelled like a blade. As the handwheel lowers the gate, that edge cuts through whatever is in the line, such as fibres, sludge or settled solids, and seats at the bottom of the bore. Raised, the gate leaves a clear, full-bore passage.

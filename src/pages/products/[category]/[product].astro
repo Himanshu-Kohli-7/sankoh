@@ -43,7 +43,7 @@ const slug = productSlug(product);
 const category = categoryInfo(data.category);
 const related = await productsById(data.relatedProducts);
 const repairs = repairLinks(data.relatedRepair);
-/** Category "commonly supplied" data, shown beside any confirmed variants. Empty until PENDING #13. */
+/** Company-confirmed data only: product variants and the category's "commonly supplied" rows. */
 const categoryEntry = (await getCollection('categories', (c) => c.id === data.category))[0];
 const specRows = [...data.variants, ...(categoryEntry?.data.commonlySupplied ?? [])];
 
@@ -59,7 +59,7 @@ const ctaName = titleInSentence(data.title);
 
 const mainImage = data.images[0];
 const schemaImage = mainImage ? new URL((await getImage({ src: mainImage.src, width: 720 })).src, site.url).href : undefined;
-/** No brand, offers or ratings: brand is unconfirmed (PENDING #25) and there are no prices (SPEC §7). */
+/** No brand, offers or ratings: no product is confirmed for a brand, and there are no prices (SPEC §7). */
 const schema = [
   {
     '@type': 'Product',
@@ -156,6 +156,15 @@ const schema = [
             Tell us your requirement and our engineers will recommend the right option.
           </p>
         )}
+        {data.typicalOptions.length > 0 && (
+          <div class="spec">
+            <SpecTable rows={data.typicalOptions} caption="Typical options" />
+            <p class="spec-note">
+              General ranges for this type of product across the industry, not a stock list.
+              Whatever your duty calls for is available to your specification.
+            </p>
+          </div>
+        )}
         <div class="spec"><SpecTable rows={specRows} caption="Commonly supplied" /></div>
       </section>
 
@@ -249,6 +258,7 @@ const schema = [
   .chips li { padding: 0.375rem 0.75rem; background: var(--color-paper); border: 1px solid var(--color-line); border-radius: 2px; color: var(--color-navy); font-family: var(--font-mono); font-size: 0.875rem; font-weight: 500; }
   .note { margin-top: 1rem; color: var(--color-slate); font-size: 0.9375rem; line-height: 1.5; }
   .spec:not(:empty) { max-width: 44rem; margin-top: 1.5rem; }
+  .spec-note { margin-top: 0.75rem; color: var(--color-slate); font-size: 0.9375rem; line-height: 1.5; }
   .faq { margin-top: -0.25rem; }
 
   /* Desktop side panel; phones have the action bar instead. */

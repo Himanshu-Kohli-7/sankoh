@@ -33,6 +33,17 @@ faqs:
     answer: Only if it is built for it. Hot water meters use different materials and parts, so mention the water temperature when you enquire.
 relatedRepair: []
 todo: 'What the company means by "Water Meter" as distinct from "Mechanical Water Meter" is unconfirmed; this page is written as the general water meter page (PENDING #7). Photo carries a partner mark; the text names no brand (PENDING #12). Applications are general typical uses (PENDING #48). Sizes, end connections and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 50 screwed; DN 50 and above flanged"
+  - label: "Meter type"
+    value: "Multi-jet, single-jet, Woltman, ultrasonic or electromagnetic"
+  - label: "Accuracy class"
+    value: "Class A or B (R-value on newer meters)"
+  - label: "Reading"
+    value: "Mechanical register, pulse output, or AMR / smart readout"
+  - label: "Water"
+    value: "Cold water as standard; hot-water versions available"
 ---
 
 A water meter records how much water has passed through a line, usually as a running total in cubic metres or litres. Fitted on an incoming supply, it shows what a site is drawing. Fitted on branches, it shows which building, department or machine is using it, which is often the first step in cutting waste.

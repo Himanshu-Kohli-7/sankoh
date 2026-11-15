@@ -32,6 +32,17 @@ faqs:
     answer: Many accept a pulse output or a reed switch on the register, which can feed a counter, data logger or building management system.
 relatedRepair: []
 todo: 'Difference from "Water Meter" is unconfirmed (PENDING #7). Photo shows dial markings and ratings that are not published (PENDING #51) and a partner mark; the text names no brand (PENDING #12). Applications are general typical uses (PENDING #48). Meter types, sizes and pulse options supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 40 multi-jet; DN 50 to DN 300 Woltman"
+  - label: "Dial"
+    value: "Dry dial with magnetic drive, or wet dial"
+  - label: "Body"
+    value: "Brass on small sizes; cast or ductile iron on bulk meters"
+  - label: "Ends"
+    value: "Threaded with unions, or flanged"
+  - label: "Add-ons"
+    value: "Reed-switch pulse output for remote totalising"
 ---
 
 A mechanical water meter measures water using nothing but the force of the water itself. Inside the body, a moving element turns at a speed set by the flow, and a train of gears carries that motion to a register that counts up the total, much like a car's odometer.

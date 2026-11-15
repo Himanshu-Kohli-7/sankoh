@@ -28,6 +28,17 @@ faqs:
     answer: Usually yes. A needle valve or gauge cock lets the gauge be removed while the line stays under pressure, and the water in the loop stays in place.
 relatedRepair: []
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses (PENDING #48). Materials, end connections and pressure classes supplied, and which of the U and Q forms, are not confirmed (PENDING #49). No repair link (PENDING #52).'
+typicalOptions:
+  - label: "Form"
+    value: "U type for horizontal tapping; Q (pigtail) type for vertical tapping"
+  - label: "Size"
+    value: "¼\", ⅜\" or ½\""
+  - label: "Material"
+    value: "Carbon steel or stainless steel 304 / 316"
+  - label: "End connection"
+    value: "BSP or NPT, male–male or male–female"
+  - label: "Used with"
+    value: "Gauges, switches and transmitters on steam lines"
 ---
 
 A siphon is a short length of tube bent into a loop and fitted between a steam line and its pressure gauge. Steam entering the loop cools and condenses, and the water collects in the bend. That trapped water forms a seal: the pressure passes through it to the gauge, but the heat of the steam does not.

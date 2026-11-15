@@ -29,6 +29,17 @@ faqs:
   - question: Can a piston valve regulate flow?
     answer: It is mainly a shut-off valve. Some designs have a regulating piston for throttling duty, so tell us if you need to control flow as well as isolate.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). No related repair page shown (PENDING #32).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 150"
+  - label: "Body material"
+    value: "Cast iron, cast carbon steel or forged steel"
+  - label: "Sealing rings"
+    value: "Graphite-based rings; PTFE for some duties"
+  - label: "End connection"
+    value: "Flanged, screwed or socket weld"
+  - label: "Typical duty"
+    value: "Steam, condensate and thermic fluid lines"
 ---
 
 A piston valve is a shut-off valve that seals with a smooth cylindrical piston instead of a disc and seat. Two resilient sealing rings sit in the body, one above and one below the flow port, held apart by a metal spacer. Turning the handwheel pushes the piston down through both rings. The lower ring shuts the line and the upper ring seals the stem.

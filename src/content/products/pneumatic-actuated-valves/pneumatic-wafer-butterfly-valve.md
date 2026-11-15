@@ -35,6 +35,19 @@ faqs:
   - question: Do you repair actuated butterfly valves?
     answer: Yes. We repair butterfly valves and the actuators on them, of any make, from worn seats and damaged discs to actuators that stick or leak air. Most come back from our workshop in 2–3 days.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #34). Wafer and lug bodies are described generally; which the company supplies is not confirmed (PENDING #35).'
+typicalOptions:
+  - label: "Valve sizes"
+    value: "DN 40 to DN 600"
+  - label: "Body pattern"
+    value: "Wafer or lug"
+  - label: "Disc"
+    value: "Ductile iron, stainless steel or aluminium bronze"
+  - label: "Seat"
+    value: "EPDM, nitrile, Viton or PTFE"
+  - label: "Actuator"
+    value: "Double acting or spring return, sized to the valve torque"
+  - label: "Accessories"
+    value: "Solenoid valve, limit switch box, positioner"
 ---
 
 A pneumatic wafer butterfly valve is a butterfly valve whose hand lever has been replaced by a compressed-air actuator. A flat disc on a central shaft sits across the bore. When the actuator turns the shaft a quarter turn, the disc swings edge-on to the flow and the line opens; turned back, the disc closes against a soft seat lining the body.

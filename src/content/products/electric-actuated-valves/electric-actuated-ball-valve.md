@@ -35,6 +35,19 @@ faqs:
   - question: Can you repair the actuator as well as the valve?
     answer: Yes. We repair motorised ball valves of any make, from leaking seats to burnt motors, failed switches and stripped gears. A typical workshop turnaround is 2–3 days.
 todo: 'Applications and media are general typical uses; company-stated ones (water treatment, HVAC, building automation, industrial automation, water ATMs) are used where they fit: review (PENDING #39). Body type, supply voltages and fail-safe options supplied are not confirmed (PENDING #40). Stolzel-marked body in the photo, brand not confirmed (PENDING #25).'
+typicalOptions:
+  - label: "Valve sizes"
+    value: "DN 15 to DN 150"
+  - label: "Supply voltage"
+    value: "24 V DC, 24 V AC, 110 V AC, 230 V AC or 415 V three-phase"
+  - label: "Control"
+    value: "On/off, or modulating on a 4–20 mA / 0–10 V signal"
+  - label: "Valve body"
+    value: "Two-piece or three-piece; stainless steel, carbon steel or brass"
+  - label: "Operating time"
+    value: "Roughly 10 to 60 seconds for a quarter turn"
+  - label: "Options"
+    value: "Manual override, position feedback, anti-condensation heater"
 ---
 
 An electric actuated ball valve, also sold as a motorised ball valve, carries an electric actuator where a hand lever would normally go. A panel, PLC, timer or level controller can then open and shut the line, with no compressed air needed on site.

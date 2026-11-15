@@ -31,6 +31,19 @@ faqs:
     answer: Yes. Mounted above a flume or weir, it reads the water height, and the transmitter or controller converts that height to flow using the shape of the structure.
 relatedRepair: []
 todo: 'Photo carries a partner mark; the text names no brand (PENDING #12). Applications and media are general typical uses (PENDING #53). Ranges, outputs, housings and connections supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Range"
+    value: "About 0.3 m to 15 m, by model"
+  - label: "Sensor face"
+    value: "PVDF or PP for corrosive vapours"
+  - label: "Output"
+    value: "4–20 mA, relays, RS-485 Modbus"
+  - label: "Form"
+    value: "Compact unit, or a remote display with a separate sensor"
+  - label: "Mounting"
+    value: "1½\" or 2\" thread, or a flange"
+  - label: "Extras"
+    value: "Open-channel flow calculation for flumes and weirs"
 ---
 
 An ultrasonic level transmitter measures level from above by sound. A sensor on top of the tank sends a short pulse of ultrasound towards the surface. The pulse bounces back, and the electronics time the echo. Knowing the speed of sound, they work out the distance to the surface and from it the level.

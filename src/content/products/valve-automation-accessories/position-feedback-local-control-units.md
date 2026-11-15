@@ -29,6 +29,17 @@ faqs:
   - question: Why have a local/remote selector?
     answer: So the person at the valve is in charge while they work on it. In local mode the actuator ignores commands from the control system, and in remote mode the local buttons do nothing.
 todo: 'What the company means by this product (built-in options, separate units, or both) is not confirmed (PENDING #47). No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses (PENDING #41). Feedback signal types and control station options supplied are not confirmed (PENDING #42). Whether these units are repaired, and whether Actuator & Cylinder Repair is the right link, is not confirmed (PENDING #43).'
+typicalOptions:
+  - label: "Feedback"
+    value: "Potentiometer, or a 4–20 mA position transmitter"
+  - label: "Local controls"
+    value: "Open / stop / close push-buttons with a local / remote selector"
+  - label: "Indication"
+    value: "Lamps or a display for open, closed and fault"
+  - label: "Mounting"
+    value: "Built into the actuator, or a separate wall-mounted station"
+  - label: "Supply"
+    value: "To match the actuator: 24 V DC, 230 V AC or 415 V three-phase"
 ---
 
 A basic electric actuator opens and closes on command and stops at its limit switches. On many sites that is not enough. The control room wants to see exactly how far open the valve is, and the operator standing beside it wants to drive it without calling the panel. Position feedback and local control units add both.

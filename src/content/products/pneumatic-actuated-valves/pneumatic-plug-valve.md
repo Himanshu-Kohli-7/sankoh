@@ -31,6 +31,17 @@ faqs:
   - question: Why does a plug valve need a larger actuator?
     answer: The friction between plug and sleeve or body is higher than in a ball or butterfly valve of the same size, so it takes more torque to turn. We size the actuator on the actual valve and your air pressure, with a margin for media that may stick.
 todo: 'No product photo yet; the page shows the placeholder drawing (PENDING #11). Applications and media are general typical uses, not company-stated: review (PENDING #34). Sleeved, lubricated and multi-port types are described generally; which the company supplies is not confirmed (PENDING #35).'
+typicalOptions:
+  - label: "Valve sizes"
+    value: "DN 15 to DN 300"
+  - label: "Plug type"
+    value: "PTFE sleeved, lubricated, or fully lined"
+  - label: "Ports"
+    value: "Two-way, or three-way for diverting and mixing"
+  - label: "Body material"
+    value: "Cast iron, carbon steel or stainless steel; PFA / FEP lined"
+  - label: "Actuator"
+    value: "Quarter-turn, double acting or spring return"
 ---
 
 A pneumatic plug valve is a quarter-turn valve in which a tapered or cylindrical plug, with a passage cut through it, turns inside the body to open or close the line. A compressed-air actuator on top turns the plug through 90 degrees on a signal from the panel or PLC.

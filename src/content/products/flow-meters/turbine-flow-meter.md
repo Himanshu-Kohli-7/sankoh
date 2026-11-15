@@ -32,6 +32,19 @@ faqs:
     answer: The bearings do wear, so readings can drift over the years. Periodic checks against a reference meter catch this before it matters.
 relatedRepair: []
 todo: 'Applications and media are general typical uses (PENDING #48). Sizes, bearing types, end connections and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
+typicalOptions:
+  - label: "Line sizes"
+    value: "DN 4 to DN 200"
+  - label: "End connection"
+    value: "Threaded, flanged or sanitary clamp"
+  - label: "Body"
+    value: "Stainless steel 304 / 316"
+  - label: "Display"
+    value: "Pulse pickup only, or a local rate and total display, battery or loop powered"
+  - label: "Outputs"
+    value: "Pulse, 4–20 mA, Modbus"
+  - label: "Accuracy"
+    value: "Typically ±0.5% to ±1% on clean liquids"
 ---
 
 A turbine flow meter is one of the oldest and most direct ways to measure flow. A free-spinning rotor with angled blades sits in the stream, held between upstream and downstream supports. The moving fluid pushes on the blades and turns the rotor at a speed proportional to the flow velocity.

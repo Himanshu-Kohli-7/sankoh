@@ -11,6 +11,9 @@
  * Skipped by design (allowed boilerplate or not prose): titles, SEO titles, slugs, hrefs,
  * icons, media, images, related links, checklist items (`whatToSend`) and template text
  * rendered by components (fact strip, process steps, CTA band).
+ *
+ * Typical options tables are short labels and ranges, so single rows may match between products.
+ * Whole tables may not: two products with the same table also count as a repeat.
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -23,7 +26,7 @@ const MIN_SENTENCE = 6;
 const SKIP_KEYS = new Set([
   'title', 'h1', 'seoTitle', 'slug', 'category', 'order', 'operation', 'icon', 'href', 'src', 'alt', 'updated',
   'division', 'enquiry', 'group', 'serviceType', 'todo', 'media', 'images', 'relatedProducts', 'relatedRepair',
-  'whatToSend', 'heroImage',
+  'whatToSend', 'heroImage', 'typicalOptions', 'label', 'value', 'warranty',
 ]);
 
 function walk(dir, out = []) {
@@ -119,6 +122,19 @@ for (const file of files) {
 }
 
 let hits = 0;
+
+/** Typical options: each product's table must be its own (CLAUDE.md §2.2). */
+const tables = new Map();
+for (const file of files) {
+  const m = fs.readFileSync(file, 'utf8').replace(/\r/g, '').match(/\ntypicalOptions:\n((?:  .*\n)+)/);
+  if (m) add(tables, m[1].replace(/\s+/g, ' ').trim(), file.split(path.sep).join('/').replace('src/content/', ''));
+}
+for (const [, ids] of tables) {
+  if (ids.size < 2) continue;
+  hits++;
+  console.log(`Same Typical options table (${ids.size} files):\n  ${[...ids].join('\n  ')}`);
+}
+
 for (const [s, ids] of sentences) {
   if (ids.size < 2) continue;
   hits++;

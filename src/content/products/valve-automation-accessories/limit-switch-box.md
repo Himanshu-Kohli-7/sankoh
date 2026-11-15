@@ -31,6 +31,19 @@ faqs:
   - question: Why does the PLC show the valve as neither open nor shut?
     answer: Often the valve has stopped short of its end position, a cam has slipped on the shaft, or a wire has worked loose. A sticking valve gives the same symptom, so check the actuator's travel before blaming the switches.
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses (PENDING #41). Switch types, enclosure types and mounting kits supplied are not confirmed (PENDING #42). Whether limit switch boxes are repaired, and whether Actuator & Cylinder Repair is the right link, is not confirmed (PENDING #43).'
+typicalOptions:
+  - label: "Switches"
+    value: "Two mechanical SPDT micro-switches, or inductive proximity sensors"
+  - label: "Enclosure"
+    value: "Aluminium or engineering plastic; weatherproof or flameproof"
+  - label: "Mounting"
+    value: "NAMUR bracket on rotary actuators; linear kits for rising stems"
+  - label: "Indicator"
+    value: "Open / closed dome visible from a distance"
+  - label: "Cable entries"
+    value: "Two, threaded for glands"
+  - label: "Options"
+    value: "4–20 mA position transmitter, solenoid terminals"
 ---
 
 A limit switch box tells the control system what a valve has actually done, not just what it was told to do. It mounts on top of a quarter-turn actuator, and a shaft inside turns with the actuator's output. Two adjustable cams on that shaft trip switches at the open and closed ends of travel.

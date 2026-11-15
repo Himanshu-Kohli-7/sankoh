@@ -31,6 +31,17 @@ faqs:
   - question: Do you repair motorised plug valves?
     answer: Yes. We reseal and resleeve plug valves and overhaul the electric actuators and gearboxes on them, of any make, typically within 2–3 days.
 todo: 'No product photo yet; the page shows the placeholder drawing (PENDING #11). Applications and media are general typical uses (PENDING #39). Sleeved, lubricated and multi-port types, gearboxes and fail-safe options supplied are not confirmed (PENDING #40).'
+typicalOptions:
+  - label: "Valve sizes"
+    value: "DN 15 to DN 300"
+  - label: "Plug type"
+    value: "Sleeved, lubricated or lined"
+  - label: "Ports"
+    value: "Two-way or three-way"
+  - label: "Actuator"
+    value: "Quarter-turn electric, on/off or modulating"
+  - label: "Supply voltage"
+    value: "230 V AC single-phase or 415 V three-phase"
 ---
 
 A motorised plug valve is a quarter-turn plug valve worked by an electric actuator. A tapered or straight plug with a port cut through it rotates to line the port up with the pipe, or to turn it away and close the line. It can then open, shut or switch lines from a panel, needing only a power cable.

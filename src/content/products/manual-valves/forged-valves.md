@@ -32,6 +32,17 @@ faqs:
   - question: Which type of forged valve do I need?
     answer: A gate valve to isolate, a globe valve to regulate or a check valve to stop reverse flow. Tell us the duty and our engineers will recommend the type.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Types (gate, globe, check) and end connections are described generally; which the company supplies is not confirmed (PENDING #31).'
+typicalOptions:
+  - label: "Sizes"
+    value: "¼\" to 2\""
+  - label: "Valve types"
+    value: "Gate, globe and check"
+  - label: "Body material"
+    value: "Forged carbon steel, alloy steel or stainless steel"
+  - label: "End connection"
+    value: "Socket weld, screwed (NPT) or flanged"
+  - label: "Pressure rating"
+    value: "Class 800 as standard; Class 1500 and Class 2500 for higher pressures"
 ---
 
 Forged valves are small gate, globe and check valves whose bodies are forged from solid metal instead of being cast. Forging presses the hot metal into shape under high force, which gives a dense, strong body. That strength lets the valve stay compact while handling demanding pressures and temperatures.

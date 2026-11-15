@@ -30,6 +30,17 @@ faqs:
     answer: Usually not. The contact is meant for a control circuit, so it switches a relay or starter, which then switches the motor.
 relatedRepair: []
 todo: 'Applications and media are general typical uses (PENDING #53). Top or side mounting, stem or cable forms, number of switching points, contact ratings and enclosures supplied are not confirmed (PENDING #54). No repair link (PENDING #56).'
+typicalOptions:
+  - label: "Mounting"
+    value: "Top mounted on a stem, side mounted, or a cable float"
+  - label: "Switching points"
+    value: "One to four floats on one stem"
+  - label: "Stem and float"
+    value: "Stainless steel 316; PP or PVDF for corrosive liquids"
+  - label: "Contact"
+    value: "Reed switch, SPST or SPDT"
+  - label: "Stem length"
+    value: "Made to the tank depth"
 ---
 
 A float type level switch signals when a liquid reaches a set height. A buoyant float, usually stainless steel or plastic, rides on the surface. When the liquid lifts or lowers it past a set point, a contact opens or closes in the enclosure above.

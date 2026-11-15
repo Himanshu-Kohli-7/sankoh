@@ -28,6 +28,17 @@ faqs:
     answer: Analogue pH signals are very weak and sensitive to cable length and noise, so keep the cable short and use the cable intended for it. Digital sensors that convert the signal in the sensor head allow longer runs.
 relatedRepair: []
 todo: 'No photo: the legacy photo shows a third-party model name and a smudged-out logo, so the page uses the placeholder drawing (PENDING #11, #55). Applications and media are general typical uses (PENDING #53). Mounting, inputs, outputs, relays and protocols supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Measures"
+    value: "pH 0–14; many units also read ORP in mV"
+  - label: "Outputs"
+    value: "4–20 mA, relays for dosing control, RS-485 Modbus"
+  - label: "Mounting"
+    value: "Panel, wall or pipe"
+  - label: "Supply"
+    value: "230 V AC or 24 V DC"
+  - label: "Calibration"
+    value: "Two-point or three-point with buffer solutions"
 ---
 
 A pH transmitter is the electronic half of a pH measurement. It connects to a pH sensor in the process, reads the sensor's signal, and turns it into a pH value that operators can see and a control system can use.

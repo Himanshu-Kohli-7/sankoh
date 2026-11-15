@@ -34,6 +34,17 @@ faqs:
   - question: Can you service the valve and actuator?
     answer: Yes. Seats and O-rings can be replaced, and we repair the actuators on any make of valve. A workshop repair usually takes 2–3 days.
 todo: 'Ball/butterfly assignment taken from the photo, not confirmed by the company (PENDING #6). Applications other than water ATMs and water treatment are general typical uses (PENDING #34). True-union ends and seal materials described generally (PENDING #35). Stolzel-marked accessories in the photo, brand not confirmed (PENDING #25).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 100 (½\" to 4\")"
+  - label: "Body material"
+    value: "UPVC; CPVC, PP or PVDF for hotter or harsher duty"
+  - label: "Seats and seals"
+    value: "PTFE seats with EPDM or Viton O-rings"
+  - label: "Ends"
+    value: "True union with solvent socket, threaded or flanged ends"
+  - label: "Pressure rating"
+    value: "Falls as temperature rises; check both together"
 ---
 
 A pneumatic UPVC ball valve combines a ball valve moulded in unplasticised PVC, a rigid plastic that does not rust, with an air-driven actuator that opens and shuts it on command. It is made for plastic pipework carrying treated water and corrosive liquids, where a metal valve would corrode or contaminate the media.

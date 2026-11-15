@@ -31,6 +31,17 @@ faqs:
     answer: Many universal transmitters accept several RTD and thermocouple types and are set up for the one fitted. The range can usually be adjusted too, which keeps spares simple.
 relatedRepair: []
 todo: 'Low-resolution photo (225px): ask for a larger one (PENDING #55). Applications and media are general typical uses (PENDING #53). Mounting forms, inputs, outputs, protocols and housings supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Input"
+    value: "Pt100 RTD, thermocouple, or universal"
+  - label: "Output"
+    value: "4–20 mA two-wire; HART on smart models"
+  - label: "Mounting"
+    value: "Head mounted, DIN rail or field housing with display"
+  - label: "Isolation"
+    value: "Galvanically isolated versions"
+  - label: "Configuration"
+    value: "By PC software, HART communicator or push-buttons"
 ---
 
 A temperature transmitter takes the small signal from an RTD or thermocouple and turns it into a standard output that a PLC, DCS, controller or recorder can use. The raw signal from a sensor is weak and easily disturbed by long cables and electrical noise from motors and drives. The transmitter's output is strong, so it carries cleanly over long distances.

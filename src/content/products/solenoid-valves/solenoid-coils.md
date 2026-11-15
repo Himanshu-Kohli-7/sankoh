@@ -29,6 +29,17 @@ faqs:
   - question: Is it normal for a coil to feel hot?
     answer: Yes. A coil that stays energised runs warm and can be too hot to hold. Worry when it smells, discolours or trips the supply, because those point to a fault.
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses (PENDING #41). Which coil voltages, insulation classes, connector types and fitting ranges are supplied is not confirmed (PENDING #42). Whether coils are repaired or rewound is not confirmed (PENDING #43).'
+typicalOptions:
+  - label: "Voltage"
+    value: "12 V DC, 24 V DC, 24 V AC, 110 V AC, 230 V AC"
+  - label: "Insulation class"
+    value: "F for general duty, H for steam and hot media"
+  - label: "Connection"
+    value: "DIN plug connector, flying leads or conduit hub"
+  - label: "Enclosure"
+    value: "Moulded weatherproof; flameproof housings for hazardous areas"
+  - label: "Matching"
+    value: "By core-tube diameter, coil height and power rating"
 ---
 
 The coil is the electrical half of a solenoid valve: a winding of copper wire, usually sealed in moulded resin, that slides over the valve's plunger tube. When current flows, it creates a magnetic field that pulls the plunger in and opens or closes the valve. The coil never touches the media, so it can be changed without opening the line.

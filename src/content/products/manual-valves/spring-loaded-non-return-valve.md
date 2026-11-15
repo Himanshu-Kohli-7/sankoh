@@ -29,6 +29,17 @@ faqs:
   - question: Is it suitable for dirty fluids?
     answer: It works best on clean fluids. Solids can lodge between the disc and the seat and hold the valve open, so fit a strainer upstream where the fluid carries debris.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Image is low resolution (150px): ask for a better photo (PENDING #27). No related repair page shown (PENDING #32).'
+typicalOptions:
+  - label: "Sizes"
+    value: "¼\" to 2\" screwed; up to DN 100 in wafer disc pattern"
+  - label: "End connection"
+    value: "BSP or NPT threads, or wafer type between flanges"
+  - label: "Body material"
+    value: "Stainless steel 304 / 316 or brass"
+  - label: "Disc seal"
+    value: "Metal, PTFE, nitrile or Viton"
+  - label: "Opening pressure"
+    value: "Set by the spring; light springs for low-pressure lines"
 ---
 
 A spring loaded non-return valve is a check valve whose disc is held on its seat by a spring. Flow in the right direction has to overcome the spring to push the disc open. The moment the flow weakens, the spring pushes the disc back, so the valve is shut before any reverse flow begins.

@@ -27,6 +27,17 @@ faqs:
     answer: Somewhere representative of the mixed liquor, away from the diffuser plumes and dead corners, at a depth where it stays submerged. In long tanks, several sensors along the length give better control.
 relatedRepair: []
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses (PENDING #53). Optical or membrane sensors, ranges, outputs and mountings supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Sensor"
+    value: "Optical (luminescent), or membrane type (galvanic / polarographic)"
+  - label: "Range"
+    value: "0–20 mg/L, or 0–200% saturation"
+  - label: "Compensation"
+    value: "Temperature built in; salinity and pressure entered"
+  - label: "Outputs"
+    value: "4–20 mA, relays for aeration control, Modbus"
+  - label: "Installation"
+    value: "Immersion on a pole or chain; a float mount in aeration tanks"
 ---
 
 A dissolved oxygen (DO) analyzer measures how much oxygen is dissolved in water. In biological treatment, bacteria use that oxygen to digest the organic load, so DO is the value plant operators watch most closely in an aeration tank. Too little and treatment slows; too much and the blowers waste energy.

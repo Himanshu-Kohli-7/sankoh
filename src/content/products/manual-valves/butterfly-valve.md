@@ -33,6 +33,19 @@ faqs:
   - question: Can a manual butterfly valve be automated later?
     answer: Often, yes. Most butterfly valves have a top flange that takes a pneumatic or electric actuator in place of the lever. We also supply butterfly valves already fitted with actuators.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Wafer and lug types are described generally; which the company supplies is not confirmed (PENDING #31).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 40 to DN 600 (1½\" to 24\"); larger on request"
+  - label: "Body pattern"
+    value: "Wafer or lug, fitted between pipe flanges"
+  - label: "Body and disc"
+    value: "Cast iron or ductile iron body; ductile iron, stainless steel or aluminium bronze disc"
+  - label: "Seat"
+    value: "EPDM, nitrile, Viton or PTFE lining"
+  - label: "Operation"
+    value: "Hand lever on small sizes, gear operator on large ones"
+  - label: "Pressure rating"
+    value: "PN 10 and PN 16 are the usual ratings"
 ---
 
 A butterfly valve is a quarter-turn valve that controls flow with a disc mounted on a shaft across the pipe. Turn the lever a quarter turn and the disc swings from edge-on to the flow, which is open, to face-on, which is shut. A seat around the inside of the body seals against the edge of the disc.

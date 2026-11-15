@@ -29,6 +29,19 @@ faqs:
     answer: Usually it is not meant to. Most switches should drive a contactor or relay, or a PLC input, rather than carry motor current. Tell us what the contact has to switch.
 relatedRepair: []
 todo: 'No photo: the legacy photo carries a third-party maker''s nameplate and model label, so the page uses the placeholder drawing (PENDING #11, #50). Applications and media are general typical uses (PENDING #48). Ranges, contact types, enclosures and connections supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
+typicalOptions:
+  - label: "Ranges"
+    value: "From vacuum up to several hundred bar"
+  - label: "Sensing element"
+    value: "Diaphragm, bellows or piston"
+  - label: "Contacts"
+    value: "SPDT or DPDT micro-switch"
+  - label: "Setting"
+    value: "Adjustable set point; fixed or adjustable differential"
+  - label: "Connection"
+    value: "¼\" or ½\" BSP / NPT"
+  - label: "Enclosure"
+    value: "Weatherproof or flameproof"
 ---
 
 A pressure switch turns a pressure into an on/off decision. Inside, the process pressure acts on a diaphragm, piston or Bourdon element working against an adjustable spring. When the pressure overcomes the spring at the set point, the element trips a snap-action contact. When the pressure falls back by a set amount, the contact resets.

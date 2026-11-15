@@ -30,6 +30,17 @@ faqs:
     answer: A metal or ceramic protection tube chosen for the temperature and the atmosphere. Ash, sulphur and reducing gases attack some materials, so tell us what the gas contains as well as how hot it gets.
 relatedRepair: []
 todo: 'Written about high-temperature sensing in general; thermocouples are named only as the usual type, not as a type the company supplies (PENDING #54). Unreadable engraving on the photo sheath: confirm it is not a third-party mark (PENDING #55). Applications and media are general typical uses (PENDING #53). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Sensor type"
+    value: "Thermocouple types K, N, R, S or B, by temperature"
+  - label: "Range"
+    value: "To about 1200 °C with base-metal types; to 1600 °C and above with noble-metal types"
+  - label: "Protection tube"
+    value: "Heat-resistant alloy, or ceramic for the highest temperatures"
+  - label: "Construction"
+    value: "Mineral insulated, or beaded wire in a tube"
+  - label: "Termination"
+    value: "Connection head, with compensating cable to the instrument"
 ---
 
 A high temperature sensor measures heat in places that would quickly damage an everyday process sensor: furnaces, kilns, flue ducts, engine exhausts and hot air streams. It needs materials that survive the heat, a sheath or protection tube suited to the gases around it, and an output the controller can read.

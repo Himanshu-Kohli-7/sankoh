@@ -27,6 +27,19 @@ faqs:
   - question: What helps when ordering a replacement?
     answer: The header connection size and style, whether the body is right-angle or straight-through, integral or remote pilot, the coil voltage, and a photo of the old valve with its nameplate if there is one.
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications are general typical uses, not company-stated (PENDING #41). Body styles, connection types and coil voltages supplied are not confirmed (PENDING #42). No repair page covers solenoid valves (PENDING #43).'
+typicalOptions:
+  - label: "Port sizes"
+    value: "¾\" to 3\""
+  - label: "Body style"
+    value: "Right-angle threaded, dresser-nut or flanged (manifold) type"
+  - label: "Diaphragm"
+    value: "Nitrile, or Viton for hot gas"
+  - label: "Pilot"
+    value: "Integral solenoid pilot, or remote pilot from a pilot box"
+  - label: "Tank pressure"
+    value: "Typically 4 to 7 bar compressed air"
+  - label: "Controller"
+    value: "Sequential timer card that sets pulse width and interval"
 ---
 
 In a pulse jet dust collector, dusty air passes through rows of filter bags or cartridges, and the dust builds up on their outer surface. To clean them, a blowpipe above each row fires a short, sharp burst of compressed air down inside the bags. The shock flexes the fabric and the dust cake drops into the hopper below.

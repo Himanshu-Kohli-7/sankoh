@@ -28,6 +28,17 @@ faqs:
     answer: Wastewater fouls optical windows quickly. Probes are often fitted with a wiper, brush or air or water jet, and still need a manual clean on a regular schedule. Ask about the cleaning option when you enquire.
 relatedRepair: []
 todo: 'No photo: the legacy photo shows a round maker badge on the probe body, so the page uses the placeholder drawing. An unused legacy file `online-bod-sensor-.webp` may show a BOD probe, but the match is uncertain (PENDING #11, #55). Online optical sensor or automatic analyzer, and measuring principle, not confirmed (PENDING #58). Applications and media are general typical uses (PENDING #53). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Method"
+    value: "UV absorption, correlated to laboratory BOD"
+  - label: "Cleaning"
+    value: "Automatic wiper or air blast"
+  - label: "Body"
+    value: "Stainless steel 316L or titanium"
+  - label: "Output"
+    value: "RS-485 Modbus to a controller; 4–20 mA from the controller"
+  - label: "Installation"
+    value: "Immersion in a channel or tank, or a flow cell"
 ---
 
 A BOD sensor gives a continuous estimate of biochemical oxygen demand: how much oxygen bacteria would use to break down the organic matter in wastewater. BOD is a key measure of how polluting an effluent is and how hard a treatment plant has to work.

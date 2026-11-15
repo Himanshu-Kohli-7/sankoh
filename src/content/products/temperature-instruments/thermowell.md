@@ -29,6 +29,19 @@ faqs:
     answer: Usually, if the bore suits the stem diameter and the internal thread or fitting matches the gauge. Send us the stem diameter, length and connection of the instrument, or a photo, and we will match the well to it.
 relatedRepair: []
 todo: 'No photo yet: placeholder drawing (PENDING #11). Applications and media are general typical uses (PENDING #53). Construction (bar-stock or tube), process connections, materials, lengths and bore sizes supplied are not confirmed (PENDING #54). No repair link (PENDING #56).'
+typicalOptions:
+  - label: "Construction"
+    value: "Machined from bar stock, or fabricated from tube"
+  - label: "Shape"
+    value: "Straight, stepped or tapered shank"
+  - label: "Process connection"
+    value: "Threaded, flanged or weld-in"
+  - label: "Material"
+    value: "Stainless steel 304 / 316; alloys for corrosive or hot service"
+  - label: "Insertion length"
+    value: "Set by the pipe size or vessel, commonly 50 mm to 500 mm"
+  - label: "Bore"
+    value: "To suit a 6 mm or 8 mm sensor stem"
 ---
 
 A thermowell is a tube, closed at one end, that is screwed, welded or flanged into a pipe or vessel. The temperature gauge or sensor slides into it from outside. The well, not the instrument, takes the pressure, flow and attack from the process.

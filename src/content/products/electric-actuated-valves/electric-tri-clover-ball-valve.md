@@ -34,6 +34,19 @@ faqs:
   - question: Can you repair the valve and actuator together?
     answer: Yes. We fit new seats and seals to TC ball valves and repair their electric actuators, whatever the make, normally returning them in 2–3 days.
 todo: 'Ball/butterfly assignment checked against the photo; the old site already named this one "Electrical TC Ball Valve" (PENDING #6). "Tri-Clover" used as the generic name for clamp ends (PENDING #37). Applications other than milk/water ATMs are general typical uses (PENDING #39). The photo shows a supply voltage on the actuator label; not used (PENDING #40). Stolzel-marked body in the photo, brand not confirmed (PENDING #25).'
+typicalOptions:
+  - label: "Sizes"
+    value: "½\" to 4\" tube sizes"
+  - label: "Body"
+    value: "Stainless steel 304 or 316L"
+  - label: "Ends"
+    value: "Sanitary clamp (TC) ends"
+  - label: "Supply voltage"
+    value: "24 V DC or 230 V AC"
+  - label: "Control"
+    value: "On/off or modulating"
+  - label: "Seats"
+    value: "PTFE, cavity-filled for hygienic service"
 ---
 
 An electric tri-clover ball valve is a sanitary ball valve whose ends take tri-clover (TC) clamps, worked by an electric motor actuator rather than by hand. It automates milk, food and pharmaceutical lines where there is a power socket but no compressed air, such as a milk ATM.

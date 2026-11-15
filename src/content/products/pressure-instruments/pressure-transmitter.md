@@ -30,6 +30,19 @@ faqs:
     answer: It is how far the measuring range can be narrowed from the sensor's maximum while staying accurate. A high turndown lets one model cover many ranges, which helps with spares.
 relatedRepair: []
 todo: 'No photo: the legacy photo shows a third-party maker''s logo on the display, so the page uses the placeholder drawing (PENDING #11, #50). Applications and media are general typical uses (PENDING #48). Ranges, outputs, protocols, enclosures and hazardous-area versions supplied are not confirmed (PENDING #49). No repair or calibration link (PENDING #52).'
+typicalOptions:
+  - label: "Ranges"
+    value: "From a few mbar up to 600 bar; gauge, absolute or compound"
+  - label: "Output"
+    value: "4–20 mA two-wire; HART, or 0–10 V"
+  - label: "Accuracy"
+    value: "From ±0.5% to ±0.075% of span"
+  - label: "Wetted parts"
+    value: "Stainless steel 316L diaphragm; Hastelloy on request"
+  - label: "Connection"
+    value: "½\" BSP / NPT, flush diaphragm or sanitary clamp"
+  - label: "Options"
+    value: "Local display, diaphragm seal, flameproof or intrinsically safe"
 ---
 
 A pressure transmitter measures pressure and sends it as an electrical signal, so the reading can be used far from where it is taken. It is how a control system sees pressure: to run a pump at constant pressure, sequence compressors, hold a steam header steady or record a process for later.

@@ -29,6 +29,17 @@ faqs:
   - question: Does a dual plate check valve stop water hammer?
     answer: It reduces the slam caused by a check valve closing late. It does not remove water hammer that has other causes, such as a valve being shut too quickly elsewhere in the line.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). No related repair page shown (PENDING #32).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 50 to DN 600 (2\" to 24\"); larger on request"
+  - label: "Body pattern"
+    value: "Wafer as standard; lug or flanged on request"
+  - label: "Body material"
+    value: "Cast iron, ductile iron, carbon steel or stainless steel"
+  - label: "Plates and springs"
+    value: "Stainless steel or aluminium bronze plates with stainless steel springs"
+  - label: "Seat"
+    value: "Nitrile, EPDM or Viton bonded seat, or metal seated"
 ---
 
 A dual plate check valve is a wafer-style non-return valve with two half-circle plates hinged on a pin across the middle of the body. Forward flow folds the two plates back, like a pair of doors. Springs on the pin push them shut again as the flow slows, so the valve is closed before the flow can reverse.

@@ -29,6 +29,19 @@ faqs:
   - question: How should it be installed?
     answer: In a horizontal pipe with the coil on top, with condensate drained away before it reaches the valve and a strainer upstream. Leave room above to lift the coil off for servicing.
 todo: 'Photo: legacy ssv.png may show this valve but is unconfirmed, so the page uses the placeholder drawing (PENDING #44). Applications and media are general typical uses, not company-stated (PENDING #41). Sizes, piston ring materials and coil classes supplied are not confirmed (PENDING #42). No repair page covers solenoid valves (PENDING #43).'
+typicalOptions:
+  - label: "Port sizes"
+    value: "½\" to 2\""
+  - label: "Sealing"
+    value: "PTFE piston seal and seat"
+  - label: "Body material"
+    value: "Brass or stainless steel"
+  - label: "Media temperature"
+    value: "Up to about 180 °C for saturated steam"
+  - label: "Coil"
+    value: "Class H high-temperature coil"
+  - label: "Function"
+    value: "2/2 way, normally closed"
 ---
 
 Steam is hard on rubber. A diaphragm that lasts for years on cold water can harden, crack or blister on steam. A piston type steam solenoid valve gets around this by replacing the diaphragm with a close-fitting metal piston, sealed with rings that tolerate the heat.

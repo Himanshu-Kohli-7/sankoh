@@ -34,6 +34,17 @@ faqs:
   - question: Can the actuator be fitted to an existing sanitary butterfly valve?
     answer: Often, if the valve has a suitable top for a mounting bracket. Send us the make and size, or a photo, and we will check what is needed to automate it.
 todo: 'Ball/butterfly assignment taken from the photo, not confirmed by the company (PENDING #6). "Tri-Clover" used as the generic name for clamp ends (PENDING #37). Applications other than milk ATMs are general typical uses (PENDING #34). Seat compounds described generally (PENDING #35).'
+typicalOptions:
+  - label: "Sizes"
+    value: "1\" to 6\" tube sizes"
+  - label: "Body and disc"
+    value: "Stainless steel 304 or 316L"
+  - label: "Seat"
+    value: "Silicone, EPDM or Viton, in food-contact grades"
+  - label: "Ends"
+    value: "Sanitary clamp (TC), weld or threaded union ends"
+  - label: "Actuator"
+    value: "Stainless steel or aluminium, double acting or spring return"
 ---
 
 A pneumatic tri-clover butterfly valve is a hygienic butterfly valve with tri-clover (TC) clamp ends, driven by a compressed-air actuator. It gives automatic open/close control on sanitary pipework where the line must stay clean, drain fully and come apart easily.

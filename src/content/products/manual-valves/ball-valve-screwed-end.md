@@ -31,6 +31,17 @@ faqs:
   - question: When is a flanged ball valve the better choice?
     answer: On larger lines, or where the valve has to be removed often. A flanged valve unbolts from the line, while a screwed valve usually needs a union nearby or the pipe unscrewed.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Body constructions and thread types are described generally; which the company supplies is not confirmed (PENDING #31).'
+typicalOptions:
+  - label: "Sizes"
+    value: "¼\" to 2\" in most ranges, up to 4\""
+  - label: "Body construction"
+    value: "One-piece, two-piece or three-piece"
+  - label: "End connection"
+    value: "BSP or NPT threads; socket weld on three-piece bodies"
+  - label: "Body material"
+    value: "Stainless steel 304 / 316, carbon steel, brass or forged steel"
+  - label: "Pressure rating"
+    value: "Commonly 1000 PSI (WOG); higher in forged bodies"
 ---
 
 A screwed-end ball valve is a quarter-turn shut-off valve with threaded ends. It screws straight onto threaded pipe, with no flanges, gaskets or bolts. Inside, a ball with a hole through it turns between two seats. With the lever along the pipe, the valve is open. With the lever across it, the valve is shut.

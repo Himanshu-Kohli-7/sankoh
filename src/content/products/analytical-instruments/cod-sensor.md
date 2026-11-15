@@ -32,6 +32,17 @@ faqs:
     answer: Concentration alone does not tell you how much pollution leaves the site. Multiplying COD by the flow from a flow meter gives the load, which is what treatment design and discharge limits often depend on.
 relatedRepair: []
 todo: 'Applications and media are general typical uses (PENDING #53). Online optical sensor or automatic analyzer, ranges, cleaning options and outputs supplied are not confirmed (PENDING #54, #58). An unused stainless steel probe photo, `cod sensor.webp`, is also in legacy (PENDING #55). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Method"
+    value: "UV absorption at 254 nm with turbidity compensation"
+  - label: "Range"
+    value: "From 0–200 mg/L to several thousand mg/L, by optical path"
+  - label: "Cleaning"
+    value: "Built-in wiper"
+  - label: "Output"
+    value: "RS-485 Modbus; 4–20 mA through a controller"
+  - label: "Often paired with"
+    value: "BOD, TSS and pH on the same controller"
 ---
 
 A COD sensor tracks the chemical oxygen demand of wastewater: the amount of oxygen needed to chemically oxidise the organic matter in it. COD is one of the most common ways to judge the strength of an effluent and the performance of a treatment plant.

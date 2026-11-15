@@ -34,6 +34,17 @@ faqs:
   - question: Can it be fitted with a spring-return actuator?
     answer: Yes. Like other quarter-turn valves it takes either a double-acting or a spring-return actuator. Choose spring-return if the valve must close, or open, by itself when the air fails.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #34). Which seat and body materials and temperature limits the company supplies is not confirmed (PENDING #35). Stolzel-marked actuator in the photo, brand not confirmed for this product (PENDING #25).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 40 to DN 600"
+  - label: "Body"
+    value: "Cast iron or cast steel, wafer pattern"
+  - label: "Disc"
+    value: "Stainless steel with a spherical sealing edge"
+  - label: "Seat"
+    value: "Reinforced PTFE or other high-temperature seat ring"
+  - label: "Typical duty"
+    value: "Steam, hot water, thermic fluid and dyeing machines"
 ---
 
 A pneumatic spherical disc butterfly valve is a quarter-turn butterfly valve with two differences from the ordinary kind: the edge of its disc is shaped to part of a sphere, and it is opened and closed by a compressed-air actuator rather than by hand.

@@ -31,6 +31,17 @@ faqs:
   - question: Can an isolation valve be fitted before a safety valve?
     answer: As a rule, no. Nothing should be able to shut a safety valve off from the equipment it protects. Follow the regulations that apply to your boiler or vessel.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Nothing is said about set-pressure testing, certificates or repair of safety valves: ask the company (PENDING #32).'
+typicalOptions:
+  - label: "Inlet sizes"
+    value: "½\" to 6\""
+  - label: "Type"
+    value: "Spring loaded; open or closed bonnet, with or without a lifting lever"
+  - label: "Body material"
+    value: "Bronze or gunmetal, cast carbon steel or stainless steel"
+  - label: "Connections"
+    value: "Screwed on small sizes; flanged inlet and outlet on larger"
+  - label: "Set pressure"
+    value: "Fixed by the spring range to suit the protected system"
 ---
 
 A safety valve protects a boiler, vessel or pipeline from damage by too much pressure. Inside, a spring holds a disc down on its seat. While the system pressure stays below the valve's set pressure, the valve is shut. When the pressure rises to the set point, it overcomes the spring, the disc lifts and the excess is discharged. Once the pressure has fallen, the spring closes the valve again.

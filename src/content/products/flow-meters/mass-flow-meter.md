@@ -29,6 +29,19 @@ faqs:
     answer: It can. Brace the pipework firmly either side of the meter, and keep it away from strong vibration sources such as reciprocating pumps and compressors.
 relatedRepair: []
 todo: 'No photo: the legacy "mass-flowmeter.png" shows a straight-tube meter that looks like a turbine meter, so the page uses the placeholder drawing (PENDING #11, #50). Applications and media are general typical uses (PENDING #48). Whether Coriolis, thermal or both are supplied is not confirmed (PENDING #49). No repair link (PENDING #52).'
+typicalOptions:
+  - label: "Principle"
+    value: "Coriolis for liquids and gases; thermal mass for gases"
+  - label: "Line sizes"
+    value: "DN 3 to DN 150 (Coriolis); inline or insertion (thermal)"
+  - label: "Measures"
+    value: "Mass flow directly; Coriolis adds density and temperature"
+  - label: "Wetted parts"
+    value: "Stainless steel 316L; Hastelloy on request"
+  - label: "Outputs"
+    value: "4–20 mA, pulse, HART, Modbus"
+  - label: "Accuracy"
+    value: "About ±0.1–0.2% (Coriolis); ±1–2% (thermal)"
 ---
 
 A mass flow meter measures the quantity that matters most in many processes: mass. A volume reading drifts when a liquid warms up or a gas is compressed, but a mass reading does not, so there is nothing to correct for temperature or pressure.

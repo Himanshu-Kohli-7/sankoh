@@ -32,6 +32,19 @@ faqs:
     answer: Longer than most other types. Bends, reducers and part-open valves upstream distort the vortex pattern, so we check the upstream layout before recommending one.
 relatedRepair: []
 todo: 'Photo has a small, illegible maker label on the body (PENDING #50). Applications and media are general typical uses (PENDING #48). Inline vs insertion forms, sizes, compensation options and outputs supplied are not confirmed (PENDING #49). No repair link (PENDING #52).'
+typicalOptions:
+  - label: "Line sizes"
+    value: "DN 15 to DN 300"
+  - label: "Mounting"
+    value: "Wafer or flanged; insertion type for large pipes"
+  - label: "Media"
+    value: "Steam, gases and clean low-viscosity liquids"
+  - label: "Compensation"
+    value: "Built-in temperature and pressure compensation for steam mass flow"
+  - label: "Outputs"
+    value: "4–20 mA, pulse, HART or Modbus"
+  - label: "Wetted parts"
+    value: "Stainless steel"
 ---
 
 A vortex flow meter measures flow by counting swirls. A flat or shaped bar, called a bluff body or shedder, stands across the bore. As fluid passes it, vortices break away from alternate sides, one after another, in a regular pattern known as a Kármán vortex street.

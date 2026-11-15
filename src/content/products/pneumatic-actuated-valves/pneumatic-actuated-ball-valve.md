@@ -34,6 +34,19 @@ faqs:
   - question: Do you repair pneumatic actuated ball valves?
     answer: Yes, both the ball valve and its pneumatic actuator, whatever the make. In our workshop the job typically takes 2–3 days.
 todo: 'Applications are general typical uses, not company-stated: review (PENDING #26). Brand (Sankoh/Stolzel) not confirmed, so Product schema has no brand (PENDING #25).'
+typicalOptions:
+  - label: "Valve sizes"
+    value: "DN 15 to DN 200"
+  - label: "Actuator"
+    value: "Rack-and-pinion, double acting or spring return"
+  - label: "Valve body"
+    value: "Two-piece or three-piece; stainless steel, carbon steel or cast iron"
+  - label: "End connection"
+    value: "Screwed, socket weld or flanged"
+  - label: "Air supply"
+    value: "4 to 8 bar instrument air"
+  - label: "Accessories"
+    value: "Solenoid valve, limit switch box, positioner, manual override"
 ---
 
 A pneumatic actuated ball valve is a ball valve with a compressed-air actuator in place of a hand lever, so it can be opened and closed by a control system rather than by hand. Inside the body sits a ball bored straight through, which the actuator rotates a quarter turn. In line with the pipe, the valve is open. Across it, the valve is shut.

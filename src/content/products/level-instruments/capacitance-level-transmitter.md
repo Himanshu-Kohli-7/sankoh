@@ -30,6 +30,17 @@ faqs:
     answer: Some rod probes can, but it changes the calibration and, on insulated probes, damages the insulation at the cut end. It is better to order the length the tank needs.
 relatedRepair: []
 todo: 'Low-resolution photo (150px wide) with an unreadable label on the head: ask for a larger photo and confirm the label is not a third-party mark (PENDING #55). Applications and media are general typical uses (PENDING #53). Probe types, lengths, outputs and connections supplied are not confirmed (PENDING #54). No repair or calibration link (PENDING #56).'
+typicalOptions:
+  - label: "Probe"
+    value: "Rod or cable; bare for non-conductive liquids, PTFE-insulated for conductive"
+  - label: "Probe length"
+    value: "From 100 mm to several metres"
+  - label: "Output"
+    value: "4–20 mA for continuous level; relay for point level"
+  - label: "Process connection"
+    value: "Threaded or flanged"
+  - label: "Typical media"
+    value: "Liquids, powders and granules"
 ---
 
 A capacitance level transmitter uses the tank contents themselves as part of an electrical capacitor. A metal probe runs down into the tank, and the tank wall, or a second electrode, forms the other plate. Air between them has a low dielectric constant; most liquids and many powders have a higher one. As the level rises around the probe, the capacitance increases in proportion.

@@ -31,6 +31,17 @@ faqs:
   - question: Which way round is a Y-strainer installed?
     answer: With the arrow in the direction of flow. On liquid lines the screen pocket points down. On steam and gas lines it is usually turned to the side, so that condensate does not collect in it.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30). Y-type and basket types are described generally; which the company supplies is not confirmed (PENDING #31).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 300"
+  - label: "Type"
+    value: "Y-type for most lines; basket (pot) type for high flow or heavy dirt"
+  - label: "Body material"
+    value: "Cast iron, cast carbon steel or stainless steel"
+  - label: "Screen"
+    value: "Stainless steel perforated sheet or mesh, 20 to 100 mesh typical"
+  - label: "End connection"
+    value: "Screwed, socket weld or flanged"
 ---
 
 A strainer is a pipeline fitting that catches solid particles before they reach equipment they could damage. The flow passes through a perforated or mesh screen inside the body. Scale, rust, weld beads and other debris stay behind in the screen, and clean fluid carries on down the line.

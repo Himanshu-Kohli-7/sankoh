@@ -33,6 +33,19 @@ faqs:
   - question: Do you repair power cylinders?
     answer: Yes. We repair power cylinders, actuators and positioners of any make, including seals, rods and linkages, and recalibrate the positioner. Repairs in our workshop usually take 2–3 days.
 todo: 'Applications are general typical uses, not company-stated apart from HVAC, building and industrial automation (PENDING #34). Positioner and lock-up options described generally (PENDING #35). The photo shows a third-party brand name on the position indicator box (PENDING #38).'
+typicalOptions:
+  - label: "Bore"
+    value: "50 mm to 300 mm"
+  - label: "Stroke"
+    value: "100 mm to 1000 mm, to suit the damper lever"
+  - label: "Action"
+    value: "Double acting, or spring return for a fail position"
+  - label: "Control"
+    value: "On/off through a solenoid valve, or modulating with a 4–20 mA positioner"
+  - label: "Mounting"
+    value: "Trunnion, clevis or foot mounting"
+  - label: "Feedback"
+    value: "Limit switches or a position transmitter"
 ---
 
 A pneumatic power cylinder is a heavy-duty air cylinder that moves a damper instead of a valve. Its piston rod drives a lever clamped to the damper shaft, so the straight stroke of the cylinder becomes the turning movement that opens and closes the damper blades.

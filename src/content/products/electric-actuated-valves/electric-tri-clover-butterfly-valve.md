@@ -34,6 +34,17 @@ faqs:
   - question: Can you service the seat and actuator?
     answer: Yes. We supply and fit new seats, free stiff discs and repair electric actuators of any make, with most workshop jobs complete within 2–3 days.
 todo: 'Ball/butterfly assignment checked against the photo; the old site already named this one "Electrical TC Butterfly Valve" (PENDING #6). "Tri-Clover" used as the generic name for clamp ends (PENDING #37). Applications other than milk ATMs are general typical uses (PENDING #39). Seat compounds and actuator options supplied are not confirmed (PENDING #40).'
+typicalOptions:
+  - label: "Sizes"
+    value: "1\" to 6\" tube sizes"
+  - label: "Body and disc"
+    value: "Stainless steel 304 or 316L"
+  - label: "Seat"
+    value: "Silicone, EPDM or Viton"
+  - label: "Ends"
+    value: "Sanitary clamp (TC) or weld ends"
+  - label: "Supply voltage"
+    value: "24 V DC or 230 V AC"
 ---
 
 An electric tri-clover butterfly valve is a sanitary butterfly valve joined to the pipe by tri-clover (TC) clamps and moved by an electric actuator instead of a hand lever. It suits dairy, food and pharma plants without instrument air, and larger sanitary lines.

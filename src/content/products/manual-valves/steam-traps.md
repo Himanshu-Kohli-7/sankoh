@@ -31,6 +31,17 @@ faqs:
   - question: Should a strainer be fitted before a steam trap?
     answer: Yes, unless the trap has one built in. Scale and dirt are the most common cause of trap failure.
 todo: 'Legacy name is "Traps": confirm these are steam traps, unpublish if not (PENDING #9). Applications and media are general typical uses, not company-stated: review (PENDING #30). Trap types are described generally; which the company supplies is not confirmed (PENDING #31).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 50"
+  - label: "Trap type"
+    value: "Thermodynamic, ball float, inverted bucket or thermostatic"
+  - label: "Body material"
+    value: "Cast iron, cast carbon steel, forged steel or stainless steel"
+  - label: "End connection"
+    value: "Screwed, socket weld or flanged"
+  - label: "Working pressure"
+    value: "Chosen to match the steam pressure and the back pressure"
 ---
 
 A steam trap is an automatic valve that removes condensate, the water that forms as steam gives up its heat, without letting live steam escape. It also releases air. The trap opens when condensate reaches it and closes when steam arrives, with no operator or outside power.

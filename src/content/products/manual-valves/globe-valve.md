@@ -34,6 +34,19 @@ faqs:
   - question: Do you repair globe valves?
     answer: Yes. Globe valves of any make are repaired at our workshop, typically within 2–3 days.
 todo: 'Applications and media are general typical uses, not company-stated: review (PENDING #30).'
+typicalOptions:
+  - label: "Sizes"
+    value: "DN 15 to DN 300 (½\" to 12\")"
+  - label: "Body pattern"
+    value: "Straight, angle or Y pattern"
+  - label: "Body material"
+    value: "Cast iron, cast carbon steel, stainless steel or bronze"
+  - label: "Disc"
+    value: "Plug, ball or needle type; renewable seat on larger sizes"
+  - label: "End connection"
+    value: "Flanged; screwed or socket weld on small sizes"
+  - label: "Pressure rating"
+    value: "PN 16 in cast iron; Class 150 to Class 800 in steel"
 ---
 
 A globe valve regulates flow by moving a disc, or plug, towards or away from a seat set across the inside of the body. Turning the handwheel drives the stem down and the disc closes onto the seat. The opening grows in step with each turn, so the flow can be set finely and held there.
