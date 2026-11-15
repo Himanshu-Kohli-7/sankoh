@@ -15,6 +15,12 @@ How to use: when something is confirmed, tell Claude "X is confirmed: …". It u
 | 5 | **Written permission from Flowtech, UPC and Stolzel** to show their product photos and logos. A two-line email from each is enough. **Do not launch without all three** | Partner photos are in use provisionally (list in `docs/IMAGE-CREDITS.md` §2); partner logos are not shown, only text names | Company |
 | 6 | Catalogue PDF for `public/downloads/sankoh-technical-solutions-catalogue.pdf`. Is `reference/catalogue.pdf` the file to publish? | Catalogue card and download links stay hidden until the file is added | Company |
 
+## Fact questions
+
+| # | Question | What the site does until answered |
+|---|---|---|
+| 7 | Sanjay Kohli to confirm the privacy policy line "We do not sell your details or pass them to anyone for their own marketing." | The line is on /privacy-policy/ (standard wording, approved in principle); remove it if he does not agree |
+
 ## Confirmed (in CLAUDE.md §4)
 
 - WhatsApp number, proprietor, client reviews and logos, repair turnaround (typically 2–3 days)
