@@ -62,7 +62,7 @@ Three divisions, each with its own colour (§6):
 | Authorised partner of | Stolzel, UPC, Flowtech Measuring Instruments Pvt Ltd |
 | Service area | All of India; quickest delivery and on-site service across North India |
 | Team | Qualified engineers and professionals |
-| Office hours | Monday to Saturday, 9:00 AM to 6:00 PM. Sunday closed |
+| Office hours | Monday to Saturday, 9:30 AM to 6:30 PM. Sunday closed (from the Google Business Profile) |
 | Support line | "Urgent breakdown support 7 days a week", Sundays included (**not** 24/7) |
 | Repair turnaround | Typically 2–3 days for workshop repairs |
 | On-site repair | Offered, as well as workshop repair |

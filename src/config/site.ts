@@ -107,12 +107,15 @@ export const site = {
   /** Media named by the company for automated and solenoid valves. */
   media: ['Air', 'Water', 'Oil', 'Gas', 'Chemicals', 'Steam'],
 
-  /** Office hours, the one place they are set: footer, Contact page and LocalBusiness schema read this. */
+  /**
+   * Office hours, the one place they are set: footer, Contact page and LocalBusiness schema read this.
+   * Source: the Google Business Profile (replaces the 9–6 hours from the legacy footer).
+   */
   hours: {
     days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    opens: '09:00',
-    closes: '18:00',
-    display: 'Monday to Saturday, 9:00 AM to 6:00 PM',
+    opens: '09:30',
+    closes: '18:30',
+    display: 'Monday to Saturday, 9:30 AM to 6:30 PM',
     closed: 'Sunday closed',
   },
 

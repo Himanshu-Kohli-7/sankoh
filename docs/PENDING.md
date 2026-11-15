@@ -19,7 +19,7 @@ How to use: when something is confirmed, tell Claude "X is confirmed: …". It u
 
 - WhatsApp number, proprietor, client reviews and logos, repair turnaround (typically 2–3 days)
 - Own brand Sankoh® only; authorised partner of Stolzel, UPC and Flowtech Measuring Instruments Pvt Ltd; Scientific Devices is no longer a partner
-- Office hours Monday to Saturday, 9:00 AM to 6:00 PM, Sunday closed; "Urgent breakdown support 7 days a week" (never 24/7, round the clock or 365 days)
+- Office hours Monday to Saturday, 9:30 AM to 6:30 PM, Sunday closed (Google Business Profile); "Urgent breakdown support 7 days a week" (never 24/7, round the clock or 365 days)
 - Repair scope: valves of any make (manual and automated, with actuators and cylinders), positioners, VFDs of any make (ABB, Danfoss and all other makes); no servo drive or HMI repair; on-site repair offered
 - Warranty: 6 months on repaired valves and positioners, 3 months on repaired VFDs, 1 year on new products
 - Services: technical advice; setting up and commissioning valve and automation systems for factories

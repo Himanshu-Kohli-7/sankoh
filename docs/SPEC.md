@@ -33,7 +33,7 @@ Contents
 **Footer (navy)**
 - Logo + one-line positioning, address, phone, email, GSTIN.
 - Columns: Valves & Automation categories, Instruments categories, Repair & Services links, Company (About, Brands, Contact, Catalogue PDF, Privacy).
-- Office hours (Monday to Saturday, 9:00 AM to 6:00 PM · Sunday closed), with "Urgent breakdown support 7 days a week · Repairs typically in 2–3 days" directly under them.
+- Office hours (Monday to Saturday, 9:30 AM to 6:30 PM · Sunday closed), with "Urgent breakdown support 7 days a week · Repairs typically in 2–3 days" directly under them.
 - Company column also links to Image credits.
 - Copyright with current year.
 
