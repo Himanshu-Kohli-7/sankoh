@@ -1,6 +1,6 @@
 ---
 title: Level Instruments
-seoTitle: Level Transmitters and Level Switches Supplier in India
+seoTitle: Level Transmitters & Switches Supplier in India
 metaDescription: Radar, ultrasonic, capacitance and side mounted level transmitters, plus float, vibrating fork and rotary paddle level switches for tanks and silos.
 updated: 2026-11-15
 division: instruments

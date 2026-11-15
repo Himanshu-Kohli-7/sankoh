@@ -1,6 +1,6 @@
 ---
 title: Analytical Instruments
-seoTitle: Water Quality Analyzers and Sensors Supplier in India
+seoTitle: Water Quality Analyzers Supplier in India
 metaDescription: pH sensors and transmitters, online BOD and COD sensors, and conductivity, TDS, dissolved oxygen and turbidity analyzers for water and effluent.
 updated: 2026-11-15
 division: instruments
