@@ -10,7 +10,11 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   build: { format: 'directory' },
-  integrations: [preact(), sitemap({ filter: (page) => !page.includes('/styleguide/') })],
+  // Not in the sitemap: the styleguide, the 404 and the quote thank-you page (SPEC §7).
+  integrations: [
+    preact(),
+    sitemap({ filter: (page) => !/^\/(styleguide|404|request-a-quote\/thank-you)\/?$/.test(new URL(page).pathname) }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -1,0 +1,88 @@
+---
+/**
+ * Privacy policy (SPEC §2.1): what an enquiry collects and why. Plain language, no named statute
+ * and no invented retention period. There is no file upload: customers send photos on WhatsApp.
+ * TODO (next round): when the quote form is built, make "What we collect" match its final fields exactly.
+ */
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../config/site';
+import { pageTitle } from '../lib/content';
+
+const updated = '15 November 2026';
+const breadcrumbs = [{ label: 'Privacy policy' }];
+---
+
+<Base
+  title={pageTitle('Privacy Policy')}
+  description={`How ${site.name} uses the details you send with an enquiry by form, phone, WhatsApp or email, and how to ask us to change or delete them.`}
+  pageName="Privacy policy"
+  {breadcrumbs}
+>
+  <PageHero
+    {breadcrumbs}
+    division="valves"
+    eyebrow="Company"
+    title="Privacy policy"
+    lead={`This page explains what ${site.name} does with the details you send us when you make an enquiry.`}
+  />
+
+  <section class="container-content section-y">
+    <div class="prose policy">
+      <p class="updated">Last updated: {updated}</p>
+
+      <h2>Who we are</h2>
+      <p>
+        {site.name}, {site.address.oneLine}. Email <a href={`mailto:${site.email}`}>{site.email}</a>, phone{' '}
+        <a href={`tel:${site.phone.e164}`}>{site.phone.display}</a>.
+      </p>
+
+      <h2>What we collect</h2>
+      <p>When you send an enquiry through the quote form, we receive the details you enter:</p>
+      <ul>
+        <li>your name and, if you give it, your company</li>
+        <li>your phone number</li>
+        <li>your email address, if you give it</li>
+        <li>your city or state</li>
+        <li>the product or service you are asking about, your requirement and the quantity</li>
+      </ul>
+      <p>
+        The form does not take file uploads. If you want to send photos, drawings or a nameplate picture, you can send them on
+        WhatsApp. When you call, message us on WhatsApp or email us, we receive your number or address and whatever you choose to
+        send.
+      </p>
+
+      <h2>Why we use it</h2>
+      <p>
+        Only to answer your enquiry: to prepare a quote, arrange a repair, source a product or give the advice you asked for, and
+        to follow up on that enquiry. We do not sell your details or pass them to anyone for their own marketing.
+      </p>
+
+      <h2>Who receives it</h2>
+      <p>
+        Form enquiries are sent by email to our own inbox. Messages and calls reach our own phone and WhatsApp account. The
+        services that carry them (our email provider, WhatsApp and the website host) handle the data only to deliver it.
+      </p>
+
+      <h2>How long we keep it</h2>
+      <p>For as long as we need it to answer and follow up your enquiry and to keep the business records that go with an order.</p>
+
+      <h2>Analytics and cookies</h2>
+      <p>
+        The site itself sets no cookies to work. If we turn on Google Analytics, it loads only after you interact with a page and
+        is used to see which pages are visited, not to identify you. This section will be updated if that changes.
+      </p>
+
+      <h2>Your choices</h2>
+      <p>
+        You can ask to see the details we hold about you, or ask us to correct or delete them, by emailing{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .policy { max-width: 44rem; }
+  .updated { color: var(--color-slate); font-family: var(--font-mono); font-size: 0.875rem; }
+</style>
