@@ -19,7 +19,7 @@ Where every product photo that is not from the old site came from. Rules are in 
 
 | File | Used on | Source page | Image URL |
 |---|---|---|---|
-| `electromagnetic-flow-meter.jpg` | Electromagnetic Flow Meter, home hero | /product/electromagnetic-flow-meter/ | /wp-content/uploads/2023/09/FlowTech-FlowMag-900-ELECTROMAGNETIC-FLOWMETER-Series.jpg |
+| `electromagnetic-flow-meter.jpg` (+ `electromagnetic-flow-meter-hero.webp`, background removed for the home hero) | Electromagnetic Flow Meter, home hero | /product/electromagnetic-flow-meter/ | /wp-content/uploads/2023/09/FlowTech-FlowMag-900-ELECTROMAGNETIC-FLOWMETER-Series.jpg |
 | `ultrasonic-flow-meter.jpg` | Ultrasonic Flow Meter | /product/ultrasonic-flow-meter/ | /wp-content/uploads/2024/07/Ultrasonic-Flowmeter.jpg |
 | `ultrasonic-level-transmitter.jpg` | Ultrasonic Level Transmitter | /product/ultrasonic-level-transmitter/ | /wp-content/uploads/2024/07/Ultrasonic-Level-Transmitter.jpg |
 | `side-mounted-level-transmitter.jpg` | Side Mounted Level Transmitter | /product/side-mounted-level-switches/ | /wp-content/uploads/2023/11/Side-Mounted-Level-Switches.jpg |
