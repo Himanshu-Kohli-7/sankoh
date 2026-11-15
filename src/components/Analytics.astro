@@ -1,0 +1,59 @@
+---
+/**
+ * GA4 (SPEC §5, §6.4, §8). Renders nothing — and ships no JavaScript — while
+ * site.integrations.ga4MeasurementId is empty.
+ *
+ * When set: a gtag stub queues calls at once; gtag.js itself loads on the first interaction
+ * (pointer, key, touch, scroll) or when the browser is idle, whichever comes first.
+ * One delegated listener turns [data-event] clicks into GA4 events:
+ *   click_call (Call buttons, tel: numbers; the sales line is click_call with line: "sales"),
+ *   click_whatsapp, download_catalogue.
+ * generate_lead is sent by /thank-you/ after a successful form submission.
+ * Mark all four as key events (conversions) in GA4.
+ */
+import { site } from '../config/site';
+
+const id = site.integrations.ga4MeasurementId.trim();
+---
+
+{id && (
+  <script is:inline define:vars={{ id }}>
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () {
+      window.dataLayer.push(arguments);
+    };
+    window.gtag('js', new Date());
+    window.gtag('config', id);
+
+    (() => {
+      let loaded = false;
+      const triggers = ['pointerdown', 'keydown', 'touchstart', 'scroll'];
+      const load = () => {
+        if (loaded) return;
+        loaded = true;
+        triggers.forEach((t) => removeEventListener(t, load));
+        const s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(id);
+        document.head.appendChild(s);
+      };
+      triggers.forEach((t) => addEventListener(t, load, { once: true, passive: true }));
+      addEventListener('load', () =>
+        'requestIdleCallback' in window ? requestIdleCallback(load, { timeout: 4000 }) : setTimeout(load, 3500),
+      );
+    })();
+
+    document.addEventListener(
+      'click',
+      (e) => {
+        const el = e.target instanceof Element ? e.target.closest('[data-event]') : null;
+        if (!el) return;
+        const name = el.getAttribute('data-event');
+        const params = { link_url: el.getAttribute('href') || undefined, page_path: location.pathname };
+        if (name === 'click_call_sales') window.gtag('event', 'click_call', { ...params, line: 'sales' });
+        else if (name === 'click_call' || name === 'click_whatsapp' || name === 'download_catalogue') window.gtag('event', name, params);
+      },
+      { capture: true },
+    );
+  </script>
+)}

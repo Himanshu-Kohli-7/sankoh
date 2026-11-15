@@ -7,6 +7,7 @@ import Header from '../components/layout/Header.astro';
 import Footer from '../components/layout/Footer.astro';
 import MobileActionBar from '../components/layout/MobileActionBar.astro';
 import FloatingWhatsApp from '../components/layout/FloatingWhatsApp.astro';
+import Analytics from '../components/Analytics.astro';
 
 interface Props {
   title: string;
@@ -42,6 +43,7 @@ const pageName = Astro.props.pageName ?? title.split(' | ')[0];
     <script is:inline>
       document.documentElement.classList.add('js');
     </script>
+    <Analytics />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
