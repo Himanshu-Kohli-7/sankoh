@@ -288,18 +288,19 @@ Positioning, three divisions, own brands and partners, owner/team block (owner p
 ## 6. Features
 
 ### 6.1 Quote form (`/request-a-quote/`)
-- Fields: Enquiry type (Product / Repair / Sourcing / Advisory), Product or service (prefilled via `?product=<slug>` — the only allowed query string, page has a canonical without it), Name*, Company, Phone* (Indian mobile validation), Email, City/State, Requirement details* (textarea with placeholder showing the checklist), Quantity, File upload (optional: drawing/photo/nameplate; ≤5 MB; pdf/jpg/png), consent line.
-- Works without JS (plain POST to the function, redirect to `/request-a-quote/thank-you/`); JS island adds inline validation and a loading state.
-- Function: validates, verifies Turnstile, checks honeypot, sends (a) an enquiry email to the company with all fields + page source + UTM params, reply-to = customer email; (b) an acknowledgement to the customer if email given. From address = company address, never the customer's.
-- Thank-you page: confirms receipt, Call us / WhatsApp us buttons for urgent needs. Fires GA4 `generate_lead`.
-- Failure state (send failed): shows both numbers in full (primary and Sales) inside an element marked `data-contact-exempt`, the only place outside the Contact page where `check:contact` allows them.
+- Fields (exactly these; the privacy policy lists the same): Name*, Company, Phone* (Indian mobile validation), Email, Product or service (prefilled via `?product=<slug>`, the only allowed query string; the page has a canonical without it; any product, category, service or repair slug, e.g. `vfd-repair`), Quantity, Requirement details* (placeholder shows the checklist). **No file upload**: the form says "WhatsApp us a photo".
+- Preact island with inline validation (rules shared with the function in `src/lib/quote.ts`), honeypot field and Cloudflare Turnstile (script loaded on first focus in the form). Turnstile site key in `site.ts`; `astro dev` uses Cloudflare's test keys; a production build fails if the key is missing or a test key. Secret only in Netlify (`TURNSTILE_SECRET_KEY`).
+- Without JS the form is hidden and the page shows Call, WhatsApp and email (Turnstile needs JS, so there is no plain-POST path).
+- Function `netlify/functions/quote.ts` at `/api/quote`: validates, checks honeypot, verifies Turnstile, sends one enquiry email to `site.email` with nodemailer (`EMAIL_USER` / `EMAIL_PASS`), Reply-To the customer email only when given; header values stripped of line breaks. No acknowledgement email to the customer (it would let anyone make the company mailbox write to any address).
+- Success → `/thank-you/` (noindex, out of the sitemap; Call us / WhatsApp us for urgent needs; fires GA4 `generate_lead` once, from a sessionStorage flag set by the form).
+- Failure state (send failed): "Please call us" with both numbers in full (primary and Sales) inside an element marked `data-contact-exempt`, the only place outside the Contact page where `check:contact` allows them. The typed data stays in the form. The function logs a short summary (time, reason, name, phone, product) so the lead is not lost.
 
 ### 6.2 Product selector (`/product-selector/`)
-- Static JSON index generated at build from the products collection.
-- Filters: Division, Category, Operation (manual / self-acting / pneumatic / electric / solenoid), Media (air, water, oil, gas, chemicals, steam), Application. All client-side, instant, with result count and "clear filters".
-- Results link to product pages. Filter state in the URL hash (not query string) so it's shareable without creating crawlable duplicates.
-- Page has a server-rendered intro and the full product list as the no-JS fallback.
-- Pressure/temperature/size/material filters are added later only if confirmed data arrives.
+- Index built at build time from the products collection (`src/lib/selector.ts`), passed to a Preact island.
+- Filters: Type (the 10 categories, by division), Operation (manual / self-acting / pneumatic / electric / solenoid), Media (air, water, oil, gas, chemicals, steam), Application (the five company-named applications, tagged only where a product's own `applications` text names them). OR within a filter, AND across; chip counts, result count, "clear filters", empty state linking to sourcing.
+- Filter state in the URL hash, e.g. `#operation=pneumatic,electric&media=steam` (not a query string), so it's shareable without crawlable duplicates. `check:links` treats `#key=value` as state.
+- Server-rendered intro and the full product list by type as the no-JS fallback.
+- No material, size, pressure or temperature filters: Typical options are general prose ranges, not structured or confirmed data. Add them only if structured, confirmed data arrives.
 
 ### 6.3 Trust section
 Client logo strip (greyscale, colour on hover), review cards (name, role, company), conditional certifications and projects. Review markup: **no** self-serving AggregateRating/Review schema (Google ignores it for a business's own reviews); plain HTML only.
