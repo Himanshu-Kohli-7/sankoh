@@ -1,0 +1,87 @@
+---
+/**
+ * Contact (SPEC §2.1): address, phone (also WhatsApp), email, office hours with the support line
+ * directly under them, GSTIN, and a map drawing with an "Open in Google Maps" link. No map script.
+ * The enquiry form arrives next round at /request-a-quote/.
+ */
+import Base from '../layouts/Base.astro';
+import Button from '../components/Button.astro';
+import ContactDetails from '../components/ContactDetails.astro';
+import CTABand from '../components/CTABand.astro';
+import EnquiryChecklist from '../components/EnquiryChecklist.astro';
+import MapCard from '../components/MapCard.astro';
+import PageHero from '../components/PageHero.astro';
+import { site, telHref, waHref, quoteHref } from '../config/site';
+import { pageTitle } from '../lib/content';
+
+const breadcrumbs = [{ label: 'Contact' }];
+---
+
+<Base
+  title={pageTitle('Contact Us')}
+  description={`Contact ${site.name} in Derabassi, Punjab (near Chandigarh): phone and WhatsApp ${site.phone.display}, email, address and office hours.`}
+  pageName="Contact"
+  {breadcrumbs}
+>
+  <PageHero
+    {breadcrumbs}
+    division="valves"
+    eyebrow="Contact"
+    title="Contact us"
+    lead={`Call or WhatsApp ${site.phone.display}, or email ${site.email}. Office hours are ${site.hours.display}; ${site.service.supportLine.toLowerCase()}.`}
+  >
+    <div class="actions">
+      <Button href={telHref()} icon="phone" data-event="click_call">Call {site.phone.display}</Button>
+      <Button href={waHref(`Hello ${site.name}, I have an enquiry.`)} variant="secondary" icon="whatsapp" data-event="click_whatsapp">WhatsApp</Button>
+    </div>
+  </PageHero>
+
+  <section class="container-content section-y layout">
+    <div>
+      <h2 class="sr-only">Contact details</h2>
+      <ContactDetails />
+    </div>
+    <div class="side">
+      <MapCard />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="container-content section-y">
+      <EnquiryChecklist
+        title="Send an enquiry"
+        intro="Tell us what you need and our engineers will come back to you. These details help us answer in one go."
+        items={[
+          'Product or service',
+          'Size, range or model',
+          'Media, pressure and temperature',
+          'Quantity',
+          'Your location',
+          'Photos or nameplate details',
+        ]}
+      >
+        <p class="send-actions">
+          <Button href={quoteHref()} icon="quote">Send your requirement</Button>
+          <Button href={telHref()} variant="secondary" icon="phone" data-event="click_call">Urgent? Call {site.phone.display}</Button>
+        </p>
+      </EnquiryChecklist>
+    </div>
+  </section>
+
+  <CTABand />
+</Base>
+
+<style>
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .layout { display: grid; gap: 2rem; }
+  .side { display: flex; flex-direction: column; }
+  .band { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+  .send-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+
+  @media (max-width: 559px) {
+    .actions :global(.btn) { flex: 1 1 100%; }
+  }
+  @media (min-width: 1024px) {
+    .layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 4rem; }
+  }
+</style>
