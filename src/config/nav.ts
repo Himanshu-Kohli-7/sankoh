@@ -136,4 +136,6 @@ export const companyLinks: NavLink[] = [
 
 export const productsHref = '/products/';
 export const selectorHref = '/product-selector/';
+/** False until /product-selector/ is built (Phase 3): every link to it and the home teaser stay hidden. */
+export const selectorAvailable = false;
 export const cataloguePath = '/downloads/sankoh-technical-solutions-catalogue.pdf';

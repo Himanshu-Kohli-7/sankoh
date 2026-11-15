@@ -8,7 +8,7 @@
 import Icon from '../Icon.astro';
 import MobileMenu from './MobileMenu';
 import { site, telHref, quoteHref } from '../../config/site';
-import { productGroups, repairServiceGroup, primaryLinks, productsHref, selectorHref } from '../../config/nav';
+import { productGroups, repairServiceGroup, primaryLinks, productsHref, selectorHref, selectorAvailable } from '../../config/nav';
 import { catalogue } from '../../config/catalogue';
 
 const path = Astro.url.pathname;
@@ -76,7 +76,9 @@ const megaColumns = [...productGroups, repairServiceGroup];
 
                 <div class="rail">
                   <a class="rail-link" href={productsHref}>All products <Icon name="arrow-right" size={18} /></a>
-                  <a class="rail-link" href={selectorHref}>Product selector <Icon name="arrow-right" size={18} /></a>
+                  {selectorAvailable && (
+                    <a class="rail-link" href={selectorHref}>Product selector <Icon name="arrow-right" size={18} /></a>
+                  )}
                   {catalogue.available && (
                     <a class="rail-link" href={catalogue.href} download>Catalogue (PDF) <Icon name="download" size={18} /></a>
                   )}

@@ -7,6 +7,7 @@ import Divisions from '../components/home/Divisions.astro';
 import CategoryGrid from '../components/home/CategoryGrid.astro';
 import RepairBand from '../components/home/RepairBand.astro';
 import SelectorTeaser from '../components/home/SelectorTeaser.astro';
+import { selectorAvailable } from '../config/nav';
 import BrandsStrip from '../components/home/BrandsStrip.astro';
 import WhySankoh from '../components/home/WhySankoh.astro';
 import Applications from '../components/home/Applications.astro';
@@ -24,7 +25,7 @@ import { site } from '../config/site';
   <Divisions />
   <CategoryGrid />
   <RepairBand />
-  <SelectorTeaser />
+  {selectorAvailable && <SelectorTeaser />}
   <BrandsStrip />
   <WhySankoh />
   <Applications />
