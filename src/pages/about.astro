@@ -1,0 +1,125 @@
+---
+/**
+ * About (SPEC §5.5): positioning, the three divisions, the proprietor, brands and partners,
+ * why Sankoh, trust (clients and reviews), location. Facts from site.ts only (CLAUDE.md §4):
+ * no founding year, counts, certifications or awards. Certifications and projects appear only
+ * once their content folders have entries (CLAUDE.md §8); there are none yet.
+ */
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import BrandsStrip from '../components/home/BrandsStrip.astro';
+import Button from '../components/Button.astro';
+import CTABand from '../components/CTABand.astro';
+import Divisions from '../components/home/Divisions.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import Trust from '../components/home/Trust.astro';
+import WhySankoh from '../components/home/WhySankoh.astro';
+import ownerPhoto from '../assets/about/sanjay-kohli.jpg';
+import { site, listAnd, mapsHref } from '../config/site';
+import { pageTitle } from '../lib/content';
+
+const { proprietor } = site.people;
+const own = site.brands.own[0];
+const partners = listAnd(site.brands.authorisedPartners);
+const breadcrumbs = [{ label: 'About' }];
+---
+
+<Base
+  title={pageTitle('About Us')}
+  description="Sankoh Technical Solutions, Derabassi, Punjab: manufacturer, supplier and repair partner for industrial valves, valve automation and process instruments."
+  pageName="About"
+  {breadcrumbs}
+>
+  <PageHero
+    {breadcrumbs}
+    division="valves"
+    eyebrow="Company"
+    title={`About ${site.name}`}
+    lead={`${site.name} manufactures under its own brand ${own}, supplies and sources industrial valves, valve automation and process instruments as an authorised partner of ${partners}, and repairs valves, actuators, positioners and VFDs of any make, on site or in its workshop.`}
+  />
+
+  <section class="container-content section-y owner-section">
+    <figure class="owner">
+      <Image
+        src={ownerPhoto}
+        alt={`${proprietor.name}, ${proprietor.title} of ${site.name}, in the office`}
+        widths={[320, 480, 640, 800]}
+        sizes="(min-width: 1024px) 400px, (min-width: 640px) 50vw, 92vw"
+        width={800}
+        loading="lazy"
+      />
+      <figcaption>
+        <span class="name">{proprietor.name}</span>
+        <span class="eyebrow">{proprietor.title}</span>
+      </figcaption>
+    </figure>
+    <div class="owner-text">
+      <SectionHeader eyebrow="People" title="Who you deal with" />
+      <div class="prose">
+        <p>
+          {site.name} is run by its proprietor, {proprietor.name}, from {site.address.locationWording}. Enquiries, repairs and
+          site work are handled by our {site.service.team.toLowerCase()}.
+        </p>
+        <p>
+          Customers come to us for three things: the right product for the duty, a quick answer when something on the line
+          breaks, and a repair they can rely on for any make. {site.service.supportLine}, and workshop repairs are typically
+          done in 2–3 days.
+        </p>
+        <p>
+          We serve all of India, with the quickest delivery and on-site service across North India.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <Divisions />
+  <BrandsStrip />
+  <WhySankoh />
+  <Trust />
+
+  <section class="container-content section-y">
+    <div class="location">
+      <div>
+        <SectionHeader eyebrow="Location" title={site.address.locationWording} />
+        <address>
+          {site.name}<br />
+          {site.address.oneLine}
+        </address>
+        <p class="hours">{site.hours.display}. {site.hours.closed}.<br /><strong>{site.service.supportLine}.</strong></p>
+      </div>
+      <div class="loc-actions">
+        <Button href="/contact/" icon="phone">Contact us</Button>
+        <a class="maplink" href={mapsHref()} target="_blank" rel="noopener"><Icon name="pin" size={20} />Open in Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <CTABand />
+</Base>
+
+<style>
+  .owner-section { display: grid; gap: 2.5rem; }
+  .owner { margin: 0; border: 1px solid var(--color-line); border-top: 4px solid var(--color-navy); border-radius: 2px; background: var(--color-paper); }
+  .owner :global(img) { display: block; width: 100%; height: auto; }
+  .owner figcaption { display: grid; gap: 0.125rem; padding: 1rem 1.25rem; background: var(--color-white); border-top: 1px solid var(--color-line); }
+  .name { color: var(--color-navy); font-size: 1.25rem; font-weight: 600; }
+  .owner .eyebrow { color: var(--color-slate); }
+  .owner-text .prose { margin-top: 1.5rem; max-width: 40rem; }
+
+  .location { display: grid; gap: 2rem; padding: 2rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; }
+  address { margin-top: 1rem; font-style: normal; line-height: 1.6; }
+  .hours { margin-top: 1rem; color: var(--color-slate); line-height: 1.6; }
+  .hours strong { color: var(--color-navy); font-weight: 600; }
+  .loc-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; }
+  .maplink { display: inline-flex; align-items: center; gap: 0.375rem; min-height: 2.75rem; font-weight: 600; }
+
+  @media (min-width: 640px) {
+    .owner-section { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); align-items: center; gap: 3rem; }
+  }
+  @media (min-width: 1024px) {
+    .owner-section { grid-template-columns: 25rem minmax(0, 1fr); gap: 4rem; }
+    .location { grid-template-columns: 1fr auto; align-items: end; }
+  }
+</style>
