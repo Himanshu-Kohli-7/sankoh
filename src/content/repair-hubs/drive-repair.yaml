@@ -1,0 +1,72 @@
+title: Drive Repair
+h1: VFD, Servo Drive & HMI Repair — Any Make
+seoTitle: VFD, Servo Drive & HMI Repair
+metaDescription: Repair of VFDs, servo drives and HMIs of any make, including ABB and all other makes of VFD. Typically 2–3 days in our workshop, on-site in North India.
+updated: 2026-11-15
+group: drive
+serviceType: Industrial drive and HMI repair
+intro: >-
+  Sankoh Technical Solutions repairs VFDs, servo drives and HMIs of any make, including ABB and all other makes of VFD.
+  A typical workshop repair takes 2–3 days, and on-site service is available across North India.
+  Send a photo of the unit, its rating label and any fault code to get started.
+
+# One line per subpage: the symptoms that bring each type in. General knowledge only.
+services:
+  - href: /drive-repair/vfd-repair/
+    summary: For variable frequency drives that trip, show fault codes, will not power up or run hot. ABB and all other makes.
+  - href: /drive-repair/servo-drive-repair/
+    summary: For servo drives that alarm, lose position or refuse to enable.
+  - href: /drive-repair/hmi-repair/
+    summary: For operator panels with a dead screen, a touch panel that has stopped responding, or no link to the PLC.
+
+# General advice only. No claim that the company supplies or sources replacement drives (PENDING #61).
+repairVsReplace:
+  intro: >-
+    Repairing a drive or HMI keeps the model your machine was built around, so the wiring, mounting and setup can stay as they are.
+    Replacement is worth weighing when the damage is severe or the duty has outgrown the unit.
+    Send the model and fault details and we will advise.
+  repair:
+    - The model matches the rest of your installation, and a different one would mean changes to wiring, mounting or programming.
+    - The model is discontinued and a direct replacement is hard to find.
+    - The fault is in a part that ages, such as a cooling fan, a capacitor or a touch panel.
+    - You need the machine back in service soon. For a workshop repair, 2–3 days is typical.
+  replace:
+    - The unit has been badly damaged, for example by fire or water.
+    - The drive is undersized for its motor, or the duty has changed.
+    - The same fault keeps coming back, which points to a cause outside the unit.
+    - You need features the old model cannot offer.
+
+# Company facts only (CLAUDE.md §4). The fact strip already covers make, turnaround, availability and team.
+whySankoh:
+  - icon: pin
+    title: On-site help across North India
+    text: From our base in Derabassi, Punjab (near Chandigarh) we serve customers all over India, with on-site service and our quickest deliveries across North India.
+  - icon: valve
+    title: Drives and valves from one partner
+    text: Valve, actuator, cylinder and positioner repairs of any make are done here too, so the drives and the valves on your plant can go to the same place.
+  - icon: search
+    title: A straight answer
+    text: If a unit is not worth repairing, we will tell you, so you can plan for a replacement.
+
+# Checklist labels for "What to send us". Asks the customer for details; makes no claim.
+whatToSend:
+  - Photo of the unit and its rating label
+  - Make, model and part number
+  - Power rating and supply voltage
+  - Fault code or display message
+  - What happened when it failed
+  - What it drives or controls
+  - Number of units
+  - Your location, for on-site service
+
+faqs:
+  - question: Which makes of VFD do you repair?
+    answer: ABB and all other makes. Servo drives and HMIs of any make are repaired as well.
+  - question: How long does a drive repair take?
+    answer: A workshop repair typically takes 2–3 days.
+  - question: Can you repair a drive on site?
+    answer: Yes, we come to site across North India. Tell us the model and the fault, and we will suggest a visit or a workshop repair, whichever suits the fault.
+  - question: How do I send a drive or HMI for repair?
+    answer: Call us, or WhatsApp a photo of the unit, its rating label and any fault code. We will reply with the next steps and the address to send it to.
+  - question: Is the unit tested after repair?
+    answer: Yes. Each drive or HMI is tested before we send it back, and a report of the work goes with it.
