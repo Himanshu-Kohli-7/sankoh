@@ -1,0 +1,109 @@
+---
+/**
+ * Products hub (SPEC §2.1): the ten categories in their two divisions, each with its products listed
+ * as plain links so every product page is two clicks from here. Ends with sourcing and the CTA band.
+ */
+import Base from '../../layouts/Base.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import CTABand from '../../components/CTABand.astro';
+import DivisionBadge from '../../components/DivisionBadge.astro';
+import Icon from '../../components/Icon.astro';
+import PageHero from '../../components/PageHero.astro';
+import SourcingBlock from '../../components/SourcingBlock.astro';
+import { categoryBlurbs, productGroups } from '../../config/nav';
+import { site, listAnd } from '../../config/site';
+import { isPublished, pageTitle, productHref, productsIn } from '../../lib/content';
+
+/** `/products/#valves-automation` and `#instruments-analyzers` are linked from the nav. */
+const anchor = (href: string) => href.split('#')[1];
+
+const groups = await Promise.all(
+  productGroups.map(async (group) => ({
+    ...group,
+    categories: await Promise.all(
+      group.links.map(async (link) => {
+        const slug = link.href.split('/')[2];
+        const products = (await productsIn(slug)).filter(isPublished);
+        return { ...link, products };
+      }),
+    ),
+  })),
+);
+
+const breadcrumbs = [{ label: 'Products' }];
+---
+
+<Base
+  title={pageTitle('Industrial Valves & Instruments')}
+  description="Industrial valves, valve automation and process instruments from Sankoh Technical Solutions: ten categories, supplied to your specification across India."
+  pageName="Products"
+  {breadcrumbs}
+>
+  <PageHero
+    {breadcrumbs}
+    division="valves"
+    eyebrow="Products"
+    title="Industrial Valves & Instruments"
+    lead={`We manufacture under our own brand ${site.brands.own[0]}, and supply and source industrial valves, valve automation and process instruments as an authorised partner of ${listAnd(site.brands.authorisedPartners)}. Choose a category below, or tell us what you need.`}
+  />
+
+  {groups.map((group, i) => (
+    <section class:list={['division', i % 2 === 1 && 'alt']} id={anchor(group.href)} data-division={group.division}>
+      <div class="container-content section-y">
+        <h2 class="group-title"><DivisionBadge division={group.division} label={group.label} /></h2>
+        <ul class="grid">
+          {group.categories.map((cat) => (
+            <li>
+              <CategoryCard
+                division={group.division}
+                title={cat.label}
+                href={cat.href}
+                icon={cat.icon ?? 'valve'}
+                description={categoryBlurbs[cat.href]}
+                count={cat.products.length}
+                headingLevel="h3"
+              />
+              <ul class="items" aria-label={`${cat.label} products`}>
+                {cat.products.map((p) => (
+                  <li><a href={productHref(p)}>{p.data.title}</a></li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  ))}
+
+  <section class="container-content section-y">
+    <SourcingBlock />
+    <p class="more">
+      <a href="/brands/">Our brands and partners<Icon name="arrow-right" size={20} /></a>
+      <a href="/valve-repair/">Valve repair<Icon name="arrow-right" size={20} /></a>
+      <a href="/vfd-repair/">VFD repair<Icon name="arrow-right" size={20} /></a>
+    </p>
+  </section>
+
+  <CTABand />
+</Base>
+
+<style>
+  .division { scroll-margin-top: 5rem; }
+  .alt { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+  .group-title { padding-bottom: 0.75rem; border-bottom: 1px solid var(--color-line); font-size: inherit; }
+  .grid { display: grid; gap: 1.5rem; margin-top: 1.5rem; }
+  .grid > li { display: grid; align-content: start; gap: 0.75rem; }
+  .items { display: grid; gap: 0; padding-left: 0.25rem; }
+  .items a { display: flex; align-items: center; min-height: 2.75rem; color: var(--color-ink); font-size: 0.9375rem; text-decoration: none; border-bottom: 1px dashed var(--color-line); }
+  .items a:hover { color: var(--color-blue); text-decoration: underline; }
+  .more { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: 1.5rem; }
+  .more a { display: inline-flex; align-items: center; gap: 0.375rem; min-height: 2.75rem; font-weight: 600; }
+
+  @media (min-width: 640px) {
+    .grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .items a { min-height: 2.25rem; }
+  }
+</style>

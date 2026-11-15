@@ -54,6 +54,20 @@ export const productGroups: NavGroup[] = [
   },
 ];
 
+/** One-line category descriptions (home grid, products hub): general product knowledge only, no company-specific claims. */
+export const categoryBlurbs: Record<string, string> = {
+  '/products/manual-valves/': 'Hand-operated valves for isolating, regulating and protecting a line.',
+  '/products/pneumatic-actuated-valves/': 'Valves opened and closed by compressed air.',
+  '/products/electric-actuated-valves/': 'Motorised valves driven by an electric actuator.',
+  '/products/solenoid-valves/': 'Electrically switched valves for fast on/off control.',
+  '/products/valve-automation-accessories/': 'Limit switch boxes, positioners and other parts that complete an automated valve.',
+  '/products/flow-meters/': 'Meters that measure how much liquid or gas passes through a pipe.',
+  '/products/pressure-instruments/': 'Gauges, switches and transmitters for line and vessel pressure.',
+  '/products/temperature-instruments/': 'Gauges, sensors and transmitters for process temperature.',
+  '/products/level-instruments/': 'Transmitters and switches for tank and silo level.',
+  '/products/analytical-instruments/': 'Sensors and analyzers for water and process liquid quality.',
+};
+
 export const repairGroups: NavGroup[] = [
   {
     key: 'valve-repair',
