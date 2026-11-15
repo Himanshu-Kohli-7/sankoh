@@ -21,6 +21,7 @@ relatedProducts:
   - manual-valves/ball-valve-screwed-end
   - manual-valves/globe-valve
   - manual-valves/forged-valves
+  - pressure-instruments/pressure-gauge
 faqs:
   - question: Why fit a needle valve under a pressure gauge?
     answer: It lets you shut the gauge off from the line, so the gauge can be removed, checked or replaced while the process keeps running. Opened only slightly, it also steadies the pointer on a pulsating line.
