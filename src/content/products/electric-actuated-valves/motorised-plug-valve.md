@@ -33,8 +33,8 @@ faqs:
 todo: 'No product photo yet; the page shows the placeholder drawing (PENDING #11). Applications and media are general typical uses (PENDING #39). Sleeved, lubricated and multi-port types, gearboxes and fail-safe options supplied are not confirmed (PENDING #40).'
 ---
 
-A motorised plug valve is a quarter-turn plug valve worked by an electric actuator. Inside the body, a tapered or straight plug with a port cut through it rotates to line the port up with the pipe or to turn it away and close the line. Driving it by motor means the valve can be opened, shut or switched between lines from a control panel, with only a power cable to run.
+A motorised plug valve is a quarter-turn plug valve worked by an electric actuator. A tapered or straight plug with a port cut through it rotates to line the port up with the pipe, or to turn it away and close the line. It can then open, shut or switch lines from a panel, needing only a power cable.
 
-Plug valves are chosen for difficult media. The plug bears on the body, or on a replaceable sleeve, over a large surface, and its turning action wipes that surface clean. That makes the seal tolerant of sticky, dirty or thick fluids that would quickly damage a lighter valve.
+Plug valves suit difficult media. The plug bears on the body, or a replaceable sleeve, over a large surface and wipes it clean as it turns, so the seal copes with sticky, dirty or thick fluids.
 
-The trade-off is torque. A plug takes more effort to turn than a ball or butterfly disc of the same bore, so the electric actuator, often with a reduction gearbox, is sized with a generous margin. A handwheel allows manual operation. [Limit switches and position feedback units](/products/valve-automation-accessories/) report where the plug is, and small clean branch lines may be served by a [solenoid valve](/products/solenoid-valves/) instead.
+The trade-off is torque. A plug takes more effort to turn than a ball or disc of the same bore, so the actuator, often with a reduction gearbox, is sized with a generous margin. A handwheel allows manual use. [Position feedback units](/products/valve-automation-accessories/) report where the plug is. A clean branch can use a [solenoid valve](/products/solenoid-valves/).
