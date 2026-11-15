@@ -36,4 +36,4 @@ A solenoid valve opens or shuts a line the moment its coil is switched on or off
 
 The range runs from small direct acting valves for low flows and pilot air, through pilot operated and semi-lift diaphragm valves for water and general service, to piston type valves for steam and pulse jet valves for cleaning dust collector filters, along with replacement coils. Typical users include water treatment plants, HVAC and building automation systems, industrial automation and water and milk ATMs. Depending on the valve, the media can be air, water, oil, gas, chemicals or steam.
 
-Under its own Sankoh® and Stolzel® brands, Sankoh Technical Solutions is a manufacturer. It also supplies solenoid valves matched to your duty, and sources other makes and spare coils through its vendor network. Orders are delivered across India, with the quickest service in North India.
+Sankoh® is the company's own brand, and Sankoh Technical Solutions is also an authorised partner for Stolzel. It supplies solenoid valves matched to your duty, and sources other makes and spare coils through its vendor network. Orders are delivered across India, with the quickest service in North India.

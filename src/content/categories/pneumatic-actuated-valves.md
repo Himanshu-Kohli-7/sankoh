@@ -44,4 +44,4 @@ Pneumatic actuated valves use compressed air to open, close or position a valve,
 
 The range covers quarter-turn ball, butterfly and plug valves for automatic isolation, globe control valves for regulating flow, pressure and temperature, Y-type angle seat valves for steam and hot water, sanitary tri-clover and corrosion-resistant UPVC valves, and power cylinders that drive dampers.
 
-Sankoh Technical Solutions is the manufacturer behind the Sankoh® and Stolzel® brands of valves and valve automation. We supply complete valve and actuator packages to your specification and source anything else through our vendor network. We deliver anywhere in India, fastest across North India.
+Sankoh Technical Solutions is the manufacturer behind the Sankoh® brand of valves and valve automation, and an authorised Stolzel partner. We supply complete valve and actuator packages to your specification and source anything else through our vendor network. We deliver anywhere in India, fastest across North India.
