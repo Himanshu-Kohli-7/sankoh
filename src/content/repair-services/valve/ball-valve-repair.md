@@ -37,7 +37,7 @@ faqs:
   - question: Can you repair the valve and its actuator together?
     answer: Yes. Send the complete assembly and we will look at both. Actuators of any make are covered by our actuator and cylinder repair service.
   - question: Can a ball valve be repaired on site?
-    answer: On-site service covers North India. Whether a particular valve can be put right in the line depends on the valve and the fault, so call us to talk it through.
+    answer: We do offer on-site repair. Whether a particular valve can be put right in the line depends on the valve and the fault, so call us to talk it through.
 relatedProducts:
   - manual-valves/ball-valve-flanged-end
   - manual-valves/ball-valve-screwed-end

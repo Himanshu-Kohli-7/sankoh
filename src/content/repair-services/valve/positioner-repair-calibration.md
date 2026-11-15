@@ -4,6 +4,8 @@ seoTitle: Positioner Repair & Calibration
 metaDescription: Valve positioner repair and calibration for any make. For positioners that drift, hunt or ignore the signal. Typically done in 2–3 days at our workshop.
 updated: 2026-11-15
 group: valve
+# The 6-month warranty is confirmed for repaired valves; whether it covers positioners is an open question (docs/PENDING.md).
+warranty: false
 serviceType: Valve positioner repair and calibration
 summary: We repair and calibrate valve positioners of any make. If a positioner drifts, hunts or no longer follows its control signal, we bring it back into adjustment, and a workshop repair typically takes 2–3 days.
 whatWeRepair:
@@ -39,7 +41,7 @@ faqs:
   - question: Which makes of positioner do you work on?
     answer: Any make and model, fitted to any make of valve or actuator.
   - question: Can you calibrate positioners on site?
-    answer: We visit sites across North India. Call us with the make, model and fault, and we will tell you whether a site visit or a workshop repair suits it better.
+    answer: Yes, positioners can be repaired and calibrated at your site. Call us with the make, model and fault, and we will tell you whether a site visit or a workshop repair suits it better.
 relatedProducts:
   - valve-automation-accessories/smart-valve-positioner
   - pneumatic-actuated-valves/pneumatic-globe-control-valve

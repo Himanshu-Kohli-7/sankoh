@@ -1,0 +1,10 @@
+---
+/** VFD repair: one page, no hub (SPEC §2.3). Content: src/content/repair-services/vfd/vfd-repair.md. */
+import { getEntry } from 'astro:content';
+import RepairService from '../../components/RepairService.astro';
+
+const service = await getEntry('repairServices', 'vfd/vfd-repair');
+if (!service) throw new Error('Missing src/content/repair-services/vfd/vfd-repair.md');
+---
+
+<RepairService {service} />

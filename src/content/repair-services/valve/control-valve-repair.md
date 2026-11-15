@@ -5,7 +5,7 @@ metaDescription: Control valve repair for pneumatic and electric control valves 
 updated: 2026-11-15
 group: valve
 serviceType: Control valve repair
-summary: We repair control valves of any make, together with the actuators and positioners that drive them. When a control valve passes, sticks or will not hold its set point, we can repair it at our workshop, typically within 2–3 days, or look at it on site anywhere in North India.
+summary: We repair control valves of any make, together with the actuators and positioners that drive them. When a control valve passes, sticks or will not hold its set point, we can repair it at our workshop, typically within 2–3 days, or repair it on site.
 whatWeRepair:
   - Globe-pattern control valves with pneumatic actuators
   - Motorised (electric actuated) control valves
@@ -37,7 +37,7 @@ faqs:
   - question: Should I send the whole control valve or only the faulty part?
     answer: If you are not sure where the fault is, send the complete assembly. Poor control is often the result of the valve, actuator and positioner acting together, so it pays to look at all three.
   - question: Can you look at a control valve on site?
-    answer: Yes, within North India. Some problems can be traced in the plant, while others need the valve stripped down at our workshop.
+    answer: Yes, on-site repair is part of the service. Some problems can be traced and fixed in the plant, while others need the valve stripped down at our workshop.
   - question: My control valve is a discontinued model. Can it still be repaired?
     answer: We repair control valves of any make, current or not. If a repair is not worthwhile, our surplus and discontinued valves service can help find a replacement.
 relatedProducts:

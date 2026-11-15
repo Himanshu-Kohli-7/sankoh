@@ -186,9 +186,15 @@ export default function MobileMenu({ currentPath, catalogueHref }: Props) {
           </a>
 
           <p class="eyebrow pt-6 pb-1 text-slate">Repair</p>
-          {repairGroups.map((group) => (
-            <Group key={group.key} group={group} hubLabel={`All ${group.label.toLowerCase()} services`} currentPath={currentPath} />
-          ))}
+          {repairGroups.map((group) =>
+            group.links.length ? (
+              <Group key={group.key} group={group} hubLabel={`All ${group.label.toLowerCase()} services`} currentPath={currentPath} />
+            ) : (
+              <a key={group.key} class={plainLink} href={group.href} aria-current={currentPath === group.href ? 'page' : undefined}>
+                {group.label}
+              </a>
+            ),
+          )}
 
           <p class="eyebrow pt-6 pb-1 text-slate">Company</p>
           {primaryLinks

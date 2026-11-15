@@ -1,8 +1,8 @@
 ---
 /**
- * Repair service page (SPEC §5.4), shared by /valve-repair/<service>/ and /drive-repair/<service>/.
- * Company facts come from site.ts only (CLAUDE.md §4). The process is described in general terms
- * (PENDING #17, #18): no test procedure, pressures, warranty, spares or certificates.
+ * Repair service page (SPEC §5.4), shared by /valve-repair/<service>/ and the single /vfd-repair/ page.
+ * Company facts come from site.ts only (CLAUDE.md §4): turnaround, on-site repair, warranty, support line.
+ * The process is described in general terms: no test procedure, pressures, spares or certificates.
  * No photos: line-art process steps instead; the gallery appears only once real photos exist.
  */
 import { getCollection, render, type CollectionEntry } from 'astro:content';
@@ -11,7 +11,7 @@ import Base from '../layouts/Base.astro';
 import Button from './Button.astro';
 import CTABand from './CTABand.astro';
 import EnquiryChecklist from './EnquiryChecklist.astro';
-import FAQ from './FAQ.astro';
+import FAQ, { type FaqItem } from './FAQ.astro';
 import Icon from './Icon.astro';
 import PageHero from './PageHero.astro';
 import ProcessSteps from './ProcessSteps.astro';
@@ -21,7 +21,7 @@ import SectionHeader from './SectionHeader.astro';
 import TrustStats from './TrustStats.astro';
 import { site, telHref, waHref, quoteHref } from '../config/site';
 import { repairGroups } from '../config/nav';
-import { repairSteps, repairWhatsApp } from '../config/repair';
+import { groupThing, repairSteps, repairWhatsApp } from '../config/repair';
 import { categoryInfo, pageTitle, productLink, productsById } from '../lib/content';
 
 interface Props {
@@ -34,10 +34,11 @@ const { Content } = await render(service);
 /** `valve/ball-valve-repair` → `ball-valve-repair`. Also the quote form slug (SPEC §6.1 allows only ?product=). */
 const slug = service.id.split('/').pop()!;
 const navGroup = repairGroups.find((g) => g.key === `${data.group}-repair`)!;
-const href = `${navGroup.href}${slug}/`;
+/** A group with no sub-pages (VFD repair) is this page itself: no hub above it and no siblings. */
+const standalone = navGroup.links.length === 0;
+const href = standalone ? navGroup.href : `${navGroup.href}${slug}/`;
 const index = navGroup.links.findIndex((l) => l.href === href);
-if (index < 0) throw new Error(`${service.id}: "${href}" is not listed in config/nav.ts`);
-const navLink = navGroup.links[index];
+if (!standalone && index < 0) throw new Error(`${service.id}: "${href}" is not listed in config/nav.ts`);
 const siblings = navGroup.links.filter((l) => l.href !== href);
 
 /** Two-way links: every product listed here must list this page in its relatedRepair. */
@@ -53,15 +54,23 @@ const gallery = (await getCollection('repairGallery', (g) => g.data.group === da
   (a, b) => a.data.order - b.data.order,
 );
 
-/** What the customer photographs: "valve", "drive", or "panel" for HMIs. */
-const thing = data.group === 'valve' ? 'valve' : slug === 'hmi-repair' ? 'panel' : 'drive';
+/** What the customer photographs. */
+const thing = groupThing[data.group];
 const label = data.group === 'valve' ? 'nameplate' : 'rating label';
+/** Warranty wording comes from site.ts only. Hidden where the term is not confirmed for this service. */
+const warranty = data.warranty
+  ? data.group === 'valve' ? site.service.warranty.repairedValves : site.service.warranty.repairedVfds
+  : undefined;
+/** The same confirmed fact on every repair page, so it is added here rather than written into each file. */
+const faqs: FaqItem[] = warranty
+  ? [...data.faqs, { question: 'Is there a warranty on the repair?', answer: `Yes. The warranty is ${warranty}.` }]
+  : data.faqs;
 /** "Hi, I need ball valve repair. Photo attached." */
 const whatsappText = repairWhatsApp(data.title);
-const eyebrow = `${navGroup.label} / ${String(index + 1).padStart(2, '0')}`;
+const eyebrow = standalone ? 'Repair & Service' : `${navGroup.label} / ${String(index + 1).padStart(2, '0')}`;
 const anyMake = data.brandsNote ?? 'Any make and model';
 
-const breadcrumbs = [{ label: navGroup.label, href: navGroup.href }, { label: data.title }];
+const breadcrumbs = standalone ? [{ label: data.title }] : [{ label: navGroup.label, href: navGroup.href }, { label: data.title }];
 /** Service only: no offers, price, ratings or reviews. */
 const schema = [
   {
@@ -138,7 +147,8 @@ const schema = [
       <div class="steps"><ProcessSteps steps={repairSteps[data.group]} /></div>
       <ul class="terms">
         <li><Icon name="clock" size={22} />{site.service.repairTurnaround}</li>
-        <li><Icon name="pin" size={22} />On-site service across North India</li>
+        <li><Icon name="pin" size={22} />{site.service.onSiteRepair}</li>
+        {warranty && <li><Icon name="check" size={22} />Warranty: {warranty}</li>}
         <li><Icon name="calendar" size={22} />{site.service.supportLine}</li>
       </ul>
     </div>
@@ -159,7 +169,7 @@ const schema = [
 
   <section class="container-content section-y faq-layout">
     <SectionHeader eyebrow="FAQ" division="repair" title={`${data.title}: common questions`} />
-    <FAQ items={data.faqs} schema />
+    <FAQ items={faqs} schema />
   </section>
 
   <section class="related">
@@ -185,16 +195,16 @@ const schema = [
         </div>
       )}
       <div class:list={['siblings', related.length > 0 && 'spaced']}>
-        <h2>Other {navGroup.label.toLowerCase()} services</h2>
+        <h2>{standalone ? 'Other repair services' : `Other ${navGroup.label.toLowerCase()} services`}</h2>
         <ul class="repairs">
-          {siblings.map((link) => (
+          {(standalone ? repairGroups.filter((g) => g !== navGroup).flatMap((g) => g.links) : siblings).map((link) => (
             <li><RepairServiceCard title={link.label} href={link.href} icon={link.icon ?? 'wrench'} /></li>
           ))}
         </ul>
         <p class="hubs">
-          <a href={navGroup.href}>All {navGroup.label.toLowerCase()} services<Icon name="arrow-right" size={20} /></a>
+          {!standalone && <a href={navGroup.href}>All {navGroup.label.toLowerCase()} services<Icon name="arrow-right" size={20} /></a>}
           {repairGroups.filter((g) => g !== navGroup).map((g) => (
-            <a href={g.href}>{g.label}<Icon name="arrow-right" size={20} /></a>
+            <a href={g.href}>{g.links.length ? `All ${g.label.toLowerCase()} services` : g.label}<Icon name="arrow-right" size={20} /></a>
           ))}
         </p>
       </div>
@@ -283,7 +293,7 @@ const schema = [
   @media (min-width: 640px) {
     .faults, .repairs, .gallery { grid-template-columns: repeat(2, 1fr); }
     .grid { gap: 1rem; }
-    .terms { grid-template-columns: repeat(3, auto); justify-content: start; gap: 0.75rem 2.5rem; }
+    .terms { grid-template-columns: repeat(2, auto); justify-content: start; gap: 0.75rem 2.5rem; }
   }
   @media (min-width: 1024px) {
     .body { grid-template-columns: minmax(0, 1fr) 20rem; gap: 4rem; padding-top: 4rem; }

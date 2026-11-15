@@ -49,7 +49,8 @@ export function categoryInfo(slug: string): { label: string; division: DivisionK
 
 /** Repair pages by href, in the order given. Unknown hrefs fail the build rather than ship a dead link. */
 export function repairLinks(hrefs: string[]): NavLink[] {
-  const all = repairGroups.flatMap((g) => g.links);
+  /** A group with no sub-pages (VFD repair) is itself the page. */
+  const all = repairGroups.flatMap((g) => (g.links.length ? g.links : [{ label: g.label, href: g.href, icon: g.icon }]));
   return hrefs.map((href) => {
     const link = all.find((l) => l.href === href);
     if (!link) throw new Error(`Unknown repair page "${href}": add it to config/nav.ts`);

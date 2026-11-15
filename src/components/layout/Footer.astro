@@ -41,7 +41,6 @@ const { address } = site;
         <h2>Repair & Services</h2>
         <ul>
           {repairGroups.map((g) => <li><a href={g.href}>{g.label}</a></li>)}
-          {repairGroups[1].links.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
           {serviceLinks.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
         </ul>
       </div>

@@ -18,6 +18,10 @@ export interface NavGroup {
   division: DivisionKey;
   label: string;
   href: string;
+  /** Icon for a group that is a single page (no `links`). */
+  icon?: string;
+  /** One line shown under the group name where there are no links to list. */
+  note?: string;
   links: NavLink[];
 }
 
@@ -67,21 +71,21 @@ export const repairGroups: NavGroup[] = [
       { label: 'Plug Valve Repair', href: '/valve-repair/plug-valve-repair/', icon: 'valve' },
     ],
   },
+  /** VFD repair is one page, not a hub: no sub-pages. */
   {
-    key: 'drive-repair',
+    key: 'vfd-repair',
     division: 'repair',
-    label: 'Drive Repair',
-    href: '/drive-repair/',
-    links: [
-      { label: 'VFD Repair', href: '/drive-repair/vfd-repair/', icon: 'drive' },
-      { label: 'Servo Drive Repair', href: '/drive-repair/servo-drive-repair/', icon: 'servo' },
-      { label: 'HMI Repair', href: '/drive-repair/hmi-repair/', icon: 'hmi' },
-    ],
+    label: 'VFD Repair',
+    href: '/vfd-repair/',
+    icon: 'drive',
+    note: 'ABB, Danfoss and all other makes',
+    links: [],
   },
 ];
 
 export const serviceLinks: NavLink[] = [
   { label: 'Valve Selection & Maintenance Advisory', href: '/services/valve-selection-maintenance-advisory/' },
+  { label: 'Installation & Commissioning', href: '/services/installation-commissioning/' },
   { label: 'Product Sourcing', href: '/services/product-sourcing/' },
   { label: 'Surplus & Discontinued Valves', href: '/services/surplus-discontinued-valves/' },
 ];
@@ -89,7 +93,7 @@ export const serviceLinks: NavLink[] = [
 /** Top-level header items after "Products". */
 export const primaryLinks: NavLink[] = [
   { label: 'Valve Repair', href: '/valve-repair/' },
-  { label: 'Drive Repair', href: '/drive-repair/' },
+  { label: 'VFD Repair', href: '/vfd-repair/' },
   { label: 'Services', href: '/services/' },
   { label: 'About', href: '/about/' },
   { label: 'Contact', href: '/contact/' },

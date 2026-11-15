@@ -93,14 +93,14 @@ const products = defineCollection({
 /** A short link shown under "Replacing is the better call when" on a repair hub. */
 const link = z.object({ label: z.string(), href: z.string() });
 
-/** The two repair hubs (SPEC §5.3): /valve-repair/ and /drive-repair/. */
+/** The valve repair hub (SPEC §5.3): /valve-repair/. VFD repair is a single page, not a hub. */
 const repairHubs = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/repair-hubs' }),
   schema: z.object({
     title: z.string(),
     h1: z.string(),
     ...seo,
-    group: z.enum(['valve', 'drive']),
+    group: z.enum(['valve']),
     /** schema.org serviceType. */
     serviceType: z.string(),
     intro: z.string(),
@@ -110,7 +110,7 @@ const repairHubs = defineCollection({
       intro: z.string(),
       repair: z.array(z.string()),
       replace: z.array(z.string()),
-      /** Where to go instead of a repair. Only offers confirmed in CLAUDE.md §4; empty for drives (PENDING #61). */
+      /** Where to go instead of a repair. Only offers confirmed in CLAUDE.md §4. */
       links: z.array(link).default([]),
     }),
     whySankoh: z.array(z.object({ icon: z.string(), title: z.string(), text: z.string() })),
@@ -121,28 +121,30 @@ const repairHubs = defineCollection({
 });
 
 /**
- * Repair service pages (SPEC §5.4), one folder per group: `valve/ball-valve-repair.md` → /valve-repair/ball-valve-repair/.
- * The markdown body is "How the repair works", described in general terms only (PENDING #17, #18).
+ * Repair service pages (SPEC §5.4), one folder per group: `valve/ball-valve-repair.md` → /valve-repair/ball-valve-repair/,
+ * `vfd/vfd-repair.md` → /vfd-repair/. The markdown body is "How the repair works", described in general terms only.
  */
 const repairServices = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/repair-services' }),
   schema: z.object({
     title: z.string(),
     ...seo,
-    group: z.enum(['valve', 'drive']),
+    group: z.enum(['valve', 'vfd']),
     /** Answers the page's main question in 2–3 sentences; shown under the H1. */
     summary: z.string(),
     /** schema.org serviceType. */
     serviceType: z.string(),
     whatWeRepair: z.array(z.string()).min(3),
     commonFaults: z.array(z.object({ title: z.string(), text: z.string() })).min(3),
-    /** Makes to name, from CLAUDE.md §4 only (VFDs: ABB "and all other makes"). Otherwise "any make". */
+    /** Makes to name, from CLAUDE.md §4 only (VFDs: ABB, Danfoss "and all other makes"). Otherwise "any make". */
     brandsNote: z.string().optional(),
     /** "What to send us" checklist: short labels, not prose. */
     whatToSend: z.array(z.string()).min(4),
     faqs: z.array(faq).min(3),
     /** Product ids, e.g. `manual-valves/ball-valve-flanged-end`. Each must list this page in its `relatedRepair`. */
     relatedProducts: z.array(z.string()).max(4).default([]),
+    /** False where the warranty term is not confirmed for this service (docs/PENDING.md): the page then states none. */
+    warranty: z.boolean().default(true),
     /** Internal note, never rendered. Mirror it in docs/PENDING.md. */
     todo: z.string().optional(),
   }),
@@ -156,7 +158,7 @@ const repairGallery = defineCollection({
       image: image(),
       alt: z.string(),
       caption: z.string().optional(),
-      group: z.enum(['valve', 'drive']),
+      group: z.enum(['valve', 'vfd']),
       order: z.number(),
     }),
 });

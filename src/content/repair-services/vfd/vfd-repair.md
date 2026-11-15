@@ -1,16 +1,15 @@
 ---
 title: VFD Repair
-seoTitle: VFD Repair – ABB and All Makes
-metaDescription: VFD repair for ABB and all other makes of variable frequency drive. Tripping, fault codes, no power-up and overheating. Typically 2–3 days in our workshop.
+seoTitle: VFD Repair – ABB, Danfoss and All Makes
+metaDescription: VFD repair for ABB, Danfoss and all other makes. Tripping, fault codes, no power-up, overheating. On site or in our workshop, typically 2–3 days.
 updated: 2026-11-15
-group: drive
+group: vfd
 serviceType: Variable frequency drive (VFD) repair
-brandsNote: ABB and all other makes
-summary: We repair variable frequency drives (VFDs, also called AC drives or inverters) from ABB and all other makes. If a drive trips, shows a fault code, will not power up or runs hot, a workshop repair typically takes 2–3 days.
-todo: Second VFD brand to name (PENDING #15) and other drive brands repaired often (PENDING #16). Power and voltage range repaired not stated (PENDING #65).
+brandsNote: ABB, Danfoss and all other makes
+summary: We repair variable frequency drives (VFDs, also called AC drives or inverters) from ABB, Danfoss and all other makes. If a drive trips, shows a fault code, will not power up or runs hot, we can repair it at your plant or at ours. Workshop repairs typically take 2–3 days, and repaired VFDs carry a 3-month warranty.
 whatWeRepair:
   - Variable frequency drives on pumps, fans, compressors and conveyors
-  - AC drives and inverters, ABB and all other makes
+  - AC drives and inverters from ABB, Danfoss and all other makes
   - Drives with faulty keypads or displays
   - Drives that failed after a supply fault or overheating
 commonFaults:
@@ -32,21 +31,23 @@ whatToSend:
   - What happened when it failed
   - Motor and load it drives
   - Parameter settings, if recorded
-  - Your location
+  - Your location, for on-site repair
 faqs:
-  - question: Do you only repair ABB drives?
-    answer: No. We repair ABB drives and VFDs of all other makes.
+  - question: Which makes of VFD do you repair?
+    answer: ABB, Danfoss and all other makes. Tell us the make and model on the rating label when you call.
   - question: What should I note before sending a VFD?
     answer: Write down the fault code, the details on the rating label and the parameter settings if you can read them. Isolate the supply and let the drive stand before handling it, as capacitors inside can hold a charge.
   - question: Can a drive that failed after a supply surge be repaired?
     answer: It depends on how far the damage goes. We assess the drive and tell you whether repair or replacement makes more sense.
   - question: Can a VFD be repaired on site?
-    answer: We offer on-site service across North India. Call with the drive model and the fault, and we will advise whether to visit or have it sent in.
+    answer: Yes, we offer on-site repair. Call with the drive model and the fault, and we will say which is the better route, an engineer at your machine or the drive on our bench.
+  - question: Is a drive breakdown dealt with on a Sunday?
+    answer: Yes. Our office is open Monday to Saturday, but urgent breakdown support covers all 7 days of the week, so call us if a stopped drive is holding up production.
 relatedProducts: []
 ---
 
 A VFD turns a fixed mains supply into a variable frequency and voltage, which is how it controls the speed of an AC motor. That work puts heat and electrical stress on the drive, so faults tend to show up in its power and cooling sections, or in the control electronics after a supply disturbance.
 
-At our workshop the drive is inspected, the fault traced, and the faulty parts repaired or replaced. Tell us the fault code and what was happening when it failed, since that often points straight to the problem. If you can, note down the drive's parameter settings, as they may be needed to set it up again on your machine.
+Whether we come to you or the drive comes to our workshop, it is inspected, the fault traced, and the faulty parts repaired or replaced. Tell us the fault code and what was happening when it failed, since that often points straight to the problem. If you can, note down the drive's parameter settings, as they may be needed to set it up again on your machine.
 
-Every drive is tested before it leaves the workshop, and a written report comes with it. For drives that cannot easily come off the machine, on-site service is available across North India.
+Every drive is tested before it goes back into service, and a written report comes with it. For drives that cannot easily come off the machine, ask about on-site repair. Valves, actuators and positioners on the same plant can be handled through our [valve repair](/valve-repair/) service.

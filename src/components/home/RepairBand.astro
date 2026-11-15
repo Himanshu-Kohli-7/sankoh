@@ -37,13 +37,17 @@ const whatsappText = `Hello ${site.name}, I have a valve to send for repair.`;
         {repairGroups.map((group) => (
           <div class="type-group">
             <h3><a href={group.href}>{group.label}<Icon name="arrow-right" size={18} /></a></h3>
-            <ul>
-              {group.links.map((link) => (
-                <li>
-                  <a href={link.href}><Icon name={link.icon ?? 'wrench'} size={20} />{link.label}</a>
-                </li>
-              ))}
-            </ul>
+            {group.links.length > 0 ? (
+              <ul>
+                {group.links.map((link) => (
+                  <li>
+                    <a href={link.href}><Icon name={link.icon ?? 'wrench'} size={20} />{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="type-note"><Icon name={group.icon ?? 'wrench'} size={20} />{group.note}</p>
+            )}
           </div>
         ))}
       </div>
@@ -77,7 +81,8 @@ const whatsappText = `Hello ${site.name}, I have a valve to send for repair.`;
   .type-group ul { display: grid; border-top: 1px solid rgb(255 255 255 / 0.2); }
   .type-group li a { display: flex; align-items: center; gap: 0.625rem; min-height: 2.75rem; color: var(--color-white); font-size: 1rem; text-decoration: none; }
   .type-group li a:hover { color: var(--color-amber); }
-  .type-group li :global(svg) { flex: none; color: var(--color-cyan); }
+  .type-group li :global(svg), .type-note :global(svg) { flex: none; color: var(--color-cyan); }
+  .type-note { display: flex; align-items: center; gap: 0.625rem; min-height: 2.75rem; border-top: 1px solid rgb(255 255 255 / 0.2); color: rgb(255 255 255 / 0.85); font-size: 1rem; }
 
   .facts { margin-top: 3rem; }
   .process { margin-top: 3rem; }

@@ -9,7 +9,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "favicons": "node scripts/make-favicons.mjs",
-    "check:repeats": "node scripts/check-repeats.mjs"
+    "check:repeats": "node scripts/check-repeats.mjs",
+    "check:claims": "node scripts/check-claims.mjs"
   },
   "dependencies": {
     "@astrojs/preact": "^6.1.0",

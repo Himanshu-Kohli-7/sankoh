@@ -1,10 +1,10 @@
 /**
  * Shared repair wording: process steps and WhatsApp messages for the repair hubs and pages.
- * Steps are described generally (docs/PENDING.md #17, #18): no test procedure, pressures or certificates.
+ * Steps are described generally: no test procedure, pressures or certificates.
  */
 import type { Step } from '../components/ProcessSteps.astro';
 
-export type RepairGroup = 'valve' | 'drive';
+export type RepairGroup = 'valve' | 'vfd';
 
 /** The five workshop steps (SPEC §3), drawn as line icons on a pipeline line. */
 export const repairSteps: Record<RepairGroup, Step[]> = {
@@ -15,20 +15,20 @@ export const repairSteps: Record<RepairGroup, Step[]> = {
     { title: 'Test & calibrate', text: 'The unit is tested before dispatch.', icon: 'pressure' },
     { title: 'Report & dispatch', text: 'You get a report of the work done and the unit is sent back.', icon: 'truck' },
   ],
-  drive: [
-    { title: 'Receive & inspect', text: 'The unit arrives at our workshop and is checked over.', icon: 'box' },
+  vfd: [
+    { title: 'Receive & inspect', text: 'The drive arrives at our workshop and is checked over.', icon: 'box' },
     { title: 'Diagnose the fault', text: 'We trace the fault from your description and our own checks.', icon: 'search' },
     { title: 'Repair / replace parts', text: 'Faulty parts are repaired or replaced.', icon: 'wrench' },
-    { title: 'Test', text: 'The unit is tested before dispatch.', icon: 'drive' },
-    { title: 'Report & dispatch', text: 'You get a report of the work done and the unit is sent back.', icon: 'truck' },
+    { title: 'Test', text: 'The drive is tested before dispatch.', icon: 'drive' },
+    { title: 'Report & dispatch', text: 'You get a report of the work done and the drive is sent back.', icon: 'truck' },
   ],
 };
 
-/** "Valve repair" / "Drive repair", as used in hub names and messages. */
-export const groupName: Record<RepairGroup, string> = { valve: 'Valve repair', drive: 'Drive repair' };
+/** "Valve repair" / "VFD repair", as used in page names and messages. */
+export const groupName: Record<RepairGroup, string> = { valve: 'Valve repair', vfd: 'VFD repair' };
 
-/** What the customer sends: "valve" / "drive or HMI". */
-export const groupThing: Record<RepairGroup, string> = { valve: 'valve', drive: 'drive or HMI' };
+/** What the customer sends. */
+export const groupThing: Record<RepairGroup, string> = { valve: 'valve', vfd: 'drive' };
 
 /** A title as it reads mid-sentence: plain capitalised words lowercased, acronyms kept ("VFD Repair" → "VFD repair"). */
 const inSentence = (title: string): string =>
