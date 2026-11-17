@@ -49,6 +49,7 @@ const breadcrumbs = [{ label: data.title }];
 const schema = [
   {
     '@type': 'Service',
+    '@id': `${new URL(Astro.url.pathname, site.url).href}#service`,
     name: data.h1,
     serviceType: data.serviceType,
     description: data.metaDescription,

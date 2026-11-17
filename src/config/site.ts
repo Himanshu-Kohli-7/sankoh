@@ -144,6 +144,8 @@ export const site = {
     googleBusinessProfileUrl: undefined as string | undefined,
     // TODO: LinkedIn / IndiaMART / other profile URLs (docs/PENDING.md) — used for schema sameAs.
     sameAs: [] as string[],
+    // TODO: coordinates of the Google Business Profile pin (docs/PENDING.md). Schema `geo` is left out until set.
+    geo: undefined as { latitude: number; longitude: number } | undefined,
   },
 
   /** TODO: IDs from the user (docs/PENDING.md). Analytics and verification are off while empty. */

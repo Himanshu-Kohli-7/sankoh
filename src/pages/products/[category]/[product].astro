@@ -64,6 +64,7 @@ const schemaImage = mainImage ? new URL((await getImage({ src: mainImage.src, wi
 const schema = [
   {
     '@type': 'Product',
+    '@id': `${new URL(Astro.url.pathname, site.url).href}#product`,
     name: data.title,
     description: data.summary,
     category: category.label,
