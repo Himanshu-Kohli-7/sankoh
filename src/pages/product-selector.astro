@@ -46,14 +46,14 @@ const breadcrumbs = [{ label: 'Products', href: '/products/' }, { label: 'Produc
   :global(html:not(.js)) .selector :global(.ps-filters) { display: none; }
 
   .selector :global(.ps-filters) { display: grid; gap: 1.25rem; padding: 1.25rem; border: 1px solid var(--color-line); border-top: 4px solid var(--color-blue); border-radius: 2px; background: var(--color-white); }
-  .selector :global(.ps-filter) { display: grid; gap: 0.5rem; min-width: 0; border: 0; padding: 0; margin: 0; }
+  .selector :global(.ps-filter) { display: grid; align-content: start; gap: 0.5rem; min-width: 0; border: 0; padding: 0; margin: 0; }
   .selector :global(.ps-filter legend) { margin-bottom: 0.5rem; padding: 0; color: var(--color-slate); }
   .selector :global(.ps-group) { display: grid; gap: 0.375rem; }
   .selector :global(.ps-group + .ps-group) { margin-top: 0.5rem; }
   .selector :global(.ps-group-label) { color: var(--color-navy); font-size: 0.875rem; font-weight: 600; }
   .selector :global(.ps-chips) { display: flex; flex-wrap: wrap; gap: 0.5rem; }
   .selector :global(.ps-chip) {
-    display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; padding: 0 0.875rem;
+    position: relative; display: inline-flex; align-items: center; gap: 0.5rem; min-height: 2.75rem; padding: 0 0.875rem;
     border: 1px solid #b9c6d3; border-radius: 2px; background: var(--color-white); color: var(--color-navy);
     font: inherit; font-size: 0.9375rem; font-weight: 600; cursor: pointer; transition: background-color 0.15s, color 0.15s, border-color 0.15s;
   }
@@ -95,6 +95,15 @@ const breadcrumbs = [{ label: 'Products', href: '/products/' }, { label: 'Produc
   .selector :global(.ps-tags) { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.625rem; }
   .selector :global(.ps-tags span) { padding: 0.125rem 0.5rem; border: 1px solid var(--color-line); border-radius: 2px; font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-slate); }
 
+  /* Phones: each filter is one swipeable row, so the results start near the top. */
+  @media (max-width: 767px) {
+    .selector :global(.ps-filters) { margin-inline: calc(var(--gutter) * -1); border-inline: 0; padding-inline: 0; gap: 1rem; }
+    .selector :global(.ps-filter legend), .selector :global(.ps-group-label), .selector :global(.ps-status) { padding-inline: var(--gutter); }
+    .selector :global(.ps-chips) { flex-wrap: nowrap; overflow-x: auto; padding: 0.125rem var(--gutter) 0.25rem; scroll-padding-inline: var(--gutter); scrollbar-width: none; }
+    .selector :global(.ps-chips li) { flex: none; }
+    .selector :global(.ps-filters), .selector :global(.ps-filter) { grid-template-columns: minmax(0, 1fr); }
+    .selector :global(.ps-group), .selector :global(.ps-chips) { min-width: 0; }
+  }
   @media (min-width: 768px) {
     .selector :global(.ps-results) { grid-template-columns: repeat(2, 1fr); }
   }
