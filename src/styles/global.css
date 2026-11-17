@@ -1,4 +1,5 @@
-@import 'tailwindcss';
+/* Scan src/ only: automatic detection also read legacy/ and docs/ and shipped ~350 unused utilities. */
+@import 'tailwindcss' source('../');
 
 /* Fonts: self-hosted via Fontsource, latin subset only (3 files, SPEC §8). */
 @font-face {
