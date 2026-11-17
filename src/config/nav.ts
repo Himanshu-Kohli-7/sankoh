@@ -104,6 +104,15 @@ export const serviceLinks: NavLink[] = [
   { label: 'Surplus & Discontinued Valves', href: '/services/surplus-discontinued-valves/' },
 ];
 
+/** Services as a group: the overview page plus the four service pages (mobile menu accordion). */
+export const servicesGroup: NavGroup = {
+  key: 'services',
+  division: 'repair',
+  label: 'Services',
+  href: '/services/',
+  links: serviceLinks,
+};
+
 /** Third mega-menu column: repair is a headline offering alongside the two product divisions (CLAUDE.md §3). */
 export const repairServiceGroup: NavGroup = {
   key: 'repair-service',
