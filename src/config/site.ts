@@ -152,8 +152,18 @@ export const site = {
   integrations: {
     /** GA4 "G-…" ID. Empty: components/Analytics.astro renders nothing and no analytics JS ships. */
     ga4MeasurementId: '' as string,
+    /**
+     * TODO (docs/PENDING.md #4): Google Search Console HTML-tag token, the `content` of
+     * <meta name="google-site-verification">. Rendered by components/SEO.astro only when set.
+     */
     searchConsoleVerification: '' as string,
+    /** TODO (docs/PENDING.md #4): Bing Webmaster Tools token, the `content` of <meta name="msvalidate.01">. */
     bingVerification: '' as string,
+    /**
+     * IndexNow key (public by design): served as /<key>.txt by pages/[indexnow].txt.ts; the Netlify
+     * plugin in netlify/plugins/indexnow pings changed URLs after each production deploy.
+     */
+    indexNowKey: '9ee9ab310d0ab86da859b1c90bafe697',
     /**
      * Cloudflare Turnstile site key (public). `astro dev` uses Cloudflare's test key instead.
      * The secret key lives only in Netlify as TURNSTILE_SECRET_KEY, never in the repo.

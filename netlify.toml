@@ -11,6 +11,10 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+# IndexNow: ping changed URLs after each production deploy (local plugin, no npm package).
+[[plugins]]
+  package = "/netlify/plugins/indexnow"
+
 # Canonical host is www (existing redirect, kept from the old site).
 [[redirects]]
   from = "https://sankohtech.com/*"

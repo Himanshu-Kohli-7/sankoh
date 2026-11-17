@@ -16,6 +16,7 @@
     "check:links": "node scripts/check-links.mjs",
     "check:contact": "node scripts/check-contact.mjs",
     "check:seo": "node scripts/check-seo.mjs",
+    "indexnow": "node scripts/indexnow.mjs",
     "check:all": "npm run check:claims && npm run check:repeats && npm run check:links && npm run check:contact && npm run check:seo"
   },
   "dependencies": {

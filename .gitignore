@@ -35,3 +35,4 @@ yarn-error.log*
 # Source material not for publishing (catalogue.pdf names a former contact)
 /reference/
 scripts/og/out/
+.netlify-indexnow/
