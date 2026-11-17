@@ -24,7 +24,7 @@ const { title, href, summary, image, imageAlt = title, division = 'valves', head
 <article class:list={['card', !href && 'is-static']} data-division={division}>
   <div class="media">
     {image ? (
-      <Image src={image} alt={imageAlt} widths={[240, 360, 480]} sizes="(min-width: 1024px) 280px, (min-width: 560px) 45vw, 90vw" loading="lazy" />
+      <Image src={image} alt={imageAlt} widths={[240, 360, 480]} width={480} sizes="(min-width: 1024px) 280px, (min-width: 560px) 45vw, calc(50vw - 3rem)" loading="lazy" />
     ) : (
       <svg viewBox="0 0 120 90" aria-hidden="true">
         <path d={placeholderPath(division)} />

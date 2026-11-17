@@ -40,6 +40,7 @@ const [main, ...rest] = images;
         src={main.src}
         alt={main.alt}
         widths={[360, 540, 720]}
+        width={720}
         sizes="(min-width: 1024px) 480px, 92vw"
         loading="eager"
         fetchpriority="high"
@@ -48,7 +49,7 @@ const [main, ...rest] = images;
     {rest.length > 0 && (
       <ul class="more">
         {rest.map((img) => (
-          <li><Image src={img.src} alt={img.alt} widths={[160, 320]} sizes="160px" loading="lazy" /></li>
+          <li><Image src={img.src} alt={img.alt} widths={[160, 320]} width={320} sizes="160px" loading="lazy" /></li>
         ))}
       </ul>
     )}
