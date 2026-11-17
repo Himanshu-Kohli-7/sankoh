@@ -102,7 +102,7 @@ Style: **clean industrial, engineering-grade, simple but creative.** Generous wh
 | Token | Hex | Use |
 |---|---|---|
 | `navy` | `#102A4C` | Header, footer, dark sections, headings. **Valves & Automation** division |
-| `blue` | `#0A78B8` | Logo blue: links, primary accents. **Instruments & Analyzers** division |
+| `blue` | `#0976B5` | Links, primary accents. **Instruments & Analyzers** division. One step darker than the logo blue `#0A78B8` (4.49:1 on `paper`) so text passes AA (4.61:1); the logo files keep `#0A78B8` |
 | `cyan` | `#0FB5D8` | Logo cyan: decorative lines, icons, highlights only (fails contrast as text on white) |
 | `amber` | `#E5A823` | **Repair & Service** division + every call-to-action button (navy text on amber) |
 | `ink` | `#0B1726` | Body text |

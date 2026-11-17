@@ -27,7 +27,9 @@
 /* Design tokens (CLAUDE.md §6). Tailwind generates utilities and :root CSS variables from @theme. */
 @theme {
   --color-navy: #102a4c;
-  --color-blue: #0a78b8;
+  /* Logo blue #0a78b8 is 4.49:1 on paper; one step darker passes AA (4.61:1 on paper, 4.92:1 on white).
+     The logo files keep #0a78b8. */
+  --color-blue: #0976b5;
   --color-cyan: #0fb5d8;
   --color-amber: #e5a823;
   --color-ink: #0b1726;

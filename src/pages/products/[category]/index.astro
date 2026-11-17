@@ -66,16 +66,18 @@ const schema = published.length
   <PageHero {breadcrumbs} division={data.division} title={data.title}>
     <div class="prose intro"><Content /></div>
 
-    <dl class="sheet" slot="aside">
-      <div><dt>Division</dt><dd>{divisionName}</dd></div>
-      <div><dt>Products</dt><dd>{products.length}</dd></div>
-      {data.operationNote && <div><dt>Operation</dt><dd>{data.operationNote}</dd></div>}
-      <div><dt>Supply</dt><dd>To your specification</dd></div>
+    <div class="sheet" slot="aside">
+      <dl>
+        <div><dt>Division</dt><dd>{divisionName}</dd></div>
+        <div><dt>Products</dt><dd>{products.length}</dd></div>
+        {data.operationNote && <div><dt>Operation</dt><dd>{data.operationNote}</dd></div>}
+        <div><dt>Supply</dt><dd>To your specification</dd></div>
+      </dl>
       <div class="sheet-actions">
         <QuoteButton product={category.id} />
         <CallButton />
       </div>
-    </dl>
+    </div>
   </PageHero>
 
   <section class="container-content section-y" id="products" data-division={data.division}>
@@ -177,7 +179,7 @@ const schema = published.length
 
   /* Spec-sheet panel: mono labels, ruled rows. */
   .sheet { background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--division); border-radius: 2px; }
-  .sheet > div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 0.875rem 1.25rem; border-bottom: 1px solid var(--color-line); }
+  .sheet dl > div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; padding: 0.875rem 1.25rem; border-bottom: 1px solid var(--color-line); }
   .sheet dt { color: var(--color-slate); font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.08em; line-height: 1.7; text-transform: uppercase; }
   .sheet dd { color: var(--color-navy); font-weight: 600; }
   .sheet .sheet-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 1.25rem; border-bottom: 0; }
