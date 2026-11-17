@@ -1,0 +1,73 @@
+<!doctype html>
+<!--
+  Open Graph card template, 1200×630 (SPEC §7). Rendered by `node scripts/make-og.mjs serve`, then
+  screenshotted at 1200×630 and compressed by `node scripts/make-og.mjs compress`.
+  ?d=valves | instruments | repair | default. Sankoh logo only: no partner logos or partner photos.
+  Text is confirmed wording only (CLAUDE.md §3, §4).
+-->
+<html lang="en-IN">
+<head>
+<meta charset="utf-8" />
+<title>OG card</title>
+<style>
+  @font-face { font-family: 'Plex Sans'; font-weight: 400; src: url('/fonts/sans-400.woff2') format('woff2'); }
+  @font-face { font-family: 'Plex Sans'; font-weight: 600; src: url('/fonts/sans-600.woff2') format('woff2'); }
+  @font-face { font-family: 'Plex Mono'; font-weight: 500; src: url('/fonts/mono-500.woff2') format('woff2'); }
+  :root { --navy: #102a4c; --blue: #0a78b8; --cyan: #0fb5d8; --amber: #e5a823; --ink: #0b1726; --slate: #4a5b70; --line: #dce3ea; --paper: #f5f8fb; --accent: var(--navy); }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative; font-family: 'Plex Sans', sans-serif; color: var(--ink); background: var(--paper);
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px),
+      linear-gradient(rgba(220,227,234,.45) 1px, transparent 1px), linear-gradient(90deg, rgba(220,227,234,.45) 1px, transparent 1px);
+    background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+    background-position: -1px -1px;
+  }
+  .band { position: absolute; left: 0; top: 0; bottom: 0; width: 24px; background: var(--accent); }
+  .bands { position: absolute; left: 0; top: 0; bottom: 0; width: 24px; display: grid; grid-template-rows: 1fr 1fr 1fr; }
+  .bands i:nth-child(1) { background: var(--navy); } .bands i:nth-child(2) { background: var(--blue); } .bands i:nth-child(3) { background: var(--amber); }
+  .card { position: absolute; left: 96px; top: 72px; right: 96px; bottom: 72px; display: flex; flex-direction: column; }
+  .logo { width: 430px; height: auto; display: block; }
+  .eyebrow { margin-top: 72px; font-family: 'Plex Mono', monospace; font-weight: 500; font-size: 22px; letter-spacing: .14em; text-transform: uppercase; color: var(--slate); display: flex; align-items: center; gap: 16px; }
+  .eyebrow::before { content: ''; width: 40px; height: 4px; background: var(--accent); }
+  h1 { margin-top: 18px; max-width: 880px; font-weight: 600; font-size: 72px; line-height: 1.05; color: var(--navy); letter-spacing: -.01em; }
+  p { margin-top: 22px; font-size: 30px; line-height: 1.35; color: var(--slate); max-width: 900px; }
+  .foot { margin-top: auto; font-family: 'Plex Mono', monospace; font-weight: 500; font-size: 20px; letter-spacing: .06em; color: var(--slate); }
+  svg.pipe { position: absolute; right: 0; top: 0; width: 420px; height: 630px; }
+  [data-d="instruments"] { --accent: var(--blue); }
+  [data-d="repair"] { --accent: var(--amber); }
+  [data-d="default"] h1 { font-size: 64px; }
+</style>
+</head>
+<body>
+  <div id="band" class="band"></div>
+  <svg class="pipe" viewBox="0 0 420 630" fill="none" aria-hidden="true">
+    <path d="M420 120 H372 a24 24 0 0 0 -24 24 V486 a24 24 0 0 1 -24 24 H200" stroke="#0fb5d8" stroke-width="3" stroke-linecap="round" />
+    <path d="M420 168 H400 a20 20 0 0 0 -20 20 V540" stroke="#0a78b8" stroke-width="2" stroke-linecap="round" opacity=".5" />
+    <circle cx="200" cy="510" r="7" fill="#0fb5d8" />
+  </svg>
+  <main class="card">
+    <img class="logo" src="/logo.svg" alt="" />
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 id="title"></h1>
+    <p id="lead"></p>
+    <div class="foot">Derabassi, Punjab (near Chandigarh) · www.sankohtech.com</div>
+  </main>
+  <script>
+    const cards = {
+      valves: ['Division / 01', 'Valves &amp; Automation', 'Manual, pneumatic, electric and solenoid valves, and valve automation accessories.'],
+      instruments: ['Division / 02', 'Instruments &amp; Analyzers', 'Flow, pressure, temperature, level and analytical instruments.'],
+      repair: ['Division / 03', 'Repair &amp; Service', 'Repair of valves, actuators, positioners and VFDs of any make, on site or in our workshop.'],
+      default: ['Manufacture · Supply · Repair', 'Industrial valves, instruments &amp; repair', 'Valves &amp; Automation · Instruments &amp; Analyzers · Repair &amp; Service'],
+    };
+    const d = new URLSearchParams(location.search).get('d') || 'default';
+    const [eyebrow, title, lead] = cards[d] || cards.default;
+    document.body.dataset.d = d;
+    document.getElementById('eyebrow').innerHTML = eyebrow;
+    document.getElementById('title').innerHTML = title;
+    document.getElementById('lead').innerHTML = lead;
+    if (d === 'default') document.getElementById('band').outerHTML = '<div class="bands"><i></i><i></i><i></i></div>';
+  </script>
+</body>
+</html>
