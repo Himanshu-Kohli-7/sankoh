@@ -134,6 +134,10 @@ export const companyLinks: NavLink[] = [
   { label: 'Image credits', href: '/image-credits/' },
 ];
 
+/** Mega-menu header design. TEMP nav-compare: both designs ship until one is chosen; ?nav=rules|pipeline overrides it. */
+export type MegaMenuStyle = 'rules' | 'pipeline';
+export const megaMenuStyle: MegaMenuStyle = 'rules';
+
 export const productsHref = '/products/';
 export const selectorHref = '/product-selector/';
 /** /product-selector/ exists: the mega-menu link, mobile-menu entry, products hub link and home teaser show. */
