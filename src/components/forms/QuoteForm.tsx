@@ -12,7 +12,7 @@
 import { cloneElement, type ComponentChildren, type JSX } from 'preact';
 import { useEffect, useRef, useState } from 'preact/hooks';
 import {
-  DETAILS_PLACEHOLDER,
+  DETAILS_HINT,
   HONEYPOT,
   MAX_LENGTH,
   QUOTE_FIELDS,
@@ -66,6 +66,7 @@ export default function QuoteForm({ turnstileSiteKey, endpoint = '/api/quote', f
   const [errors, setErrors] = useState<QuoteErrors>({});
   const [status, setStatus] = useState<Status>('idle');
   const [products, setProducts] = useState<string[]>([]);
+  const [challenge, setChallenge] = useState(false);
   const form = useRef<HTMLFormElement>(null);
   const widgetBox = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | null>(null);
@@ -99,6 +100,9 @@ export default function QuoteForm({ turnstileSiteKey, endpoint = '/api/quote', f
       callback: (t: string) => (token.current = t),
       'expired-callback': () => (token.current = ''),
       'error-callback': () => (token.current = ''),
+      // The box takes no space until Cloudflare actually shows a challenge.
+      'before-interactive-callback': () => setChallenge(true),
+      'after-interactive-callback': () => setChallenge(false),
     });
   };
 
@@ -127,6 +131,9 @@ export default function QuoteForm({ turnstileSiteKey, endpoint = '/api/quote', f
     if (errors[field]) setErrors((err) => ({ ...err, [field]: validateField(field, value) }));
   };
   const check = (field: QuoteField) => () => {
+    // An empty field the user only passed through is flagged on submit, not on blur: an error appearing as
+    // focus leaves for the Send button would push the button down mid-click and lose the click.
+    if (!values[field].trim() && !errors[field]) return;
     const error = validateField(field, values[field]);
     setErrors((err) => ({ ...err, [field]: error }));
   };
@@ -176,26 +183,32 @@ export default function QuoteForm({ turnstileSiteKey, endpoint = '/api/quote', f
     }
   };
 
-  const field = (name: QuoteField, input: JSX.Element, hint?: string) => {
+  /**
+   * One field = three rows: label, control, help (error, then hint). The help row sits under the control, and
+   * the page CSS lines the three rows up across each two-column row (subgrid), so controls always align.
+   */
+  const field = (name: QuoteField, input: JSX.Element, hint?: string, wide = false) => {
     const error = errors[name];
-    const describedBy = [hint && `${name}-hint`, error && `${name}-error`].filter(Boolean).join(' ') || undefined;
+    const describedBy = [error && `${name}-error`, hint && `${name}-hint`].filter(Boolean).join(' ') || undefined;
     return (
-      <div class={`qf-field qf-${name}`}>
+      <div class={`qf-field qf-${name}${wide ? ' qf-wide' : ''}`}>
         <label for={`qf-${name}`}>
           {LABELS[name]}
           {REQUIRED.includes(name) ? <span class="qf-req"> (required)</span> : <span class="qf-opt"> (optional)</span>}
         </label>
-        {hint && (
-          <p class="qf-hint" id={`${name}-hint`}>
-            {hint}
-          </p>
-        )}
         {cloneElement(input, { id: `qf-${name}`, name, 'aria-invalid': error ? 'true' : undefined, 'aria-describedby': describedBy })}
-        {error && (
-          <p class="qf-error" id={`${name}-error`}>
-            {error}
-          </p>
-        )}
+        <div class="qf-help">
+          {error && (
+            <p class="qf-error" id={`${name}-error`}>
+              {error}
+            </p>
+          )}
+          {hint && (
+            <p class="qf-hint" id={`${name}-hint`}>
+              {hint}
+            </p>
+          )}
+        </div>
       </div>
     );
   };
@@ -214,24 +227,34 @@ export default function QuoteForm({ turnstileSiteKey, endpoint = '/api/quote', f
 
   return (
     <form ref={form} class="qf" noValidate onSubmit={onSubmit} onFocusIn={loadTurnstile}>
-      <div class="qf-grid">
-        {field('name', input('name', { autoComplete: 'name' }))}
-        {field('company', input('company', { autoComplete: 'organization' }))}
-        {field('phone', input('phone', { type: 'tel', inputMode: 'tel', autoComplete: 'tel' }), 'Mobile number. We usually call back.')}
-        {field('email', input('email', { type: 'email', inputMode: 'email', autoComplete: 'email' }))}
-        {field('product', input('product', { list: 'qf-products' }), 'Type to search, or describe it in your own words.')}
-        {field('quantity', input('quantity'))}
-      </div>
+      <fieldset class="qf-set">
+        <legend class="qf-legend">Your details</legend>
+        <div class="qf-grid">
+          {field('name', input('name', { autoComplete: 'name' }))}
+          {field('company', input('company', { autoComplete: 'organization' }))}
+          {field('phone', input('phone', { type: 'tel', inputMode: 'tel', autoComplete: 'tel' }), 'Mobile number. We usually call back.')}
+          {field('email', input('email', { type: 'email', inputMode: 'email', autoComplete: 'email' }))}
+        </div>
+      </fieldset>
+
+      <fieldset class="qf-set">
+        <legend class="qf-legend">What you need</legend>
+        <div class="qf-grid">
+          {field('product', input('product', { list: 'qf-products' }), 'Type to search, or describe it in your own words.')}
+          {field('quantity', input('quantity'))}
+          {field(
+            'details',
+            <textarea rows={6} value={values.details} maxLength={MAX_LENGTH.details} onInput={set('details')} onBlur={check('details')} required />,
+            DETAILS_HINT,
+            true,
+          )}
+        </div>
+      </fieldset>
       <datalist id="qf-products">
         {products.map((p) => (
           <option key={p} value={p} />
         ))}
       </datalist>
-
-      {field(
-        'details',
-        <textarea rows={6} value={values.details} maxLength={MAX_LENGTH.details} onInput={set('details')} onBlur={check('details')} required placeholder={DETAILS_PLACEHOLDER} />,
-      )}
 
       <div class="qf-photo">
         <p>
@@ -247,18 +270,19 @@ export default function QuoteForm({ turnstileSiteKey, endpoint = '/api/quote', f
         <input id="qf-website" type="text" name={HONEYPOT} tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div class="qf-turnstile" ref={widgetBox} />
-
-      {Object.values(errors).some(Boolean) && (
-        <p class="qf-summary" role="alert">
-          Please check the fields marked above.
-        </p>
-      )}
-
+      {/* Submit group: the spam check (invisible unless Cloudflare needs an interaction) and the error summary sit
+          here, so neither adds a row of spacing to the form when it is empty. */}
       <div class="qf-submit">
+        <div class={`qf-turnstile${challenge ? '' : ' qf-turnstile-idle'}`} ref={widgetBox} />
         <button type="submit" class="btn btn-primary" disabled={status === 'sending'} aria-disabled={status === 'sending'}>
           {status === 'sending' ? 'Sending…' : 'Send enquiry'}
         </button>
+        {/* Below the button, so it appearing or disappearing never moves the button. */}
+        {Object.values(errors).some(Boolean) && (
+          <p class="qf-summary" role="alert">
+            Please check the fields marked above.
+          </p>
+        )}
         <p class="qf-note">
           We use your details only to answer this enquiry. <a href="/privacy-policy/">Privacy policy</a>
         </p>

@@ -93,6 +93,7 @@ export const oneLine = (value: string): string =>
     .trim();
 
 /** Placeholder for the details box: the enquiry checklist in short (SPEC §6.1). */
-export const DETAILS_PLACEHOLDER =
+/** Help text under "Your requirement" (visible text, not a placeholder: placeholders vanish while typing). */
+export const DETAILS_HINT =
   'For a product: size, media, pressure and temperature, material, connection, quantity, delivery location.\n' +
   'For a repair: make and model, what is wrong, on site or at our workshop.';
