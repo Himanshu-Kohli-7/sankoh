@@ -10,7 +10,7 @@ import Icon from '../Icon.astro';
 import MobileMenu from './MobileMenu';
 import PhoneNumber from '../contact/PhoneNumber.astro';
 import { site, quoteHref } from '../../config/site';
-import { productGroups, repairServiceGroup, primaryLinks, productsHref, selectorHref, selectorAvailable, megaMenuStyle } from '../../config/nav';
+import { productGroups, repairServiceGroup, primaryLinks, productsHref, selectorHref, selectorAvailable } from '../../config/nav';
 import { catalogue } from '../../config/catalogue';
 
 const path = Astro.url.pathname;
@@ -47,10 +47,9 @@ const megaColumns = [...productGroups, repairServiceGroup];
               <Icon name="chevron-down" size={16} />
             </button>
 
-            <div class="mega" id="mega-products" data-mega-style={megaMenuStyle}>
+            <div class="mega" id="mega-products">
               <div class="container-content mega-grid">
                 <div class="manifold" aria-hidden="true"></div>
-                <div class="pipe" aria-hidden="true"></div>
 
                 {megaColumns.map((group, i) => (
                   <div class="branch" data-division={group.division} style={`grid-column: ${i + 1}`}>
@@ -112,21 +111,6 @@ const megaColumns = [...productGroups, repairServiceGroup];
     const header = document.querySelector('[data-site-header]');
     const sentinel = document.querySelector('[data-header-sentinel]');
     if (!header) return;
-    // TEMP nav-compare: ?nav=rules|pipeline picks the mega-menu design and is remembered. Delete with the losing design.
-    try {
-      const ok = (v) => v === 'rules' || v === 'pipeline';
-      const q = new URLSearchParams(location.search).get('nav');
-      let style = null;
-      if (ok(q)) {
-        style = q;
-        try { localStorage.setItem('nav-style', q); } catch (e) {}
-      } else {
-        try { const saved = localStorage.getItem('nav-style'); if (ok(saved)) style = saved; } catch (e) {}
-      }
-      const panel = header.querySelector('.mega');
-      if (panel && style) panel.setAttribute('data-mega-style', style);
-    } catch (e) {}
-    // END TEMP nav-compare
     if (sentinel && 'IntersectionObserver' in window) {
       new IntersectionObserver(([entry]) => header.toggleAttribute('data-compact', !entry.isIntersecting)).observe(sentinel);
     }
@@ -192,17 +176,21 @@ const megaColumns = [...productGroups, repairServiceGroup];
   .quote { display: none; }
 
   /* ---------- Mega-menu ----------
-     Shared: panel, grid, link rows, rail. The header treatment of the three division columns comes in
-     two designs chosen by data-mega-style (TEMP nav-compare, see nav.ts). Both are static: no animation. */
+     Three division columns share one header treatment: a 2px rule in the division colour,
+     a node dot on the rule's left end and a mono number (01 / 02 / 03). A faint line joins
+     the three nodes. All static: no animation on the headers. */
   .mega { position: absolute; left: 0; right: 0; top: 100%; background: var(--color-white); border-bottom: 1px solid var(--color-line); box-shadow: 0 24px 40px -24px rgb(16 42 76 / 0.28); visibility: hidden; opacity: 0; transition: opacity 0.15s, visibility 0s 0.15s; }
   .has-mega:hover .mega, .has-mega[data-open] .mega { visibility: visible; opacity: 1; transition-delay: 0s; }
   .mega-grid { --gap: 2.5rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) 16rem; column-gap: var(--gap); align-items: start; padding-top: 2.25rem; padding-bottom: 2.5rem; }
-  .branch, .rail, .manifold, .pipe { grid-row: 1; }
+  .branch, .rail, .manifold { grid-row: 1; }
   .rail { grid-column: 4; }
-  .manifold, .pipe { display: none; }
+  /* From node 01 to node 03: columns 1–2 plus the gap before column 3. */
+  .manifold { grid-column: 1 / 3; width: calc(100% + var(--gap)); height: 1px; margin-top: 0.5px; background: var(--color-line); }
 
   .branch { position: relative; }
-  .branch-head { position: relative; }
+  .branch-head { position: relative; padding-top: 1rem; padding-bottom: 0.5rem; }
+  .branch-head::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--division); }
+  .branch-node { position: absolute; left: -4.5px; top: -3.5px; width: 9px; height: 9px; border: 1.5px solid var(--division); border-radius: 50%; background: var(--color-white); }
   .branch-num { color: var(--color-slate); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; }
   .branch-title { margin-top: 0.25rem; }
   .branch-title a { color: var(--division-text); font-size: 1.125rem; font-weight: 600; text-decoration: none; }
@@ -211,24 +199,6 @@ const megaColumns = [...productGroups, repairServiceGroup];
   .branch-link:hover { color: var(--color-blue); }
   .node { flex: none; fill: var(--color-white); stroke: var(--division); stroke-width: 1.5; stroke-linejoin: round; }
   .branch-link:hover .node, .branch-link:focus-visible .node { fill: var(--division); }
-
-  /* Design A "rules": a 2px rule in the division colour across each column, a node dot on its left end,
-     a mono number, and a faint line joining nodes 01 and 03 (columns 1–2 plus the gap before column 3). */
-  [data-mega-style='rules'] .manifold { display: block; grid-column: 1 / 3; width: calc(100% + var(--gap)); height: 1px; margin-top: 0.5px; background: var(--color-line); }
-  [data-mega-style='rules'] .branch-head { padding-top: 1rem; padding-bottom: 0.5rem; }
-  [data-mega-style='rules'] .branch-head::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px; background: var(--division); }
-  [data-mega-style='rules'] .branch-node { position: absolute; left: -4.5px; top: -3.5px; width: 9px; height: 9px; border: 1.5px solid var(--division); border-radius: 50%; background: var(--color-white); }
-
-  /* Design B "pipeline": one 2px cyan pipe across columns 1–3. It is a grid item spanning those columns,
-     so its ends are the column edges at every width. A 2px branch in the division colour drops from it into each
-     heading and ends in a ring node. Link icons sit on the same vertical axis (--bx, the branch centre), and link and
-     heading text share one left edge. Whole-pixel values throughout, no transforms. */
-  [data-mega-style='pipeline'] .mega-grid { --bx: 8px; --text-x: 24px; padding-top: 1.75rem; }
-  [data-mega-style='pipeline'] .pipe { display: block; grid-column: 1 / 4; align-self: start; height: 2px; background: var(--color-cyan); }
-  [data-mega-style='pipeline'] .branch-head { padding: 10px 0 0.5rem var(--text-x); }
-  [data-mega-style='pipeline'] .branch-head::before { content: ''; position: absolute; left: calc(var(--bx) - 1px); top: 2px; width: 2px; height: 14px; background: var(--division); }
-  [data-mega-style='pipeline'] .branch-node { position: absolute; left: calc(var(--bx) - 5px); top: 14px; width: 10px; height: 10px; box-sizing: border-box; border: 2px solid var(--division); border-radius: 50%; background: var(--color-white); }
-  [data-mega-style='pipeline'] .branch-link { padding-left: calc(var(--bx) - 6px); }
 
   .rail { align-self: start; padding: 1.25rem 1.5rem 1.5rem; background: var(--color-paper); border: 1px solid var(--color-line); border-radius: 2px; }
   .rail-link { display: flex; align-items: center; justify-content: space-between; min-height: 2.75rem; border-bottom: 1px solid var(--color-line); color: var(--color-navy); font-weight: 600; text-decoration: none; }
