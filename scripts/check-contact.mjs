@@ -13,6 +13,10 @@
  * "Visible text" leaves out <head>, scripts, styles, templates, comments and every attribute
  * (so aria-labels carrying the number are fine). An element marked `data-contact-exempt`
  * (error states, such as the quote form's failure message) is skipped entirely.
+ * 5. Non-HTML text output (.txt, .xml, .json, .webmanifest) never carries either number, except the
+ *    files listed in TEXT_EXEMPT, by exact path. /llms.txt is exempt by decision (17 Nov 2026): it is a
+ *    summary for AI assistants, not a page, and must list the primary number as "Phone / WhatsApp"
+ *    and the sales line as "Sales", each exactly once and nowhere else in the file.
  * Exits 1 on any failure. No dependencies.
  */
 import fs from 'node:fs';
@@ -26,17 +30,22 @@ const SALES_RE = /(?:\+?\s*91[\s-]*)?98779[\s-]*38373/g;
 /** Pages where the full reference card may repeat the numbers. */
 const CONTACT_PAGES = new Set(['contact/index.html']);
 const MAX_PRIMARY = 2;
+/** Non-HTML files allowed to carry the numbers, by path relative to dist/, with the exact lines required. */
+const TEXT_EXEMPT = {
+  'llms.txt': [/^- Phone \/ WhatsApp: \+91 98884 91527$/m, /^- Sales: \+91 98779 38373$/m],
+};
+const TEXT_FILE = /\.(txt|xml|json|webmanifest)$/;
 
 if (!fs.existsSync(DIST)) {
   console.error('dist/ not found: run `npm run build` first.');
   process.exit(1);
 }
 
-function walk(dir, out = []) {
+function walk(dir, test = (name) => name.endsWith('.html'), out = []) {
   for (const name of fs.readdirSync(dir)) {
     const p = path.join(dir, name);
-    if (fs.statSync(p).isDirectory()) walk(p, out);
-    else if (name.endsWith('.html')) out.push(p);
+    if (fs.statSync(p).isDirectory()) walk(p, test, out);
+    else if (test(name)) out.push(p);
   }
   return out;
 }
@@ -132,6 +141,25 @@ for (const file of walk(DIST)) {
   if (problems.length) failures.push({ rel, problems });
 }
 
+// Non-HTML text output
+let textFiles = 0;
+for (const file of walk(DIST, (name) => TEXT_FILE.test(name))) {
+  const rel = path.relative(DIST, file).split(path.sep).join('/');
+  const raw = fs.readFileSync(file, 'utf8');
+  const primary = count(raw, PRIMARY_RE);
+  const sales = count(raw, SALES_RE);
+  textFiles++;
+  const exempt = TEXT_EXEMPT[rel];
+  if (!exempt) {
+    if (primary || sales) failures.push({ rel, problems: [`number in a non-HTML file (primary ${primary}, sales ${sales}); only ${Object.keys(TEXT_EXEMPT).join(', ')} may carry it`] });
+    continue;
+  }
+  const problems = exempt.filter((re) => !re.test(raw)).map((re) => `missing the required line ${re}`);
+  if (primary !== 1) problems.push(`primary number ${primary}× (needs exactly 1, on the "Phone / WhatsApp" line)`);
+  if (sales !== 1) problems.push(`sales number ${sales}× (needs exactly 1, on the "Sales" line)`);
+  if (problems.length) failures.push({ rel, problems });
+}
+
 if (failures.length) {
   for (const { rel, problems } of failures) {
     console.error(`✗ /${rel}`);
@@ -147,4 +175,4 @@ const byCount = rows.reduce((acc, r) => {
   return acc;
 }, {});
 for (const [k, n] of Object.entries(byCount)) console.log(`  ${String(n).padStart(4)} page(s): ${k}`);
-console.log(`check:contact: ${rows.length} pages OK.`);
+console.log(`check:contact: ${rows.length} pages OK; ${textFiles} text files OK (exempt by path: ${Object.keys(TEXT_EXEMPT).join(', ')}).`);

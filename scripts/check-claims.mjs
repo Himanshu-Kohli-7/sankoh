@@ -3,10 +3,13 @@
  * Claims check (CLAUDE.md §2.4, §2.5, §4): finds wording the site must never ship.
  * Exits 1 on any hit.
  *
- * Runs as `prebuild`, so any hit fails `npm run build` (and the Netlify build).
- * Run it on its own with `npm run check:claims`.
+ * Modes: `--source` (src/, public/, docs; runs as `prebuild`), `--dist` (the generated files; runs as
+ * `postbuild`), and no flag for both (`npm run check:claims`, part of check:all). Any hit fails
+ * `npm run build` (and the Netlify build).
  *
  * - BANNED scans the site's own files (src/, public/).
+ * - GENERATED (the built dist/llms.txt and dist/robots.txt) gets BANNED + FORMER as well: they are
+ *   generated from site.ts and the collections, so the source scan alone would not see the output.
  * - FORMER (the former contact's name, title, number and email) also scans docs, scripts and
  *   CLAUDE.md, because they must not appear anywhere in the project. The docs are spared the
  *   BANNED list because they quote those wordings in order to forbid them.
@@ -21,6 +24,9 @@ const ROOTS = ['src', 'public'];
 /** Project files scanned for the FORMER bans only. */
 const DOC_ROOTS = ['docs', 'scripts', 'CLAUDE.md', 'README.md', 'netlify.toml', 'astro.config.mjs', 'package.json'];
 const SELF = path.normalize('scripts/check-claims.mjs');
+/** Built text files generated from data rather than written by hand. */
+const GENERATED = ['dist/llms.txt', 'dist/robots.txt'];
+const mode = process.argv.includes('--source') ? 'source' : process.argv.includes('--dist') ? 'dist' : 'all';
 const TEXT = /\.(astro|md|mdx|ya?ml|ts|tsx|js|mjs|css|json|txt|html|webmanifest|svg|toml)$/;
 
 /** [pattern, why]. Case-insensitive unless the pattern says otherwise. */
@@ -55,12 +61,23 @@ function walk(target, out = []) {
   return out;
 }
 
-const jobs = [
-  ...ROOTS.flatMap((r) => walk(r)).map((file) => [file, [...BANNED, ...FORMER]]),
-  ...DOC_ROOTS.flatMap((r) => walk(r))
-    .filter((file) => path.normalize(file) !== SELF)
-    .map((file) => [file, FORMER]),
-];
+const jobs = [];
+if (mode !== 'dist') {
+  jobs.push(
+    ...ROOTS.flatMap((r) => walk(r)).map((file) => [file, [...BANNED, ...FORMER]]),
+    ...DOC_ROOTS.flatMap((r) => walk(r))
+      .filter((file) => path.normalize(file) !== SELF)
+      .map((file) => [file, FORMER]),
+  );
+}
+if (mode !== 'source') {
+  const missing = GENERATED.filter((f) => !fs.existsSync(f));
+  if (missing.length) {
+    console.error(`Missing ${missing.join(', ')}: run \`npm run build\` first.`);
+    process.exit(1);
+  }
+  jobs.push(...GENERATED.map((file) => [file, [...BANNED, ...FORMER]]));
+}
 
 let hits = 0;
 for (const [file, bans] of jobs) {
