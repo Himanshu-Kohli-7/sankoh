@@ -14,7 +14,8 @@ export default defineConfig({
   site: 'https://www.sankohtech.com',
   output: 'static',
   trailingSlash: 'always',
-  build: { format: 'directory' },
+  // All CSS inline: no render-blocking stylesheet requests on a first mobile visit (SPEC §8).
+  build: { format: 'directory', inlineStylesheets: 'always' },
   integrations: [
     preact(),
     sitemap({
