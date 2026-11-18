@@ -13,6 +13,10 @@
  * - FORMER (the former contact's name, title, number and email) also scans docs, scripts and
  *   CLAUDE.md, because they must not appear anywhere in the project. The docs are spared the
  *   BANNED list because they quote those wordings in order to forbid them.
+ * - [CONFIRM] marks text that still needs the company's confirmation. Every occurrence in src/ or public/
+ *   must be listed in docs/CONFIRM.md (an entry naming the file path); an unlisted one always fails.
+ *   Any [CONFIRM] left in dist/ fails when CONTEXT=production (Netlify's production deploys) and only
+ *   warns in previews and local builds.
  * This file is skipped: it holds the lists.
  *
  * "warranty" is allowed: the terms are confirmed and come from src/config/site.ts.
@@ -79,7 +83,56 @@ if (mode !== 'source') {
   jobs.push(...GENERATED.map((file) => [file, [...BANNED, ...FORMER]]));
 }
 
+const MARKER = '[CONFIRM]';
+const CONFIRM_DOC = 'docs/CONFIRM.md';
+const production = process.env.CONTEXT === 'production';
+/** Every file under `roots` that contains the marker, with its line numbers. */
+function markerHits(roots, textOnly = true) {
+  const found = [];
+  for (const file of roots.flatMap((r) => walkAll(r, textOnly))) {
+    const lines = fs.readFileSync(file, 'utf8').split(/\r?\n/);
+    lines.forEach((line, i) => line.includes(MARKER) && found.push({ file: file.split(path.sep).join('/'), line: i + 1, text: line.trim().slice(0, 140) }));
+  }
+  return found;
+}
+function walkAll(target, textOnly, out = []) {
+  if (!fs.existsSync(target)) return out;
+  if (fs.statSync(target).isFile()) {
+    if (!textOnly || TEXT.test(target)) out.push(target);
+    return out;
+  }
+  for (const name of fs.readdirSync(target)) walkAll(path.join(target, name), textOnly, out);
+  return out;
+}
+
 let hits = 0;
+let confirmFailed = false;
+if (mode !== 'dist') {
+  const doc = fs.existsSync(CONFIRM_DOC) ? fs.readFileSync(CONFIRM_DOC, 'utf8') : '';
+  const sourceHits = markerHits(ROOTS);
+  for (const h of sourceHits) {
+    if (doc.includes(h.file)) continue;
+    confirmFailed = true;
+    console.log(`${h.file}:${h.line}  ${MARKER} is not listed in ${CONFIRM_DOC}: add a row naming this file
+    ${h.text}`);
+  }
+  const present = new Set(sourceHits.map((h) => h.file));
+  for (const m of doc.matchAll(/`((?:src|public)\/[^`]+)`/g)) {
+    if (!present.has(m[1])) console.log(`warning: ${CONFIRM_DOC} lists ${m[1]}, which no longer contains ${MARKER}: remove the row`);
+  }
+  if (sourceHits.length) console.log(`${sourceHits.length} ${MARKER} marker(s) in src/public (${production ? 'production: these must be gone before the dist check' : 'allowed outside production'}).`);
+}
+if (mode !== 'source') {
+  const distHits = markerHits(['dist']);
+  for (const h of distHits) console.log(`${production ? '' : 'warning: '}${h.file}:${h.line}  ${MARKER} in built output
+    ${h.text}`);
+  if (distHits.length && production) {
+    confirmFailed = true;
+    console.log(`
+CONTEXT=production: ${distHits.length} ${MARKER} marker(s) in dist/. Resolve them (docs/CONFIRM.md) before deploying.`);
+  }
+}
+
 for (const [file, bans] of jobs) {
   const lines = fs.readFileSync(file, 'utf8').split(/\r?\n/);
   lines.forEach((line, i) => {
@@ -92,4 +145,4 @@ for (const [file, bans] of jobs) {
 }
 
 console.log(hits ? `\n${hits} banned claim(s) in ${jobs.length} files.` : `No banned claims in ${jobs.length} files.`);
-process.exit(hits ? 1 : 0);
+process.exit(hits || confirmFailed ? 1 : 0);

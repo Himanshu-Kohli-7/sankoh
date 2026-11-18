@@ -175,3 +175,5 @@ These render **only if their content folder has entries** — no empty headings 
 - Until a fact is confirmed, build around it: hide the section or use safe wording that makes no claim. Never guess.
 - Whenever you add a new `TODO:` for a missing fact, add a matching line to `docs/PENDING.md` in the same commit.
 - When the user confirms an item, update §4 of this file and the content, then tick it off in PENDING.md.
+
+**[CONFIRM] markers.** Text that needs the company's confirmation is tagged `[CONFIRM]` and listed in `docs/CONFIRM.md` (an unlisted marker fails `check:claims`). Any `[CONFIRM]` left in `dist/` fails the build when `CONTEXT=production`; previews and local builds only warn.
