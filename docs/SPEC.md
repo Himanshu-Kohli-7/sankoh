@@ -370,24 +370,15 @@ WCAG 2.2 AA: colour contrast (cyan never as text on white; amber buttons use nav
 
 ---
 
-## 10. Old-URL redirects (`netlify.toml` or `public/_redirects`)
+## 10. Old-URL redirects (`netlify.toml`)
 
-Keep the existing apex → `www` redirect. Add 301s:
+Full table and test results: `docs/REDIRECTS.md`. Check with `bash scripts/check-redirects.sh <deploy-preview-url>`.
 
-```
-/about           /about/            301
-/services        /valve-repair/     301
-/contact         /contact/          301
-/products        /products/         301
-```
-
-Query-string category URLs: read the legacy `categoryMap` in `legacy/src/components/ProductShowcase.js` and map each value with Netlify query matching, e.g.
-
-```
-/products  category=<old-value>  /products/<new-category>/  301
-```
-
-List every mapping explicitly; anything unmapped falls through to `/products/`. Test each with `curl -I` on the deploy preview.
+- Keep the existing apex → `www` redirect. Old-URL rules come before it and point at absolute `www` URLs, so a `www` request takes one hop.
+- `/about`, `/contact`, `/products`, `/services`: Netlify's own trailing-slash handling, no rules (a rule from `/about` would also match `/about/` and loop). Old `/services` goes to the new `/services/` hub, not `/valve-repair/`: Netlify matches `/services` and `/services/` alike, so that redirect would either never fire or break the hub (decided 17 Nov 2026).
+- Query-string category URLs (legacy `categoryMap` and `products.js` ids): one forced rule per `category` + `subcategory` pair, and `category=manual-valves`, each to its new category page. Netlify carries the old query string over; the page's canonical has none.
+- Bare `category=automated-valves`, `process-instruments`, `instruments` and unknown values are **not** redirected: a rule back to `/products/` would match its own target (query carried) and loop. `/products/` ignores the query.
+- Old files: `/sitemap.xml`, `/manifest.json`, `/logo.png`, `/logo192.png`, `/logo512.png`, `/Icons/*`, and `.html` variants of the old routes.
 
 ---
 

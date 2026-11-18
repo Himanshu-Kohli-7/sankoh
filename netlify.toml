@@ -15,6 +15,197 @@
 [[plugins]]
   package = "/netlify/plugins/indexnow"
 
+# Old-site URLs (SPEC §10). The old site was a client-side app on /, /about, /services, /products,
+# /contact, with categories in the query string. Every target is the final absolute www URL, so a
+# www request takes one hop. These come before the apex rule. Full table: docs/REDIRECTS.md.
+#
+# Query rules need force = true: /products/index.html exists and would otherwise shadow them.
+# More specific rules (category + subcategory) come first; Netlify uses the first match.
+# Netlify carries the old query string over (/products/manual-valves/?category=manual-valves): still
+# one hop to a 200, and the page's canonical has no query. Bare category=automated-valves,
+# process-instruments, instruments or any other value are NOT redirected: a rule back to /products/
+# would match its own target (the query is carried) and loop. /products/ ignores the query.
+
+[[redirects]]
+  from = "/products"
+  query = {category = "automated-valves", subcategory = "pneumatic"}
+  to = "https://www.sankohtech.com/products/pneumatic-actuated-valves/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "automated-valves", subcategory = "electric"}
+  to = "https://www.sankohtech.com/products/electric-actuated-valves/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "automated-valves", subcategory = "solenoid"}
+  to = "https://www.sankohtech.com/products/solenoid-valves/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "process-instruments", subcategory = "flow-meter"}
+  to = "https://www.sankohtech.com/products/flow-meters/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "process-instruments", subcategory = "pressure"}
+  to = "https://www.sankohtech.com/products/pressure-instruments/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "process-instruments", subcategory = "temperature"}
+  to = "https://www.sankohtech.com/products/temperature-instruments/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "process-instruments", subcategory = "level-transmitter"}
+  to = "https://www.sankohtech.com/products/level-instruments/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "process-instruments", subcategory = "analytical"}
+  to = "https://www.sankohtech.com/products/analytical-instruments/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "instruments", subcategory = "flow-meter"}
+  to = "https://www.sankohtech.com/products/flow-meters/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "instruments", subcategory = "pressure"}
+  to = "https://www.sankohtech.com/products/pressure-instruments/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "instruments", subcategory = "temperature"}
+  to = "https://www.sankohtech.com/products/temperature-instruments/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "instruments", subcategory = "level-transmitter"}
+  to = "https://www.sankohtech.com/products/level-instruments/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "instruments", subcategory = "analytical"}
+  to = "https://www.sankohtech.com/products/analytical-instruments/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products"
+  query = {category = "manual-valves"}
+  to = "https://www.sankohtech.com/products/manual-valves/"
+  status = 301
+  force = true
+
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "https://www.sankohtech.com/sitemap-index.xml"
+  status = 301
+
+[[redirects]]
+  from = "/manifest.json"
+  to = "https://www.sankohtech.com/site.webmanifest"
+  status = 301
+
+[[redirects]]
+  from = "/logo.png"
+  to = "https://www.sankohtech.com/og/default.jpg"
+  status = 301
+
+[[redirects]]
+  from = "/logo192.png"
+  to = "https://www.sankohtech.com/web-app-manifest-192x192.png"
+  status = 301
+
+[[redirects]]
+  from = "/logo512.png"
+  to = "https://www.sankohtech.com/web-app-manifest-512x512.png"
+  status = 301
+
+[[redirects]]
+  from = "/Icons/favicon.ico"
+  to = "https://www.sankohtech.com/favicon.ico"
+  status = 301
+
+[[redirects]]
+  from = "/Icons/favicon.svg"
+  to = "https://www.sankohtech.com/favicon.svg"
+  status = 301
+
+[[redirects]]
+  from = "/Icons/favicon-96x96.png"
+  to = "https://www.sankohtech.com/favicon-96x96.png"
+  status = 301
+
+[[redirects]]
+  from = "/Icons/apple-touch-icon.png"
+  to = "https://www.sankohtech.com/apple-touch-icon.png"
+  status = 301
+
+[[redirects]]
+  from = "/Icons/web-app-manifest-192x192.png"
+  to = "https://www.sankohtech.com/web-app-manifest-192x192.png"
+  status = 301
+
+[[redirects]]
+  from = "/Icons/web-app-manifest-512x512.png"
+  to = "https://www.sankohtech.com/web-app-manifest-512x512.png"
+  status = 301
+
+[[redirects]]
+  from = "/index.html"
+  to = "https://www.sankohtech.com/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about.html"
+  to = "https://www.sankohtech.com/about/"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "https://www.sankohtech.com/contact/"
+  status = 301
+
+[[redirects]]
+  from = "/products.html"
+  to = "https://www.sankohtech.com/products/"
+  status = 301
+
+[[redirects]]
+  from = "/services.html"
+  to = "https://www.sankohtech.com/services/"
+  status = 301
+
 # Canonical host is www (existing redirect, kept from the old site).
 [[redirects]]
   from = "https://sankohtech.com/*"
@@ -22,4 +213,3 @@
   status = 301
   force = true
 
-# TODO (Phase 4): old-URL 301s from SPEC §10.
