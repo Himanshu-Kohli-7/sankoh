@@ -1,6 +1,10 @@
 # Old-URL redirects
 
-Rules live in `netlify.toml` (SPEC §10). Test: `bash scripts/check-redirects.sh <base-url>` (curl -I, no follow, then the target path must answer 200 with no second hop).
+Query-string category URLs are redirected by the edge function `netlify/edge-functions/old-product-urls.ts`; everything else by `netlify.toml` (SPEC §10). Test: `bash scripts/check-redirects.sh <base-url>`. It follows each URL hop by hop, prints hop count and final URL, and exits 1 on more than one hop, a wrong final path or a non-200 end. Query URLs are tested with and without the slash. Against `netlify dev` expect failures for slashless `/about` etc. and `/sitemap.xml` (dev serves them 200 and has no built sitemap); on a deploy preview every row should pass.
+
+## Why an edge function (18 Nov 2026)
+
+On the deploy preview, slashless query URLs for manual-valves, automated-valves, process-instruments and `instruments&subcategory=flow-meter/pressure` ended on `/products/?<query>` instead of the category page, while other rows matched. Netlify's docs say the CDN normalises the trailing slash before redirect rules run, and that edge functions run before redirects. The per-rule difference could not be reproduced with `netlify dev`, so it is not proven; the fix does not depend on it. The edge function matches `/products` and `/products/` alike, ignores parameter order and unrelated parameters (utm_*), and 301s straight to the clean category URL (the old query is no longer carried over). The `netlify.toml` rules remain as a fallback and must be kept in step with the table in the function.
 
 ## Where the old URLs come from
 
