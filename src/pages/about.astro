@@ -48,9 +48,10 @@ const breadcrumbs = [{ label: 'About' }];
         <Image
           src={ownerPhoto}
           alt={`${proprietor.name}, ${proprietor.title} of ${site.name}, in the office`}
-          widths={[320, 480, 640, 800]}
+          widths={[320, 480, 640, 704]}
+          quality={75}
           sizes="(min-width: 1024px) 352px, (min-width: 640px) 40vw, 92vw"
-          width={800}
+          width={704}
           loading="lazy"
         />
       </div>
