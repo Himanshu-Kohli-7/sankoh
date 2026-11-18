@@ -1,13 +1,14 @@
 ---
 /**
  * Brands (SPEC §2.1): Sankoh® own brand; Stolzel, UPC and Flowtech as authorised partners.
- * Partner logos only where written permission is on file (site.brands.partnerLogoPermission);
- * otherwise names only. No other brand's logo, ever (CLAUDE.md §2.4).
+ * Partner logos where permission is on and a logo file exists (site.brands.partnerLogoPermission,
+ * src/config/partnerLogos.ts); otherwise the name as text. No other brand's logo, ever (CLAUDE.md §2.4).
  */
 import Base from '../layouts/Base.astro';
 import CTABand from '../components/CTABand.astro';
 import FAQ, { type FaqItem } from '../components/FAQ.astro';
 import Icon from '../components/Icon.astro';
+import PartnerLogo from '../components/PartnerLogo.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import { site, listAnd } from '../config/site';
@@ -19,7 +20,6 @@ const keyOf = (name: string) => name.split(' ')[0].toLowerCase();
 const partners = site.brands.authorisedPartners.map((name) => ({
   name,
   key: keyOf(name),
-  logo: site.brands.partnerLogoPermission[keyOf(name)] ? `/brand/partners/${keyOf(name)}.svg` : undefined,
 }));
 
 const faqs: FaqItem[] = [
@@ -89,7 +89,7 @@ const breadcrumbs = [{ label: 'Brands' }];
         {partners.map((p) => (
           <li data-key={p.key}>
             <p class="eyebrow">Authorised partner</p>
-            {p.logo ? <img src={p.logo} alt={p.name} height="48" loading="lazy" /> : <p class="wordmark">{p.name}</p>}
+            <div class="logo-slot"><PartnerLogo partnerKey={p.key} name={p.name} height={40} /></div>
           </li>
         ))}
       </ul>
@@ -131,7 +131,8 @@ const breadcrumbs = [{ label: 'Brands' }];
   .partners { display: grid; gap: 0.75rem; margin-top: 2rem; }
   .partners li { display: grid; align-content: space-between; gap: 1.5rem; min-height: 9rem; padding: 1.5rem; background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--color-blue); border-radius: 2px; }
   .partners .eyebrow { color: var(--color-slate); }
-  .wordmark { color: var(--color-navy); font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+  .logo-slot { display: flex; align-items: center; min-height: 3rem; color: var(--color-navy); }
+  .logo-slot :global(.partner-wordmark) { font-size: 1.5rem; }
   .other { display: grid; gap: 1rem; padding: 1.75rem; border: 1px dashed #b9c6d3; border-radius: 2px; }
   .other h2 { font-size: var(--text-h3); }
   .other p { margin-top: 0.5rem; color: var(--color-slate); max-width: 40rem; }

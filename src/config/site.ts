@@ -64,10 +64,10 @@ export const site = {
     /** Authorised partners. Their logos and product photos may be shown (CLAUDE.md §2.4); no other brand's may. */
     authorisedPartners: ['Stolzel', 'UPC', 'Flowtech Measuring Instruments Pvt Ltd'],
     /**
-     * Written permission on file to show each partner's logo (docs/PENDING.md #5). While false, the
-     * partner is shown by name only. When it turns true, add the logo as public/brand/partners/<key>.svg.
+     * Written permission to show each partner's logo: confirmed by the company, 18 Nov 2026 (docs/PENDING.md).
+     * While false, the partner is shown by name only. Logo files: src/config/partnerLogos.ts.
      */
-    partnerLogoPermission: { stolzel: false, upc: false, flowtech: false } as Record<string, boolean>,
+    partnerLogoPermission: { stolzel: true, upc: true, flowtech: true } as Record<string, boolean>,
   },
 
   divisions: {

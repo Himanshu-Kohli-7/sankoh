@@ -1,0 +1,32 @@
+---
+/** An authorised partner's official logo, or its name as a text wordmark when no logo file exists or permission is off. */
+import { Image } from 'astro:assets';
+import { site } from '../config/site';
+import { partnerLogos } from '../config/partnerLogos';
+
+interface Props {
+  /** Partner key: stolzel, upc, flowtech. */
+  partnerKey: string;
+  name: string;
+  /** Rendered height in px. */
+  height: number;
+}
+const { partnerKey, name, height } = Astro.props;
+const logo = site.brands.partnerLogoPermission[partnerKey] ? partnerLogos[partnerKey] : undefined;
+const alt = `${name} logo`;
+---
+
+{logo?.kind === 'svg' ? (
+  <span class:list={['chip', { dark: logo.onDark }]}><img class="partner-logo" src={logo.src} width={Math.round((logo.width / logo.height) * height)} {height} {alt} loading="lazy" decoding="async" /></span>
+) : logo?.kind === 'image' ? (
+  <Image class="partner-logo" src={logo.src} {alt} loading="lazy" style={`height:${height}px;width:auto`} />
+) : (
+  <span class="partner-wordmark">{name}</span>
+)}
+
+<style>
+  .chip { display: inline-flex; max-width: 100%; }
+  .chip.dark { padding: 0.5rem 0.75rem; background: var(--color-navy); border-radius: 2px; }
+  .partner-logo { width: auto; max-width: 100%; object-fit: contain; }
+  .partner-wordmark { color: var(--color-navy); font-size: 1.25rem; font-weight: 600; letter-spacing: 0.01em; line-height: 1.2; }
+</style>
