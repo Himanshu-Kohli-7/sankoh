@@ -27,12 +27,12 @@ const reviews = (await getCollection('reviews', (r) => featured.includes(r.id)))
 
     <div class="brands">
       <ul class="brand-grid" aria-label="Own brand and authorised partners">
-        <li data-logo>
+        <li>
           <span class="eyebrow tag">Own brand</span>
-          <img class="logo-mono" src="/brand/sankoh-logo-full.svg" width="150" height="32" alt={site.brands.own[0]} loading="lazy" />
+          <img src="/brand/sankoh-logo-full.svg" width="150" height="32" alt={site.brands.own[0]} loading="lazy" />
         </li>
         {site.brands.authorisedPartners.map((name) => (
-          <li data-logo>
+          <li>
             <span class="eyebrow tag">Authorised partner</span>
             <PartnerLogo partnerKey={name.split(' ')[0].toLowerCase()} {name} height={28} />
           </li>

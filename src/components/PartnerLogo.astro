@@ -17,11 +17,11 @@ const alt = `${name} logo`;
 ---
 
 {logo?.kind === 'svg' ? (
-  <span class:list={['chip', 'logo-mono', { dark: logo.onDark }]}><img class="partner-logo" src={logo.src} width={Math.round((logo.width / logo.height) * height)} {height} {alt} loading="lazy" decoding="async" /></span>
+  <span class:list={['chip', { dark: logo.onDark }]}><img class="partner-logo" src={logo.src} width={Math.round((logo.width / logo.height) * height)} {height} {alt} loading="lazy" decoding="async" /></span>
 ) : logo?.kind === 'image' ? (
-  <Image class="partner-logo logo-mono" src={logo.src} {alt} loading="lazy" style={`height:${height}px;width:auto`} />
+  <Image class="partner-logo" src={logo.src} {alt} loading="lazy" style={`height:${height}px;width:auto`} />
 ) : (
-  <span class="partner-wordmark logo-mono">{name}</span>
+  <span class="partner-wordmark">{name}</span>
 )}
 
 <style>
