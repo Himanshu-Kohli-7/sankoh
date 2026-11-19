@@ -77,6 +77,8 @@ const tiles = [
   <script is:inline>
     // From 640px all four tiles are in view: load the last two eagerly too. Runs as the parser reaches it.
     if (matchMedia('(min-width: 640px)').matches) document.querySelectorAll('[data-hero-late]').forEach((img) => { img.loading = 'eager'; });
+    // Phones: the browser does not scroll a half-visible tile into view on focus, so Tab could leave its focus ring off-screen.
+    document.currentScript.previousElementSibling.addEventListener('focusin', (e) => e.target.closest('.tile')?.scrollIntoView({ block: 'nearest', inline: 'nearest' }));
   </script>
 </div>
 
@@ -88,7 +90,10 @@ const tiles = [
   .flow { stroke: var(--color-blue); }
 
   /* Phones: one swipeable row; two tiles in view, the next one peeking. */
-  .tiles { position: relative; display: flex; gap: 0.75rem; margin-inline: calc(var(--gutter) * -1); padding: 0.25rem var(--gutter) 0.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); }
+  /* No visible scrollbar: the peeking third tile is the swipe cue. Swipe, trackpad and keyboard scrolling
+     (Tab to each tile link, arrow keys while one has focus) still work because overflow stays auto. */
+  .tiles { position: relative; display: flex; gap: 0.75rem; margin-inline: calc(var(--gutter) * -1); padding: 0.25rem var(--gutter) 0.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: none; }
+  .tiles::-webkit-scrollbar { display: none; }
   .tile { position: relative; flex: none; width: 44%; scroll-snap-align: start; display: flex; flex-direction: column; background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--division); border-radius: 2px; transition: transform 0.15s, border-color 0.15s; }
   .tile:hover { transform: translateY(-3px); border-color: #b9c6d3; border-top-color: var(--division); }
   /* Paper behind the cut-out: the placeholder until the image arrives. */
