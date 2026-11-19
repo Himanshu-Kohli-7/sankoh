@@ -181,7 +181,7 @@ Vibration sensors are not sold: no page.
 
 Batch A (first): Pressure Reducing Valve, Diaphragm Valve, Foot Valve, 3-Way Ball Valve, Plug Valve, Basket Strainer, Thermodynamic Steam Trap, Ball Float Steam Trap (manual valves); Pneumatic Rotary Actuator, Electric Actuator (valve automation accessories, as stand-alone units so they do not compete with the actuated valve pages); Rotameter, Metal Tube Rotameter, Oval Gear Flow Meter, Orifice Plate & Flange Assembly (flow); Thermocouple (temperature); Magnetic Level Indicator, Level Gauge Glass, Hydrostatic Level Transmitter (level); ORP Analyzer, Chlorine Analyzer (analytical).
 
-Batch B (later): Float Valve, Moisture Separator, Pneumatic Cylinder, Pneumatic Knife Gate Valve, Mini Motorised Valve, Electric Diaphragm Valve, NAMUR Solenoid Valve, Air Filter Regulator, Open Channel Flow Meter, Flow Switch, Manometer, Temperature Switch, Conductivity Level Switch, Cable Float Switch, Multi-parameter Water Quality Analyzer.
+Batch B (added 19 Nov 2026): Float Valve, Moisture Separator, Pneumatic Cylinder, Pneumatic Knife Gate Valve, Mini Motorised Valve, Electric Diaphragm Valve, NAMUR Solenoid Valve, Air Filter Regulator, Open Channel Flow Meter, Flow Switch, Manometer, Temperature Switch, Conductivity Level Switch, Cable Float Switch, Multi-parameter Water Quality Analyzer.
 
 Cross-links: Needle Valve and Siphon/Thermowell appear as "accessories" on the gauge pages; Solenoid valves and accessories cross-link from every automated valve page.
 

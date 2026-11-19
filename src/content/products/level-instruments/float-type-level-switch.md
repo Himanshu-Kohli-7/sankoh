@@ -46,4 +46,4 @@ A float type level switch signals when a liquid reaches a set height. A buoyant 
 
 In the top-mounted form, the float slides on a vertical stem that carries a magnet inside the float past a sealed reed switch or a magnetically operated microswitch. Because the switch never touches the liquid, it is protected and simple to wire. Several floats on one stem can give several switching points, such as pump on, pump off and high alarm.
 
-Float switches need no power to sense, have no electronics in the tank and are easy to understand and test by hand. They work best on clean liquids of steady density, without heavy build-up that could stick the float.
+Float switches need no power to sense, have no electronics in the tank and are easy to understand and test by hand. They work best on clean liquids of steady density, without heavy build-up that could stick the float. For sumps, pits and sewage, a [cable float switch](/products/level-instruments/cable-float-switch/) hangs free and is harder to jam.
