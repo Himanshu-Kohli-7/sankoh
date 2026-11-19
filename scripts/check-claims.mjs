@@ -10,7 +10,7 @@
  * - BANNED scans the site's own files (src/, public/).
  * - GENERATED (the built dist/llms.txt and dist/robots.txt) gets BANNED + FORMER as well: they are
  *   generated from site.ts and the collections, so the source scan alone would not see the output.
- * - FORMER (the former contact's name, title, number and email) also scans docs, scripts and
+ * - FORMER (the former contact's name, title, number and email, and the former address) also scans docs, scripts and
  *   CLAUDE.md, because they must not appear anywhere in the project. The docs are spared the
  *   BANNED list because they quote those wordings in order to forbid them.
  * - [CONFIRM] marks text that still needs the company's confirmation. Every occurrence in src/ or public/
@@ -53,7 +53,10 @@ const FORMER = [
   [/piyush/i, 'Former contact: never name him or use his email'],
   [/62834|6283492019|916283492019/, 'Former phone number: the only number is +91 98884 91527'],
   [/marketing head/i, 'Former contact title: there is no Marketing Head contact'],
+  [/\b254,?\s*1st\s+floor/i, 'Former address: the address is "69, Ground Floor, Hansa Industrial Park" (site.ts)'],
 ];
+/** Patterns checked in every built text file in dist/ (HTML, JSON-LD, sitemaps, llms.txt). */
+const DIST_ALL = [FORMER[FORMER.length - 1]];
 
 function walk(target, out = []) {
   if (!fs.existsSync(target)) return out;
@@ -81,6 +84,7 @@ if (mode !== 'source') {
     process.exit(1);
   }
   jobs.push(...GENERATED.map((file) => [file, [...BANNED, ...FORMER]]));
+  jobs.push(...walk('dist').filter((f) => !GENERATED.includes(f.replace(/\\/g, '/'))).map((file) => [file, DIST_ALL]));
 }
 
 const MARKER = '[CONFIRM]';

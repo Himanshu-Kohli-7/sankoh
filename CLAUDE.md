@@ -52,7 +52,7 @@ Three divisions, each with its own colour (§6):
 | Field | Value |
 |---|---|
 | Name | Sankoh Technical Solutions |
-| Address | 254, 1st Floor, Hansa Industrial Park, Barwala Road, Derabassi – 140507, Distt. SAS Nagar, Punjab, India |
+| Address | 69, Ground Floor, Hansa Industrial Park, Barwala Road, Derabassi – 140507, Distt. SAS Nagar, Punjab, India (current address, confirmed 19 Nov 2026; the former first-floor unit must not appear anywhere, `check:claims` fails on it) |
 | Location wording | "Derabassi, Punjab (near Chandigarh)" |
 | Phone (primary) | +91 98884 91527, the owner's number. The target of every Call and WhatsApp button, `tel:` link and `wa.me` link. Buttons are short labels ("Call us", "WhatsApp us") and **never print digits**; the number is in their aria-label. The full number is printed only in the desktop header strip and the footer (at most twice per page), plus the Contact page card and error states. Never in body text, FAQs or intros |
 | Phone (sales, backup) | +91 98779 38373, the company sales line (not any one person's), labelled "Sales". Used when the primary can't be reached. Small secondary text only: "Sales: …" in the footer, "If you can't reach us" on the Contact page, and in error states (quote form failure). Never a button, never in place of the primary. In JSON-LD as a `ContactPoint` with `contactType: "sales"` |

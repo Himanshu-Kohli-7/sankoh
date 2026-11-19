@@ -26,7 +26,7 @@ export const site = {
     'Manufacturer, supplier and repair partner for industrial valves, valve automation and process instruments.',
 
   address: {
-    line1: '254, 1st Floor, Hansa Industrial Park',
+    line1: '69, Ground Floor, Hansa Industrial Park',
     line2: 'Barwala Road',
     locality: 'Derabassi',
     postalCode: '140507',
@@ -36,7 +36,7 @@ export const site = {
     countryCode: 'IN',
     /** One-line form for footer, schema and Google Maps search. */
     oneLine:
-      '254, 1st Floor, Hansa Industrial Park, Barwala Road, Derabassi – 140507, Distt. SAS Nagar, Punjab, India',
+      '69, Ground Floor, Hansa Industrial Park, Barwala Road, Derabassi – 140507, Distt. SAS Nagar, Punjab, India',
     /** Preferred wording when describing where we are. */
     locationWording: 'Derabassi, Punjab (near Chandigarh)',
   },
