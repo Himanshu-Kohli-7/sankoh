@@ -213,16 +213,15 @@ Every repair page and the hub state the warranty (6 months on repaired valves an
 
 **Homepage** (top to bottom)
 1. **Hero** on a blueprint grid: eyebrow `VALVES · AUTOMATION · INSTRUMENTS · REPAIR`; h1 "Industrial Valves, Instruments & Repair — Any Make, Any Model" (three lines max at 1366px; CTAs above the fold at 1366x768 and 1536x695); one-line sub ("Manufacturer, supplier and repair partner from Derabassi, serving industries across India"); buttons **Get a quote** (primary) and **Call us**; right side: a composed cluster of 4 real product cut-outs connected by thin pipeline lines (below 640px a swipeable strip right after the CTAs).
-2. **Three division cards** (navy / blue / amber), each linking to its hub.
-3. **Product categories grid** (10 tiles, two groups).
-4. **Repair Hub band** (amber accent): "Any make. Any model. Typically back in 2–3 days." List of repair types, 5-step process strip, CTAs **Request repair** + **WhatsApp a photo**.
-5. **Product selector teaser**: a mini filter row that links into `/product-selector/` with the choice applied.
-6. **Brands strip**: Sankoh (own brand); Stolzel, UPC, Flowtech (authorised partners) — labelled as such.
-7. **Why Sankoh**: six advantages from the company profile (right product, quick service response, any-make repairs, authorised partner, strategic location, engineering expertise).
-8. **Applications**: water treatment, HVAC, building automation, industrial automation, water/milk ATMs (icons, no pages in phase 1).
-9. **Trust**: client logo strip + review cards (+ certifications if present).
-10. **Catalogue download** card + **Contact** block (address, hours, Get a quote / Call us / WhatsApp us buttons, no number) with lazy map.
-11. **FAQ** (5–6 questions about ordering, sourcing, repair, delivery area).
+2. **What we supply**: the three divisions as columns (navy / blue / amber top rule), each listing its five categories or services with a small thumbnail (product photo; line icon for repair), closed by one "We'll source it" line. Each link appears once.
+3. **Repair Hub band** (navy, amber accent; the only navy section on the page): "Any make. Any model. Typically back in 2–3 days." List of repair types, 5-step process strip, CTAs **Request repair** + **WhatsApp a photo**.
+4. **Proof band**: own brand (Sankoh) and authorised partners (Stolzel, UPC, Flowtech) labelled as such, client logo grid (3 / 5 / 7 columns), three testimonials with a link to all of them on `/about/#reviews`.
+5. **Why Sankoh**: compact strip of the six advantages from the company profile (icon, short title, one line).
+6. **Product selector** (paper, blue top rule): operation and media chips into `/product-selector/` with the filter applied, plus the company-named applications as chips from `config/applications.ts` (industry page when it exists, otherwise the selector's application filter).
+7. **FAQ** (5–7 questions about ordering, sourcing, repair, delivery area).
+8. **Contact + CTA band** (amber): Get a quote / Call us / WhatsApp buttons (no number), address, hours with the breakdown line, Google Maps link; catalogue link once the PDF exists.
+
+Bands alternate (white, paper, navy, paper, white, paper, white, amber) so no two neighbours look alike.
 
 **Repair section without photos** — make it feel professional through structure, not stock images:
 - Illustrated **5-step process**: Receive & inspect → Strip down & assess → Repair / replace parts → Test & calibrate → Report & dispatch. Line illustrations, numbered mono labels.
@@ -303,7 +302,7 @@ Positioning, three divisions, own brands and partners, owner/team block (owner p
 - No material, size, pressure or temperature filters: Typical options are general prose ranges, not structured or confirmed data. Add them only if structured, confirmed data arrives.
 
 ### 6.3 Trust section
-Client logo strip (greyscale, colour on hover), review cards (name, role, company), conditional certifications and projects. Review markup: **no** self-serving AggregateRating/Review schema (Google ignores it for a business's own reviews); plain HTML only.
+Client logo strip; one logo treatment everywhere (client, partner and review logos): greyscale, colour on hover or focus (`.logo-mono`), review logos small. Review cards (name, role, company), conditional certifications and projects. Review markup: **no** self-serving AggregateRating/Review schema (Google ignores it for a business's own reviews); plain HTML only.
 
 ### 6.4 Call & WhatsApp
 `tel:` and `wa.me` links everywhere via `src/components/contact/` reading `site.ts`. Buttons show short labels ("Call us", "WhatsApp us", "Get a quote", "Request repair"); the full number is in the aria-label ("Call us on +91 98884 91527"; icon-only: "Call Sankoh on …"). The full primary number appears at most twice per page (header strip, footer), except the Contact page and error states; the sales number only in the footer, Contact page and error states. Placement: category pages Get a quote + Call us; repair pages Request repair + Call us + WhatsApp a photo; service pages Request [service] + Call us; CTA band Get a quote + Call us + WhatsApp with one hours line; 404 and privacy buttons only. `npm run check:contact` enforces this on `dist/`. GA4 events: `click_call`, `click_whatsapp`, `download_catalogue`, `generate_lead` — mark these as conversions.
