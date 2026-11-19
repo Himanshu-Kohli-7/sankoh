@@ -86,7 +86,7 @@ const schema = [
     />
     <ul class="services">
       {services.map((service) => (
-        <li data-reveal>
+        <li>
           <RepairServiceCard title={service.label} href={service.href} icon={service.icon ?? 'wrench'} summary={service.summary} />
         </li>
       ))}
@@ -139,7 +139,7 @@ const schema = [
       <SectionHeader eyebrow="Why Sankoh" division="repair" title="More than a repair bench" />
       <ul class="reasons">
         {data.whySankoh.map((reason) => (
-          <li data-reveal>
+          <li>
             <span class="icon"><Icon name={reason.icon} size={26} /></span>
             <h3>{reason.title}</h3>
             <p>{reason.text}</p>

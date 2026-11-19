@@ -153,22 +153,22 @@ const megaColumns = [...productGroups, repairServiceGroup];
      The header keeps a constant height in the flow; only the visible bar shrinks,
      so compacting never shifts the page. */
   .site-header { position: sticky; top: 0; z-index: 60; height: var(--header-h); pointer-events: none; --header-h: 3.75rem; --bar-h: 3.75rem; }
-  .bar { position: relative; height: var(--bar-h); background: var(--color-white); border-bottom: 1px solid var(--color-line); pointer-events: auto; transition: height 0.2s; }
+  .bar { position: relative; height: var(--bar-h); background: var(--color-white); border-bottom: 1px solid var(--color-line); pointer-events: auto; transition: height 0.15s; }
   .bar-inner { display: flex; align-items: center; gap: 1.5rem; height: 100%; }
 
   .logo { display: flex; align-items: center; flex: none; min-height: 2.75rem; }
-  .logo img { display: block; height: 2.125rem; width: auto; transition: height 0.2s; }
+  .logo img { display: block; height: 2.125rem; width: auto; transition: height 0.15s; }
 
   .primary { display: none; height: 100%; margin-inline: auto; }
   .primary-list { display: flex; align-items: stretch; gap: 1.5rem; height: 100%; }
   .primary-list > li { display: flex; align-items: center; }
   .nav-link { position: relative; display: flex; align-items: center; height: 100%; color: var(--color-ink); font-size: 0.9375rem; font-weight: 600; text-decoration: none; white-space: nowrap; }
-  .nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--color-navy); transform: scaleX(0); transform-origin: left; transition: transform 0.2s; }
+  .nav-link::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--color-navy); transform: scaleX(0); transform-origin: left; transition: transform 0.15s; }
   .nav-link:hover::after, .nav-link[aria-current='page']::after, .has-mega:hover > .nav-link::after, .has-mega[data-open] > .nav-link::after { transform: scaleX(1); }
   .nav-link:hover { color: var(--color-navy); }
 
   .mega-toggle { display: grid; place-items: center; width: 1.75rem; height: 2.75rem; margin-left: 0.125rem; color: var(--color-slate); cursor: pointer; }
-  .mega-toggle :global(svg) { transition: transform 0.2s; }
+  .mega-toggle :global(svg) { transition: transform 0.15s; }
   .has-mega:hover .mega-toggle :global(svg), .has-mega[data-open] .mega-toggle :global(svg) { transform: rotate(180deg); }
 
   .actions { display: flex; align-items: center; gap: 1rem; margin-left: auto; }

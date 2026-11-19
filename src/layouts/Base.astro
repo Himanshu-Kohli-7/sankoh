@@ -55,27 +55,5 @@ const pageName = Astro.props.pageName ?? title.split(' | ')[0];
     <FloatingWhatsApp {pageName} {whatsappText} />
     <MobileActionBar {pageName} {whatsappText} />
 
-    <script is:inline>
-      // Scroll reveal for [data-reveal] (SPEC §3). Skipped under reduced motion.
-      (() => {
-        const els = document.querySelectorAll('[data-reveal]');
-        if (!els.length) return;
-        if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          els.forEach((el) => el.classList.add('is-in'));
-          return;
-        }
-        const io = new IntersectionObserver(
-          (entries) =>
-            entries.forEach((e) => {
-              if (e.isIntersecting) {
-                e.target.classList.add('is-in');
-                io.unobserve(e.target);
-              }
-            }),
-          { rootMargin: '0px 0px -8% 0px' },
-        );
-        els.forEach((el) => io.observe(el));
-      })();
-    </script>
   </body>
 </html>

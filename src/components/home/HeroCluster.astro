@@ -80,7 +80,7 @@ const tiles = [
   .flow { stroke: var(--color-blue); }
 
   .tiles { position: relative; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .tile { position: relative; display: flex; flex-direction: column; background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--division); border-radius: 2px; transition: transform 0.2s, border-color 0.2s; }
+  .tile { position: relative; display: flex; flex-direction: column; background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--division); border-radius: 2px; transition: transform 0.15s, border-color 0.15s; }
   .tile:hover { transform: translateY(-3px); border-color: #b9c6d3; border-top-color: var(--division); }
   /* Second column sits lower so the cluster reads as composed, not as a table. */
   .tile:nth-child(even) { top: 1.5rem; }

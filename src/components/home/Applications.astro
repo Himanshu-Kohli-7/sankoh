@@ -21,7 +21,7 @@ const icons: Record<string, string> = {
   />
   <ul class="grid">
     {site.applications.map((name) => (
-      <li data-reveal>
+      <li>
         <Icon name={icons[name] ?? 'valve'} size={36} />
         <span>{name}</span>
       </li>

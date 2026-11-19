@@ -25,7 +25,7 @@ const { clients } = Astro.props;
 <style>
   .logos { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--color-line); border-left: 1px solid var(--color-line); }
   li { display: grid; place-items: center; height: 6rem; padding: 1.25rem; background: var(--color-white); border-right: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); }
-  li :global(img) { width: auto; height: auto; max-width: 100%; max-height: 3rem; object-fit: contain; filter: grayscale(1); opacity: 0.75; transition: filter 0.2s, opacity 0.2s; }
+  li :global(img) { width: auto; height: auto; max-width: 100%; max-height: 3rem; object-fit: contain; filter: grayscale(1); opacity: 0.75; transition: filter 0.15s, opacity 0.15s; }
   li:hover :global(img) { filter: none; opacity: 1; }
 
   @media (min-width: 560px) { .logos { grid-template-columns: repeat(3, 1fr); } }

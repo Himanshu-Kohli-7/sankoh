@@ -56,7 +56,7 @@
 }
 
 :root {
-  /* Responsive gutters and section padding (SPEC §3): 16 / 24 / 32px; 64 / 96px */
+  /* Responsive gutters and section padding (SPEC §3): 16 / 24 / 32px; 64 / 72px */
   --gutter: 1rem;
   --section-y: 4rem;
   /* Height of the fixed mobile action bar; 0 above 768px. */
@@ -70,7 +70,7 @@
   :root { --gutter: 1.5rem; }
 }
 @media (min-width: 1024px) {
-  :root { --gutter: 2rem; --section-y: 6rem; }
+  :root { --gutter: 2rem; --section-y: 4.5rem; }
 }
 
 @layer base {
@@ -172,7 +172,7 @@
     border: 1px solid var(--color-line);
     border-top: 4px solid var(--division, var(--color-navy));
     border-radius: 2px;
-    transition: transform 0.2s, border-color 0.2s;
+    transition: transform 0.15s, border-color 0.15s;
   }
   .card:hover { transform: translateY(-3px); border-color: #b9c6d3; border-top-color: var(--division, var(--color-navy)); }
   /* Whole card is one link target; the title link stretches over it. */
@@ -187,9 +187,6 @@
     animation: pipe-flow 2.4s linear infinite;
   }
 
-  /* Scroll reveal: opt in with data-reveal; a small script in Base adds .is-in. */
-  .js [data-reveal] { opacity: 0; transform: translateY(12px); transition: opacity 0.5s, transform 0.5s; }
-  .js [data-reveal].is-in { opacity: 1; transform: none; }
 
   /* Rendered markdown (category intros, product descriptions). */
   .prose { max-width: 44rem; }

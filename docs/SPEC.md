@@ -207,7 +207,7 @@ Every repair page and the hub state the warranty (6 months on repaired valves an
 
 **Type scale** (fluid with `clamp()`): h1 40→56px / 600; h2 28→36px / 600; h3 20→24px / 600; body 17px / 1.6; small 14px. Mono eyebrows 12–13px, letter-spacing 0.08em, uppercase.
 
-**Layout**: max content width 1200px; 16px side gutters on mobile, 24px tablet, 32px desktop. 8px spacing grid. Section padding 64px mobile / 96px desktop.
+**Layout**: max content width 1200px; 16px side gutters on mobile, 24px tablet, 32px desktop. 8px spacing grid. Section padding 64px mobile / 72px desktop.
 
 **Division colour usage**: each product/repair page uses its division colour for the eyebrow, breadcrumb accent, icon strokes and a 4px top border on cards. Buttons are always amber (primary) or navy outline (secondary) regardless of division.
 
@@ -231,7 +231,7 @@ Every repair page and the hub state the warranty (6 months on repaired valves an
 - "Repair vs replace" explainer and FAQs.
 - A conditional gallery block that appears when `repair-gallery/` gets real photos.
 
-**Motion**: fade/slide-up on scroll via CSS + one small IntersectionObserver script (<1 KB), pipeline flow animation, hover lift on cards. Everything off under `prefers-reduced-motion`.
+**Motion**: decorative only: pipeline flow animation and hover lift on cards, transitions 150ms max. No scroll-reveal: content never starts hidden or at opacity 0. Everything off under `prefers-reduced-motion`.
 
 ---
 
