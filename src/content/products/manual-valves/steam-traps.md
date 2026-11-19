@@ -49,4 +49,4 @@ A steam trap is an automatic valve that removes condensate, the water that forms
 
 Traps matter because water in a steam system does harm. It coats heating surfaces and slows the process, and fast-moving steam can pick it up and throw it against bends and valves as water hammer. A trap that leaks steam is just as costly, in wasted fuel.
 
-There are three main families of trap: mechanical, thermostatic and thermodynamic. Each suits different duties, so the choice depends on the equipment being drained, the steam pressure and the amount of condensate. Fit a [strainer](/products/manual-valves/strainer/) ahead of the trap to keep dirt out of it.
+There are three main families of trap: mechanical, thermostatic and thermodynamic. Each suits different duties, so the choice depends on the equipment being drained, the steam pressure and the amount of condensate. Fit a [strainer](/products/manual-valves/strainer/) ahead of the trap to keep dirt out of it. Droplets carried along in the steam itself pass the traps by; a [moisture separator](/products/manual-valves/moisture-separator/) removes those.

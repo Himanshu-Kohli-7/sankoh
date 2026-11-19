@@ -52,11 +52,16 @@ Where every product photo that is not from the old site came from. Rules are in 
 |---|---|---|
 | `limit-switch-box.png` | Limit Switch Box | /aboutpic/Limit Switch.png |
 | `motorised-globe-valve.png` | Motorised Globe Valve | /aboutpic/04e8f8e8-ed4b-4a9e-8675-9803154f8703.png |
-| `pneumatic-power-cylinder-for-dampers.jpg` | Pneumatic Power Cylinder for Dampers | /aboutpic/pc.jpg |
+| `pneumatic-cylinder.jpg` | Pneumatic Cylinder (moved from Power Cylinder for Dampers, 19 Nov 2026: Stolzel labels this photo "Pneumatic Cylinder") | /aboutpic/pc.jpg |
+| `pneumatic-cylinder-2.jpg` | Pneumatic Cylinder | /aboutpic/pc1.jpg |
+| `pneumatic-knife-gate-valve.jpg` | Pneumatic Knife Gate Valve | /aboutpic/knife2.jpg |
+| `namur-solenoid-valve.jpg` | NAMUR Solenoid Valve | /aboutpic/namur-solenoid-valve.jpg |
 | `electric-actuator.png` | Electric Actuator | /aboutpic/EA.png |
 | `pneumatic-rotary-actuator.jpg` | Pneumatic Rotary Actuator | /aboutpic/Quarter.jpg |
 
-Not used from the Stolzel site, because they do not pass CLAUDE.md §2.3: the Electric Gate Valve image (file name says it is AI-generated), the positioner image (another maker's product), and the gearbox, air filter regulator, butterfly valve and angle seat valve images (file names point to other makers or marketplaces).
+Batch B photos (19 Nov 2026) were resized to 720 px wide (the largest size the site serves); no other edits. Each was checked to show a Stolzel product or no maker at all: `pc.jpg` and `pc1.jpg` and `knife2.jpg` carry the Stolzel mark (the small label on the filter regulator in `knife2.jpg` is unreadable even enlarged); the NAMUR photo is one of a consistent four-shot studio set with no maker visible.
+
+Not used from the Stolzel site, because they do not pass CLAUDE.md §2.3: the Electric Gate Valve image (file name says it is AI-generated), the positioner image (another maker's product), and the gearbox, air filter regulator, butterfly valve and angle seat valve images (file names point to other makers or marketplaces). Batch B: the whole Mini Motorized Valve gallery (`minimot.png` shows a "ZT" body mark; the others carry printed nameplates and look like the same other maker's range) and the whole Air Filter Regulator gallery (it mixes in `shavo-…` and IndiaMART-style files, so its unmarked shots `aireg.jpg` and `airfilter.jpg` are not trusted either); the Electric Diaphragm Valve gallery (`diaphragm*.jpg`: the actuator is embossed with a "STOBEL"-like mark, not Stolzel, and the body is not clearly a diaphragm valve); `knife1.jpg` (reads "STOLZLE", not the partner's name); the Linear Pneumatic Actuator photos (another maker's emblem on the yoke).
 
 ## 3. From the old site (`legacy/`), newly put to use
 
@@ -71,8 +76,9 @@ Not used from the Stolzel site, because they do not pass CLAUDE.md §2.3: the El
 |---|---|---|
 | Electromagnetic Flow Meter, Mechanical Water Meter, Ultrasonic Level Transmitter, Side Mounted Level Transmitter (old) | Scientific Devices mark | Partner photos above |
 | Pressure Gauge (old) | Scientific Devices mark; no partner or openly licensed photo without a brand found | Placeholder drawing |
-| Pneumatic Power Cylinder for Dampers (old) | Third-party name on the position indicator box | Stolzel photo above |
+| Pneumatic Power Cylinder for Dampers (old) | Third-party name on the position indicator box | Stolzel photo above, until 19 Nov 2026 |
+| Pneumatic Power Cylinder for Dampers (Stolzel `pc.jpg`) | It shows a plain pneumatic cylinder (Stolzel's own label), not a damper drive; moved to the Pneumatic Cylinder page so the two pages stay distinct | Placeholder drawing |
 
 ## 5. Still on the placeholder drawing
 
-No partner photo and no openly licensed photo without a visible brand was found for: Pressure Gauge, Pressure Switch, Siphon, pH Sensor, Turbidity Analyzer, Mass Flow Meter, Flush Bottom Valve, Pneumatic Plug Valve, Motorised Plug Valve, Motorised Gate Valve, Pulse Jet Dust Collector Valve, Solenoid Coils, Smart Valve Positioner, I/P Converter, Air Release Valve, Position Feedback & Local Control Units, and the new Pressure Reducing Valve, Diaphragm Valve, Foot Valve, 3-Way Ball Valve, Plug Valve, Thermocouple and ORP Analyzer pages. Wikimedia Commons was searched for each; the results were antique or branded items, diagrams, or unrelated photos.
+No partner photo and no openly licensed photo without a visible brand was found for: Pressure Gauge, Pressure Switch, Siphon, pH Sensor, Turbidity Analyzer, Mass Flow Meter, Flush Bottom Valve, Pneumatic Plug Valve, Motorised Plug Valve, Motorised Gate Valve, Pulse Jet Dust Collector Valve, Solenoid Coils, Smart Valve Positioner, I/P Converter, Air Release Valve, Position Feedback & Local Control Units, and the new Pressure Reducing Valve, Diaphragm Valve, Foot Valve, 3-Way Ball Valve, Plug Valve, Thermocouple and ORP Analyzer pages. Batch B (19 Nov 2026): Pneumatic Power Cylinder for Dampers (see §4), Float Valve (the only Commons photo, `Ball_valve_cold_water_tank.jpg`, is too dark and dirty to use), Moisture Separator (no partner photo; upcinstruments.in's "CI Flanged Moisture Separator" shows a screwed Y-pattern body at 358 px), Air Filter Regulator (Stolzel gallery rejected, see §2; Commons has only a museum cutaway). Wikimedia Commons was searched for each; the results were antique or branded items, diagrams, or unrelated photos.

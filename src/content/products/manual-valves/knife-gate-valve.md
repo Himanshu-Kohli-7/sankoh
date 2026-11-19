@@ -49,4 +49,4 @@ A knife gate valve isolates a line with a thin metal gate whose lower edge is be
 
 An ordinary [gate valve](/products/manual-valves/gate-valve/) struggles with this kind of fluid. Solids pack into the cavity under its wedge and the valve will not close. A knife gate valve has a short, slim body with very little space for material to collect, and it usually fits between two pipe flanges.
 
-It is an on/off valve, used fully open or fully closed, and is generally chosen for low-pressure duties.
+It is an on/off valve, used fully open or fully closed, and is generally chosen for low-pressure duties. For remote or automatic operation, see the [pneumatic knife gate valve](/products/pneumatic-actuated-valves/pneumatic-knife-gate-valve/).

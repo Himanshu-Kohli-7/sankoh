@@ -2,12 +2,9 @@
 title: Pneumatic Power Cylinder for Dampers
 seoTitle: Pneumatic Power Cylinder for Dampers
 metaDescription: Pneumatic power cylinder for driving boiler, fan and duct dampers, with positioner for modulating control. Supplied to suit your damper, across India.
-updated: 2026-11-15
+updated: 2026-11-19
 category: pneumatic-actuated-valves
 order: 11
-images:
-  - src: ../../../assets/products/pneumatic-power-cylinder-for-dampers.jpg
-    alt: "Tie-rod pneumatic cylinder with an aluminium barrel and air ports at both ends"
 summary: A long-stroke pneumatic cylinder with a lever linkage, used to open, close and position dampers on boilers, fans, furnaces and air ducts.
 operation: pneumatic
 applications:
@@ -19,7 +16,7 @@ applications:
 relatedProducts:
   - pneumatic-actuated-valves/pneumatic-globe-control-valve
   - pneumatic-actuated-valves/pneumatic-wafer-butterfly-valve
-  - pneumatic-actuated-valves/pneumatic-actuated-ball-valve
+  - valve-automation-accessories/pneumatic-cylinder
 relatedRepair:
   - /valve-repair/actuator-cylinder-repair/
   - /valve-repair/positioner-repair-calibration/
@@ -52,3 +49,5 @@ A pneumatic power cylinder is a heavy-duty air cylinder that moves a damper inst
 Dampers on boilers, fans and large ducts are big and can be stiff, and they often need to be held at a partial opening rather than just open or shut. A power cylinder is built for that: a long stroke and a large piston give plenty of force, and the whole unit sits on its own frame beside the duct.
 
 For modulating duty, a [positioner](/products/valve-automation-accessories/) takes the control signal and sets the cylinder to the matching position, with gauges showing the air pressures. A position indicator box reports the damper position, and a [solenoid valve](/products/solenoid-valves/) can be used for simple open/close service.
+
+The cylinder at its heart is the same kind of part as a general-purpose [pneumatic cylinder](/products/valve-automation-accessories/pneumatic-cylinder/). What makes it a power cylinder is the damper package around it: the frame, the lever and crank, the long stroke and the control equipment matched to the damper.

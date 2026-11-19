@@ -32,7 +32,7 @@ faqs:
   - question: How is the actuator sized?
     answer: From the valve's torque at your working pressure, plus a safety margin, checked against the lowest air pressure you can guarantee at the actuator. For spring return units the spring-end torque has to be checked too. Send the valve details and we will size it.
   - question: What else do I need to make it work?
-    answer: A solenoid valve to switch the air, usually mounted straight on the actuator, and clean, dry air. A limit switch box gives open and closed signals, and a positioner is added for modulating control.
+    answer: A NAMUR solenoid valve to switch the air, usually mounted straight on the actuator, and clean, dry air from an air filter regulator. A limit switch box gives open and closed signals, and a positioner is added for modulating control.
 typicalOptions:
   - label: "Mechanism"
     value: "Rack and pinion; scotch yoke for high torque"
@@ -50,6 +50,6 @@ typicalOptions:
 
 A pneumatic rotary actuator uses compressed air to turn a valve stem a quarter turn. In the common rack and pinion design, air pushes two pistons apart inside the body. Each piston carries a toothed rack, and the racks turn a central pinion that drives the valve. Reversing the air, or letting the springs take over, turns it back.
 
-This page covers the actuator as a separate unit, whether it is going onto an installed valve or taking the place of a worn actuator. A bracket and coupling join it to the valve, and standard mounting patterns on its top and side take a limit switch box and a solenoid valve without extra pipework. For complete assemblies supplied and tested together, see the [pneumatic actuated ball valve](/products/pneumatic-actuated-valves/pneumatic-actuated-ball-valve/) and the other pneumatic valves.
+This page covers the actuator as a separate unit, whether it is going onto an installed valve or taking the place of a worn actuator. A bracket and coupling join it to the valve, and standard mounting patterns on its top and side take a limit switch box and a [NAMUR solenoid valve](/products/solenoid-valves/namur-solenoid-valve/) without extra pipework. For complete assemblies supplied and tested together, see the [pneumatic actuated ball valve](/products/pneumatic-actuated-valves/pneumatic-actuated-ball-valve/) and the other pneumatic valves.
 
 Pneumatic actuators are fast, simple and safe in flammable atmospheres, and spring return gives a true fail-safe position. They do need a dependable air supply. Where there is none, an [electric actuator](/products/valve-automation-accessories/electric-actuator/) does the same job from a power supply.
