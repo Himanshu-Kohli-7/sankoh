@@ -24,7 +24,7 @@ const projects = (await getCollection('projects')).sort(byOrder).map((entry) => 
 
     {reviews.length > 0 && (
       <>
-        <h3 class="block-title">What their engineers say</h3>
+        <h3 class="block-title" id="reviews">What their engineers say</h3>
         <ul class="reviews" tabindex="0" aria-label="Client reviews">
           {reviews.map((review) => (
             <li>

@@ -1,0 +1,91 @@
+---
+/**
+ * Proof band (home §4): own brand and authorised partners, client logos, and three testimonials.
+ * All six testimonials stay on /about/#reviews. Wording comes verbatim from the reviews collection;
+ * PENDING #8 (named consent) still applies. Plain HTML, no Review/AggregateRating schema (SPEC §6.3).
+ * Partner logos only where permission is on (PartnerLogo); no other third-party marks (CLAUDE.md §2.4).
+ */
+import { getCollection } from 'astro:content';
+import ClientLogoStrip from '../ClientLogoStrip.astro';
+import Icon from '../Icon.astro';
+import PartnerLogo from '../PartnerLogo.astro';
+import ReviewCard from '../ReviewCard.astro';
+import SectionHeader from '../SectionHeader.astro';
+import { site } from '../../config/site';
+
+/** The three that cover both halves of the offering: repair and downtime, quick support, products. */
+const featured = ['birla-textiles', 'vardhaman-textiles', 'wipro-enterprises'];
+
+const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) => a.data.order - b.data.order;
+const clients = (await getCollection('clients')).sort(byOrder).map((entry) => entry.data);
+const reviews = (await getCollection('reviews', (r) => featured.includes(r.id))).sort(byOrder).map((entry) => entry.data);
+---
+
+<section class="proof">
+  <div class="container-content section-y">
+    <SectionHeader eyebrow="Brands & clients" title="Who we work with" />
+
+    <div class="brands">
+      <ul class="brand-grid" aria-label="Own brand and authorised partners">
+        <li data-logo>
+          <span class="eyebrow tag">Own brand</span>
+          <img class="logo-mono" src="/brand/sankoh-logo-full.svg" width="150" height="32" alt={site.brands.own[0]} loading="lazy" />
+        </li>
+        {site.brands.authorisedPartners.map((name) => (
+          <li data-logo>
+            <span class="eyebrow tag">Authorised partner</span>
+            <PartnerLogo partnerKey={name.split(' ')[0].toLowerCase()} {name} height={28} />
+          </li>
+        ))}
+      </ul>
+      <a class="more" href="/brands/">About our brands<Icon name="arrow-right" size={18} /></a>
+    </div>
+
+    <h3 class="block-title">Clients</h3>
+    <div class="logos"><ClientLogoStrip clients={clients} /></div>
+
+    {reviews.length > 0 && (
+      <>
+        <h3 class="block-title">What their engineers say</h3>
+        <ul class="reviews" tabindex="0" aria-label="Client reviews">
+          {reviews.map((review) => (
+            <li>
+              <ReviewCard quote={review.quote} name={review.name} role={review.role} company={review.company} logo={review.logo} />
+            </li>
+          ))}
+        </ul>
+        <p class="all"><a href="/about/#reviews">More client reviews<Icon name="arrow-right" size={18} /></a></p>
+      </>
+    )}
+  </div>
+</section>
+
+<style>
+  .proof { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+
+  .brands { margin-top: 1.75rem; }
+  .brand-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+  .brand-grid li { display: grid; grid-template-rows: auto 1fr; justify-items: center; align-items: center; gap: 0.25rem; min-height: 5rem; padding: 0.5rem 0.75rem 0.75rem; background: var(--color-white); border: 1px solid var(--color-line); border-radius: 2px; }
+  .tag { justify-self: start; color: var(--color-slate); font-size: 0.6875rem; }
+  .brand-grid li :global(img) { width: auto; max-width: 100%; height: 1.75rem; }
+  .brand-grid li :global(.partner-wordmark) { font-size: 1.125rem; }
+  .more { margin-top: 0.25rem; }
+  .more, .all a { display: inline-flex; align-items: center; gap: 0.375rem; min-height: 2.75rem; color: var(--color-navy); font-weight: 600; text-underline-offset: 4px; }
+  .more:hover, .all a:hover { color: var(--color-blue); }
+
+  .block-title { margin-top: 2.25rem; font-size: 1.25rem; }
+  .logos { margin-top: 1rem; }
+
+  /* Phones: one swipeable row of three. */
+  .reviews { display: flex; gap: 0.75rem; margin-top: 1rem; margin-inline: calc(var(--gutter) * -1); padding: 0.25rem var(--gutter) 0.75rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); }
+  .reviews li { flex: none; width: 84%; max-width: 22rem; scroll-snap-align: start; }
+  .all { margin-top: 0.5rem; }
+
+  @media (min-width: 768px) {
+    .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-inline: 0; padding: 0; overflow: visible; }
+    .reviews li { width: auto; max-width: none; }
+  }
+  @media (min-width: 640px) {
+    .brand-grid { grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  }
+</style>

@@ -7,10 +7,9 @@ import WhatWeSupply from '../components/home/WhatWeSupply.astro';
 import RepairBand from '../components/home/RepairBand.astro';
 import SelectorTeaser from '../components/home/SelectorTeaser.astro';
 import { selectorAvailable } from '../config/nav';
-import BrandsStrip from '../components/home/BrandsStrip.astro';
+import ProofBand from '../components/home/ProofBand.astro';
 import WhySankoh from '../components/home/WhySankoh.astro';
 import Applications from '../components/home/Applications.astro';
-import Trust from '../components/home/Trust.astro';
 import ContactBlock from '../components/home/ContactBlock.astro';
 import HomeFaq from '../components/home/HomeFaq.astro';
 import { site } from '../config/site';
@@ -23,12 +22,11 @@ import { site } from '../config/site';
   <Hero />
   <WhatWeSupply />
   <RepairBand />
-  {selectorAvailable && <SelectorTeaser />}
-  <BrandsStrip />
+  <ProofBand />
   <WhySankoh />
+  {selectorAvailable && <SelectorTeaser />}
   <Applications />
-  <Trust />
-  <ContactBlock />
   <HomeFaq />
+  <ContactBlock />
   <CTABand />
 </Base>

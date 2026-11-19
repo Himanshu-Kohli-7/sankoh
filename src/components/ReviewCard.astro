@@ -16,7 +16,7 @@ interface Props {
 const { quote, name, role, company, logo } = Astro.props;
 ---
 
-<figure class="review">
+<figure class="review" data-logo>
   <blockquote>
     <p>{quote}</p>
   </blockquote>
@@ -25,7 +25,7 @@ const { quote, name, role, company, logo } = Astro.props;
       <span class="name">{name}</span>
       <span class="role">{role}, {company}</span>
     </span>
-    {logo && <Image class="logo" src={logo} alt="" height={40} loading="lazy" />}
+    {logo && <Image class="logo logo-mono" src={logo} alt="" height={48} loading="lazy" />}
   </figcaption>
 </figure>
 
@@ -37,5 +37,6 @@ const { quote, name, role, company, logo } = Astro.props;
   .who { display: grid; }
   .name { color: var(--color-navy); font-weight: 600; }
   .role { color: var(--color-slate); font-size: var(--text-small); }
-  figcaption :global(.logo) { flex: none; width: auto; height: 2.25rem; max-width: 6rem; object-fit: contain; }
+  /* Small and grey, like every third-party logo (SPEC §6.3). */
+  figcaption :global(.logo) { flex: none; width: auto; height: 1.5rem; max-width: 4.5rem; object-fit: contain; }
 </style>

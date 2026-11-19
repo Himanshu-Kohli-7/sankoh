@@ -87,7 +87,7 @@ const breadcrumbs = [{ label: 'Brands' }];
       />
       <ul class="partners">
         {partners.map((p) => (
-          <li data-key={p.key}>
+          <li data-key={p.key} data-logo>
             <p class="eyebrow">Authorised partner</p>
             <div class="logo-slot"><PartnerLogo partnerKey={p.key} name={p.name} height={40} /></div>
           </li>

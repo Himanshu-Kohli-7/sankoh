@@ -188,6 +188,12 @@
   }
 
 
+  /* Third-party logos, one treatment everywhere (SPEC §6.3): greyscale, colour on hover or focus
+     of the logo or its [data-logo] container. */
+  .logo-mono { filter: grayscale(1); opacity: 0.72; transition: filter 0.15s, opacity 0.15s; }
+  .logo-mono:hover,
+  [data-logo]:is(:hover, :focus-within) .logo-mono { filter: none; opacity: 1; }
+
   /* Rendered markdown (category intros, product descriptions). */
   .prose { max-width: 44rem; }
   .prose > * + * { margin-top: 1rem; }
