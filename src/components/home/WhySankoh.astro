@@ -1,58 +1,41 @@
 ---
 /**
- * Why Sankoh (SPEC §3.7): the six advantages from the company profile.
- * Every sentence restates a fact from site.ts / CLAUDE.md §4 — nothing else may be added here.
+ * Why Sankoh (SPEC §3): the six advantages from the company profile, as a compact strip
+ * (icon, short title, one line). Used on home and About.
+ * Every line restates a fact from site.ts / CLAUDE.md §4 — nothing else may be added here.
  */
 import Icon from '../Icon.astro';
 import SectionHeader from '../SectionHeader.astro';
 import { site, listAnd } from '../../config/site';
 
-const scope = site.service.repairScope;
+interface Props {
+  /** Band colour, so the page can alternate light bands: white on home, paper on About. */
+  tone?: 'white' | 'paper';
+}
+const { tone = 'white' } = Astro.props;
 const partners = listAnd(site.brands.authorisedPartners);
 
 const reasons = [
-  {
-    icon: 'search',
-    title: 'The right product',
-    text: 'Tell us your process and we help you select the right valve or instrument. If it isn’t listed, we source it through our vendor network.',
-  },
-  {
-    icon: 'clock',
-    title: 'Quick service response',
-    text: `${site.service.supportLine}. Workshop repairs are typically done in 2–3 days.`,
-  },
-  {
-    icon: 'wrench',
-    title: 'Any-make repairs',
-    text: `${scope.valves}. VFDs too: ${site.service.vfdBrands}.`,
-  },
-  {
-    icon: 'check',
-    title: 'Authorised partner',
-    text: `We are an authorised partner of ${partners}, alongside our own brand ${site.brands.own[0]}.`,
-  },
-  {
-    icon: 'pin',
-    title: 'Strategic location',
-    text: `Based in ${site.address.locationWording}. We serve all of India, with the quickest delivery and on-site service across North India.`,
-  },
-  {
-    icon: 'users',
-    title: 'Engineering expertise',
-    text: 'Qualified engineers and professionals handle product selection, technical advice, delivery, installation, testing and commissioning.',
-  },
+  { icon: 'search', title: 'The right product', text: 'Help selecting the right valve or instrument, and sourcing when it isn’t listed.' },
+  { icon: 'clock', title: 'Quick response', text: `${site.service.supportLineShort}; workshop repairs typically take 2–3 days.` },
+  { icon: 'wrench', title: 'Any-make repairs', text: 'Valves, actuators, cylinders, positioners and VFDs of any make.' },
+  { icon: 'check', title: 'Authorised partner', text: `Of ${partners}, alongside our own brand ${site.brands.own[0]}.` },
+  { icon: 'pin', title: 'Near Chandigarh', text: 'Quickest delivery and on-site service across North India; we serve all of India.' },
+  { icon: 'users', title: 'Engineering expertise', text: 'Qualified engineers for selection, advice, installation, testing and commissioning.' },
 ];
 ---
 
-<section class="why">
+<section class="why" data-tone={tone}>
   <div class="container-content section-y">
     <SectionHeader eyebrow="Why Sankoh" title="Six reasons to work with us" />
-    <ul class="grid">
+    <ul class="strip">
       {reasons.map((reason) => (
         <li>
-          <span class="icon"><Icon name={reason.icon} size={26} /></span>
-          <h3>{reason.title}</h3>
-          <p>{reason.text}</p>
+          <span class="icon"><Icon name={reason.icon} size={22} /></span>
+          <div class="copy">
+            <h3>{reason.title}</h3>
+            <p>{reason.text}</p>
+          </div>
         </li>
       ))}
     </ul>
@@ -60,16 +43,20 @@ const reasons = [
 </section>
 
 <style>
-  .why { background: var(--color-paper); border-block: 1px solid var(--color-line); }
-  .grid { display: grid; margin-top: 2.5rem; border-top: 1px solid var(--color-line); border-left: 1px solid var(--color-line); background: var(--color-white); }
-  li { padding: 1.5rem; border-right: 1px solid var(--color-line); border-bottom: 1px solid var(--color-line); }
-  .icon { display: grid; place-items: center; width: 3rem; height: 3rem; border: 1.5px solid var(--color-navy); border-radius: 2px; color: var(--color-navy); }
-  h3 { margin-top: 1.125rem; font-size: 1.25rem; }
-  p { margin-top: 0.5rem; color: var(--color-slate); font-size: 1rem; line-height: 1.55; }
+  .why { background: var(--color-white); }
+  .why[data-tone='paper'] { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+  .strip { display: grid; margin-top: 1.75rem; border-top: 1px solid var(--color-line); }
+  li { display: flex; gap: 0.875rem; padding: 0.875rem 0; border-bottom: 1px solid var(--color-line); }
+  .icon { flex: none; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border: 1.5px solid var(--color-navy); border-radius: 2px; color: var(--color-navy); }
+  h3 { font-size: 1.0625rem; line-height: 1.3; }
+  /* Ink, not slate: body text here must read clearly (WCAG AA with margin). */
+  p { margin-top: 0.125rem; color: var(--color-ink); font-size: 0.9375rem; line-height: 1.5; }
 
-  @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 640px) {
+    .strip { grid-template-columns: repeat(2, 1fr); column-gap: 2rem; }
+  }
   @media (min-width: 1024px) {
-    .grid { grid-template-columns: repeat(3, 1fr); }
-    li { padding: 2rem; }
+    .strip { grid-template-columns: repeat(3, 1fr); column-gap: 2.5rem; }
+    li { padding: 1.125rem 0; }
   }
 </style>
