@@ -99,14 +99,14 @@ function Section({ group, hubLabel, open, onToggle, currentPath }: SectionProps)
           <Svg
             d={ICONS.chevron}
             size={20}
-            class={`transition-transform duration-180 ease-out motion-reduce:transition-none ${open ? 'rotate-180' : ''}`}
+            class={`transition-transform duration-150 ease-out motion-reduce:transition-none ${open ? 'rotate-180' : ''}`}
           />
         </span>
       </button>
       <div
         id={id}
         inert={!open}
-        class="grid transition-[grid-template-rows] duration-180 ease-out motion-reduce:transition-none"
+        class="grid transition-[grid-template-rows] duration-150 ease-out motion-reduce:transition-none"
         style={{ gridTemplateRows: open ? '1fr' : '0fr' }}
       >
         <div class="min-h-0 overflow-hidden">
