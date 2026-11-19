@@ -3,8 +3,7 @@
 import Base from '../layouts/Base.astro';
 import CTABand from '../components/CTABand.astro';
 import Hero from '../components/home/Hero.astro';
-import Divisions from '../components/home/Divisions.astro';
-import CategoryGrid from '../components/home/CategoryGrid.astro';
+import WhatWeSupply from '../components/home/WhatWeSupply.astro';
 import RepairBand from '../components/home/RepairBand.astro';
 import SelectorTeaser from '../components/home/SelectorTeaser.astro';
 import { selectorAvailable } from '../config/nav';
@@ -22,8 +21,7 @@ import { site } from '../config/site';
   description="Industrial valves, valve automation and process instruments, plus valve and VFD repair of any make, on site or in our workshop. Derabassi, Punjab."
 >
   <Hero />
-  <Divisions />
-  <CategoryGrid />
+  <WhatWeSupply />
   <RepairBand />
   {selectorAvailable && <SelectorTeaser />}
   <BrandsStrip />
