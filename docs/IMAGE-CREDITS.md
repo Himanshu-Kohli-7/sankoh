@@ -12,6 +12,7 @@ Where every product photo that is not from the old site came from. Rules are in 
 | File (`src/assets/products/`) | Used on | Title | Author | Licence | Source | Changes |
 |---|---|---|---|---|---|---|
 | `thermowell.png` | Thermowell | Thermowell | Taintedkernel | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0) | https://commons.wikimedia.org/wiki/File:Thermowell.png | Resized and converted for the web |
+| `flow-switch.jpg` | Flow Switch | Sensor de flujo tipo pistón | Josefus2003 | Public domain | https://commons.wikimedia.org/wiki/File:FlowSwitch.jpg | Resized to 720 px wide and converted for the web. Moulded text on the body is unreadable; no brand visible |
 
 ## 2. Authorised partner photos (provisional until written permission)
 
@@ -34,6 +35,11 @@ Where every product photo that is not from the old site came from. Rules are in 
 | `level-gauge-glass.jpg` | Level Gauge Glass | /product/reflex-level-gauges/ | /wp-content/uploads/2023/11/Reflex-Level-Gauges.jpg |
 | `hydrostatic-level-transmitter.jpg` | Hydrostatic Level Transmitter | /product/hydrostatic-level-transmitter/ | /wp-content/uploads/2023/11/Hydrostatic-Level-Transmitter.jpg |
 | `chlorine-analyzer.jpg` | Chlorine Analyzer | /product/chlorine-meter/ | /wp-content/uploads/2024/07/Chlorine-Meter.jpg |
+| `open-channel-flow-meter.jpg` | Open Channel Flow Meter | /product/open-channel-flow-meter/ | /wp-content/uploads/2024/07/Open-Channel-Flow-Meter.jpg |
+
+Edits to Batch B Flowtech photos (19 Nov 2026), all resized to 720 px wide (the largest size the site serves):
+
+- `open-channel-flow-meter.jpg`: the nameplate on the transmitter (model, output, power, range, serial number) is **blurred**, because it was close to legible at 720 px and nameplate data must never be readable or printed as a spec. Nothing else changed.
 
 ### UPC Instruments Pvt Ltd — unitechmeter.com
 
@@ -81,4 +87,4 @@ Not used from the Stolzel site, because they do not pass CLAUDE.md §2.3: the El
 
 ## 5. Still on the placeholder drawing
 
-No partner photo and no openly licensed photo without a visible brand was found for: Pressure Gauge, Pressure Switch, Siphon, pH Sensor, Turbidity Analyzer, Mass Flow Meter, Flush Bottom Valve, Pneumatic Plug Valve, Motorised Plug Valve, Motorised Gate Valve, Pulse Jet Dust Collector Valve, Solenoid Coils, Smart Valve Positioner, I/P Converter, Air Release Valve, Position Feedback & Local Control Units, and the new Pressure Reducing Valve, Diaphragm Valve, Foot Valve, 3-Way Ball Valve, Plug Valve, Thermocouple and ORP Analyzer pages. Batch B (19 Nov 2026): Pneumatic Power Cylinder for Dampers (see §4), Float Valve (the only Commons photo, `Ball_valve_cold_water_tank.jpg`, is too dark and dirty to use), Moisture Separator (no partner photo; upcinstruments.in's "CI Flanged Moisture Separator" shows a screwed Y-pattern body at 358 px), Air Filter Regulator (Stolzel gallery rejected, see §2; Commons has only a museum cutaway). Wikimedia Commons was searched for each; the results were antique or branded items, diagrams, or unrelated photos.
+No partner photo and no openly licensed photo without a visible brand was found for: Pressure Gauge, Pressure Switch, Siphon, pH Sensor, Turbidity Analyzer, Mass Flow Meter, Flush Bottom Valve, Pneumatic Plug Valve, Motorised Plug Valve, Motorised Gate Valve, Pulse Jet Dust Collector Valve, Solenoid Coils, Smart Valve Positioner, I/P Converter, Air Release Valve, Position Feedback & Local Control Units, and the new Pressure Reducing Valve, Diaphragm Valve, Foot Valve, 3-Way Ball Valve, Plug Valve, Thermocouple and ORP Analyzer pages. Batch B (19 Nov 2026): Mini Motorised Valve and Electric Diaphragm Valve (Stolzel galleries rejected, see §2; the Commons motorised ball valve is a Swagelok product), Pneumatic Power Cylinder for Dampers (see §4), Float Valve (the only Commons photo, `Ball_valve_cold_water_tank.jpg`, is too dark and dirty to use), Moisture Separator (no partner photo; upcinstruments.in's "CI Flanged Moisture Separator" shows a screwed Y-pattern body at 358 px), Air Filter Regulator (Stolzel gallery rejected, see §2; Commons has only a museum cutaway). Wikimedia Commons was searched for each; the results were antique or branded items, diagrams, or unrelated photos.

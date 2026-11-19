@@ -29,4 +29,14 @@ export const imageCredits: ImageCredit[] = [
     source: 'https://commons.wikimedia.org/wiki/File:Thermowell.png',
     changes: 'Resized and converted for the web',
   },
+  {
+    file: 'flow-switch.jpg',
+    usedOn: { label: 'Flow Switch', href: '/products/flow-meters/flow-switch/' },
+    title: 'Sensor de flujo tipo pistón (FlowSwitch.jpg)',
+    author: 'Josefus2003',
+    licence: 'Public domain',
+    licenceUrl: 'https://commons.wikimedia.org/wiki/File:FlowSwitch.jpg#Licensing',
+    source: 'https://commons.wikimedia.org/wiki/File:FlowSwitch.jpg',
+    changes: 'Resized to 720 px wide and converted for the web',
+  },
 ];
