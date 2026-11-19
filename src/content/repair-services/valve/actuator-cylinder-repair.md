@@ -5,7 +5,7 @@ metaDescription: Repair of pneumatic and electric valve actuators and pneumatic 
 updated: 2026-11-15
 group: valve
 serviceType: Valve actuator and pneumatic cylinder repair
-summary: We repair pneumatic actuators, electric actuators and pneumatic power cylinders of any make, sent in alone or still mounted on the valve. A typical workshop repair takes 2–3 days.
+summary: We repair pneumatic actuators, electric actuators and pneumatic power cylinders of any make. Send them in alone or still mounted on the valve. A typical workshop repair takes 2–3 days.
 whatWeRepair:
   - Rack-and-pinion and scotch-yoke pneumatic actuators, double-acting and spring-return
   - Electric (motorised) actuators for quarter-turn and multi-turn valves

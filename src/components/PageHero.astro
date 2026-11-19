@@ -2,6 +2,8 @@
 /**
  * Header of every inner page: blueprint grid, breadcrumbs, division eyebrow, H1 and lead text.
  * Default slot = content under the lead (buttons, intro). `aside` slot = right column on desktop.
+ * `splitLead`: the lead's first sentence stays above the slot; the rest follows it in the DOM
+ * (same order for crawlers, no text repeated) but shows below the buttons on phones.
  */
 import BlueprintGrid from './BlueprintGrid.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
@@ -18,8 +20,14 @@ interface Props {
   lead?: string;
   /** `dark` = navy with an amber rule, used by the repair hubs. */
   tone?: 'light' | 'dark';
+  /** Phones: show only the first sentence of the lead above the buttons, the rest below them. */
+  splitLead?: boolean;
 }
-const { breadcrumbs, division, eyebrow, title, lead, tone = 'light' } = Astro.props;
+const { breadcrumbs, division, eyebrow, title, lead, tone = 'light', splitLead = false } = Astro.props;
+/** First sentence | the rest. Splits after ".", "!" or "?" followed by a space. */
+const cut = splitLead && lead ? lead.search(/[.!?]\s/) : -1;
+const leadFirst = cut > 0 ? lead!.slice(0, cut + 1) : lead;
+const leadRest = cut > 0 ? lead!.slice(cut + 2).trim() : undefined;
 const hasAside = Astro.slots.has('aside');
 /** "Main — accent": the part after the dash is set off in the dark hero. */
 const [titleMain, titleAccent] = title.split(' — ');
@@ -33,7 +41,8 @@ const [titleMain, titleAccent] = title.split(' — ');
       <div class="copy">
         <DivisionBadge division={division} label={eyebrow} class="hero-badge" />
         <h1>{titleAccent ? <>{titleMain} — <span class="accent">{titleAccent}</span></> : title}</h1>
-        {lead && <p class="lead">{lead}</p>}
+        {leadFirst && <p class="lead">{leadFirst}</p>}
+        {leadRest && <p class="lead lead-rest">{leadRest}</p>}
         <slot />
       </div>
       {hasAside && <div class="aside"><slot name="aside" /></div>}
@@ -48,6 +57,13 @@ const [titleMain, titleAccent] = title.split(' — ');
   .copy { min-width: 0; }
   h1 { margin-top: 0.875rem; font-size: clamp(2.125rem, 1.6rem + 2.4vw, 3.25rem); text-wrap: balance; }
   .lead { margin-top: 1.125rem; max-width: 40rem; color: var(--color-slate); font-size: 1.1875rem; line-height: 1.5; }
+  .lead-rest { margin-top: 0.5rem; }
+  /* Phones: the rest of the lead moves below the buttons (visual order only). */
+  @media (max-width: 639px) {
+    .copy:has(.lead-rest) { display: flex; flex-direction: column; }
+    .copy:has(.lead-rest) .lead { font-size: 1.0625rem; }
+    .lead-rest { order: 1; margin-top: 1.25rem; font-size: 1.0625rem; }
+  }
 
   .hero[data-tone='dark'] { background: var(--color-navy); border-top: 6px solid var(--color-amber); border-bottom: 0; color: var(--color-white); }
   [data-tone='dark'] h1 { color: var(--color-white); }

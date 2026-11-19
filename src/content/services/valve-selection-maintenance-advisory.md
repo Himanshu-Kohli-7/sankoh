@@ -6,7 +6,7 @@ updated: 2026-11-15
 order: 1
 icon: search
 serviceType: Valve selection and maintenance advisory
-summary: Our Valve Selection & Maintenance Advisory is expert help with every type of valve, from choosing it to maintaining it and managing it across a plant. Describe your process and our engineers will help you pick the right valve, plan its upkeep and decide whether a worn one should be repaired or replaced.
+summary: Our Valve Selection & Maintenance Advisory is expert help with every type of valve. It covers choosing, maintaining and managing valves across a plant. Describe your process and our engineers will help you pick the right valve, plan its upkeep and decide whether a worn one should be repaired or replaced.
 cardSummary: Help selecting, maintaining and managing valves of every type, and technical advice on equipment already installed.
 ctaLabel: Request advice
 whatWeDo:
