@@ -12,8 +12,10 @@ interface Props {
   tone?: Tone;
   size?: 'md' | 'sm';
   class?: string;
+  /** Shown from 640px up and always in the accessible name, e.g. "for Ball Valve". */
+  labelSuffix?: string;
 }
-const { label = 'Get a quote', product, variant = 'primary', tone, size, class: cls } = Astro.props;
+const { label = 'Get a quote', product, variant = 'primary', tone, size, class: cls, labelSuffix } = Astro.props;
 ---
 
-<ActionLink href={quoteHref(product)} icon="quote" {label} {variant} {tone} {size} class={cls} />
+<ActionLink href={quoteHref(product)} icon="quote" {label} {labelSuffix} {variant} {tone} {size} class={cls} />

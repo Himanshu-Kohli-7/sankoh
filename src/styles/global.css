@@ -148,6 +148,8 @@
     cursor: pointer;
     transition: background-color 0.15s, color 0.15s, border-color 0.15s;
   }
+  /* Long button labels shorten on phones; the full text stays in aria-label (ActionLink). */
+  @media (max-width: 639px) { .btn .label-suffix { display: none; } }
   .btn-sm { min-height: 2.75rem; padding: 0.5rem 1rem; font-size: 0.9375rem; }
   .btn-primary { background: var(--color-amber); color: var(--color-navy); }
   .btn-primary:hover { background: #f0b632; }

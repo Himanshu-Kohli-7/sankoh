@@ -20,8 +20,11 @@ interface Props extends HTMLAttributes<'a'> {
   variant?: Variant;
   tone?: Tone;
   size?: 'md' | 'sm';
+  /** Extra words shown from 640px up (e.g. "for Ball Valve"). Always part of the accessible name. */
+  labelSuffix?: string;
 }
-const { href, icon, label, variant = 'primary', tone = 'light', size = 'md', class: cls, ...rest } = Astro.props;
+const { href, icon, label, labelSuffix, variant = 'primary', tone = 'light', size = 'md', class: cls, ...rest } = Astro.props;
+const ariaLabel = labelSuffix ? `${label} ${labelSuffix}` : undefined;
 
 const look: Record<Variant, Record<Tone, string>> = {
   primary: { light: 'btn-primary', dark: 'btn-primary', amber: 'btn-navy' },
@@ -31,7 +34,7 @@ const look: Record<Variant, Record<Tone, string>> = {
 };
 ---
 
-<a href={href} class:list={['btn', look[variant][tone], size === 'sm' && 'btn-sm', cls]} {...rest}>
+<a href={href} class:list={['btn', look[variant][tone], size === 'sm' && 'btn-sm', cls]} aria-label={ariaLabel} {...rest}>
   <Icon name={icon} size={20} />
-  {variant !== 'icon' && <span>{label}</span>}
+  {variant !== 'icon' && <span>{label}{labelSuffix && <span class="label-suffix"> {labelSuffix}</span>}</span>}
 </a>

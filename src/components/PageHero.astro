@@ -76,6 +76,12 @@ const [titleMain, titleAccent] = title.split(' — ');
   [data-tone='dark'] :global(.crumbs [aria-current]) { color: var(--color-white); }
   [data-tone='dark'] :global(:focus-visible) { outline-color: var(--color-amber); }
 
+  /* Below desktop the aside follows the copy; a slot element with order 2 can sit after it. */
+  @media (max-width: 1023px) {
+    .layout.has-aside { display: flex; flex-direction: column; gap: 0; }
+    .has-aside .copy { display: contents; }
+    .aside { order: 1; margin-top: 2rem; }
+  }
   @media (min-width: 1024px) {
     .inner { padding-block: 0.75rem 4.5rem; }
     .layout { margin-top: 2rem; }

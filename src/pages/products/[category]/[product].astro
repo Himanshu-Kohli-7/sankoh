@@ -83,7 +83,7 @@ const schema = [
 >
   <PageHero {breadcrumbs} division={category.division} eyebrow={category.label} title={data.title} lead={data.summary}>
     <div class="actions">
-      <QuoteButton label={`Get a quote for ${data.title}`} product={slug} class="quote-long" />
+      <QuoteButton label="Get a quote" labelSuffix={`for ${data.title}`} product={slug} class="quote-long" />
       <WhatsAppButton label="WhatsApp" text={whatsappText} />
     </div>
     <p class="avail">Delivered across India · Warranty: {site.service.warranty.newProducts}</p>
@@ -239,9 +239,14 @@ const schema = [
 
 <style>
   .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
-  /* Product names can be long: let "Get a quote for …" wrap rather than overflow. */
+  /* Product names can be long: from 640px "Get a quote for …" wraps rather than overflowing. */
   .actions :global(.quote-long) { white-space: normal; text-align: left; }
   .avail { margin-top: 1.25rem; color: var(--color-slate); font-size: var(--text-small); }
+  /* Phones and tablets: the product image comes right after the buttons, this line after the image. */
+  @media (max-width: 1023px) {
+    .avail { order: 2; }
+    .actions + .avail { margin-top: 1rem; }
+  }
 
   .body { display: grid; gap: 3rem; padding-block: 3rem var(--section-y); }
   .main { min-width: 0; }
@@ -277,7 +282,6 @@ const schema = [
 
   @media (max-width: 479px) {
     .actions :global(.btn) { flex: 1 1 calc(50% - 0.375rem); }
-    .actions :global(.btn:first-child) { flex-basis: 100%; }
   }
   @media (max-width: 639px) {
     .grid :global(.summary) { display: none; }
