@@ -21,7 +21,7 @@ const clients = (await getCollection('clients')).sort(byOrder).map((entry) => en
 const reviews = (await getCollection('reviews', (r) => featured.includes(r.id))).sort(byOrder).map((entry) => entry.data);
 ---
 
-<section class="proof">
+<section class="section-compact proof">
   <div class="container-content section-y">
     <SectionHeader eyebrow="Brands & clients" title="Who we work with" />
 

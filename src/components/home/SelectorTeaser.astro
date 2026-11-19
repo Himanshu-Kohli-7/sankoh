@@ -27,7 +27,7 @@ const appChips = applications.map((app) => ({
 }));
 ---
 
-<section class="selector">
+<section class="section-compact selector">
   <div class="container-content section-y teaser">
     <SectionHeader
       eyebrow="Product selector"
@@ -81,6 +81,14 @@ const appChips = applications.map((app) => ({
   .open { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; min-height: 3.25rem; padding: 0 1.25rem; background: var(--color-paper); color: var(--color-navy); font-weight: 600; text-decoration: none; }
   .open:hover { background: var(--color-navy); color: var(--color-white); }
 
+  /* Phones: each row of chips is one swipeable line. */
+  @media (max-width: 639px) {
+    .row { padding-inline: 0; }
+    .label { padding-inline: 1.25rem; }
+    .chips { flex-wrap: nowrap; overflow-x: auto; padding: 0 1.25rem 0.25rem; scroll-padding-inline: 1.25rem; }
+    .chips li { flex: none; }
+    .chips a, .chips span { white-space: nowrap; }
+  }
   @media (min-width: 640px) {
     .row { grid-template-columns: 7.5rem 1fr; align-items: center; }
   }

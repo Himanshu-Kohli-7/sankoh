@@ -67,7 +67,7 @@ const columns: Column[] = [
 ];
 ---
 
-<section class="supply">
+<section class="section-compact supply">
   <div class="container-content section-y">
     <div class="top">
       <SectionHeader
@@ -149,6 +149,18 @@ const columns: Column[] = [
   .source-links { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
   .source-links a { display: inline-flex; align-items: center; min-height: 2.75rem; font-weight: 600; text-underline-offset: 3px; }
 
+  /* Phones: two entries per row, so 15 entries take 9 rows, not 15. */
+  @media (max-width: 899px) {
+    .rows { display: grid; grid-template-columns: 1fr 1fr; }
+    .rows li:nth-child(-n + 2) { border-top: 0; }
+    .rows li:nth-child(even) { border-left: 1px solid var(--color-line); }
+    .rows a { gap: 0.5rem; min-height: 3.75rem; padding: 0.5rem 0.625rem; }
+    .thumb { width: 2.5rem; height: 2.5rem; }
+    .label { font-size: 0.875rem; }
+    .head { padding: 0.75rem 1rem 0.5rem; }
+    .columns { gap: 1rem; margin-top: 1.5rem; }
+    .source { padding: 1rem; }
+  }
   @media (min-width: 900px) {
     .columns { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     .blurb { display: block; }

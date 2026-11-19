@@ -42,7 +42,7 @@ const items: FaqItem[] = [
 ];
 ---
 
-<section class="faq">
+<section class="section-compact faq">
   <div class="container-content section-y layout">
     <SectionHeader eyebrow="FAQ" title="Common questions" intro="Ordering, sourcing, repairs and where we deliver." />
     <FAQ items={items} schema />
@@ -50,7 +50,7 @@ const items: FaqItem[] = [
 </section>
 
 <style>
-  .faq { background: var(--color-paper); border-top: 1px solid var(--color-line); }
+  .faq { background: var(--color-white); }
   .layout { display: grid; gap: 2rem; }
   @media (min-width: 1024px) {
     .layout { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 4rem; align-items: start; }

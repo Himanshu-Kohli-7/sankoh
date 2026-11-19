@@ -1,7 +1,7 @@
 ---
-/* Homepage: the eleven sections of SPEC §3, in order. Each lives in components/home/. */
+/* Homepage: the eight sections of SPEC §3, in order. Each lives in components/home/.
+   Bands alternate: white, paper, navy (repair hub only), paper, white, paper, white, amber. */
 import Base from '../layouts/Base.astro';
-import CTABand from '../components/CTABand.astro';
 import Hero from '../components/home/Hero.astro';
 import WhatWeSupply from '../components/home/WhatWeSupply.astro';
 import RepairBand from '../components/home/RepairBand.astro';
@@ -9,7 +9,7 @@ import SelectorTeaser from '../components/home/SelectorTeaser.astro';
 import { selectorAvailable } from '../config/nav';
 import ProofBand from '../components/home/ProofBand.astro';
 import WhySankoh from '../components/home/WhySankoh.astro';
-import ContactBlock from '../components/home/ContactBlock.astro';
+import ContactCta from '../components/home/ContactCta.astro';
 import HomeFaq from '../components/home/HomeFaq.astro';
 import { site } from '../config/site';
 ---
@@ -25,6 +25,5 @@ import { site } from '../config/site';
   <WhySankoh />
   {selectorAvailable && <SelectorTeaser />}
   <HomeFaq />
-  <ContactBlock />
-  <CTABand />
+  <ContactCta />
 </Base>

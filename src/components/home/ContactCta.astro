@@ -1,0 +1,78 @@
+---
+/**
+ * Contact + call-to-action band (home §8, amber): replaces the "Talk to us" block and the
+ * closing CTA band. Three labelled buttons (quote, call, WhatsApp; no digits, CLAUDE.md §4),
+ * address, hours with the breakdown line, and a Google Maps link. No map embed, so nothing
+ * third-party loads. The catalogue link appears only once the PDF exists.
+ */
+import Icon from '../Icon.astro';
+import CallButton from '../contact/CallButton.astro';
+import QuoteButton from '../contact/QuoteButton.astro';
+import WhatsAppButton from '../contact/WhatsAppButton.astro';
+import { site, mapsHref } from '../../config/site';
+import { catalogue } from '../../config/catalogue';
+---
+
+<section class="section-compact band" id="contact">
+  <div class="container-content inner">
+    <div class="lead">
+      <p class="eyebrow">Contact</p>
+      <h2>Tell us what you need</h2>
+      <p class="intro">Call, WhatsApp or send us your requirement. {site.service.supportLine}.</p>
+      <div class="buttons">
+        <QuoteButton tone="amber" />
+        <CallButton tone="amber" />
+        <WhatsAppButton label="WhatsApp" text={`Hello ${site.name}, I have an enquiry.`} tone="amber" />
+      </div>
+    </div>
+
+    <div class="details">
+      <dl>
+        <div>
+          <dt class="eyebrow">Address</dt>
+          <dd>
+            <address>{site.name}<br />{site.address.oneLine}</address>
+            <a class="link" href={mapsHref()} target="_blank" rel="noopener"><Icon name="pin" size={18} />Open in Google Maps</a>
+          </dd>
+        </div>
+        <div>
+          <dt class="eyebrow">Hours</dt>
+          <dd>{site.hours.display}. {site.hours.closed}.<br /><strong>{site.service.supportLine}.</strong></dd>
+        </div>
+      </dl>
+      <div class="more">
+        <a class="link" href="/contact/">All contact details<Icon name="arrow-right" size={18} /></a>
+        {catalogue.available && (
+          <a class="link" href={catalogue.href} download data-event="download_catalogue"><Icon name="download" size={18} />Product catalogue (PDF)</a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .band { background: var(--color-amber); color: var(--color-navy); }
+  .inner { display: grid; gap: 2rem; padding-block: var(--section-y); }
+  .band :global(:focus-visible) { outline-color: var(--color-navy); }
+  h2 { margin-top: 0.5rem; text-wrap: balance; }
+  .intro { margin-top: 0.75rem; max-width: 34rem; font-size: 1.0625rem; line-height: 1.5; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+
+  dl { display: grid; gap: 1.25rem; }
+  .details { display: grid; gap: 0.75rem; align-content: start; padding-top: 1.5rem; border-top: 1px solid rgb(16 42 76 / 0.3); }
+  dt { margin-bottom: 0.25rem; }
+  dd, address { font-style: normal; line-height: 1.55; }
+  .link { display: inline-flex; align-items: center; gap: 0.375rem; min-height: 2.75rem; color: var(--color-navy); font-weight: 600; text-underline-offset: 4px; }
+  .link:hover { text-decoration-thickness: 2px; }
+  .link :global(svg) { flex: none; }
+  .more { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+
+  @media (max-width: 479px) {
+    .buttons :global(.btn) { flex: 1 1 calc(50% - 0.375rem); }
+    .buttons :global(.btn:first-child) { flex-basis: 100%; }
+  }
+  @media (min-width: 1024px) {
+    .inner { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 4rem; align-items: start; }
+    .details { padding-top: 0; padding-left: 2.5rem; border-top: 0; border-left: 1px solid rgb(16 42 76 / 0.3); }
+  }
+</style>

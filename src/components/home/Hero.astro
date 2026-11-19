@@ -36,7 +36,7 @@ import { site } from '../../config/site';
   .line { margin-top: 1.25rem; color: var(--color-slate); font-size: var(--text-small); }
 
   @media (max-width: 479px) {
-    .actions :global(.btn) { flex: 1 1 100%; }
+    .actions :global(.btn) { flex: 1 1 calc(50% - 0.375rem); }
   }
   @media (min-width: 1024px) {
     /* H1 fits three lines at 1366 and the CTAs stay above the fold at 1366x768 and 1536x695. */

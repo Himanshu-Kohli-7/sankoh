@@ -114,6 +114,8 @@
     padding-inline: var(--gutter);
   }
   .section-y { padding-block: var(--section-y); }
+  /* Home sections below desktop: 48px instead of 64px. */
+  @media (max-width: 1023px) { .section-compact { --section-y: 3rem; } }
   .eyebrow {
     font-family: var(--font-mono);
     font-weight: 500;
