@@ -212,7 +212,7 @@ Every repair page and the hub state the warranty (6 months on repaired valves an
 **Division colour usage**: each product/repair page uses its division colour for the eyebrow, breadcrumb accent, icon strokes and a 4px top border on cards. Buttons are always amber (primary) or navy outline (secondary) regardless of division.
 
 **Homepage** (top to bottom)
-1. **Hero** on a blueprint grid: eyebrow `VALVES · AUTOMATION · INSTRUMENTS · REPAIR`; h1 "Industrial Valves, Instruments & Repairs — Any Make, Any Model"; one-line sub ("Manufacturer, supplier and repair partner from Derabassi, serving industries across India"); buttons **Get a quote** (primary) and **Call us**; right side: a composed cluster of 3–4 real product cut-outs connected by thin pipeline lines.
+1. **Hero** on a blueprint grid: eyebrow `VALVES · AUTOMATION · INSTRUMENTS · REPAIR`; h1 "Industrial Valves, Instruments & Repair — Any Make, Any Model" (three lines max at 1366px; CTAs above the fold at 1366x768 and 1536x695); one-line sub ("Manufacturer, supplier and repair partner from Derabassi, serving industries across India"); buttons **Get a quote** (primary) and **Call us**; right side: a composed cluster of 4 real product cut-outs connected by thin pipeline lines (below 640px a swipeable strip right after the CTAs).
 2. **Three division cards** (navy / blue / amber), each linking to its hub.
 3. **Product categories grid** (10 tiles, two groups).
 4. **Repair Hub band** (amber accent): "Any make. Any model. Typically back in 2–3 days." List of repair types, 5-step process strip, CTAs **Request repair** + **WhatsApp a photo**.
