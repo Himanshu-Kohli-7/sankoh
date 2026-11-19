@@ -99,7 +99,7 @@ const megaColumns = [...productGroups, repairServiceGroup];
       <div class="actions">
         <a class="btn btn-primary btn-sm quote" href={quoteHref()}>Get a Quote</a>
         <div class="menu-slot">
-          <MobileMenu client:load currentPath={path} catalogueHref={catalogue.available ? catalogue.href : null} />
+          <MobileMenu client:idle currentPath={path} catalogueHref={catalogue.available ? catalogue.href : null} />
         </div>
       </div>
     </div>
