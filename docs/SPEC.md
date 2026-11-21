@@ -20,7 +20,7 @@ Contents
 ## 1. Global layout & components
 
 **Header (sticky, compact on scroll)**
-- Top strip (navy, ≥769px): hours on the left (`Mon–Sat 9:30 AM–6:30 PM · 7-day breakdown support`), phone icon + the full primary number on the right. It switches on at the same width the mobile action bar switches off, so at every width either the number or a Call button is visible.
+- Top strip (navy, ≥769px): hours on the left (`Mon–Sat 9:30 AM–6:30 PM · Breakdown support 7 days a week`), phone icon + the full primary number on the right. It switches on at the same width the mobile action bar switches off, so at every width either the number or a Call button is visible.
 - Left: full logo (icon-only below 360px).
 - Nav: Products (mega-menu: two columns — Valves & Automation, Instruments & Analyzers — each listing its categories), Valve Repair, VFD Repair, Services, About, Contact.
 - Right: amber **Get a Quote** button (≥769px). No number in the bar.
@@ -34,7 +34,7 @@ Contents
 **Footer (navy)**
 - Logo + one-line positioning, address, the full primary number once with a WhatsApp icon and a smaller "Sales: +91 98779 38373" line under it, email, GSTIN.
 - Columns: Valves & Automation categories, Instruments categories, Repair & Services links, Company (About, Brands, Contact, Catalogue PDF, Privacy).
-- Office hours (Monday to Saturday, 9:30 AM to 6:30 PM · Sunday closed), with "Urgent breakdown support 7 days a week · Repairs typically in 2–3 days" directly under them.
+- Office hours (Monday to Saturday, 9:30 AM to 6:30 PM · Sunday closed), with "Urgent breakdown support 7 days a week, Sundays included. Call or WhatsApp us." and "Repairs typically in 2–3 days" directly under them.
 - Company column also links to Image credits.
 - Copyright with current year.
 
@@ -219,14 +219,14 @@ Every repair page and the hub state the warranty (6 months on repaired valves an
 5. **Why Sankoh**: compact strip of the six advantages from the company profile (icon, short title, one line).
 6. **Product selector** (paper, blue top rule): operation and media chips into `/product-selector/` with the filter applied, plus the company-named applications as chips from `config/applications.ts` (industry page when it exists, otherwise the selector's application filter).
 7. **FAQ** (5–7 questions about ordering, sourcing, repair, delivery area).
-8. **Contact + CTA band** (amber): Get a quote / Call us / WhatsApp buttons (no number), address, hours with the breakdown line, Google Maps link; catalogue link once the PDF exists.
+8. **Contact + CTA band** (amber): Get a quote / Call us / WhatsApp buttons (no number), address, hours, Google Maps link; catalogue link once the PDF exists.
 
 Bands alternate (white, paper, navy, paper, white, paper, white, amber) so no two neighbours look alike.
 
 **Repair section without photos** — make it feel professional through structure, not stock images:
 - Illustrated **5-step process**: Receive & inspect → Strip down & assess → Repair / replace parts → Test & calibrate → Report & dispatch. Line illustrations, numbered mono labels.
 - "What we repair" grid with line-art icons per valve type.
-- Fact strip: **Any make** · **Typically 2–3 days** · **7-day breakdown support** · **Qualified engineers**.
+- Fact strip: **Any make** · **Typically 2–3 days** · **Breakdown support 7 days a week** (Sundays included) · **Qualified engineers**. One tile, so the line is stated once on the page.
 - "Repair vs replace" explainer and FAQs.
 - A conditional gallery block that appears when `repair-gallery/` gets real photos.
 

@@ -17,6 +17,12 @@
  *    files listed in TEXT_EXEMPT, by exact path. /llms.txt is exempt by decision (17 Nov 2026): it is a
  *    summary for AI assistants, not a page, and must list the primary number as "Phone / WhatsApp"
  *    and the sales line as "Sales", each exactly once and nowhere else in the file.
+ * 6. Breakdown support wording (CLAUDE.md §2.5): "breakdown support" appears at most 3 times in a page's
+ *    visible text: (1) the header strip, (2) one contextual spot (home repair fact tile, repair / VFD /
+ *    service page, Contact card), (3) the footer. Left out of the count: the mobile menu's copy of the header
+ *    strip (`data-support-menu`, the same item as the strip) and FAQ blocks (`data-faq`, where an answer may
+ *    state the fact when the question is about it).
+ * 7. "7-day breakdown" appears nowhere in dist/ (any file, any attribute): it reads as a 7-day turnaround.
  * Exits 1 on any failure. No dependencies.
  */
 import fs from 'node:fs';
@@ -30,6 +36,11 @@ const SALES_RE = /(?:\+?\s*91[\s-]*)?98779[\s-]*38373/g;
 /** Pages where the full reference card may repeat the numbers. */
 const CONTACT_PAGES = new Set(['contact/index.html']);
 const MAX_PRIMARY = 2;
+/** The support-line phrase (both the label and the full sentence contain it) and its per-page cap. */
+const SUPPORT_RE = /breakdown support/gi;
+const MAX_SUPPORT = 3;
+/** Banned everywhere in dist/. */
+const OLD_SUPPORT_RE = /7-day breakdown/i;
 /** Non-HTML files allowed to carry the numbers, by path relative to dist/, with the exact lines required. */
 const TEXT_EXEMPT = {
   'llms.txt': [/^- Phone \/ WhatsApp: \+91 98884 91527$/m, /^- Sales: \+91 98779 38373$/m],
@@ -117,6 +128,12 @@ for (const file of walk(DIST)) {
     if (salesFooter > 1) problems.push(`sales number shown ${salesFooter}× in the footer (max 1)`);
   }
 
+  const support = count(textOf(removeMarked(removeMarked(html, 'data-support-menu'), 'data-faq')), SUPPORT_RE);
+  if (support > MAX_SUPPORT) {
+    problems.push(`"breakdown support" shown ${support}× (max ${MAX_SUPPORT}: header strip, one contextual spot, footer)`);
+  }
+  if (OLD_SUPPORT_RE.test(raw)) problems.push('"7-day breakdown" is banned: use site.service.supportLineShort or supportLine');
+
   for (const [, attrs, inner] of html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/gi)) {
     const href = (attrs.match(/\shref="([^"]*)"/i) ?? [])[1] ?? '';
     const isTel = href.startsWith('tel:');
@@ -137,7 +154,7 @@ for (const file of walk(DIST)) {
     }
   }
 
-  rows.push({ rel, primary, sales: salesFooter + salesOutside, isContact });
+  rows.push({ rel, primary, sales: salesFooter + salesOutside, isContact, support });
   if (problems.length) failures.push({ rel, problems });
 }
 
@@ -149,6 +166,7 @@ for (const file of walk(DIST, (name) => TEXT_FILE.test(name))) {
   const primary = count(raw, PRIMARY_RE);
   const sales = count(raw, SALES_RE);
   textFiles++;
+  if (OLD_SUPPORT_RE.test(raw)) failures.push({ rel, problems: ['"7-day breakdown" is banned: use site.service.supportLineShort or supportLine'] });
   const exempt = TEXT_EXEMPT[rel];
   if (!exempt) {
     if (primary || sales) failures.push({ rel, problems: [`number in a non-HTML file (primary ${primary}, sales ${sales}); only ${Object.keys(TEXT_EXEMPT).join(', ')} may carry it`] });
@@ -175,4 +193,5 @@ const byCount = rows.reduce((acc, r) => {
   return acc;
 }, {});
 for (const [k, n] of Object.entries(byCount)) console.log(`  ${String(n).padStart(4)} page(s): ${k}`);
+console.log(`  "breakdown support": at most ${Math.max(...rows.map((r) => r.support))} per page (max ${MAX_SUPPORT})`);
 console.log(`check:contact: ${rows.length} pages OK; ${textFiles} text files OK (exempt by path: ${Object.keys(TEXT_EXEMPT).join(', ')}).`);

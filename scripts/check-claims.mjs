@@ -40,6 +40,7 @@ const BANNED = [
   [/any time of day/i, 'Never "any time of day"'],
   [/365[\s-]days?/i, 'Never "365 days": say "Urgent breakdown support 7 days a week"'],
   [/service(?: is)?(?: available)? 7 days a week/i, 'Use the support line: "Urgent breakdown support 7 days a week"'],
+  [/7-day breakdown/i, 'Never "7-day breakdown": it reads as a 7-day turnaround. Use site.service.supportLineShort ("Breakdown support 7 days a week")'],
   [/scientific\s+devices/i, 'Scientific Devices is no longer a partner'],
   [/\bservo\b/i, 'No servo drive repair'],
   [/\bHMIs?\b/, 'No HMI repair'],

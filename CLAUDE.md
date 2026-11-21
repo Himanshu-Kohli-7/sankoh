@@ -28,7 +28,7 @@ The old site is a client-side Create React App with 5 URLs and no per-product pa
    4. The placeholder drawing. Any photo that fails the mark check falls back to this, never to a marked photo.
    - Never use images from marketplaces, competitors or other manufacturers, even if no logo shows. A photo only needs to be the same kind of product, not an exact model.
 4. **No third-party brand logos or marks** except the own brand (Sankoh), authorised partners (Stolzel, UPC, Flowtech) and clients with permission (§4). Every other brand is plain text only.
-5. **24/7 is false.** Never write "24/7", "round the clock", "any time of day" or "365 days". The only availability claim is **"Urgent breakdown support 7 days a week"** (short form "7-day breakdown support"), next to the office hours in §4. `npm run check:claims` enforces this.
+5. **24/7 is false.** Never write "24/7", "round the clock", "any time of day" or "365 days". The only availability claim is **"Urgent breakdown support 7 days a week, Sundays included. Call or WhatsApp us."** (short label: **"Breakdown support 7 days a week"**), next to the office hours in §4. Never "7-day breakdown support": it reads as a 7-day turnaround. Both strings live in `site.ts` (`service.supportLine`, `service.supportLineShort`); use them from there, never a hard-coded copy. **At most 3 mentions per page**: (1) the header strip (the mobile menu's copy counts as the same item), (2) one contextual spot (the home repair fact tile; the fact tile on repair, VFD and services pages, or the Services "Talk to us" panel; the Contact page card), (3) the footer. None in hero lines, the Why Sankoh card, CTA bands, process sections, product, category or About pages. FAQ answers may state it where the question is about it. "Typically 2–3 days" follows the same cap (3 per page outside FAQs). `npm run check:claims` and `npm run check:contact` enforce this.
 6. **No client-only rendering for content.** Pages are static HTML. JavaScript only in small islands (quote form, product selector, mobile menu).
 7. **Work on branch `astro-rebuild` only.** Never commit to or push `master`. Never force-push.
 8. **Ask before adding any npm dependency** not listed in §5.
@@ -64,7 +64,7 @@ Three divisions, each with its own colour (§6):
 | Service area | All of India; quickest delivery and on-site service across North India |
 | Team | Qualified engineers and professionals |
 | Office hours | Monday to Saturday, 9:30 AM to 6:30 PM. Sunday closed (from the Google Business Profile) |
-| Support line | "Urgent breakdown support 7 days a week", Sundays included (**not** 24/7) |
+| Support line | "Urgent breakdown support 7 days a week, Sundays included. Call or WhatsApp us." Short label "Breakdown support 7 days a week" (**not** 24/7; never "7-day breakdown support") |
 | Repair turnaround | Typically 2–3 days for workshop repairs |
 | On-site repair | Offered, as well as workshop repair |
 | Repair scope | Valves of **any make**, manual and automated, including actuators and cylinders; positioners; VFDs of **any make**. **No** servo drive or HMI repair |
