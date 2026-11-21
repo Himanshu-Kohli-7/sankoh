@@ -73,9 +73,9 @@ const { address } = site;
         <dt>Address</dt>
         <dd>
           <address>
-            {address.line1}, {address.line2},<br />
-            {address.locality} – {address.postalCode}, {address.district},<br />
-            {address.region}, {address.country}
+            {address.line1},<br />
+            {address.line2}, {address.locality} – {address.postalCode},<br />
+            {address.district}, {address.region}, {address.country}
           </address>
           <a class="maplink" href={mapsHref()} target="_blank" rel="noopener">
             <Icon name="pin" size={16} />Open in Google Maps
