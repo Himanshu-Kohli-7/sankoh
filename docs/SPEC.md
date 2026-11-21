@@ -212,10 +212,10 @@ Every repair page and the hub state the warranty (6 months on repaired valves an
 **Division colour usage**: each product/repair page uses its division colour for the eyebrow, breadcrumb accent, icon strokes and a 4px top border on cards. Buttons are always amber (primary) or navy outline (secondary) regardless of division.
 
 **Homepage** (top to bottom)
-1. **Hero** on a blueprint grid: eyebrow `VALVES · AUTOMATION · INSTRUMENTS · REPAIR`; h1 "Industrial Valves, Instruments & Repair — Any Make, Any Model" (three lines max at 1366px; CTAs above the fold at 1366x768 and 1536x695); one-line sub ("Manufacturer, supplier and repair partner from Derabassi, serving industries across India"); buttons **Get a quote** (primary) and **Call us**; right side: a composed cluster of 4 real product cut-outs connected by thin pipeline lines (below 640px a swipeable strip right after the CTAs).
+1. **Hero** on a blueprint grid: eyebrow `VALVES · AUTOMATION · INSTRUMENTS · REPAIR`; h1 "Industrial Valves, Instruments & Repair — Any Make, Any Model" (three lines max at 1366px; CTAs above the fold at 1366x768 and 1536x695); one-line sub ("Manual valve manufacturer, authorised partner for automation and instruments, and repair specialist from Derabassi, serving any industry across India"); buttons **Get a quote** (primary) and **Call us**; right side: a composed cluster of 4 real product cut-outs connected by thin pipeline lines (below 640px a swipeable strip right after the CTAs).
 2. **What we supply**: the three divisions as columns (navy / blue / amber top rule), each listing its five categories or services with a small thumbnail (product photo; line icon for repair), closed by one "We'll source it" line. Each link appears once.
 3. **Repair Hub band** (navy, amber accent; the only navy section on the page): "Any make. Any model. Typically back in 2–3 days." List of repair types, 5-step process strip, CTAs **Request repair** + **WhatsApp a photo**.
-4. **Proof band**: own brand (Sankoh) and authorised partners (Stolzel, UPC, Flowtech) labelled as such, client logo grid (3 / 5 / 7 columns), three testimonials with a link to all of them on `/about/#reviews`.
+4. **Proof band**: three confirmed stats (since December 2018, 400+ clients, 1,200–1,500 valves repaired a year), own brand (Sankoh) and authorised partners (Stolzel, UPC, Flowtech) labelled as such, client logo grid (3 / 5 / 7 columns), three testimonials with a link to all of them on `/about/#reviews`.
 5. **Why Sankoh**: compact strip of the six advantages from the company profile (icon, short title, one line).
 6. **Product selector** (paper, blue top rule): operation and media chips into `/product-selector/` with the filter applied, plus the company-named applications as chips from `config/applications.ts` (industry page when it exists, otherwise the selector's application filter).
 7. **FAQ** (5–7 questions about ordering, sourcing, repair, delivery area).
@@ -259,7 +259,7 @@ All in `src/content/`, typed with Zod. Shared fields: `title`, `slug`, `seoTitle
 ## 5. Page templates and content patterns
 
 ### 5.1 Category page
-H1 = category name + "Supplier in India" variant in `seoTitle` only. Intro (120–200 words: what these products do, where they're used, that Sankoh manufactures/supplies/sources them), product grid, "How to choose" short guide (general knowledge), FAQs (4–6), related repair services, SourcingBlock, CTABand.
+H1 = category name + "Supplier in India" variant in `seoTitle` only. Intro (120–200 words: what these products do, where they're used, that Sankoh supplies and sources them; only manual valves are manufactured by Sankoh, under Sankoh®), product grid, "How to choose" short guide (general knowledge), FAQs (4–6), related repair services, SourcingBlock, CTABand.
 
 ### 5.2 Product page (no-datasheet pattern)
 1. Breadcrumbs, division eyebrow, H1, summary, image gallery, buttons **Get a quote for [product]** / **WhatsApp**. The side panel has the same two buttons and no number.

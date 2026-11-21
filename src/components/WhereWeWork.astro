@@ -1,0 +1,57 @@
+---
+/**
+ * Where we work (proprietor, 21 Nov 2026): regions supplied, regions with site work, and industries.
+ * All from site.ts. One block on About and Contact; never per-city pages.
+ */
+import Icon from './Icon.astro';
+import SectionHeader from './SectionHeader.astro';
+import { site, listAnd } from '../config/site';
+
+interface Props {
+  /** Heading level of the block title. */
+  as?: 'h2' | 'h3';
+}
+const { as = 'h2' } = Astro.props;
+const { supplyRegions, siteWorkRegions } = site.service;
+---
+
+<section class="where" aria-labelledby="where-we-work">
+  <SectionHeader eyebrow="Coverage" title="Where we work" as={as} id="where-we-work" />
+  <dl class="cols">
+    <div>
+      <dt><Icon name="truck" size={20} />Supplied to</dt>
+      <dd>
+        <ul class="chips">{supplyRegions.map((r) => <li>{r}</li>)}</ul>
+        <p>And all over India.</p>
+      </dd>
+    </div>
+    <div>
+      <dt><Icon name="wrench" size={20} />Site work</dt>
+      <dd>
+        <ul class="chips">{siteWorkRegions.map((r) => <li>{r}</li>)}</ul>
+        <p>Site work in {listAnd(siteWorkRegions)} so far, and it can be done anywhere in India.</p>
+      </dd>
+    </div>
+    <div>
+      <dt><Icon name="factory" size={20} />Industries</dt>
+      <dd><p>{site.company.industriesLine}</p></dd>
+    </div>
+  </dl>
+</section>
+
+<style>
+  .cols { display: grid; gap: 0; margin-top: 1.5rem; border: 1px solid var(--color-line); border-radius: 2px; background: var(--color-white); }
+  .cols > div { padding: 1.25rem; border-top: 1px solid var(--color-line); }
+  .cols > div:first-child { border-top: 0; }
+  dt { display: flex; align-items: center; gap: 0.5rem; color: var(--color-navy); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  dt :global(svg) { color: var(--color-blue); }
+  .chips { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.75rem; }
+  .chips li { padding: 0.25rem 0.625rem; border: 1px solid var(--color-line); border-radius: 2px; background: var(--color-paper); color: var(--color-ink); font-size: 0.9375rem; }
+  dd p { margin-top: 0.75rem; color: var(--color-ink); line-height: 1.5; }
+
+  @media (min-width: 900px) {
+    .cols { grid-template-columns: repeat(3, 1fr); }
+    .cols > div { padding: 1.5rem; border-top: 0; border-left: 1px solid var(--color-line); }
+    .cols > div:first-child { border-left: 0; }
+  }
+</style>

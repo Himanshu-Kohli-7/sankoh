@@ -15,8 +15,35 @@ const salesPhone = { label: 'Sales', display: '+91 98779 38373', e164: '+9198779
 /** WhatsApp uses the primary number. Only `number` (for wa.me) is needed: buttons never print digits. */
 const whatsapp = { number: '919888491527' } as const;
 
+/** How quickly we respond to a breakdown call (confirmed by the proprietor, 21 Nov 2026). */
+const responseTime = 'the same day, or by the next day at the latest';
 /** The end of the support sentence, shared by `supportLine` and the fact tile's second line. */
-const SUPPORT_TAIL = 'Sundays included. Call or WhatsApp us.';
+const SUPPORT_TAIL = `Call or WhatsApp us any day, Sundays included. We respond ${responseTime}.`;
+
+/** Valve, actuator and positioner makes we repair, named as plain text only (CLAUDE.md §2.4). */
+const repairedMakes = ['Fisher', 'Forbes Marshall', 'Rotork', 'AUMA', 'Samson', 'Siemens', 'Dembla', 'Rotex'] as const;
+/** VFD makes we repair, named as plain text only. */
+const vfdMakes = ['ABB', 'Danfoss', 'Allen-Bradley', 'Siemens', 'Delta', 'Yaskawa', 'Schneider', 'L&T'] as const;
+/** Regions we have supplied to; we also supply all over India. */
+const supplyRegions = ['Himachal Pradesh', 'Punjab', 'Haryana', 'Delhi NCR', 'Bengaluru', 'Andhra Pradesh'] as const;
+/** Regions where site work has been done; it can be done anywhere in India. */
+const siteWorkRegions = ['Himachal Pradesh', 'Punjab', 'Haryana'] as const;
+const teamSize = '10–15';
+const engineerExperience = '5+ years';
+
+/**
+ * Udyam registration. [CONFIRM] the number from the proprietor (docs/CONFIRM.md). While empty, the footer
+ * and About show no number. Format: UDYAM-XX-00-0000000 (checked below; a malformed number fails the build).
+ */
+const udyamNumber = '' as string;
+export const UDYAM_RE = /^UDYAM-[A-Z]{2}-\d{2}-\d{7}$/;
+if (udyamNumber && !UDYAM_RE.test(udyamNumber)) {
+  throw new Error(`site.ts: Udyam number "${udyamNumber}" does not match UDYAM-XX-00-0000000`);
+}
+
+/** "A", "A and B", "A, B and C". */
+const joinAnd = (items: readonly string[]): string =>
+  items.length < 2 ? items.join('') : `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 
 export const site = {
   name: 'Sankoh Technical Solutions',
@@ -26,7 +53,21 @@ export const site = {
   gstin: '03AKSPK5866E1ZW',
 
   positioning:
-    'Manufacturer, supplier and repair partner for industrial valves, valve automation and process instruments.',
+    'Manufacturer of Sankoh® manual valves, authorised partner for automated valves and process instruments, and repair specialist for valves, actuators, positioners and VFDs of any make.',
+
+  /** Company facts confirmed by the proprietor, 21 Nov 2026 (CLAUDE.md §4). */
+  company: {
+    foundingDate: '2018-12',
+    foundingYear: 2018,
+    foundingDisplay: 'December 2018',
+    clientCount: '400+',
+    teamSize,
+    engineerExperience,
+    udyam: { registered: true, number: udyamNumber },
+    /** We serve any industry; these are named as examples. */
+    industriesNamed: ['Textile', 'Pharma', 'Food', 'Paper', 'Chemical', 'Sugar', 'Dairy', 'Water treatment'],
+    industriesLine: 'Textile, pharma, food, paper, chemical, sugar, dairy, water treatment and any other industry.',
+  },
 
   address: {
     line1: '69, Ground Floor, Hansa Industrial Park',
@@ -64,6 +105,17 @@ export const site = {
   brands: {
     /** The only own brand. */
     own: ['Sankoh®'],
+    /** What Sankoh manufactures, and the only thing it manufactures: manual valves under the Sankoh® brand. */
+    manufactured: 'manual valves',
+    /**
+     * What each authorised partner's range covers. These are traded (supplied), never manufactured by Sankoh.
+     * Keys match partnerLogoPermission.
+     */
+    partnerLines: {
+      stolzel: 'automated valves',
+      upc: 'process instruments',
+      flowtech: 'process instruments',
+    } as Record<string, string>,
     /** Authorised partners. Their logos and product photos may be shown (CLAUDE.md §2.4); no other brand's may. */
     authorisedPartners: ['Stolzel', 'UPC', 'Flowtech Measuring Instruments Pvt Ltd'],
     /**
@@ -80,21 +132,38 @@ export const site = {
   },
 
   service: {
-    area: 'All of India; quickest delivery and on-site service across North India',
+    area: `All of India; site work in ${joinAnd(siteWorkRegions)}, and anywhere in India on request`,
+    supplyRegions,
+    siteWorkRegions,
+    responseTime,
+    /** Valves repaired a year. */
+    repairsPerYear: '1,200–1,500',
+    /** Stock and lead times for every product on the site. */
+    stockNote: 'Every product on this site is available from ready stock.',
+    leadTimes: {
+      inStock: '1–2 days',
+      notInStock: 'up to 2–3 weeks',
+      customised: '3–4 weeks',
+    },
+    /** We calibrate valves and positioners only. Instruments are sold, never calibrated or repaired by us. */
+    calibrationScope: 'Valves and positioners only',
+    repairedMakes,
+    vfdMakes,
     /**
      * The only availability claim the site makes (CLAUDE.md §2.5). The office keeps the hours above;
      * breakdown support runs every day. Use these two values everywhere; never hard-code a copy.
      * `npm run check:claims` bans the old wordings and `npm run check:contact` caps how often the phrase
      * may appear on a page (3: header strip, one contextual spot, footer).
-     * - supportLineShort: the label, for the header strip (and its mobile menu copy) and the fact tile.
-     * - supportLine: the full sentence, for the footer and the contextual spots.
+     * - supportLineShort: the label, for the header strip (and its mobile menu copy), the footer and the fact tile.
+     * - supportLine: the full sentence, for the contextual spot only (the footer uses the short label).
      * - supportLineTail: the end of the sentence, for the fact tile's second line under the label.
      * The old "7-day" label is banned (check:claims): it reads as a 7-day turnaround.
+     * The header strip and footer use the short label; the full sentence is for the contextual spot only.
      */
-    supportLine: `Urgent breakdown support 7 days a week, ${SUPPORT_TAIL}`,
+    supportLine: `Breakdown? ${SUPPORT_TAIL}`,
     supportLineShort: 'Breakdown support 7 days a week',
     supportLineTail: SUPPORT_TAIL,
-    team: 'Qualified engineers and professionals',
+    team: `A team of ${teamSize}, with engineers of ${engineerExperience}' experience`,
     repairTurnaround: 'Typically 2–3 days for workshop repairs',
     /** On-site repair is offered as well as workshop repair. */
     onSiteRepair: 'On-site repair available',
@@ -102,7 +171,9 @@ export const site = {
       valves: 'Valves of any make, manual and automated, including actuators, cylinders and positioners',
       vfds: 'VFDs of any make',
     },
-    vfdBrands: 'ABB, Danfoss and all other makes',
+    vfdBrands: `${joinAnd([...vfdMakes, 'all other makes'])}`,
+    /** "Any make, including Fisher, … and Rotex": valve and actuator repair pages and the hub only. */
+    repairedMakesLine: `Any make, including ${joinAnd(repairedMakes)}`,
     /** Warranty terms, as confirmed by the company. State them only in these words. */
     warranty: {
       repairedValves: '6 months on repaired valves and positioners',
@@ -185,8 +256,7 @@ export const site = {
 export type Site = typeof site;
 
 /** "A", "A and B", "A, B and C". */
-export const listAnd = (items: readonly string[]): string =>
-  items.length < 2 ? items.join('') : `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
+export const listAnd = joinAnd;
 
 /** `tel:` link for a phone entry. */
 export const telHref = (p: { e164: string } = site.phone): string => `tel:${p.e164}`;

@@ -8,7 +8,7 @@ import SectionHeader from '../SectionHeader.astro';
 import { site, listAnd } from '../../config/site';
 
 const scope = site.service.repairScope;
-const partners = listAnd(site.brands.authorisedPartners);
+const lead = site.service.leadTimes;
 
 const items: FaqItem[] = [
   {
@@ -21,7 +21,7 @@ const items: FaqItem[] = [
   },
   {
     question: 'Do you manufacture valves or only supply them?',
-    answer: `Both. ${site.brands.own[0]} is our own brand. We are also an authorised partner of ${partners}, and we source other products through our vendor network.`,
+    answer: `We manufacture ${site.brands.manufactured} under our own ${site.brands.own[0]} brand. Automated valves (Stolzel) and process instruments (UPC and Flowtech) we supply as an authorised partner; we do not manufacture them. Anything else we source through our vendor network.`,
   },
   {
     question: 'Do you repair valves and drives made by other companies?',
@@ -36,15 +36,19 @@ const items: FaqItem[] = [
     answer: `Yes: ${site.service.warranty.newProducts}, ${site.service.warranty.repairedValves} and ${site.service.warranty.repairedVfds}.`,
   },
   {
+    question: 'How quickly can you deliver?',
+    answer: `${site.service.stockNote} Items in stock are dispatched in ${lead.inStock}; items not in stock take ${lead.notInStock}, and customised items ${lead.customised}.`,
+  },
+  {
     question: 'Which areas do you deliver to and service?',
-    answer: `We serve all of India, with the quickest delivery and on-site service across North India. We are based in ${site.address.locationWording}. Office hours are ${site.hours.display}.`,
+    answer: `We supply all over India, including ${listAnd(site.service.supplyRegions)}. Site work is done across ${listAnd(site.service.siteWorkRegions)}, and anywhere else in India on request. We are based in ${site.address.locationWording}. Office hours are ${site.hours.display}.`,
   },
 ];
 ---
 
 <section class="section-compact faq">
   <div class="container-content section-y layout">
-    <SectionHeader eyebrow="FAQ" title="Common questions" intro="Ordering, sourcing, repairs and where we deliver." />
+    <SectionHeader eyebrow="FAQ" title="Common questions" intro="Ordering, sourcing, delivery times, repairs and where we work." />
     <FAQ items={items} schema />
   </div>
 </section>

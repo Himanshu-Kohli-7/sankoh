@@ -10,5 +10,4 @@ Rules, enforced by `scripts/check-claims.mjs` (`npm run check:claims`, also run 
 
 | File | Text | Who confirms | Why |
 |---|---|---|---|
-
-_No open items._
+| `src/config/site.ts` | Udyam registration number (`udyamNumber`, empty) | Sanjay Kohli | Number not yet supplied. Fill it in the format `UDYAM-XX-00-0000000`; the footer and About show it as text once set. Production builds fail until this row is resolved |

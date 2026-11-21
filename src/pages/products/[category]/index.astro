@@ -13,6 +13,7 @@ import ProductCard from '../../../components/ProductCard.astro';
 import RepairServiceCard from '../../../components/RepairServiceCard.astro';
 import SectionHeader from '../../../components/SectionHeader.astro';
 import SourcingBlock from '../../../components/SourcingBlock.astro';
+import StockDelivery from '../../../components/StockDelivery.astro';
 import SpecTable from '../../../components/SpecTable.astro';
 import CallButton from '../../../components/contact/CallButton.astro';
 import QuoteButton from '../../../components/contact/QuoteButton.astro';
@@ -164,6 +165,7 @@ const schema = published.length
     </section>
   )}
 
+  <section class="container-content stock-wrap"><StockDelivery instruments={data.division === 'instruments'} /></section>
   <section class="container-content sourcing"><SourcingBlock /></section>
 
   <CTABand
@@ -203,7 +205,8 @@ const schema = published.length
   .all-repair { margin-top: 1.25rem; }
 
   .faq-layout { display: grid; gap: 2rem; }
-  .sourcing { padding-block: var(--section-y); }
+  .stock-wrap { padding-top: var(--section-y); }
+  .sourcing { padding-block: 1.5rem var(--section-y); }
 
   /* Two narrow columns on phones: keep the tiles to image + name. */
   @media (max-width: 639px) {

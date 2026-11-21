@@ -9,12 +9,13 @@ import { Image } from 'astro:assets';
 import ClientLogoStrip from '../ClientLogoStrip.astro';
 import ReviewCard from '../ReviewCard.astro';
 import SectionHeader from '../SectionHeader.astro';
+import { projectWhere } from '../../lib/projects';
 
 const byOrder = (a: { data: { order: number } }, b: { data: { order: number } }) => a.data.order - b.data.order;
 const clients = (await getCollection('clients')).sort(byOrder).map((entry) => entry.data);
 const reviews = (await getCollection('reviews')).sort(byOrder).map((entry) => entry.data);
 const certifications = (await getCollection('certifications')).sort(byOrder).map((entry) => entry.data);
-const projects = (await getCollection('projects')).sort(byOrder).map((entry) => entry.data);
+const projects = (await getCollection('projects')).sort(byOrder).map((entry) => ({ ...entry.data, where: projectWhere(entry.data) }));
 ---
 
 <section class="trust">
@@ -52,13 +53,13 @@ const projects = (await getCollection('projects')).sort(byOrder).map((entry) => 
 
     {projects.length > 0 && (
       <>
-        <h3 class="block-title">Projects</h3>
+        <h3 class="block-title">Recent site jobs</h3>
         <ul class="projects">
           {projects.map((p) => (
             <li>
               {p.image && <Image src={p.image} alt={p.alt ?? p.title} widths={[360, 540]} sizes="(min-width: 768px) 360px, 90vw" loading="lazy" />}
               <p class="cert-title">{p.title}</p>
-              {p.client && <p class="cert-issuer">{p.client}</p>}
+              {p.where && <p class="cert-issuer">{p.where}</p>}
               <p class="project-summary">{p.summary}</p>
             </li>
           ))}

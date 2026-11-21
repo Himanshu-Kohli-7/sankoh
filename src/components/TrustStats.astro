@@ -1,6 +1,7 @@
 ---
 /**
- * Fact strip. Confirmed facts only (CLAUDE.md §4) — never add counts, years or ratings here.
+ * Fact strip. Confirmed facts only (CLAUDE.md §4). The confirmed counts (founding, clients, repairs a year)
+ * live in home/ProofStats.astro; never add ratings or unconfirmed numbers here.
  */
 import Icon from './Icon.astro';
 import { site } from '../config/site';
@@ -22,7 +23,7 @@ const facts = [
   { key: 'make', icon: 'wrench', label: 'Any make', detail: 'Valves, actuators, positioners and VFDs' },
   { key: 'turnaround', icon: 'clock', label: 'Typically 2–3 days', detail: 'For workshop repairs' },
   { key: 'support', icon: 'calendar', label: site.service.supportLineShort, detail: site.service.supportLineTail },
-  { key: 'team', icon: 'users', label: 'Qualified engineers', detail: 'And professionals on the team' },
+  { key: 'team', icon: 'users', label: `Team of ${site.company.teamSize}`, detail: `Engineers with ${site.company.engineerExperience}' experience` },
 ].filter((fact) => !omit.includes(fact.key as 'turnaround' | 'support'));
 ---
 

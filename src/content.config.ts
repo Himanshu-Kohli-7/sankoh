@@ -230,8 +230,16 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      /** The client's name. Shown only when clientNamePermission is true (docs/PENDING.md). */
       client: z.string().optional(),
+      /** Permission to name this client, per client. Until true the page says "a plant in <location>". */
+      clientNamePermission: z.boolean().default(false),
+      /** Town or city of the job, always shown. */
+      location: z.string().optional(),
+      /** Must read well without the client's name. */
       summary: z.string(),
+      /** Repair pages that also show this job (hrefs). */
+      relatedRepair: z.array(z.string()).default([]),
       image: image().optional(),
       alt: z.string().optional(),
       order: z.number(),

@@ -8,6 +8,7 @@ import { getImage } from 'astro:assets';
 import Base from '../../../layouts/Base.astro';
 import CTABand from '../../../components/CTABand.astro';
 import EnquiryChecklist from '../../../components/EnquiryChecklist.astro';
+import StockDelivery from '../../../components/StockDelivery.astro';
 import FAQ from '../../../components/FAQ.astro';
 import Icon from '../../../components/Icon.astro';
 import PageHero from '../../../components/PageHero.astro';
@@ -86,7 +87,7 @@ const schema = [
       <QuoteButton label="Get a quote" labelSuffix={`for ${data.title}`} product={slug} class="quote-long" />
       <WhatsAppButton label="WhatsApp" text={whatsappText} />
     </div>
-    <p class="avail">Delivered across India · Warranty: {site.service.warranty.newProducts}</p>
+    <p class="avail">Ready stock: dispatch in {site.service.leadTimes.inStock} · Delivered across India · Warranty: {site.service.warranty.newProducts}</p>
     <ProductGallery slot="aside" images={data.images} caption={data.title} division={category.division} />
   </PageHero>
 
@@ -166,6 +167,10 @@ const schema = [
           </div>
         )}
         <div class="spec"><SpecTable rows={specRows} caption="Commonly supplied" /></div>
+      </section>
+
+      <section class="block">
+        <StockDelivery instruments={category.division === 'instruments'} />
       </section>
 
       <section class="block">

@@ -25,6 +25,7 @@ import { site } from '../config/site';
 import { repairGroups } from '../config/nav';
 import { groupThing, repairSteps, repairWhatsApp } from '../config/repair';
 import { categoryInfo, pageTitle, productLink, productsById } from '../lib/content';
+import { projectWhere } from '../lib/projects';
 
 interface Props {
   service: CollectionEntry<'repairServices'>;
@@ -63,14 +64,35 @@ const label = data.group === 'valve' ? 'nameplate' : 'rating label';
 const warranty = data.warranty
   ? data.group === 'valve' ? site.service.warranty.repairedValves : site.service.warranty.repairedVfds
   : undefined;
-/** The same confirmed fact on every repair page, so it is added here rather than written into each file. */
-const faqs: FaqItem[] = warranty
-  ? [...data.faqs, { question: 'Is there a warranty on the repair?', answer: `Yes. The warranty is ${warranty}.` }]
-  : data.faqs;
+/**
+ * Makes named on the page, from site.ts only (plain text, CLAUDE.md §2.4). The valve and actuator list
+ * goes on valve and actuator pages; the positioner page says "any make"; the VFD page names the VFD makes.
+ */
+const isPositioner = slug === 'positioner-repair-calibration';
+const anyMake =
+  data.group === 'vfd'
+    ? site.service.vfdBrands
+    : isPositioner
+      ? 'Any make and model'
+      : site.service.repairedMakesLine;
+/** The same confirmed facts on every repair page, so they are added here rather than written into each file. */
+const faqs: FaqItem[] = [
+  ...(data.group === 'vfd'
+    ? [{ question: 'Which makes of VFD do you repair?', answer: `${site.service.vfdBrands}. Tell us the make and model on the rating label when you call.` }]
+    : []),
+  ...data.faqs,
+  ...(data.group === 'valve'
+    ? [{ question: 'What do you calibrate?', answer: `${site.service.calibrationScope}. We calibrate valves and positioners on site or in our workshop; we do not calibrate or repair instruments.` }]
+    : []),
+  ...(warranty ? [{ question: 'Is there a warranty on the repair?', answer: `Yes. The warranty is ${warranty}.` }] : []),
+];
+/** Job stories linked to this page (src/content/projects/). */
+const jobs = (await getCollection('projects', (p) => p.data.relatedRepair.includes(href)))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map((p) => ({ ...p.data, where: projectWhere(p.data) }));
 /** "Hi, I need ball valve repair. Photo attached." */
 const whatsappText = repairWhatsApp(data.title);
 const eyebrow = standalone ? 'Repair & Service' : `${navGroup.label} / ${String(index + 1).padStart(2, '0')}`;
-const anyMake = data.brandsNote ?? 'Any make and model';
 
 const breadcrumbs = standalone ? [{ label: data.title }] : [{ label: navGroup.label, href: navGroup.href }, { label: data.title }];
 /** Service only: no offers, price, ratings or reviews. */
@@ -131,6 +153,21 @@ const schema = [
         <h2>How the repair works</h2>
         <div class="prose"><Content /></div>
       </section>
+
+      {jobs.length > 0 && (
+        <section class="block" id="site-jobs">
+          <h2>Recent site jobs</h2>
+          <ul class="jobs">
+            {jobs.map((j) => (
+              <li>
+                <h3>{j.title}</h3>
+                {j.where && <p class="eyebrow job-where">{j.where}</p>}
+                <p>{j.summary}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </div>
 
     <aside class="enquire" aria-label="Request this repair">
@@ -149,6 +186,7 @@ const schema = [
       <ul class="terms">
         <li><Icon name="pin" size={22} />{site.service.onSiteRepair}</li>
         {warranty && <li><Icon name="check" size={22} />Warranty: {warranty}</li>}
+        {data.group === 'valve' && <li><Icon name="pressure" size={22} />Calibration: valves and positioners only</li>}
       </ul>
     </div>
   </section>
@@ -249,6 +287,11 @@ const schema = [
   .ticks :global(svg) { flex: none; margin-top: 0.125rem; color: var(--color-blue); }
   .make { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.875rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--color-line); color: var(--color-navy); font-weight: 600; }
   .make .eyebrow { color: var(--color-slate); }
+  .jobs { display: grid; gap: 0.75rem; }
+  .jobs li { padding: 1rem 1.25rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; }
+  .jobs h3 { font-size: 1.0625rem; }
+  .jobs .job-where { margin-top: 0.25rem; color: var(--color-slate); }
+  .jobs p:not(.eyebrow) { margin-top: 0.5rem; line-height: 1.55; }
 
   .faults { display: grid; gap: 0.75rem; }
   .faults li { padding: 1.125rem 1.25rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; background: var(--color-white); }

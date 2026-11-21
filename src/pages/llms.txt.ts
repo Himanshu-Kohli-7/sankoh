@@ -14,7 +14,7 @@ const abs = (path: string) => new URL(path, site.url).href;
 const link = (label: string, href: string, note?: string) => `- [${label}](${abs(href)})${note ? `: ${note}` : ''}`;
 
 export const GET: APIRoute = async () => {
-  const { address, hours, service, brands } = site;
+  const { address, hours, service, brands, company } = site;
   const products = (await getCollection('products', isPublished)).sort(
     (a, b) => a.data.category.localeCompare(b.data.category) || a.data.order - b.data.order,
   );
@@ -23,21 +23,30 @@ export const GET: APIRoute = async () => {
   const lines = [
     `# ${site.name}`,
     '',
-    `> ${site.name} manufactures (${brands.own.join(', ')}), supplies and sources industrial valves, valve automation and process instruments as an authorised partner of ${partners}, and repairs valves, actuators, positioners and VFDs of any make, on site or in its workshop. Based in ${address.locationWording}, serving buyers across India.`,
+    `> ${site.name} manufactures ${brands.manufactured} under its own brand ${brands.own.join(', ')}, supplies automated valves and process instruments as an authorised partner of ${partners}, and repairs valves, actuators, positioners and VFDs of any make, on site or in its workshop. Based in ${address.locationWording}, serving buyers across India since ${company.foundingDisplay}.`,
     '',
     '## Key facts',
     '',
+    `- Founded: ${company.foundingDisplay}`,
     `- Address: ${address.oneLine}`,
-    `- Service area: ${service.area}`,
-    `- Own brand: ${brands.own.join(', ')}. Authorised partner of ${partners}`,
+    `- Manufactures: ${brands.manufactured} only, under the ${brands.own.join(', ')} brand`,
+    `- Authorised partner (traded, not manufactured): ${brands.authorisedPartners.map((n) => `${n} (${brands.partnerLines[n.split(' ')[0].toLowerCase()]})`).join('; ')}`,
+    `- Calibration: ${service.calibrationScope.toLowerCase()}. Instruments are sold, never calibrated or repaired`,
+    `- Clients: ${company.clientCount}`,
+    `- Team: ${service.team}`,
+    `- Valves repaired a year: ${service.repairsPerYear}`,
+    `- ${company.udyam.number ? `Udyam registration: ${company.udyam.number}` : 'Udyam-registered'}`,
     `- Office hours: ${hours.display}. ${hours.closed}`,
     `- ${service.supportLine}`,
-    `- Valve repair: ${service.repairScope.valves}`,
+    `- Valve repair: ${service.repairScope.valves}. Makes include ${listAnd(service.repairedMakes)}`,
     `- VFD repair: ${service.repairScope.vfds} (${service.vfdBrands})`,
     `- ${service.onSiteRepair}, as well as workshop repair. ${service.repairTurnaround}`,
+    `- Stock and lead times: ${service.stockNote} In stock: dispatch in ${service.leadTimes.inStock}. Not in stock: ${service.leadTimes.notInStock}. Customised: ${service.leadTimes.customised}`,
     `- Warranty: ${service.warranty.repairedValves}; ${service.warranty.repairedVfds}; ${service.warranty.newProducts}`,
+    `- Supplied to: ${listAnd(service.supplyRegions)}, and all over India`,
+    `- Site work: ${listAnd(service.siteWorkRegions)}; can be done anywhere in India`,
+    `- Industries: ${company.industriesLine}`,
     `- Also offers: ${service.alsoOffers.map((s) => s.charAt(0).toLowerCase() + s.slice(1)).join('; ')}`,
-    `- Team: ${service.team}`,
     `- Applications: ${site.applications.join(', ')}`,
     '',
     '## Contact',

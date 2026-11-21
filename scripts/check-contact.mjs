@@ -17,7 +17,7 @@
  *    files listed in TEXT_EXEMPT, by exact path. /llms.txt is exempt by decision (17 Nov 2026): it is a
  *    summary for AI assistants, not a page, and must list the primary number as "Phone / WhatsApp"
  *    and the sales line as "Sales", each exactly once and nowhere else in the file.
- * 6. Breakdown support wording (CLAUDE.md §2.5): "breakdown support" appears at most 3 times in a page's
+ * 6. Breakdown support wording (CLAUDE.md §2.5): "breakdown support" or "Breakdown?" appears at most 3 times in a page's
  *    visible text: (1) the header strip, (2) one contextual spot (home repair fact tile, repair / VFD /
  *    service page, Contact card), (3) the footer. Left out of the count: the mobile menu's copy of the header
  *    strip (`data-support-menu`, the same item as the strip) and FAQ blocks (`data-faq`, where an answer may
@@ -36,8 +36,11 @@ const SALES_RE = /(?:\+?\s*91[\s-]*)?98779[\s-]*38373/g;
 /** Pages where the full reference card may repeat the numbers. */
 const CONTACT_PAGES = new Set(['contact/index.html']);
 const MAX_PRIMARY = 2;
-/** The support-line phrase (both the label and the full sentence contain it) and its per-page cap. */
-const SUPPORT_RE = /breakdown support/gi;
+/**
+ * The support-line phrases and their per-page cap: "breakdown support" (the short label) and "Breakdown?"
+ * (the start of the full sentence, which does not contain the label). Both count against the same cap.
+ */
+const SUPPORT_RE = /breakdown support|breakdown\?/gi;
 const MAX_SUPPORT = 3;
 /** Banned everywhere in dist/. */
 const OLD_SUPPORT_RE = /7-day breakdown/i;

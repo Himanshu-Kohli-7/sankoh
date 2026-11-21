@@ -28,7 +28,7 @@ The old site is a client-side Create React App with 5 URLs and no per-product pa
    4. The placeholder drawing. Any photo that fails the mark check falls back to this, never to a marked photo.
    - Never use images from marketplaces, competitors or other manufacturers, even if no logo shows. A photo only needs to be the same kind of product, not an exact model.
 4. **No third-party brand logos or marks** except the own brand (Sankoh), authorised partners (Stolzel, UPC, Flowtech) and clients with permission (§4). Every other brand is plain text only.
-5. **24/7 is false.** Never write "24/7", "round the clock", "any time of day" or "365 days". The only availability claim is **"Urgent breakdown support 7 days a week, Sundays included. Call or WhatsApp us."** (short label: **"Breakdown support 7 days a week"**), next to the office hours in §4. Never "7-day breakdown support": it reads as a 7-day turnaround. Both strings live in `site.ts` (`service.supportLine`, `service.supportLineShort`); use them from there, never a hard-coded copy. **At most 3 mentions per page**: (1) the header strip (the mobile menu's copy counts as the same item), (2) one contextual spot (the home repair fact tile; the fact tile on repair, VFD and services pages, or the Services "Talk to us" panel; the Contact page card), (3) the footer. None in hero lines, the Why Sankoh card, CTA bands, process sections, product, category or About pages. FAQ answers may state it where the question is about it. "Typically 2–3 days" follows the same cap (3 per page outside FAQs). `npm run check:claims` and `npm run check:contact` enforce this.
+5. **24/7 is false.** Never write "24/7", "round the clock", "any time of day" or "365 days". The only availability claim is **"Breakdown? Call or WhatsApp us any day, Sundays included. We respond the same day, or by the next day at the latest."** (short label: **"Breakdown support 7 days a week"**, used by the header strip and the footer; the full sentence is for the one contextual spot), next to the office hours in §4. Never "7-day breakdown support": it reads as a 7-day turnaround. Both strings live in `site.ts` (`service.supportLine`, `service.supportLineShort`); use them from there, never a hard-coded copy. **At most 3 mentions per page**: (1) the header strip (the mobile menu's copy counts as the same item), (2) one contextual spot (the home repair fact tile; the fact tile on repair, VFD and services pages, or the Services "Talk to us" panel; the Contact page card), (3) the footer. None in hero lines, the Why Sankoh card, CTA bands, process sections, product, category or About pages. FAQ answers may state it where the question is about it. "Typically 2–3 days" follows the same cap (3 per page outside FAQs). `npm run check:claims` and `npm run check:contact` enforce this.
 6. **No client-only rendering for content.** Pages are static HTML. JavaScript only in small islands (quote form, product selector, mobile menu).
 7. **Work on branch `astro-rebuild` only.** Never commit to or push `master`. Never force-push.
 8. **Ask before adding any npm dependency** not listed in §5.
@@ -36,7 +36,9 @@ The old site is a client-side Create React App with 5 URLs and no per-product pa
 
 ## 3. Positioning (use this framing everywhere)
 
-> Sankoh Technical Solutions **manufactures** (Sankoh®), **supplies and sources** industrial valves, valve automation and process instruments as an authorised partner of Stolzel, UPC and Flowtech, and **repairs** valves, actuators, positioners and VFDs of any make, on site or in its workshop.
+> Sankoh Technical Solutions **manufactures manual valves only** (Sankoh®), **supplies** automated valves (Stolzel) and process instruments (UPC, Flowtech) as an authorised partner, **sources** anything else, and **repairs** valves, actuators, positioners and VFDs of any make, on site or in its workshop.
+
+Never say or imply that Sankoh manufactures automated valves or instruments, or calibrates or repairs instruments (`check:claims` bans these wordings).
 
 Three divisions, each with its own colour (§6):
 - **Valves & Automation** — manual, pneumatic, electric and solenoid valves, automation accessories.
@@ -59,16 +61,26 @@ Three divisions, each with its own colour (§6):
 | Proprietor | Sanjay Kohli — Proprietor (About page, with the owner photo from legacy `src/assets/Others/sankoh_owner.JPG`) |
 | Email (current) | sankoh.techsol@gmail.com, the only email. It will be replaced by a domain email before launch, so keep it in one config value |
 | GSTIN | 03AKSPK5866E1ZW (footer) |
-| Own brand (manufacturer) | Sankoh® only |
-| Authorised partner of | Stolzel, UPC, Flowtech Measuring Instruments Pvt Ltd |
-| Service area | All of India; quickest delivery and on-site service across North India |
-| Team | Qualified engineers and professionals |
+| Founded | December 2018 (JSON-LD `foundingDate` 2018-12) |
+| Udyam | Udyam-registered. Number pending ([CONFIRM] in `site.ts`): shown as text in the footer and on About once set; format `UDYAM-XX-00-0000000` |
+| Own brand (manufacturer) | Sankoh® only. Sankoh **manufactures manual valves only** |
+| Authorised partner of (traded, not manufactured) | Stolzel (automated valves), UPC and Flowtech Measuring Instruments Pvt Ltd (process instruments) |
+| Calibration | Valves and positioners only. Instruments are sold, never calibrated or repaired |
+| Clients | 400+ |
+| Team | 10–15 people; engineers have 5+ years' experience |
+| Valves repaired | 1,200–1,500 a year |
+| Service area | Supplied to Himachal Pradesh, Punjab, Haryana, Delhi NCR, Bengaluru, Andhra Pradesh and all over India. Site work in Himachal Pradesh, Punjab and Haryana; can be done anywhere in India |
+| Industries | Any industry. Named: textile, pharma, food, paper, chemical, sugar, dairy, water treatment |
+| Stock and lead times | Every product on the site is available from ready stock. In stock: dispatch in 1–2 days. Not in stock: up to 2–3 weeks. Customised: 3–4 weeks |
+| Response time | The same day, or by the next day at the latest |
+| Job stories | Positioner installation and calibration on site at Schreiber Dynamix (Fazilka) and Bhushan Oils (Ambala): about two days on site at each plant, travelling up and down each day with no night stay. Client names shown only with each client's permission (`clientNamePermission`) |
 | Office hours | Monday to Saturday, 9:30 AM to 6:30 PM. Sunday closed (from the Google Business Profile) |
-| Support line | "Urgent breakdown support 7 days a week, Sundays included. Call or WhatsApp us." Short label "Breakdown support 7 days a week" (**not** 24/7; never "7-day breakdown support") |
+| Support line | "Breakdown? Call or WhatsApp us any day, Sundays included. We respond the same day, or by the next day at the latest." Short label "Breakdown support 7 days a week" (**not** 24/7; never "7-day breakdown support") |
 | Repair turnaround | Typically 2–3 days for workshop repairs |
 | On-site repair | Offered, as well as workshop repair |
 | Repair scope | Valves of **any make**, manual and automated, including actuators and cylinders; positioners; VFDs of **any make**. **No** servo drive or HMI repair |
-| VFD brands to name | ABB, Danfoss "and all other makes" |
+| Valve / actuator makes to name | Fisher, Forbes Marshall, Rotork, AUMA, Samson, Siemens, Dembla, Rotex (valve and actuator repair pages and the hub; the positioner page says "any make"). Plain text only |
+| VFD makes to name | ABB, Danfoss, Allen-Bradley, Siemens, Delta, Yaskawa, Schneider, L&T "and all other makes" |
 | Warranty | 6 months on repaired valves and positioners; 3 months on repaired VFDs; 1 year on new products |
 | Also offers | Help selecting the right product; technical advice; delivery, installation and testing; setting up and commissioning valve and automation systems for factories; new valves, surplus and discontinued valves and parts, reconditioned components; sourcing through a vendor network |
 | Not sold | Vibration sensors |

@@ -1,9 +1,10 @@
 ---
 /**
  * About (SPEC §5.5): positioning, the three divisions, the proprietor, brands and partners,
- * why Sankoh, trust (clients and reviews), location. Facts from site.ts only (CLAUDE.md §4):
- * no founding year, counts, certifications or awards. Certifications and projects appear only
- * once their content folders have entries (CLAUDE.md §8); there are none yet.
+ * what we make vs what we supply, company facts, why Sankoh, trust (clients, reviews, job stories),
+ * where we work, location. Facts from site.ts only (CLAUDE.md §4): founding, clients, team and Udyam
+ * as confirmed on 21 Nov 2026; no certifications or awards. Certifications and projects appear only
+ * once their content folders have entries (CLAUDE.md §8).
  */
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
@@ -16,6 +17,7 @@ import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 import Trust from '../components/home/Trust.astro';
+import WhereWeWork from '../components/WhereWeWork.astro';
 import WhySankoh from '../components/home/WhySankoh.astro';
 import ownerPhoto from '../assets/about/sanjay-kohli.jpg';
 import { site, listAnd, mapsHref } from '../config/site';
@@ -24,12 +26,26 @@ import { pageTitle } from '../lib/content';
 const { proprietor } = site.people;
 const own = site.brands.own[0];
 const partners = listAnd(site.brands.authorisedPartners);
+const { company } = site;
+/** Partner name → the range we trade from it (site.brands.partnerLines). */
+const traded = site.brands.authorisedPartners.map((name) => ({
+  name,
+  line: site.brands.partnerLines[name.split(' ')[0].toLowerCase()],
+}));
+const facts = [
+  { key: 'Founded', value: company.foundingDisplay },
+  { key: 'Clients', value: company.clientCount },
+  { key: 'Team', value: `${company.teamSize} people` },
+  { key: 'Engineers', value: `${company.engineerExperience}' experience` },
+  { key: 'Repairs', value: `${site.service.repairsPerYear} valves a year` },
+  { key: 'Udyam', value: company.udyam.number || 'Registered' },
+];
 const breadcrumbs = [{ label: 'About' }];
 ---
 
 <Base
   title={pageTitle('About Us')}
-  description="Sankoh Technical Solutions, Derabassi, Punjab: manufacturer, supplier and repair partner for industrial valves, valve automation and process instruments."
+  description={`${site.name}, Derabassi, Punjab, since ${company.foundingYear}: ${own} manual valves, partner for automated valves and instruments, valve and VFD repair.`}
   pageName="About"
   {breadcrumbs}
 >
@@ -38,7 +54,7 @@ const breadcrumbs = [{ label: 'About' }];
     division="valves"
     eyebrow="Company"
     title={`About ${site.name}`}
-    lead={`${site.name} manufactures under its own brand ${own}, supplies and sources industrial valves, valve automation and process instruments as an authorised partner of ${partners}, and repairs valves, actuators, positioners and VFDs of any make, on site or in its workshop.`}
+    lead={`${site.name} manufactures ${site.brands.manufactured} under its own brand ${own}, supplies automated valves and process instruments as an authorised partner of ${partners}, and repairs valves, actuators, positioners and VFDs of any make, on site or in its workshop.`}
   />
 
   <section class="container-content section-y owner-section">
@@ -65,16 +81,44 @@ const breadcrumbs = [{ label: 'About' }];
       <SectionHeader eyebrow="People" title="Who you deal with" />
       <div class="prose">
         <p>
-          {site.name} is run by its proprietor, {proprietor.name}, from {site.address.locationWording}. Enquiries, repairs and
-          site work are handled by our {site.service.team.toLowerCase()}.
+          {site.name} was founded in {company.foundingDisplay} and is run by its proprietor, {proprietor.name}, from
+          {site.address.locationWording}. Enquiries, repairs and site work are handled by a team of {company.teamSize}, and
+          our engineers have {company.engineerExperience}' experience. We have served {company.clientCount} clients.
         </p>
         <p>
           Customers come to us for three things: the right product for the duty, a quick answer when something on the line
           breaks, and a repair they can rely on for any make. Workshop repairs are typically done in 2–3 days.
         </p>
-        <p>
-          We serve all of India, with the quickest delivery and on-site service across North India.
-        </p>
+      </div>
+      <dl class="facts">
+        {facts.map((f) => (
+          <div>
+            <dt>{f.key}</dt>
+            <dd class:list={[f.key === 'Udyam' && company.udyam.number && 'mono']}>{f.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="split-band">
+    <div class="container-content section-y">
+      <SectionHeader eyebrow="Make and supply" title="What we make, and what we supply" />
+      <div class="split">
+        <div class="split-col" data-kind="make">
+          <p class="eyebrow">Manufactured by {site.shortName}</p>
+          <h3>{own} manual valves</h3>
+          <p>We manufacture {site.brands.manufactured}, and only {site.brands.manufactured}, under our own brand {own}.</p>
+          <a href="/products/manual-valves/">See manual valves<Icon name="arrow-right" size={18} /></a>
+        </div>
+        <div class="split-col" data-kind="supply">
+          <p class="eyebrow">Supplied as authorised partner</p>
+          <h3>Automated valves and process instruments</h3>
+          <ul>
+            {traded.map((t) => <li><strong>{t.name}</strong>: {t.line}</li>)}
+          </ul>
+          <p>We supply these as an authorised partner; we do not manufacture them. We calibrate and repair valves and positioners, but we do not calibrate or repair instruments.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -83,6 +127,8 @@ const breadcrumbs = [{ label: 'About' }];
   <BrandsStrip />
   <WhySankoh tone="paper" />
   <Trust />
+
+  <section class="container-content section-y"><WhereWeWork /></section>
 
   <section class="container-content section-y">
     <div class="location">
@@ -141,6 +187,24 @@ const breadcrumbs = [{ label: 'About' }];
   .role { color: var(--color-amber); }
 
   .owner-text { align-self: center; }
+  .facts { display: grid; grid-template-columns: repeat(2, 1fr); margin-top: 1.75rem; max-width: 40rem; border: 1px solid var(--color-line); border-radius: 2px; }
+  .facts div { padding: 0.75rem 1rem; border-top: 1px solid var(--color-line); }
+  .facts div:nth-child(-n + 2) { border-top: 0; }
+  .facts div:nth-child(even) { border-left: 1px solid var(--color-line); }
+  .facts dt { color: var(--color-slate); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
+  .facts dd { margin-top: 0.125rem; color: var(--color-navy); font-weight: 600; overflow-wrap: anywhere; }
+  .facts .mono { font-family: var(--font-mono); font-weight: 500; }
+
+  .split-band { background: var(--color-paper); border-block: 1px solid var(--color-line); }
+  .split { display: grid; gap: 1rem; margin-top: 1.75rem; }
+  .split-col { padding: 1.5rem; background: var(--color-white); border: 1px solid var(--color-line); border-top: 4px solid var(--color-navy); border-radius: 2px; }
+  .split-col[data-kind='supply'] { border-top-color: var(--color-blue); }
+  .split-col .eyebrow { color: var(--color-slate); }
+  .split-col h3 { margin-top: 0.5rem; font-size: 1.25rem; }
+  .split-col p:not(.eyebrow), .split-col ul { margin-top: 0.75rem; line-height: 1.55; }
+  .split-col li + li { margin-top: 0.25rem; }
+  .split-col a { display: inline-flex; align-items: center; gap: 0.375rem; min-height: 2.75rem; margin-top: 0.5rem; font-weight: 600; }
+  @media (min-width: 768px) { .split { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; } }
   .owner-text .prose { margin-top: 1.5rem; max-width: 40rem; }
 
   .location { display: grid; gap: 2rem; padding: 2rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; }

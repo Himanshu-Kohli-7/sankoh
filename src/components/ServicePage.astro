@@ -15,6 +15,7 @@ import ProcessSteps from './ProcessSteps.astro';
 import ProductCard from './ProductCard.astro';
 import RepairServiceCard from './RepairServiceCard.astro';
 import SectionHeader from './SectionHeader.astro';
+import StockDelivery from './StockDelivery.astro';
 import CallButton from './contact/CallButton.astro';
 import WhatsAppButton from './contact/WhatsAppButton.astro';
 import QuoteButton from './contact/QuoteButton.astro';
@@ -91,6 +92,10 @@ const schema = [
         <h2>How we work</h2>
         <div class="prose"><Content /></div>
       </section>
+
+      {slug === 'product-sourcing' && (
+        <section class="block"><StockDelivery /></section>
+      )}
     </div>
 
     <aside class="enquire" aria-label={`Ask about ${data.title}`}>

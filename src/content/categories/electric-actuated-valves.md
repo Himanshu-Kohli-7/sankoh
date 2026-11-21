@@ -44,4 +44,4 @@ Electric actuated valves, often called motorised valves, use an electric motor a
 
 The range covers quarter-turn ball, wafer butterfly and spherical disc butterfly valves, hygienic tri-clover valves for dairy and food lines, corrosion-resistant UPVC valves, and motorised plug, globe and gate valves. You will find them on water treatment plants, in HVAC and building automation, across industrial automation, and inside water and milk ATMs, handling air, water, oil, gas, chemicals and steam.
 
-Sankoh Technical Solutions manufactures valves and valve automation under its own Sankoh® brand and is an authorised partner of Stolzel. It supplies motorised valve packages built to your requirement and sources other makes from a network of vendors. Orders ship anywhere in India, and North India gets the quickest delivery and on-site service.
+Sankoh Technical Solutions supplies electric actuated valves as an authorised partner of Stolzel; it does not manufacture them. Motorised valve packages are supplied to your requirement, and other makes are sourced from a network of vendors. Orders ship anywhere in India, and North India gets the quickest delivery and on-site service.

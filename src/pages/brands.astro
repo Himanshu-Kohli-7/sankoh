@@ -20,16 +20,17 @@ const keyOf = (name: string) => name.split(' ')[0].toLowerCase();
 const partners = site.brands.authorisedPartners.map((name) => ({
   name,
   key: keyOf(name),
+  line: site.brands.partnerLines[keyOf(name)],
 }));
 
 const faqs: FaqItem[] = [
   {
     question: `What is ${own}?`,
-    answer: `${own} is our own brand: the products ${site.name} manufactures carry it. It is the only brand we manufacture under.`,
+    answer: `${own} is our own brand. ${site.name} manufactures ${site.brands.manufactured} under it, and manual valves are the only products we manufacture.`,
   },
   {
     question: 'Which companies are you an authorised partner of?',
-    answer: `We are an authorised partner of ${partnerNames}.`,
+    answer: `We are an authorised partner of ${partnerNames}: Stolzel for automated valves, and UPC and Flowtech for process instruments. We supply (trade) their products; we do not manufacture them.`,
   },
   {
     question: 'Can you supply brands that are not listed here?',
@@ -38,7 +39,7 @@ const faqs: FaqItem[] = [
   },
   {
     question: 'Do you repair other brands?',
-    answer: `Yes. We repair valves of any make and VFDs from ${site.service.vfdBrands}.`,
+    answer: `Yes. We repair valves, actuators and positioners of any make, and VFDs from ${site.service.vfdBrands}. We do not repair or calibrate instruments.`,
   },
 ];
 
@@ -47,7 +48,7 @@ const breadcrumbs = [{ label: 'Brands' }];
 
 <Base
   title={pageTitle('Brands & Authorised Partners')}
-  description={`${own} is our own brand. We are an authorised partner of Stolzel, UPC and Flowtech, and source other makes through our vendor network.`}
+  description={`${own} is our own brand of manual valves. We supply Stolzel automated valves and UPC and Flowtech instruments as an authorised partner.`}
   pageName="Brands"
   {breadcrumbs}
 >
@@ -56,7 +57,7 @@ const breadcrumbs = [{ label: 'Brands' }];
     division="valves"
     eyebrow="Company"
     title="Brands & authorised partners"
-    lead={`We manufacture under our own brand, ${own}, and supply as an authorised partner of ${partnerNames}. Anything else, we source to your specification.`}
+    lead={`We manufacture ${site.brands.manufactured} under our own brand, ${own}, and supply automated valves and process instruments as an authorised partner of ${partnerNames}. Anything else, we source to your specification.`}
   />
 
   <section class="container-content section-y">
@@ -67,8 +68,9 @@ const breadcrumbs = [{ label: 'Brands' }];
       </div>
       <div class="prose">
         <p>
-          {own} is the brand of {site.name}, based in {site.address.locationWording}. It is the only brand we manufacture
-          under, alongside the valves, valve automation and process instruments we supply and source.
+          {own} is the brand of {site.name}, based in {site.address.locationWording}. We manufacture {site.brands.manufactured}
+          under it, and nothing else. Automated valves and process instruments we supply as an authorised partner, and other
+          makes we source.
         </p>
         <p>
           Tell us the duty in your enquiry and our engineers will recommend the right product, whichever brand it carries.
@@ -83,13 +85,14 @@ const breadcrumbs = [{ label: 'Brands' }];
       <SectionHeader
         eyebrow="Authorised partner of"
         title="Authorised partners"
-        intro={`${site.name} is an authorised partner of the three companies below. Ask us about their products in the same enquiry as everything else.`}
+        intro={`${site.name} is an authorised partner of the three companies below. We supply their products; we do not manufacture them. Ask about them in the same enquiry as everything else.`}
       />
       <ul class="partners">
         {partners.map((p) => (
           <li data-key={p.key}>
             <p class="eyebrow">Authorised partner</p>
             <div class="logo-slot"><PartnerLogo partnerKey={p.key} name={p.name} height={40} /></div>
+            {p.line && <p class="line">Supplied: {p.line}</p>}
           </li>
         ))}
       </ul>
@@ -148,4 +151,5 @@ const breadcrumbs = [{ label: 'Brands' }];
     .other { grid-template-columns: 1fr auto; align-items: center; gap: 2rem; }
     .faq-layout { grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: 4rem; align-items: start; }
   }
+  .partners .line { margin-top: 0.5rem; color: var(--color-slate); font-size: var(--text-small); }
 </style>

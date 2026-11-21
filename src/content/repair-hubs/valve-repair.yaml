@@ -92,9 +92,11 @@ faqs:
   - question: Is there a warranty on a repaired valve or positioner?
     answer: Yes. Repaired valves and positioners carry a 6-month warranty.
   - question: Do you repair VFDs as well?
-    answer: Yes. VFDs from ABB, Danfoss and all other makes are repaired too, with a 3-month warranty. See the VFD repair page.
+    answer: Yes. VFDs of any make are repaired too, with a 3-month warranty. See the VFD repair page.
   - question: What if a valve fails on a Sunday?
     answer: The office is open Monday to Saturday, 9:30 AM to 6:30 PM, and urgent breakdown support is available 7 days a week. Call the repair desk.
+  - question: Do you calibrate valves and positioners?
+    answer: Yes, valves and positioners only, on site or in our workshop. We do not calibrate or repair instruments.
   - question: Is the valve tested after repair?
     answer: Yes. Every unit is tested before dispatch, and you get a report of the work done.
   - question: What if the valve cannot be repaired?

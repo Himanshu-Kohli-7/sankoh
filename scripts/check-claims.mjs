@@ -47,6 +47,12 @@ const BANNED = [
   [/drive-repair/i, 'The /drive-repair/ section is gone: link /vfd-repair/'],
   [/vibration sensors?/i, 'Vibration sensors are not sold'],
   [/Stolzel®|own brands/i, 'Sankoh® is the only own brand; Stolzel is an authorised partner'],
+  // Sankoh manufactures manual valves only; automated valves and instruments are traded (proprietor, 21 Nov 2026).
+  [/we manufacture (automated|process instruments|instruments)/i, 'Sankoh manufactures manual valves only: automated valves and instruments are supplied as an authorised partner'],
+  [/(we are|Sankoh is) (a |an )?manufacturer of (automated|process instruments|instruments)/i, 'Sankoh is not a manufacturer of automated valves or instruments: it supplies them as an authorised partner'],
+  // Calibration is for valves and positioners only; instruments are sold, never calibrated or repaired.
+  [/we (offer|provide|do) instrument calibration/i, 'We calibrate valves and positioners only, never instruments'],
+  [/calibration of instruments/i, 'We calibrate valves and positioners only, never instruments'],
 ];
 
 /** Former contact, no longer with the company. Never his name, title, number or email, anywhere. */

@@ -26,7 +26,7 @@ faqs:
   - question: Does every automated valve need a limit switch box?
     answer: Not always, but it is the only way for the control system to confirm that the valve really moved. On interlocked sequences, batching and critical isolation duties, that confirmation is well worth having.
   - question: Do you repair and calibrate positioners?
-    answer: Yes. Our engineers repair and calibrate positioners of any make, and repair pneumatic and electric actuators too.
+    answer: Yes. Our engineers repair and calibrate positioners of any make, and repair pneumatic and electric actuators too. Calibration covers valves and positioners only.
   - question: Can you source accessories from another maker?
     answer: Yes. Through our vendor network we find accessories of other makes, including like-for-like replacements for units already on your actuators.
 relatedRepair:
@@ -39,4 +39,4 @@ An actuator turns a valve, but on its own it cannot tell the control room where 
 
 The range covers limit switch boxes that confirm open and shut, smart valve positioners for modulating control, I/P converters that turn a current signal into air pressure, and add-on position feedback and local control units that suit electric actuators. It also includes air release valves that keep trapped air out of water pipelines. You will find them across water treatment, HVAC, building automation and industrial automation.
 
-Sankoh Technical Solutions builds valve automation as a manufacturer under the Sankoh® name, and works with Stolzel as an authorised partner. It supplies accessories to suit your actuators, whether they come with a new automated valve or go onto one already in service, and sources other makes through its vendor network. Its engineers also repair positioners and actuators of any make.
+Sankoh Technical Solutions supplies valve automation accessories as an authorised partner of Stolzel rather than making them. It matches accessories to your actuators, whether they come with a new automated valve or go onto one already in service, and sources other makes through its vendor network. Its engineers also repair positioners and actuators of any make.

@@ -1,0 +1,55 @@
+---
+/**
+ * Stock and lead times (proprietor, 21 Nov 2026), from site.ts only. Product pages, category pages and
+ * the product sourcing service. Template text: not part of the content files check:repeats scans.
+ */
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+
+interface Props {
+  headingLevel?: 'h2' | 'h3';
+  /** Instruments pages add that we supply instruments but do not calibrate or repair them. */
+  instruments?: boolean;
+  class?: string;
+}
+const { headingLevel: Tag = 'h2', instruments = false, class: cls } = Astro.props;
+const { leadTimes, stockNote } = site.service;
+const rows = [
+  { key: 'In stock', value: `Dispatch in ${leadTimes.inStock}` },
+  { key: 'Not in stock', value: leadTimes.notInStock.replace(/^up/, 'Up') },
+  { key: 'Customised', value: leadTimes.customised },
+];
+---
+
+<div class:list={['stock', cls]}>
+  <Tag class="title"><Icon name="truck" size={22} />Stock and delivery</Tag>
+  <p class="note">{stockNote} We deliver across India.</p>
+  <dl>
+    {rows.map((r) => (
+      <div>
+        <dt>{r.key}</dt>
+        <dd>{r.value}</dd>
+      </div>
+    ))}
+  </dl>
+  {instruments && <p class="scope">We supply instruments; we do not calibrate or repair them.</p>}
+</div>
+
+<style>
+  .stock { padding: 1.25rem 1.25rem 1.5rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-blue); border-radius: 2px; background: var(--color-white); }
+  .title { display: flex; align-items: center; gap: 0.5rem; font-size: 1.25rem; }
+  .title :global(svg) { flex: none; color: var(--color-blue); }
+  .note { margin-top: 0.5rem; color: var(--color-ink); }
+  dl { display: grid; margin-top: 1rem; border-top: 1px solid var(--color-line); }
+  dl div { display: flex; justify-content: space-between; gap: 1rem; padding: 0.625rem 0; border-bottom: 1px solid var(--color-line); }
+  dt { color: var(--color-slate); font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+  dd { color: var(--color-navy); font-family: var(--font-mono); font-weight: 500; text-align: right; }
+  .scope { margin-top: 0.875rem; color: var(--color-slate); font-size: var(--text-small); }
+
+  @media (min-width: 640px) {
+    dl { grid-template-columns: repeat(3, 1fr); border-bottom: 1px solid var(--color-line); }
+    dl div { flex-direction: column; justify-content: start; gap: 0.25rem; padding: 0.75rem 1rem; border-bottom: 0; border-left: 1px solid var(--color-line); }
+    dl div:first-child { border-left: 0; padding-left: 0; }
+    dd { text-align: left; }
+  }
+</style>

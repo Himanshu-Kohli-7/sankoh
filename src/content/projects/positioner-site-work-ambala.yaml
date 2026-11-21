@@ -1,0 +1,10 @@
+# Job story confirmed by the proprietor, 21 Nov 2026. Client named only once clientNamePermission is true
+# (permission tracked in docs/PENDING.md). Invent no detail beyond what is written here.
+title: Positioner installation and calibration on site
+client: Bhushan Oils
+clientNamePermission: false
+location: Ambala
+summary: Our team installed and calibrated positioners at the plant, spending about two days on site and travelling up and down each day with no night stay.
+relatedRepair:
+  - /valve-repair/positioner-repair-calibration/
+order: 2
