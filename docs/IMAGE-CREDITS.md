@@ -46,16 +46,20 @@ Edits to Batch B Flowtech photos (19 Nov 2026), all resized to 720 px wide (the 
 - `manometer.jpg`: the **scale numerals** on the U-tube manometer (left) are **blurred**, because they were readable and dial data must not be shown as a spec. The graduation lines, the tubes and the Flowtech label are unchanged; the scale on the single-limb manometer (right) is too small to read and is unchanged.
 - `conductivity-level-switch.jpg`, `cable-float-switch.jpg`: resized only. The small label on the conductivity switch housing is unreadable; the cable float carries the Flowtech label.
 
-### UPC Instruments Pvt Ltd — unitechmeter.com
+### UPC Instruments Pvt Ltd — upcinstruments.in
 
-| File | Used on | Source page | Image URL |
-|---|---|---|---|
-| `mechanical-water-meter.webp` | Mechanical Water Meter | /product/water-meter/woltman-type-water-meter-cold | /storage/products/upc-wmc-110-67dd58886a1a4.webp |
-| `dissolved-oxygen-do-analyzer.webp` | Dissolved Oxygen (DO) Analyzer | /product/analytical-instruments/do-meter | /storage/products/do-130-69c3828a83dab.webp |
-| `ball-valve-flanged-end.webp` | Ball Valve – Flanged End | /product/valves/wcb-two-piece-flange-end-ball-valve | /storage/products/upc-feb-466-6818678982993.webp |
-| `basket-strainer.webp` | Basket Strainer | /product/valves/cast-iron-t-type-strainer | /storage/products/upc-tst-492-69c3887ccd70f.webp |
-| `thermodynamic-steam-trap.webp` | Thermodynamic Steam Trap | /product/valves/thermodynamic-steam-trap-ss-body | /storage/products/upc-tst-471-69c39bf60fe2c.webp |
-| `ball-float-steam-trap.webp` | Ball Float Steam Trap | /product/valves/ball-float-steam-trap | /storage/products/upc-bst-444-6800a0c83eb71.webp |
+UPC's own site is upcinstruments.in. unitechmeter.com is **not** one of the partners' own sites, so photos from it were replaced on 21 Nov 2026 (the six below used to come from it). The site serves its photos from its own catalogue host `2.wlimg.com`. Same kind of product as the page, not an exact model: the old photos were of the exact UPC models; these are the nearest products UPC lists on its own site.
+
+| File | Used on | Source page (upcinstruments.in) | Image URL (`https://2.wlimg.com/product_images/bc-full/2026/4/4094643/`…) | Edits |
+|---|---|---|---|---|
+| `mechanical-water-meter.webp` | Mechanical Water Meter | /industrial-woltman-hot-water-flow-meter.htm | industrial-woltman-hot-water-flow-meter-8646205-pv1.jpg | Converted to WebP, kept at its native 304 × 347 px. Hot-water Woltman meter (red body, UPC mark cast on it); the register face is too small to read |
+| `dissolved-oxygen-do-analyzer.webp` | Dissolved Oxygen (DO) Analyzer | /digital-dissolved-oxygen-do-meter-analyzer.htm | digital-dissolved-oxygen-do-meter-analyzer-8646254-pv1.jpg | Converted to WebP, native 476 × 472 px. The screen is off; "DO METER" is a generic label, no maker |
+| `ball-valve-flanged-end.webp` | Ball Valve – Flanged End | /ss316-flanged-two-piece-ball-valve.htm | ss316-flanged-two-piece-ball-valve-8646867-pv1.jpg | Converted to WebP, native 347 × 257 px. A small label on the body is unreadable at this size (checked at 5×), so nothing blurred |
+| `basket-strainer.webp` | Basket Strainer | /industrial-cast-iron-t-type-basket-strainer.htm | industrial-cast-iron-t-type-basket-strainer-8646295-pv1.jpg | Converted to WebP, native 398 × 368 px. The small plate on the flange is unreadable (checked at 5×), so nothing blurred |
+| `thermodynamic-steam-trap.webp` | Thermodynamic Steam Trap | /stainless-steel-thermodynamic-steam-trap-valve.htm | stainless-steel-thermodynamic-steam-trap-valve-8646289-pv1.jpg | Converted to WebP, native 331 × 388 px. The cast **"15" size marks** on both sides of the body were legible at 3×, so they are **blurred** (size data is not shown as a spec). The cast UPC mark is unchanged |
+| `ball-float-steam-trap.webp` | Ball Float Steam Trap | /ball-float-steam-trap-cast-iron-body.htm | ball-float-steam-trap-cast-iron-body-8646899-pv1.jpg | Converted to WebP, native 319 × 336 px. A faint cast number on the upper body is **blurred** as a precaution. No maker mark |
+
+These photos are small (300–480 px wide, 5–7 KB). They are served at their native size, not enlarged, so they look softer than the other product photos. If UPC supplies larger originals, swap them in.
 
 ### Stolzel — stolzelvalves.com
 
