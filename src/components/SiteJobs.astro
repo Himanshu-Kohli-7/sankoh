@@ -1,0 +1,77 @@
+---
+/**
+ * "Recent positioner jobs on site": one compact block of rows (place · work done · time on site), built
+ * from src/content/projects/ fields and the template text below, never from prose, so check:repeats has
+ * nothing to compare. Clients are named only with permission (lib/projects.ts). No client logo is shown
+ * here or next to this block (CLAUDE.md §2.4). Used on About and the positioner repair page.
+ */
+import { getCollection } from 'astro:content';
+import Icon from './Icon.astro';
+import { site, listAnd } from '../config/site';
+import { projectWhere } from '../lib/projects';
+
+interface Props {
+  /** Only jobs that list this repair page in relatedRepair. Omit for all jobs. */
+  repairHref?: string;
+  headingLevel?: 'h2' | 'h3';
+}
+const { repairHref, headingLevel: Tag = 'h2' } = Astro.props;
+
+const words = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+const timeOnSite = (days?: number, daily?: boolean): string => {
+  if (!days) return '';
+  const n = words[days] ?? String(days);
+  const base = `About ${n} ${days === 1 ? 'day' : 'days'} on site`;
+  return daily ? `${base}, travelling up and down each day, no night stay` : base;
+};
+
+const jobs = (await getCollection('projects', (p) => !repairHref || p.data.relatedRepair.includes(repairHref)))
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(({ data }) => ({
+    place: projectWhere(data) ?? 'On site',
+    work: data.title,
+    time: timeOnSite(data.daysOnSite, data.travelledDaily),
+  }));
+---
+
+{jobs.length > 0 && (
+  <div class="jobs-block">
+    <Tag class="title">Recent positioner jobs on site</Tag>
+    <table class="jobs">
+      <thead>
+        <tr><th scope="col">Place</th><th scope="col">Work done</th><th scope="col">Time on site</th></tr>
+      </thead>
+      <tbody>
+        {jobs.map((j) => (
+          <tr>
+            <th scope="row"><Icon name="pin" size={18} />{j.place}</th>
+            <td>{j.work}</td>
+            <td>{j.time}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="regions">Site work across {listAnd(site.service.siteWorkRegions)}.</p>
+  </div>
+)}
+
+<style>
+  .jobs-block { padding: 1.25rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; background: var(--color-white); }
+  .title { font-size: 1.25rem; }
+  .jobs { width: 100%; margin-top: 1rem; border-collapse: collapse; font-size: 0.9375rem; }
+  thead { display: none; }
+  tr { display: grid; gap: 0.125rem; padding: 0.75rem 0; border-top: 1px solid var(--color-line); }
+  th[scope='row'] { display: flex; align-items: center; gap: 0.375rem; color: var(--color-navy); font-weight: 600; text-align: left; }
+  th[scope='row'] :global(svg) { flex: none; color: var(--color-blue); }
+  td { color: var(--color-ink); line-height: 1.45; }
+  td:last-child { color: var(--color-slate); }
+  .regions { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--color-line); color: var(--color-slate); font-size: var(--text-small); }
+
+  @media (min-width: 768px) {
+    .jobs-block { padding: 1.5rem; }
+    thead { display: table-header-group; }
+    thead th { padding: 0 1rem 0.5rem 0; color: var(--color-slate); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-align: left; text-transform: uppercase; }
+    tr { display: table-row; padding: 0; }
+    th[scope='row'], td { padding: 0.75rem 1rem 0.75rem 0; border-top: 1px solid var(--color-line); vertical-align: top; }
+  }
+</style>

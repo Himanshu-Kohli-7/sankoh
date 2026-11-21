@@ -224,11 +224,15 @@ const certifications = defineCollection({
     }),
 });
 
-/** Real projects / case studies, confirmed by the company. Empty until then; the block hides itself. */
+/**
+ * Site jobs confirmed by the company, as data rows (place · work done · time on site). The rows are
+ * built by components/SiteJobs.astro from these fields and template text, never from prose.
+ */
 const projects = defineCollection({
   loader: glob({ pattern: '*.yaml', base: './src/content/projects' }),
   schema: ({ image }) =>
     z.object({
+      /** Work done, e.g. "Positioner installation and calibration". */
       title: z.string(),
       /** The client's name. Shown only when clientNamePermission is true (docs/PENDING.md). */
       client: z.string().optional(),
@@ -236,8 +240,12 @@ const projects = defineCollection({
       clientNamePermission: z.boolean().default(false),
       /** Town or city of the job, always shown. */
       location: z.string().optional(),
-      /** Must read well without the client's name. */
-      summary: z.string(),
+      /** Days on site at the plant ("about N days"). */
+      daysOnSite: z.number().int().positive().optional(),
+      /** The team travelled up and down each day, with no night stay. */
+      travelledDaily: z.boolean().default(false),
+      /** Optional prose; not rendered by the site-jobs block. Must read well without the client's name. */
+      summary: z.string().optional(),
       /** Repair pages that also show this job (hrefs). */
       relatedRepair: z.array(z.string()).default([]),
       image: image().optional(),

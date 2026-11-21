@@ -17,6 +17,7 @@ import ProcessSteps from './ProcessSteps.astro';
 import ProductCard from './ProductCard.astro';
 import RepairServiceCard from './RepairServiceCard.astro';
 import SectionHeader from './SectionHeader.astro';
+import SiteJobs from './SiteJobs.astro';
 import TrustStats from './TrustStats.astro';
 import CallButton from './contact/CallButton.astro';
 import WhatsAppButton from './contact/WhatsAppButton.astro';
@@ -25,7 +26,6 @@ import { site } from '../config/site';
 import { repairGroups } from '../config/nav';
 import { groupThing, repairSteps, repairWhatsApp } from '../config/repair';
 import { categoryInfo, pageTitle, productLink, productsById } from '../lib/content';
-import { projectWhere } from '../lib/projects';
 
 interface Props {
   service: CollectionEntry<'repairServices'>;
@@ -52,6 +52,9 @@ for (const product of related) {
     throw new Error(`${service.id}: ${product.id} is in relatedProducts but does not list ${href} in its relatedRepair`);
   }
 }
+
+/** Site jobs linked to this page (src/content/projects/); the block is shown only when there are some. */
+const hasJobs = (await getCollection('projects', (p) => p.data.relatedRepair.includes(href))).length > 0;
 
 const gallery = (await getCollection('repairGallery', (g) => g.data.group === data.group)).sort(
   (a, b) => a.data.order - b.data.order,
@@ -86,10 +89,7 @@ const faqs: FaqItem[] = [
     : []),
   ...(warranty ? [{ question: 'Is there a warranty on the repair?', answer: `Yes. The warranty is ${warranty}.` }] : []),
 ];
-/** Job stories linked to this page (src/content/projects/). */
-const jobs = (await getCollection('projects', (p) => p.data.relatedRepair.includes(href)))
-  .sort((a, b) => a.data.order - b.data.order)
-  .map((p) => ({ ...p.data, where: projectWhere(p.data) }));
+
 /** "Hi, I need ball valve repair. Photo attached." */
 const whatsappText = repairWhatsApp(data.title);
 const eyebrow = standalone ? 'Repair & Service' : `${navGroup.label} / ${String(index + 1).padStart(2, '0')}`;
@@ -154,20 +154,7 @@ const schema = [
         <div class="prose"><Content /></div>
       </section>
 
-      {jobs.length > 0 && (
-        <section class="block" id="site-jobs">
-          <h2>Recent site jobs</h2>
-          <ul class="jobs">
-            {jobs.map((j) => (
-              <li>
-                <h3>{j.title}</h3>
-                {j.where && <p class="eyebrow job-where">{j.where}</p>}
-                <p>{j.summary}</p>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      {hasJobs && <section class="block" id="site-jobs"><SiteJobs repairHref={href} /></section>}
     </div>
 
     <aside class="enquire" aria-label="Request this repair">
@@ -287,11 +274,6 @@ const schema = [
   .ticks :global(svg) { flex: none; margin-top: 0.125rem; color: var(--color-blue); }
   .make { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.875rem; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--color-line); color: var(--color-navy); font-weight: 600; }
   .make .eyebrow { color: var(--color-slate); }
-  .jobs { display: grid; gap: 0.75rem; }
-  .jobs li { padding: 1rem 1.25rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; }
-  .jobs h3 { font-size: 1.0625rem; }
-  .jobs .job-where { margin-top: 0.25rem; color: var(--color-slate); }
-  .jobs p:not(.eyebrow) { margin-top: 0.5rem; line-height: 1.55; }
 
   .faults { display: grid; gap: 0.75rem; }
   .faults li { padding: 1.125rem 1.25rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; background: var(--color-white); }

@@ -27,7 +27,7 @@ const vfdMakes = ['ABB', 'Danfoss', 'Allen-Bradley', 'Siemens', 'Delta', 'Yaskaw
 /** Regions we have supplied to; we also supply all over India. */
 const supplyRegions = ['Himachal Pradesh', 'Punjab', 'Haryana', 'Delhi NCR', 'Bengaluru', 'Andhra Pradesh'] as const;
 /** Regions where site work has been done; it can be done anywhere in India. */
-const siteWorkRegions = ['Himachal Pradesh', 'Punjab', 'Haryana'] as const;
+const siteWorkRegions = ['Punjab', 'Haryana', 'Himachal Pradesh'] as const;
 const teamSize = '10–15';
 const engineerExperience = '5+ years';
 

@@ -73,7 +73,7 @@ Three divisions, each with its own colour (§6):
 | Industries | Any industry. Named: textile, pharma, food, paper, chemical, sugar, dairy, water treatment |
 | Stock and lead times | Every product on the site is available from ready stock. In stock: dispatch in 1–2 days. Not in stock: up to 2–3 weeks. Customised: 3–4 weeks |
 | Response time | The same day, or by the next day at the latest |
-| Job stories | Positioner installation and calibration on site at Schreiber Dynamix (Fazilka) and Bhushan Oils (Ambala): about two days on site at each plant, travelling up and down each day with no night stay. Client names shown only with each client's permission (`clientNamePermission`) |
+| Site jobs | Positioner installation and calibration on site at Schreiber Dynamix (Fazilka), Bhushan Oils (Ambala) and VVF (Baddi): about two days on site at each plant, travelling up and down each day with no night stay. Shown as one "Recent positioner jobs on site" block (About, positioner repair page), never next to client logos. Client names shown only with each client's permission (`clientNamePermission`) |
 | Office hours | Monday to Saturday, 9:30 AM to 6:30 PM. Sunday closed (from the Google Business Profile) |
 | Support line | "Breakdown? Call or WhatsApp us any day, Sundays included. We respond the same day, or by the next day at the latest." Short label "Breakdown support 7 days a week" (**not** 24/7; never "7-day breakdown support") |
 | Repair turnaround | Typically 2–3 days for workshop repairs |

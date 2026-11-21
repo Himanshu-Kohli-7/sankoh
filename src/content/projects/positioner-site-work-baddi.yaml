@@ -1,0 +1,12 @@
+# Site job confirmed by the proprietor, 21 Nov 2026. Rendered as one row of the site-jobs block
+# (components/SiteJobs.astro). The client is named only once clientNamePermission is true
+# (docs/PENDING.md 8a). Invent no detail beyond these fields.
+title: Positioner installation and calibration
+client: VVF
+clientNamePermission: false
+location: Baddi
+daysOnSite: 2
+travelledDaily: true
+relatedRepair:
+  - /valve-repair/positioner-repair-calibration/
+order: 3
