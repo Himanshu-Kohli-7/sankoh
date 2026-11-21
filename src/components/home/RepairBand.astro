@@ -47,7 +47,7 @@ const whatsappText = `Hello ${site.name}, I have a valve to send for repair.`;
                 ))}
               </ul>
             ) : (
-              <p class="type-note"><Icon name={group.icon ?? 'wrench'} size={20} />{group.note}</p>
+              <p class="type-note"><Icon name={group.icon ?? 'wrench'} size={20} />{group.note ?? site.service.vfdMakesShort}</p>
             )}
           </div>
         ))}

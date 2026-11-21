@@ -3,7 +3,6 @@
  * Names and slugs come from docs/SPEC.md §2. Keep this file free of Node APIs:
  * it is bundled into the mobile menu island.
  */
-
 export type DivisionKey = 'valves' | 'instruments' | 'repair';
 
 export interface NavLink {
@@ -92,7 +91,6 @@ export const repairGroups: NavGroup[] = [
     label: 'VFD Repair',
     href: '/vfd-repair/',
     icon: 'drive',
-    note: 'ABB, Danfoss and all other makes',
     links: [],
   },
 ];

@@ -66,7 +66,7 @@ export const GET: APIRoute = async () => {
     ]),
     `## ${site.divisions.repair.name}`,
     '',
-    ...repairGroups.flatMap((g) => [link(g.label, g.href, g.note), ...g.links.map((l) => link(l.label, l.href))]),
+    ...repairGroups.flatMap((g) => [link(g.label, g.href, g.note ?? (g.links.length ? undefined : service.vfdBrands)), ...g.links.map((l) => link(l.label, l.href))]),
     link('Services overview', '/services/'),
     ...serviceLinks.map((l) => link(l.label, l.href)),
     '',
