@@ -63,6 +63,14 @@ const FORMER = [
   [/marketing head/i, 'Former contact title: there is no Marketing Head contact'],
   [/\b254,?\s*1st\s+floor/i, 'Former address: the address is "69, Ground Floor, Hansa Industrial Park" (site.ts)'],
 ];
+/**
+ * "Manufactured by Sankoh" may appear only where it is true and expected: the manual-valve pages, About,
+ * home, brands and llms.txt (proprietor, 21 Nov 2026). Everything else (pneumatic, electric, solenoid,
+ * accessory and instrument pages) is supplied as authorised partner. Checked in dist/ by page path.
+ */
+/** "Traded, not manufactured by Sankoh" is the correct negative and is allowed everywhere. */
+const MADE_BY = /(?<!\bnot\s)manufactured by sankoh/i;
+const MADE_BY_ALLOWED = [/^dist\/index\.html$/, /^dist\/about\//, /^dist\/brands\//, /^dist\/products\/manual-valves\//, /^dist\/llms\.txt$/];
 /** Patterns checked in every built text file in dist/ (HTML, JSON-LD, sitemaps, llms.txt). */
 const DIST_ALL = [FORMER[FORMER.length - 1]];
 
@@ -154,6 +162,15 @@ for (const [file, bans] of jobs) {
       console.log(`${file.split(path.sep).join('/')}:${i + 1}  ${why}\n    ${line.trim().slice(0, 160)}`);
     }
   });
+}
+
+if (mode !== 'source') {
+  for (const file of walk('dist').map((f) => f.split(path.sep).join('/'))) {
+    if (MADE_BY_ALLOWED.some((re) => re.test(file))) continue;
+    if (!MADE_BY.test(fs.readFileSync(file, 'utf8'))) continue;
+    hits++;
+    console.log(`${file}  "Manufactured by Sankoh" only on manual-valve pages, About, home, brands and llms.txt`);
+  }
 }
 
 console.log(hits ? `\n${hits} banned claim(s) in ${jobs.length} files.` : `No banned claims in ${jobs.length} files.`);
