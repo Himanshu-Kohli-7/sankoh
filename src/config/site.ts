@@ -31,11 +31,8 @@ const siteWorkRegions = ['Himachal Pradesh', 'Punjab', 'Haryana'] as const;
 const teamSize = '10–15';
 const engineerExperience = '5+ years';
 
-/**
- * Udyam registration. [CONFIRM] the number from the proprietor (docs/CONFIRM.md). While empty, the footer
- * and About show no number. Format: UDYAM-XX-00-0000000 (checked below; a malformed number fails the build).
- */
-const udyamNumber = '' as string;
+/** Udyam registration number (proprietor, 21 Nov 2026). Shown as text in the footer and on About. Format checked below. */
+const udyamNumber: string = 'UDYAM-PB-20-0004694';
 export const UDYAM_RE = /^UDYAM-[A-Z]{2}-\d{2}-\d{7}$/;
 if (udyamNumber && !UDYAM_RE.test(udyamNumber)) {
   throw new Error(`site.ts: Udyam number "${udyamNumber}" does not match UDYAM-XX-00-0000000`);

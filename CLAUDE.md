@@ -62,7 +62,7 @@ Three divisions, each with its own colour (§6):
 | Email (current) | sankoh.techsol@gmail.com, the only email. It will be replaced by a domain email before launch, so keep it in one config value |
 | GSTIN | 03AKSPK5866E1ZW (footer) |
 | Founded | December 2018 (JSON-LD `foundingDate` 2018-12) |
-| Udyam | Udyam-registered. Number pending ([CONFIRM] in `site.ts`): shown as text in the footer and on About once set; format `UDYAM-XX-00-0000000` |
+| Udyam | UDYAM-PB-20-0004694 (`site.company.udyam.number`). Shown as text in the footer next to GSTIN and in the About facts block; format `UDYAM-XX-00-0000000`, checked at build |
 | Own brand (manufacturer) | Sankoh® only. Sankoh **manufactures manual valves only** |
 | Authorised partner of (traded, not manufactured) | Stolzel (automated valves), UPC and Flowtech Measuring Instruments Pvt Ltd (process instruments) |
 | Calibration | Valves and positioners only. Instruments are sold, never calibrated or repaired |
