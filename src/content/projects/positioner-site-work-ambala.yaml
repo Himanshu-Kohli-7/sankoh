@@ -1,10 +1,11 @@
-# Site job confirmed by the proprietor, 21 Nov 2026. Rendered as one row of the site-jobs block
+# Site job confirmed by the proprietor, 21 Nov 2026. Rendered as one pin of the site-jobs route strip
 # (components/SiteJobs.astro). The client is named only once clientNamePermission is true
 # (docs/PENDING.md 8a). Invent no detail beyond these fields.
 title: Positioner installation and calibration
 client: Bhushan Oils
 clientNamePermission: false
 location: Ambala
+region: Haryana
 daysOnSite: 2
 travelledDaily: true
 relatedRepair:

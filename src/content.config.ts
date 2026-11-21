@@ -240,6 +240,8 @@ const projects = defineCollection({
       clientNamePermission: z.boolean().default(false),
       /** Town or city of the job, always shown. */
       location: z.string().optional(),
+      /** State of the job, shown under the pin (e.g. "Punjab"). */
+      region: z.string().optional(),
       /** Days on site at the plant ("about N days"). */
       daysOnSite: z.number().int().positive().optional(),
       /** The team travelled up and down each day, with no night stay. */

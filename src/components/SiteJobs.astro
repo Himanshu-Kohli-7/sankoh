@@ -1,14 +1,14 @@
 ---
 /**
- * "Recent positioner jobs on site": one compact block of rows (place · work done · time on site), built
- * from src/content/projects/ fields and the template text below, never from prose, so check:repeats has
- * nothing to compare. Clients are named only with permission (lib/projects.ts). No client logo is shown
- * here or next to this block (CLAUDE.md §2.4). Used on About and the positioner repair page.
+ * "Recent positioner jobs on site": one statement and a route strip from the base (Derabassi) to each
+ * plant, built from src/content/projects/ fields and the template text below, never from prose, so
+ * check:repeats has nothing to compare. Horizontal from 640px, vertical on phones. Clients are named
+ * (under the pin) only with permission. No client logo is shown here or next to this block
+ * (CLAUDE.md §2.4). Used on About and the positioner repair page.
  */
 import { getCollection } from 'astro:content';
 import Icon from './Icon.astro';
 import { site, listAnd } from '../config/site';
-import { projectWhere } from '../lib/projects';
 
 interface Props {
   /** Only jobs that list this repair page in relatedRepair. Omit for all jobs. */
@@ -18,60 +18,86 @@ interface Props {
 const { repairHref, headingLevel: Tag = 'h2' } = Astro.props;
 
 const words = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
-const timeOnSite = (days?: number, daily?: boolean): string => {
-  if (!days) return '';
-  const n = words[days] ?? String(days);
-  const base = `About ${n} ${days === 1 ? 'day' : 'days'} on site`;
-  return daily ? `${base}, travelling up and down each day, no night stay` : base;
-};
+const days = (n: number) => `about ${words[n] ?? String(n)} ${n === 1 ? 'day' : 'days'} on site`;
 
 const jobs = (await getCollection('projects', (p) => !repairHref || p.data.relatedRepair.includes(repairHref)))
   .sort((a, b) => a.data.order - b.data.order)
-  .map(({ data }) => ({
-    place: projectWhere(data) ?? 'On site',
-    work: data.title,
-    time: timeOnSite(data.daysOnSite, data.travelledDaily),
-  }));
+  .map(({ data }) => data);
+
+/** One statement when every job is the same work and time; otherwise each pin carries its own time. */
+const same = <T,>(pick: (j: (typeof jobs)[number]) => T) => jobs.every((j) => pick(j) === pick(jobs[0]));
+const uniform = jobs.length > 0 && same((j) => j.title) && same((j) => j.daysOnSite) && same((j) => j.travelledDaily);
+const first = jobs[0];
+const statement = first
+  ? uniform
+    ? `${first.title} at the plant${first.daysOnSite ? `: ${days(first.daysOnSite)} at each` : ''}${first.travelledDaily ? ', travelling up and down each day' : ''}.`
+    : 'Positioner work at the plant, on site.'
+  : '';
+
+const stops = jobs.map((j) => ({
+  place: j.location ?? 'On site',
+  region: j.region,
+  client: j.client && j.clientNamePermission ? j.client : undefined,
+  detail: uniform ? undefined : [j.title, j.daysOnSite && days(j.daysOnSite)].filter(Boolean).join(', '),
+}));
 ---
 
 {jobs.length > 0 && (
   <div class="jobs-block">
     <Tag class="title">Recent positioner jobs on site</Tag>
-    <table class="jobs">
-      <thead>
-        <tr><th scope="col">Place</th><th scope="col">Work done</th><th scope="col">Time on site</th></tr>
-      </thead>
-      <tbody>
-        {jobs.map((j) => (
-          <tr>
-            <th scope="row"><Icon name="pin" size={18} />{j.place}</th>
-            <td>{j.work}</td>
-            <td>{j.time}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <p class="statement">{statement}</p>
+    <ol class="route" aria-label={`Route from our base in ${site.address.locality} to each plant`}>
+      <li class="stop base">
+        <span class="marker"><Icon name="building" size={16} /></span>
+        <svg class="seg" aria-hidden="true"><line class="h" x1="0" y1="50%" x2="100%" y2="50%" /><line class="v" x1="50%" y1="0" x2="50%" y2="100%" /></svg>
+        <span class="text"><span class="place">{site.address.locality}</span> <span class="region">(base)</span></span>
+      </li>
+      {stops.map((s, i) => (
+        <li class="stop">
+          <span class="marker"><Icon name="pin" size={16} /></span>
+          {i < stops.length - 1 && (
+            <svg class="seg" aria-hidden="true"><line class="h" x1="0" y1="50%" x2="100%" y2="50%" /><line class="v" x1="50%" y1="0" x2="50%" y2="100%" /></svg>
+          )}
+          <span class="text">
+            <span class="place">{s.place}</span>{s.region && <span class="region"> · {s.region}</span>}
+            {s.client && <span class="client">{s.client}</span>}
+            {s.detail && <span class="client">{s.detail}</span>}
+          </span>
+        </li>
+      ))}
+    </ol>
     <p class="regions">Site work across {listAnd(site.service.siteWorkRegions)}.</p>
   </div>
 )}
 
 <style>
-  .jobs-block { padding: 1.25rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; background: var(--color-white); }
+  .jobs-block { --marker: 2rem; --row-gap: 1rem; padding: 1.25rem; border: 1px solid var(--color-line); border-left: 4px solid var(--color-amber); border-radius: 2px; background: var(--color-white); }
   .title { font-size: 1.25rem; }
-  .jobs { width: 100%; margin-top: 1rem; border-collapse: collapse; font-size: 0.9375rem; }
-  thead { display: none; }
-  tr { display: grid; gap: 0.125rem; padding: 0.75rem 0; border-top: 1px solid var(--color-line); }
-  th[scope='row'] { display: flex; align-items: center; gap: 0.375rem; color: var(--color-navy); font-weight: 600; text-align: left; }
-  th[scope='row'] :global(svg) { flex: none; color: var(--color-blue); }
-  td { color: var(--color-ink); line-height: 1.45; }
-  td:last-child { color: var(--color-slate); }
-  .regions { margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--color-line); color: var(--color-slate); font-size: var(--text-small); }
+  .statement { margin-top: 0.5rem; max-width: 44rem; color: var(--color-ink); line-height: 1.5; }
 
-  @media (min-width: 768px) {
+  /* Phones: a vertical route. Each stop draws the segment down to the next marker's centre. */
+  .route { display: grid; gap: var(--row-gap); margin-top: 1.25rem; }
+  .stop { position: relative; display: grid; grid-template-columns: var(--marker) 1fr; align-items: start; column-gap: 0.75rem; }
+  .marker { position: relative; z-index: 1; display: grid; place-items: center; width: var(--marker); height: var(--marker); border: 1.5px solid var(--color-blue); border-radius: 50%; background: var(--color-white); color: var(--color-blue); }
+  .base .marker { border-color: var(--color-navy); background: var(--color-navy); color: var(--color-white); }
+  .seg { position: absolute; top: calc(var(--marker) / 2); left: calc(var(--marker) / 2 - 1px); width: 2px; height: calc(100% + var(--row-gap)); overflow: visible; }
+  .seg line { stroke: var(--color-blue); stroke-width: 1.5; stroke-dasharray: 4 4; }
+  .seg .h { display: none; }
+  .text { display: block; padding-top: 0.3125rem; line-height: 1.35; }
+  .place { color: var(--color-navy); font-weight: 600; }
+  .region { color: var(--color-slate); }
+  .client { display: block; margin-top: 0.125rem; color: var(--color-slate); font-size: var(--text-small); }
+
+  .regions { margin-top: 1.25rem; padding-top: 0.75rem; border-top: 1px solid var(--color-line); color: var(--color-slate); font-size: var(--text-small); }
+
+  /* From 640px: a horizontal strip, four equal columns, the segment running to the next column's marker. */
+  @media (min-width: 640px) {
     .jobs-block { padding: 1.5rem; }
-    thead { display: table-header-group; }
-    thead th { padding: 0 1rem 0.5rem 0; color: var(--color-slate); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-align: left; text-transform: uppercase; }
-    tr { display: table-row; padding: 0; }
-    th[scope='row'], td { padding: 0.75rem 1rem 0.75rem 0; border-top: 1px solid var(--color-line); vertical-align: top; }
+    .route { grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); grid-auto-flow: column; gap: 0; margin-top: 1.5rem; }
+    .stop { grid-template-columns: none; justify-items: center; row-gap: 0.625rem; padding-inline: 0.5rem; text-align: center; }
+    .seg { left: 50%; width: 100%; height: 2px; top: calc(var(--marker) / 2 - 1px); }
+    .seg .h { display: inline; }
+    .seg .v { display: none; }
+    .text { padding-top: 0; }
   }
 </style>
