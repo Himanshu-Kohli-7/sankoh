@@ -39,6 +39,7 @@ const facts = [
   { key: 'Clients', value: company.clientCount },
   { key: 'Team', value: `${company.teamSize} people` },
   { key: 'Engineers', value: `${company.engineerExperience}' experience` },
+  { key: 'Valves supplied', value: `${company.valvesSuppliedPerYear} a year` },
   { key: 'Repairs', value: `${site.service.repairsPerYear} valves a year` },
   { key: 'Udyam', value: company.udyam.number || 'Registered' },
 ];
@@ -195,6 +196,8 @@ const breadcrumbs = [{ label: 'About' }];
   .facts div { padding: 0.75rem 1rem; border-top: 1px solid var(--color-line); }
   .facts div:nth-child(-n + 2) { border-top: 0; }
   .facts div:nth-child(even) { border-left: 1px solid var(--color-line); }
+  /* An odd count: the last fact spans the row, so there is no empty cell. */
+  .facts div:last-child:nth-child(odd) { grid-column: 1 / -1; }
   .facts dt { color: var(--color-slate); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
   .facts dd { margin-top: 0.125rem; color: var(--color-navy); font-weight: 600; overflow-wrap: anywhere; }
   .facts .mono { font-family: var(--font-mono); font-weight: 500; }

@@ -42,6 +42,19 @@ if (udyamNumber && !UDYAM_RE.test(udyamNumber)) {
 const joinAnd = (items: readonly string[]): string =>
   items.length < 2 ? items.join('') : `${items.slice(0, -1).join(', ')} and ${items[items.length - 1]}`;
 
+/** The only own brand. Sankoh manufactures manual valves only, under this brand. */
+const ownBrand = 'Sankoh®';
+/** Stock lead times (proprietor, 21 Nov 2026). */
+const leadTimes = { inStock: '1–2 days', notInStock: 'up to 2–3 weeks', customised: '3–4 weeks' } as const;
+
+/** "ABB, Danfoss, Siemens and 5 more makes": named makes must be in vfdMakes. */
+const vfdShort = (lead: readonly string[]): string => {
+  const missing = lead.filter((m) => !(vfdMakes as readonly string[]).includes(m));
+  if (missing.length) throw new Error(`site.ts: ${missing.join(', ')} not in vfdMakes`);
+  const more = vfdMakes.length - lead.length;
+  return more > 0 ? `${lead.join(', ')} and ${more} more makes` : joinAnd(lead);
+};
+
 export const site = {
   name: 'Sankoh Technical Solutions',
   shortName: 'Sankoh',
@@ -58,6 +71,10 @@ export const site = {
     foundingYear: 2018,
     foundingDisplay: 'December 2018',
     clientCount: '400+',
+    /** Valves supplied a year (proprietor, 21 Nov 2026). The range is for About facts and llms.txt. */
+    valvesSuppliedPerYear: '3,000–4,000',
+    /** Display value for the home stats band. */
+    valvesSuppliedShort: '3,000+',
     teamSize,
     engineerExperience,
     udyam: { registered: true, number: udyamNumber },
@@ -101,9 +118,13 @@ export const site = {
 
   brands: {
     /** The only own brand. */
-    own: ['Sankoh®'],
+    own: [ownBrand],
     /** What Sankoh manufactures, and the only thing it manufactures: manual valves under the Sankoh® brand. */
     manufactured: 'manual valves',
+    /** Hero sub-line on every manual-valve product page; manual-valve pages only (check:claims). */
+    manufacturedLine: `Manufactured by us under our own ${ownBrand} brand.`,
+    /** Badge and lead label on manual-valve pages, the home supply card, About and brands only (check:claims). */
+    manufacturedBadge: `Manufactured by ${ownBrand}`,
     /**
      * What each authorised partner's range covers. These are traded (supplied), never manufactured by Sankoh.
      * Keys match partnerLogoPermission.
@@ -135,13 +156,17 @@ export const site = {
     responseTime,
     /** Valves repaired a year. */
     repairsPerYear: '1,200–1,500',
+    /** Display value for the home stats band; the range stays in About facts and llms.txt. */
+    repairsShort: '1,200+',
     /** Stock and lead times for every product on the site. */
     stockNote: 'Every product on this site is available from ready stock.',
-    leadTimes: {
-      inStock: '1–2 days',
-      notInStock: 'up to 2–3 weeks',
-      customised: '3–4 weeks',
-    },
+    leadTimes,
+    /** Lead-time rows as worded on the site (StockDelivery, llms.txt). */
+    leadTimeRows: [
+      { key: 'From ready stock', value: `Dispatch in ${leadTimes.inStock}` },
+      { key: 'If ready stock has run out', value: leadTimes.notInStock.replace(/^up/, 'Up') },
+      { key: 'Customised', value: leadTimes.customised },
+    ],
     /** We calibrate valves and positioners only. Instruments are sold, never calibrated or repaired by us. */
     calibrationScope: 'Valves and positioners only',
     repairedMakes,
@@ -169,6 +194,8 @@ export const site = {
       vfds: 'VFDs of any make',
     },
     vfdBrands: `${joinAnd([...vfdMakes, 'all other makes'])}`,
+    /** Short form for tight spots (the VFD panel in the repair band): "ABB, Danfoss, Siemens and 5 more makes". */
+    vfdMakesShort: vfdShort(['ABB', 'Danfoss', 'Siemens']),
     /** "Any make, including Fisher, … and Rotex": valve and actuator repair pages and the hub only. */
     repairedMakesLine: `Any make, including ${joinAnd(repairedMakes)}`,
     /** Warranty terms, as confirmed by the company. State them only in these words. */

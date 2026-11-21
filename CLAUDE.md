@@ -68,10 +68,11 @@ Three divisions, each with its own colour (§6):
 | Calibration | Valves and positioners only. Instruments are sold, never calibrated or repaired |
 | Clients | 400+ |
 | Team | 10–15 people; engineers have 5+ years' experience |
-| Valves repaired | 1,200–1,500 a year |
+| Valves supplied | 3,000–4,000 a year (proprietor, 21 Nov 2026; `site.company.valvesSuppliedPerYear`). Home stats show "3,000+" (`valvesSuppliedShort`); the range is for About facts and llms.txt |
+| Valves repaired | 1,200–1,500 a year. Home stats show "1,200+" (`site.service.repairsShort`) |
 | Service area | Supplied to Himachal Pradesh, Punjab, Haryana, Delhi NCR, Bengaluru, Andhra Pradesh and all over India. Site work in Himachal Pradesh, Punjab and Haryana; can be done anywhere in India |
 | Industries | Any industry. Named: textile, pharma, food, paper, chemical, sugar, dairy, water treatment |
-| Stock and lead times | Every product on the site is available from ready stock. In stock: dispatch in 1–2 days. Not in stock: up to 2–3 weeks. Customised: 3–4 weeks |
+| Stock and lead times | Every product on the site is available from ready stock. From ready stock: dispatch in 1–2 days. If ready stock has run out: up to 2–3 weeks. Customised: 3–4 weeks (`site.service.leadTimeRows`) |
 | Response time | The same day, or by the next day at the latest |
 | Site jobs | Positioner installation and calibration on site at Schreiber Dynamix (Fazilka), Bhushan Oils (Ambala) and VVF (Baddi): about two days on site at each plant, travelling up and down each day with no night stay. Shown as one "Recent positioner jobs on site" block (About, positioner repair page), never next to client logos. Client names shown only with each client's permission (`clientNamePermission`) |
 | Office hours | Monday to Saturday, 9:30 AM to 6:30 PM. Sunday closed (from the Google Business Profile) |
