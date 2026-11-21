@@ -333,7 +333,7 @@ Static map image/illustration with a "Open in Google Maps" link to the Business 
 - Site-wide: `Organization` + `LocalBusiness` (name, address, geo, phone, email, url, logo, areaServed: India, `sameAs` once URLs are known, `openingHoursSpecification` from the office hours in `site.ts`). Use one `@id` and reference it everywhere.
 - `WebSite` on home.
 - `BreadcrumbList` on all inner pages.
-- `Product` on product pages: name, description, image, brand (only when a product is confirmed as Sankoh® or as a named partner's range), category, `offers` omitted (no prices). Don't add fake ratings.
+- `Product` on product pages: name, description, image, category, `offers` omitted (no prices). Don't add fake ratings. Brand per product: `sankohMade: true` (manual valves confirmed as Sankoh® make) → `brand` `{ Brand, "Sankoh" }` + `manufacturer` = the Organization `@id`, and no partner photo as `image`; otherwise one authorised partner `Brand` from the product's `partner` field (pneumatic, electric and solenoid valves default to Stolzel), no `manufacturer`; otherwise no brand. `check:seo` enforces it.
 - `Service` on repair/service pages: serviceType, provider (Organization `@id`), areaServed.
 - `FAQPage` where FAQs are visible on the page.
 - Validate with Google Rich Results Test and the Schema.org validator before launch.

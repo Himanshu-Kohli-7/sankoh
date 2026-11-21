@@ -1,6 +1,7 @@
 ---
 title: "Spring Loaded Non-Return Valve"
 category: manual-valves
+sankohMade: true
 order: 7
 images:
   - src: ../../../assets/products/spring-loaded-non-return-valve.webp

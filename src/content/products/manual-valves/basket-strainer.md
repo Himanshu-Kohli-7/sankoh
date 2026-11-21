@@ -4,6 +4,7 @@ seoTitle: Basket Strainer (Pot Type Strainer)
 metaDescription: Basket strainer for high flows and heavy dirt loads on pump suctions and process lines. A top-lift basket holds far more debris than a Y-type strainer.
 updated: 2026-11-15
 category: manual-valves
+partnerPhoto: upc
 order: 24
 images:
   - src: ../../../assets/products/basket-strainer.webp

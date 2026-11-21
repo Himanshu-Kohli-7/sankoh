@@ -1,6 +1,7 @@
 ---
 title: "Globe Valve"
 category: manual-valves
+sankohMade: true
 order: 9
 images:
   - src: ../../../assets/products/globe-valve.png

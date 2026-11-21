@@ -4,6 +4,7 @@ seoTitle: Plug Valve – Lubricated, Sleeved and Lined
 metaDescription: Manual plug valve for quick quarter-turn shut-off on gas, oil, slurry and chemical lines. Lubricated, PTFE sleeved and fully lined types.
 updated: 2026-11-15
 category: manual-valves
+sankohMade: true
 order: 23
 summary: A quarter-turn valve that shuts off flow with a tapered or cylindrical plug, with no body cavity for product to collect in.
 operation: manual

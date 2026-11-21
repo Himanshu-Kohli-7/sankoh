@@ -1,6 +1,7 @@
 ---
 title: "Non-Return Valve (Check Valve) – Flanged End"
 category: manual-valves
+sankohMade: true
 order: 4
 images:
   - src: ../../../assets/products/non-return-valve-flanged-end.webp

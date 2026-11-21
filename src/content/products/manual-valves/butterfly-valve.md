@@ -1,6 +1,7 @@
 ---
 title: "Butterfly Valve"
 category: manual-valves
+sankohMade: true
 order: 1
 images:
   - src: ../../../assets/products/butterfly-valve.webp

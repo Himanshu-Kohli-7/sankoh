@@ -33,15 +33,14 @@ const traded = site.brands.authorisedPartners.map((name) => {
   const key = name.split(' ')[0].toLowerCase();
   return { name, key, line: site.brands.partnerLines[key] };
 });
-/** Manual valve types we make, linked to their pages (published ones only), in this order. */
+/** Manual valve types we make, linked to their pages (published, sankohMade ones only), in this order. */
 const madeTypes: [slug: string, label: string][] = [
   ['ball-valve-flanged-end', 'Ball'], ['gate-valve', 'Gate'], ['globe-valve', 'Globe'], ['butterfly-valve', 'Butterfly'],
   ['dual-plate-check-valve', 'Check'], ['plug-valve', 'Plug'], ['needle-valve', 'Needle'], ['knife-gate-valve', 'Knife gate'],
-  ['safety-valve', 'Safety'], ['strainer', 'Strainer'],
 ];
 const manualValves = (await productsIn('manual-valves')).filter(isPublished);
 const madeLinks = madeTypes.flatMap(([slug, label]) => {
-  const p = manualValves.find((m) => productSlug(m) === slug);
+  const p = manualValves.find((m) => productSlug(m) === slug && m.data.sankohMade);
   return p ? [{ label, href: productHref(p) }] : [];
 });
 const facts = [

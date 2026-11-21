@@ -4,6 +4,7 @@ seoTitle: Thermodynamic Steam Trap (TD Trap)
 metaDescription: Thermodynamic steam trap for steam mains, tracing lines and high-pressure drip points. One moving disc, compact, tolerant of superheat and water hammer.
 updated: 2026-11-15
 category: manual-valves
+partnerPhoto: upc
 order: 25
 images:
   - src: ../../../assets/products/thermodynamic-steam-trap.webp

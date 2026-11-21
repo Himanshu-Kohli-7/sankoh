@@ -1,6 +1,7 @@
 ---
 title: "Gate Valve"
 category: manual-valves
+sankohMade: true
 order: 8
 images:
   - src: ../../../assets/products/gate-valve.png

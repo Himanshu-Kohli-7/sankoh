@@ -1,6 +1,7 @@
 ---
 title: "Ball Valve – Screwed End"
 category: manual-valves
+sankohMade: true
 order: 3
 images:
   - src: ../../../assets/products/ball-valve-screwed-end.webp

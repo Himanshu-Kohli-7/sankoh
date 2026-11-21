@@ -1,6 +1,7 @@
 ---
 title: "Knife Gate Valve"
 category: manual-valves
+sankohMade: true
 order: 10
 images:
   - src: ../../../assets/products/knife-gate-valve.webp

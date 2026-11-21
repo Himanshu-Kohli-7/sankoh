@@ -1,6 +1,8 @@
 ---
 title: "Ball Valve – Flanged End"
 category: manual-valves
+partnerPhoto: upc
+sankohMade: true
 order: 2
 images:
   - src: ../../../assets/products/ball-valve-flanged-end.webp

@@ -1,6 +1,7 @@
 ---
 title: "Wafer Type Single Plate Check Valve"
 category: manual-valves
+sankohMade: true
 order: 5
 images:
   - src: ../../../assets/products/wafer-type-single-plate-check-valve.webp

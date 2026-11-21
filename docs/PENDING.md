@@ -25,6 +25,8 @@ How to use: when something is confirmed, tell Claude "X is confirmed: …". It u
 | # | Question | What the site does until answered |
 |---|---|---|
 | 7 | Sanjay Kohli to confirm the privacy policy line "We do not sell your details or pass them to anyone for their own marketing." | The line is on /privacy-policy/ (standard wording, approved in principle); remove it if he does not agree |
+| 9 | Which of these manual-valve items are **Sankoh® own make**? Diaphragm valve, float valve, flush bottom valve, foot valve, forged valves, piston valve, pressure reducing valve, safety valve, sight glass, moisture separator, strainer, basket strainer, steam traps, thermodynamic steam trap, ball float steam trap. Set `sankohMade: true` on each one confirmed | No "Manufactured by Sankoh®" badge or hero line, and no brand in the Product structured data, on those pages. The 13 ball, gate, globe, butterfly, check/non-return, plug, needle and knife gate valve pages are marked Sankoh® make |
+| 10 | Which partner (UPC or Flowtech) supplies each **instrument**, and is each **valve automation accessory** (positioner, I/P converter, air filter regulator, air release valve, limit switch box, actuators, feedback units) Stolzel's? Set `partner:` in each product file | Instrument and accessory pages carry no brand in the Product structured data. Pneumatic, electric and solenoid valve pages name Stolzel |
 
 ## Confirmed (in CLAUDE.md §4)
 

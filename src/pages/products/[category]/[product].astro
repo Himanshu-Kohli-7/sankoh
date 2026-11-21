@@ -57,18 +57,45 @@ const breadcrumbs = [
   { label: data.title },
 ];
 /**
- * Manual valves are the one range Sankoh manufactures (Sankoh®). Only these pages carry the badge and the
- * "Manufactured by us" sub-line (check:claims). Their photos are not our own, so the caption says so.
+ * Sankoh manufactures manual valves only, and each Sankoh® product is confirmed one by one (`sankohMade`).
+ * Only those pages carry the badge and the "Manufactured by us" sub-line (check:claims). Their photos are
+ * not our own, so the caption says so.
  */
-const manufactured = data.category === 'manual-valves';
+const manufactured = data.sankohMade;
+if (manufactured && data.category !== 'manual-valves') {
+  throw new Error(`${product.id}: sankohMade is for manual valves only (Sankoh manufactures nothing else)`);
+}
 const lead = manufactured ? `${site.brands.manufacturedLine} ${data.summary}` : data.summary;
 const galleryCaption = manufactured && data.images.length > 0 ? 'Representative image' : data.title;
 const whatsappText = `Hello ${site.name}, I have an enquiry about: ${data.title}`;
 const ctaName = titleInSentence(data.title);
 
 const mainImage = data.images[0];
-const schemaImage = mainImage ? new URL((await getImage({ src: mainImage.src, width: 720 })).src, site.url).href : undefined;
-/** No brand, offers or ratings: no product is confirmed for a brand, and there are no prices (SPEC §7). */
+/** A Sankoh® product never points its JSON-LD image at a partner's photo; the page still shows it as representative. */
+const schemaImage = mainImage && !(manufactured && data.partnerPhoto)
+  ? new URL((await getImage({ src: mainImage.src, width: 720 })).src, site.url).href
+  : undefined;
+
+/**
+ * Brand (SPEC §7): Sankoh + manufacturer (the Organization) on sankohMade pages; otherwise one authorised
+ * partner, from `partner`, or Stolzel by default for pneumatic, electric and solenoid valves (automated valves).
+ * Accessories, instruments and other manual items have no brand until their partner is confirmed.
+ */
+const STOLZEL_CATEGORIES: string[] = ['pneumatic-actuated-valves', 'electric-actuated-valves', 'solenoid-valves'];
+const partnerKey = manufactured ? undefined : data.partner ?? (STOLZEL_CATEGORIES.includes(data.category) ? 'stolzel' : undefined);
+const partnerName = partnerKey && site.brands.authorisedPartners.find((n) => n.split(' ')[0].toLowerCase() === partnerKey);
+if (partnerKey) {
+  const line = site.brands.partnerLines[partnerKey];
+  const fits = category.division === 'instruments' ? line === 'process instruments' : line === 'automated valves';
+  if (!partnerName || !fits) throw new Error(`${product.id}: partner "${partnerKey}" (${line}) does not supply ${category.division}`);
+}
+const brandSchema = manufactured
+  ? { brand: { '@type': 'Brand', name: site.shortName }, manufacturer: { '@id': `${site.url}/#organization` } }
+  : partnerName
+  ? { brand: { '@type': 'Brand', name: partnerName } }
+  : {};
+
+/** No offers or ratings: there are no prices (SPEC §7). */
 const schema = [
   {
     '@type': 'Product',
@@ -76,6 +103,7 @@ const schema = [
     name: data.title,
     description: data.summary,
     category: category.label,
+    ...brandSchema,
     ...(schemaImage ? { image: schemaImage } : {}),
     url: new URL(Astro.url.pathname, site.url).href,
   },

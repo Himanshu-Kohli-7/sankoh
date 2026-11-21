@@ -7,7 +7,10 @@
  * - JSON-LD that does not parse
  * - Organization/LocalBusiness: not exactly one node per page, a second node with that type, the wrong
  *   @id, or an `{ "@id": … }` reference that points at no node on the page
- * - Product with offers, price, brand, ratings or reviews; Service with a price; WebSite with a SearchAction
+ * - Product with offers, price, ratings or reviews; Service with a price; WebSite with a SearchAction
+ * - Product brand/manufacturer out of rule: a sankohMade page (scripts/sankoh-made.mjs) needs brand Sankoh and
+ *   manufacturer = the Organization @id; any other page has no manufacturer, and at most one Brand, which must
+ *   be an authorised partner (Stolzel, UPC, Flowtech Measuring Instruments Pvt Ltd)
  * - more than one FAQPage on a page, or an FAQ question that is not visible on the page
  * - BreadcrumbList missing on an inner page, positions out of order, or items that are not canonical URLs
  * - missing or duplicate <title> / meta description
@@ -23,16 +26,20 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { sankohMadeUrls } from './sankoh-made.mjs';
 
 const DIST = 'dist';
 const ORIGIN = 'https://www.sankohtech.com';
 const ORG_ID = `${ORIGIN}/#organization`;
 const ORG_TYPES = new Set(['Organization', 'LocalBusiness']);
 const FORBIDDEN = {
-  Product: ['offers', 'price', 'priceCurrency', 'priceRange', 'brand', 'aggregateRating', 'review', 'reviews'],
+  Product: ['offers', 'price', 'priceCurrency', 'priceRange', 'aggregateRating', 'review', 'reviews'],
   Service: ['offers', 'price', 'priceCurrency', 'priceRange', 'priceSpecification', 'aggregateRating', 'review'],
   WebSite: ['potentialAction'],
 };
+/** Brand names a non-Sankoh product may carry: the authorised partners (site.brands.authorisedPartners). */
+const PARTNER_BRANDS = new Set(['Stolzel', 'UPC', 'Flowtech Measuring Instruments Pvt Ltd']);
+const OWN_BRAND = 'Sankoh';
 const OG_REQUIRED = ['og:type', 'og:site_name', 'og:title', 'og:description', 'og:url', 'og:image', 'og:image:width', 'og:image:height', 'og:image:alt'];
 const TWITTER_REQUIRED = ['twitter:card', 'twitter:title', 'twitter:description', 'twitter:image'];
 
@@ -181,6 +188,19 @@ for (const file of walk(DIST)) {
       if (o.url && o.url !== self) err(url, `${t} url ${o.url} is not the page URL`);
     }
   }
+  for (const o of byType('Product')) {
+    const brand = o.brand;
+    if (sankohMadeUrls.has(url)) {
+      if (brand?.['@type'] !== 'Brand' || brand?.name !== OWN_BRAND || Array.isArray(brand)) err(url, `Product on a sankohMade page needs brand { Brand, "${OWN_BRAND}" }`);
+      if (o.manufacturer?.['@id'] !== ORG_ID) err(url, `Product on a sankohMade page needs manufacturer { "@id": "${ORG_ID}" }`);
+    } else {
+      if ('manufacturer' in o) err(url, 'Product manufacturer is only for sankohMade pages');
+      if (brand !== undefined && (Array.isArray(brand) || brand['@type'] !== 'Brand' || !PARTNER_BRANDS.has(brand.name))) {
+        err(url, `Product brand must be one authorised partner Brand (${[...PARTNER_BRANDS].join(', ')}): ${JSON.stringify(brand)}`);
+      }
+    }
+  }
+  if (sankohMadeUrls.has(url) && byType('Product').length !== 1) err(url, 'sankohMade page needs one Product node');
   const faqs = byType('FAQPage');
   if (faqs.length > 1) err(url, `has ${faqs.length} FAQPage nodes (max 1)`);
   const summaries = new Set([...body.matchAll(/<summary\b[^>]*>([\s\S]*?)<\/summary>/gi)].map(([, s]) => text(s)));

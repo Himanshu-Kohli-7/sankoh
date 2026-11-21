@@ -4,6 +4,7 @@ seoTitle: Ball Float Steam Trap (Float & Thermostatic)
 metaDescription: Ball float steam trap for heat exchangers, jacketed vessels and air heaters. Drains condensate continuously as it forms and vents air at start-up.
 updated: 2026-11-15
 category: manual-valves
+partnerPhoto: upc
 order: 26
 images:
   - src: ../../../assets/products/ball-float-steam-trap.webp

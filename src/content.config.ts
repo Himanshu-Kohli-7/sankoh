@@ -69,6 +69,19 @@ const products = defineCollection({
       updated: seo.updated.optional(),
       category: z.enum(categorySlugs),
       order: z.number(),
+      /**
+       * Sankoh® own make, confirmed per product (manual valves only). Drives the "Manufactured by Sankoh®" badge,
+       * the hero line and brand Sankoh + manufacturer in the Product JSON-LD. Unconfirmed items stay false (docs/PENDING.md).
+       */
+      sankohMade: z.boolean().default(false),
+      /**
+       * The authorised partner whose range this is (site.brands.partnerLines), set only when confirmed: the Product
+       * JSON-LD then names it as the one Brand. Pneumatic, electric and solenoid valves default to Stolzel; automation
+       * accessories, instruments and other manual items get a brand only from this field.
+       */
+      partner: z.enum(['stolzel', 'upc', 'flowtech']).optional(),
+      /** The photo is this partner's (docs/IMAGE-CREDITS.md §2). A sankohMade page then leaves it out of the JSON-LD. */
+      partnerPhoto: z.enum(['stolzel', 'upc', 'flowtech']).optional(),
       images: z.array(z.object({ src: image(), alt: z.string() })).default([]),
       /** 1–2 sentences, used in cards and under the H1. */
       summary: z.string(),

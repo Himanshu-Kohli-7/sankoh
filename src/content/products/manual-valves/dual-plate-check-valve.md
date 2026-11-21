@@ -1,6 +1,7 @@
 ---
 title: "Dual Plate Check Valve"
 category: manual-valves
+sankohMade: true
 order: 6
 images:
   - src: ../../../assets/products/dual-plate-check-valve.webp

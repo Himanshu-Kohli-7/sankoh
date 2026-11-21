@@ -1,6 +1,7 @@
 ---
 title: "Needle Valve"
 category: manual-valves
+sankohMade: true
 order: 15
 images:
   - src: ../../../assets/products/needle-valve.webp

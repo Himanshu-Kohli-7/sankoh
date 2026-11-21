@@ -4,6 +4,7 @@ seoTitle: 3-Way Ball Valve – L-Port and T-Port
 metaDescription: 3-way ball valve with an L-port or T-port ball for diverting, selecting or mixing flow between three lines. Manual or actuated, to your specification.
 updated: 2026-11-15
 category: manual-valves
+sankohMade: true
 order: 22
 summary: A ball valve with three ports and an L-shaped or T-shaped bore, used to divert flow between two lines, select one of two sources or mix two streams.
 operation: manual
