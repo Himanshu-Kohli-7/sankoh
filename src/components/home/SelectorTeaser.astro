@@ -93,6 +93,8 @@ const appChips = applications.map((app) => ({
     .row { grid-template-columns: 7.5rem 1fr; align-items: center; }
   }
   @media (min-width: 1024px) {
-    .teaser { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: 4rem; align-items: center; }
+    /* Top-aligned, the heading column sticky beside the taller panel: no empty band above the heading. */
+    .teaser { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: 4rem; align-items: start; }
+    .teaser > :global(:first-child) { position: sticky; top: 6.5rem; }
   }
 </style>

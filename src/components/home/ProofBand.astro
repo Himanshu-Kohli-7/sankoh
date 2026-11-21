@@ -1,6 +1,6 @@
 ---
 /**
- * Proof band (home §4): the three confirmed stats, own brand and authorised partners, client logos, and three testimonials.
+ * Proof band (home §4): own brand and authorised partners, client logos, and three testimonials.
  * All six testimonials stay on /about/#reviews. Wording comes verbatim from the reviews collection;
  * PENDING #8 (named consent) still applies. Plain HTML, no Review/AggregateRating schema (SPEC §6.3).
  * Partner logos only where permission is on (PartnerLogo); no other third-party marks (CLAUDE.md §2.4).
@@ -9,7 +9,6 @@ import { getCollection } from 'astro:content';
 import ClientLogoStrip from '../ClientLogoStrip.astro';
 import Icon from '../Icon.astro';
 import PartnerLogo from '../PartnerLogo.astro';
-import ProofStats from './ProofStats.astro';
 import ReviewCard from '../ReviewCard.astro';
 import SectionHeader from '../SectionHeader.astro';
 import { site } from '../../config/site';
@@ -25,7 +24,6 @@ const reviews = (await getCollection('reviews', (r) => featured.includes(r.id)))
 <section class="section-compact proof">
   <div class="container-content section-y">
     <SectionHeader eyebrow="Brands & clients" title="Who we work with" />
-    <ProofStats />
 
     <div class="brands">
       <ul class="brand-grid" aria-label="Own brand and authorised partners">

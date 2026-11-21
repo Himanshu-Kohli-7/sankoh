@@ -8,6 +8,7 @@ import RepairBand from '../components/home/RepairBand.astro';
 import SelectorTeaser from '../components/home/SelectorTeaser.astro';
 import { selectorAvailable } from '../config/nav';
 import ProofBand from '../components/home/ProofBand.astro';
+import ProofStats from '../components/home/ProofStats.astro';
 import WhySankoh from '../components/home/WhySankoh.astro';
 import ContactCta from '../components/home/ContactCta.astro';
 import HomeFaq from '../components/home/HomeFaq.astro';
@@ -15,10 +16,11 @@ import { site } from '../config/site';
 ---
 
 <Base
-  title={`${site.name} – Valves, Instruments & Repair, India`}
+  title={`${site.shortName} – Industrial Valves, Instruments & Repair, India`}
   description="Industrial valves, valve automation and process instruments, plus valve and VFD repair of any make, on site or in our workshop. Derabassi, Punjab."
 >
   <Hero />
+  <ProofStats />
   <WhatWeSupply />
   <RepairBand />
   <ProofBand />

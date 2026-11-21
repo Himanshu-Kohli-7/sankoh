@@ -1,36 +1,48 @@
 ---
 /**
- * Home proof stats (proprietor, 21 Nov 2026): founding, client count and valves repaired a year.
- * These three only, all from site.ts. Never add another number here (CLAUDE.md §2.1).
+ * Home stats band, directly under the hero (proprietor, 21 Nov 2026): founding, clients, valves supplied
+ * and valves repaired a year. Display values only, all from site.ts; the ranges stay in About facts and
+ * llms.txt. Never add another number here (CLAUDE.md §2.1).
  */
 import { site } from '../../config/site';
 
+const { company, service } = site;
 const stats = [
-  { value: site.company.foundingDisplay, label: 'In business since' },
-  { value: site.company.clientCount, label: 'Clients served' },
-  { value: site.service.repairsPerYear, label: 'Valves repaired a year' },
+  { value: String(company.foundingYear), label: `In business since ${company.foundingDisplay}` },
+  { value: company.clientCount, label: 'Clients served' },
+  { value: company.valvesSuppliedShort, label: 'Valves supplied a year' },
+  { value: service.repairsShort, label: 'Valves repaired a year' },
 ];
 ---
 
-<dl class="stats">
-  {stats.map((s) => (
-    <div>
-      <dt>{s.label}</dt>
-      <dd>{s.value}</dd>
-    </div>
-  ))}
-</dl>
+<section class="stats-band" aria-label="Sankoh in numbers">
+  <dl class="container-content stats">
+    {stats.map((s) => (
+      <div>
+        <dt>{s.label}</dt>
+        <dd>{s.value}</dd>
+      </div>
+    ))}
+  </dl>
+</section>
 
 <style>
-  .stats { display: grid; margin-top: 1.75rem; border: 1px solid var(--color-line); border-radius: 2px; background: var(--color-white); }
-  .stats div { display: flex; flex-direction: column-reverse; gap: 0.125rem; padding: 0.75rem 1rem; border-top: 1px solid var(--color-line); }
-  .stats div:first-child { border-top: 0; }
-  dt { color: var(--color-slate); font-family: var(--font-mono); font-size: var(--text-eyebrow, 0.75rem); font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
-  dd { color: var(--color-navy); font-family: var(--font-mono); font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); font-weight: 500; line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .stats-band { background: var(--color-white); border-bottom: 1px solid var(--color-line); }
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .stats div { display: flex; flex-direction: column-reverse; justify-content: start; gap: 0.25rem; padding: 0.875rem 0.75rem; }
+  /* 2 × 2 on phones: rules between the tiles only, never on the outer edge. */
+  .stats div:nth-child(odd) { padding-left: 0; }
+  .stats div:nth-child(even) { border-left: 1px solid var(--color-line); }
+  .stats div:nth-child(n + 3) { border-top: 1px solid var(--color-line); }
+  dt { color: var(--color-slate); font-family: var(--font-mono); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.06em; line-height: 1.35; text-transform: uppercase; }
+  dd { color: var(--color-navy); font-family: var(--font-mono); font-size: 1.75rem; font-weight: 500; line-height: 1.1; font-variant-numeric: tabular-nums; }
 
-  @media (min-width: 640px) {
-    .stats { grid-template-columns: repeat(3, 1fr); }
-    .stats div { border-top: 0; border-left: 1px solid var(--color-line); padding: 1.25rem 1.5rem; }
-    .stats div:first-child { border-left: 0; }
+  @media (min-width: 768px) {
+    .stats { grid-template-columns: repeat(4, 1fr); }
+    .stats div { padding: 1.25rem 1.5rem; }
+    .stats div:nth-child(n) { border-top: 0; border-left: 1px solid var(--color-line); }
+    .stats div:first-child { padding-left: 0; border-left: 0; }
+    dt { font-size: 0.75rem; letter-spacing: 0.08em; }
+    dd { font-size: clamp(2rem, 1.4rem + 1.2vw, 2.5rem); }
   }
 </style>
