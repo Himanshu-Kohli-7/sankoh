@@ -35,4 +35,4 @@ Pressure instruments tell you what the pressure in a line, vessel or filter is, 
 
 Accessories matter as much as the instrument itself. A siphon protects a gauge from live steam, and a [needle valve](/products/manual-valves/needle-valve/) isolates it so it can be changed without shutting the line.
 
-These instruments are fitted across boiler houses, compressed air systems, pump stations, water treatment plants, HVAC and building automation and wider industrial automation. Sankoh Technical Solutions supplies pressure instruments to suit your range, media and connection, brings in further types and brands from its vendor network, and delivers all over India, fastest within the North.
+These instruments are fitted across boiler houses, compressed air systems, pump stations, water treatment plants, HVAC and building automation and wider industrial automation. Sankoh Technical Solutions supplies pressure instruments to suit your range, media and connection, brings in further types and brands from its vendor network, and delivers all over India.

@@ -40,7 +40,7 @@ typicalOptions:
     value: "4–20 mA, relays, Modbus"
 ---
 
-A turbidity analyzer measures how cloudy water is. Fine particles of silt, clay, organic matter or microbes scatter light, and the more there are, the cloudier the water. Turbidity is the quickest way to see whether filtration and settling are doing their job.
+A turbidity analyzer measures how cloudy water is. Fine particles of silt, clay, organic matter or microbes scatter light, and the more there are, the cloudier the water. Turbidity is a simple, direct way to see whether filtration and settling are doing their job.
 
 The usual method shines a beam of light into the sample and measures the light scattered at right angles by suspended particles. More scattered light means higher turbidity. Some designs add detectors at other angles to cancel out colour in the water and fouling of the optics.
 

@@ -44,4 +44,4 @@ Pneumatic actuated valves use compressed air to open, close or position a valve,
 
 The range covers quarter-turn ball, butterfly and plug valves for automatic isolation, globe control valves for regulating flow, pressure and temperature, Y-type angle seat valves for steam and hot water, sanitary tri-clover and corrosion-resistant UPVC valves, and power cylinders that drive dampers.
 
-Pneumatic actuated valves come to you through our authorised partnership with Stolzel: we supply them, we do not manufacture them. Complete valve and actuator packages are supplied to your specification, and anything else is sourced through our vendor network. We deliver anywhere in India, fastest across North India.
+Pneumatic actuated valves come to you through our authorised partnership with Stolzel: we supply them, we do not manufacture them. Complete valve and actuator packages are supplied to your specification, and anything else is sourced through our vendor network. Delivery is available anywhere in India.

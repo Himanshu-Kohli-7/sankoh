@@ -28,7 +28,7 @@ faqs:
   - question: Why does the cable type matter?
     answer: The signal is only a few millivolts and depends on the metals all the way back to the instrument. Ordinary copper cable adds an error, so the run must be made in extension or compensating cable of the same type, with the polarity kept right.
   - question: What is a grounded or ungrounded junction?
-    answer: In a grounded junction the tip is welded to the sheath, which gives the fastest response but can pick up electrical noise. An ungrounded junction is insulated from the sheath, a little slower, and better where electrical isolation matters.
+    answer: In a grounded junction the tip is welded to the sheath, which gives the shortest response time but can pick up electrical noise. An ungrounded junction is insulated from the sheath, a little slower, and better where electrical isolation matters.
 typicalOptions:
   - label: "Types"
     value: "K, J, T, E and N (base metal); R, S and B (noble metal)"

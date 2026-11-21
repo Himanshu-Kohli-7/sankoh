@@ -14,7 +14,7 @@ import SectionHeader from '../../components/SectionHeader.astro';
 import TrustStats from '../../components/TrustStats.astro';
 import CallButton from '../../components/contact/CallButton.astro';
 import QuoteButton from '../../components/contact/QuoteButton.astro';
-import { site, quoteHref } from '../../config/site';
+import { site, quoteHref, listAnd } from '../../config/site';
 import { pageTitle } from '../../lib/content';
 
 const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
@@ -51,7 +51,7 @@ const faqs: FaqItem[] = [
   },
   {
     question: 'Do you work at our site?',
-    answer: `Yes. Repairs can be done on site or at our workshop, and installation and commissioning take place at your plant. We serve all of India, quickest across North India.`,
+    answer: `Yes. Repairs can be done on site or at our workshop, and installation and commissioning take place at your plant. We serve all of India; site work is done across ${listAnd(site.service.siteWorkRegions)}, and can be done anywhere in India.`,
   },
   {
     question: 'What are your office hours?',
@@ -109,7 +109,7 @@ const breadcrumbs = [{ label: 'Services' }];
   </section>
 
   <section class="container-content section-y">
-    <SectionHeader eyebrow="Contact" division="repair" title="The quickest way in" />
+    <SectionHeader eyebrow="Contact" division="repair" title="Ways to reach us" />
     <ul class="routes">
       {routes.map((r) => (
         <li>

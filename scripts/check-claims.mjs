@@ -53,6 +53,7 @@ const BANNED = [
   // Calibration is for valves and positioners only; instruments are sold, never calibrated or repaired.
   [/we (offer|provide|do) instrument calibration/i, 'We calibrate valves and positioners only, never instruments'],
   [/calibration of instruments/i, 'We calibrate valves and positioners only, never instruments'],
+  [/\b(quickest|fastest)\b/i, 'No speed superlatives: say "Delivery from ready stock" or give the confirmed lead times (site.service.leadTimes)'],
 ];
 
 /** Former contact, no longer with the company. Never his name, title, number or email, anywhere. */

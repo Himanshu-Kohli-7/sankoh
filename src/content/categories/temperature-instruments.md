@@ -35,4 +35,4 @@ Temperature instruments show or signal how hot a process is, so that it can be w
 
 A [thermowell](/products/temperature-instruments/thermowell/) completes most installations. It is a closed tube welded or screwed into the line, so the gauge or sensor inside can be withdrawn without draining or depressurising anything.
 
-You will find these instruments on boilers and steam lines, heat exchangers, ovens and dryers, chilled water plants, HVAC and building automation, and throughout industrial automation. Sankoh Technical Solutions supplies temperature instruments matched to your range, tapping and signal, sources further types and makes through its vendor network, and delivers anywhere in India, quickest across the North.
+You will find these instruments on boilers and steam lines, heat exchangers, ovens and dryers, chilled water plants, HVAC and building automation, and throughout industrial automation. Sankoh Technical Solutions supplies temperature instruments matched to your range, tapping and signal, sources further types and makes through its vendor network, and ships to any part of India.

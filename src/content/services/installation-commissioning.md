@@ -49,7 +49,7 @@ faqs:
   - question: Do you commission automated valves?
     answer: Yes. We set up and commission valve and automation systems for factories, including pneumatic, electric and solenoid valves with their accessories.
   - question: Which areas do you cover?
-    answer: We serve all of India. Delivery and on-site service are quickest across North India, from our base in Derabassi, Punjab (near Chandigarh).
+    answer: We serve all of India from our base in Derabassi, Punjab (near Chandigarh), and site work can be done anywhere in the country.
   - question: What if an existing valve on the line needs repair during the work?
     answer: On-site repair is part of what we offer, for valves of every make, so a faulty valve found during installation can be dealt with by the same team.
 relatedProducts:
