@@ -15,6 +15,9 @@ const salesPhone = { label: 'Sales', display: '+91 98779 38373', e164: '+9198779
 /** WhatsApp uses the primary number. Only `number` (for wa.me) is needed: buttons never print digits. */
 const whatsapp = { number: '919888491527' } as const;
 
+/** The end of the support sentence, shared by `supportLine` and the fact tile's second line. */
+const SUPPORT_TAIL = 'Sundays included. Call or WhatsApp us.';
+
 export const site = {
   name: 'Sankoh Technical Solutions',
   shortName: 'Sankoh',
@@ -80,11 +83,17 @@ export const site = {
     area: 'All of India; quickest delivery and on-site service across North India',
     /**
      * The only availability claim the site makes (CLAUDE.md §2.5). The office keeps the hours above;
-     * breakdown support runs every day. `npm run check:claims` bans the old wordings.
+     * breakdown support runs every day. Use these two values everywhere; never hard-code a copy.
+     * `npm run check:claims` bans the old wordings and `npm run check:contact` caps how often the phrase
+     * may appear on a page (3: header strip, one contextual spot, footer).
+     * - supportLineShort: the label, for the header strip (and its mobile menu copy) and the fact tile.
+     * - supportLine: the full sentence, for the footer and the contextual spots.
+     * - supportLineTail: the end of the sentence, for the fact tile's second line under the label.
+     * The old "7-day" label is banned (check:claims): it reads as a 7-day turnaround.
      */
-    supportLine: 'Urgent breakdown support 7 days a week',
-    /** Short form for fact strips. */
-    supportLineShort: '7-day breakdown support',
+    supportLine: `Urgent breakdown support 7 days a week, ${SUPPORT_TAIL}`,
+    supportLineShort: 'Breakdown support 7 days a week',
+    supportLineTail: SUPPORT_TAIL,
     team: 'Qualified engineers and professionals',
     repairTurnaround: 'Typically 2–3 days for workshop repairs',
     /** On-site repair is offered as well as workshop repair. */

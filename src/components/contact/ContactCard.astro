@@ -2,8 +2,8 @@
 /**
  * Contact details from site.ts in two variants:
  * - full (Contact page only): primary number with call and WhatsApp, the sales line labelled
- *   "If you can’t reach us", email, hours with the 7-day breakdown line, address and GSTIN.
- * - summary (home contact block): address, hours with the breakdown line, and labelled buttons.
+ *   "If you can’t reach us", email, hours with the breakdown support line, address and GSTIN.
+ * - summary: address, hours with the breakdown support line, and labelled buttons.
  *   No number: the header strip and footer already show it.
  */
 import Icon from '../Icon.astro';
@@ -43,7 +43,7 @@ const { address } = site;
       <dd>
         <p class="text">
           {site.hours.display}. {site.hours.closed}.<br />
-          <strong>{site.service.supportLine}.</strong>
+          <strong>{site.service.supportLine}</strong>
         </p>
       </dd>
     </div>

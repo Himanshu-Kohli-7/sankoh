@@ -39,7 +39,7 @@ repairVsReplace:
     - The body and bonnet are sound, and the fault is in wearing parts such as seats, seals, packing or trim.
     - The valve is a large, special or automated unit that is costly or slow to buy new.
     - The make or model is discontinued and a like-for-like replacement is hard to find.
-    - You need the line back quickly. A typical workshop repair is done in 2–3 days.
+    - You need the line back quickly, and repairing it is the faster route.
   replace:
     - The body is cracked, badly corroded or eroded.
     - The valve was the wrong type, size or material for the service and keeps failing.
@@ -66,14 +66,14 @@ whatToSend:
   - Number of units
   - Your location, for on-site repair
 
-# Company facts only (CLAUDE.md §4). The fact strip above already covers make, turnaround, breakdown support and team.
+# Company facts only (CLAUDE.md §4). The fact strip above already covers make, turnaround, breakdown support and team; do not repeat them here.
 whySankoh:
   - icon: box
     title: Repair or replacement from one place
     text: If a valve is beyond repair, we supply new valves, surplus and discontinued valves and parts, and reconditioned components, and source other items through our vendor network.
   - icon: pin
     title: On-site repair and a workshop
-    text: We repair valves on site as well as at our workshop in Derabassi, Punjab (near Chandigarh). We serve all of India, quickest across North India, and urgent breakdown support runs 7 days a week.
+    text: We repair valves on site as well as at our workshop in Derabassi, Punjab (near Chandigarh). We serve all of India, quickest across North India.
   - icon: search
     title: Advice before you spend
     text: Our Valve Selection & Maintenance Advisory gives expert advice on choosing, maintaining and managing all types of valves.

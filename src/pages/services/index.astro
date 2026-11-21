@@ -37,7 +37,7 @@ const repairs = [
 
 /** Which way in, by what the visitor needs. Every route is a confirmed offer. */
 const routes = [
-  { icon: 'phone', need: 'A breakdown on your line', action: `Call us. ${site.service.supportLine}.` },
+  { icon: 'phone', need: 'A breakdown on your line', action: 'Call or WhatsApp us.' },
   { icon: 'whatsapp', need: 'A valve or drive to repair', action: 'WhatsApp a photo of it and its nameplate or rating label.' },
   { icon: 'quote', need: 'New products or a part we don’t list', action: 'Send your requirement and we supply or source it.' },
   { icon: 'search', need: 'Not sure what you need', action: 'Ask for valve selection and technical advice.' },
@@ -55,7 +55,7 @@ const faqs: FaqItem[] = [
   },
   {
     question: 'What are your office hours?',
-    answer: `${site.hours.display}. ${site.hours.closed}. ${site.service.supportLine}, Sundays included.`,
+    answer: `${site.hours.display}. ${site.hours.closed}. ${site.service.supportLine}`,
   },
   {
     question: 'What warranty do repairs carry?',

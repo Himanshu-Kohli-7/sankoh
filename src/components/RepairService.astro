@@ -139,7 +139,6 @@ const schema = [
       <QuoteButton label="Request repair" product={slug} />
       <CallButton />
       <WhatsAppButton label="WhatsApp a photo" text={whatsappText} />
-      <p class="enquire-note">{site.service.supportLine}.</p>
     </aside>
   </div>
 
@@ -148,10 +147,8 @@ const schema = [
       <SectionHeader eyebrow="Process" division="repair" title="From inspection to dispatch" />
       <div class="steps"><ProcessSteps steps={repairSteps[data.group]} /></div>
       <ul class="terms">
-        <li><Icon name="clock" size={22} />{site.service.repairTurnaround}</li>
         <li><Icon name="pin" size={22} />{site.service.onSiteRepair}</li>
         {warranty && <li><Icon name="check" size={22} />Warranty: {warranty}</li>}
-        <li><Icon name="calendar" size={22} />{site.service.supportLine}</li>
       </ul>
     </div>
   </section>

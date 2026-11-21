@@ -9,18 +9,24 @@ interface Props {
   tone?: 'light' | 'dark';
   /** 2 keeps the 2×2 grid at every width, for narrow columns. */
   columns?: 2 | 4;
+  /**
+   * Leave a tile out where the page already says it nearby: the support tile is the one allowed
+   * mention per page (check:contact caps it), and the home repair band's headline carries the turnaround.
+   */
+  omit?: Array<'turnaround' | 'support'>;
 }
-const { tone = 'light', columns = 4 } = Astro.props;
+const { tone = 'light', columns = 4, omit = [] } = Astro.props;
 
+/** The support tile is the single place the breakdown support line is stated as a fact (label + the end of the sentence). */
 const facts = [
-  { icon: 'wrench', label: 'Any make', detail: 'Valves, actuators, positioners and VFDs' },
-  { icon: 'clock', label: 'Typically 2–3 days', detail: 'For workshop repairs' },
-  { icon: 'calendar', label: site.service.supportLineShort, detail: 'Urgent support, Sundays included' },
-  { icon: 'users', label: 'Qualified engineers', detail: 'And professionals on the team' },
-];
+  { key: 'make', icon: 'wrench', label: 'Any make', detail: 'Valves, actuators, positioners and VFDs' },
+  { key: 'turnaround', icon: 'clock', label: 'Typically 2–3 days', detail: 'For workshop repairs' },
+  { key: 'support', icon: 'calendar', label: site.service.supportLineShort, detail: site.service.supportLineTail },
+  { key: 'team', icon: 'users', label: 'Qualified engineers', detail: 'And professionals on the team' },
+].filter((fact) => !omit.includes(fact.key as 'turnaround' | 'support'));
 ---
 
-<ul class:list={['facts', columns === 4 && 'wide']} data-tone={tone}>
+<ul class:list={['facts', columns === 4 && 'wide']} data-tone={tone} style={`--cols: ${facts.length}`}>
   {facts.map((fact) => (
     <li>
       <Icon name={fact.icon} size={28} />
@@ -42,7 +48,7 @@ const facts = [
 
   @media (min-width: 900px) {
     li { padding: 1.5rem; }
-    .wide { grid-template-columns: repeat(4, 1fr); }
+    .wide { grid-template-columns: repeat(var(--cols), 1fr); }
     .wide li:nth-child(n) { border-top-width: 0; border-left-width: 1px; }
     .wide li:first-child { border-left-width: 0; }
   }

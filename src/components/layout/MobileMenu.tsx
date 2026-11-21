@@ -336,7 +336,8 @@ export default function MobileMenu({ currentPath, catalogueHref }: Props) {
 
         <div class="flex-none border-t border-line bg-paper pt-3 pb-[calc(1rem+env(safe-area-inset-bottom,0px))]">
           <div class="container-content">
-            <p class="pb-3 text-small text-slate">{site.service.supportLine}</p>
+            {/* Same item as the header strip (SPEC §1): the check:contact count skips this copy. */}
+            <p class="pb-3 text-small text-slate" data-support-menu>{site.service.supportLineShort}</p>
             <a class="btn btn-primary w-full" href={quoteHref()}>
               <Svg d={ICONS.quote} size={20} />
               Request a quote

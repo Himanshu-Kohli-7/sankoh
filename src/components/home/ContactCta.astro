@@ -2,7 +2,7 @@
 /**
  * Contact + call-to-action band (home §8, amber): replaces the "Talk to us" block and the
  * closing CTA band. Three labelled buttons (quote, call, WhatsApp; no digits, CLAUDE.md §4),
- * address, hours with the breakdown line, and a Google Maps link. No map embed, so nothing
+ * address, hours, and a Google Maps link. No map embed, so nothing
  * third-party loads. The catalogue link appears only once the PDF exists.
  */
 import Icon from '../Icon.astro';
@@ -18,7 +18,7 @@ import { catalogue } from '../../config/catalogue';
     <div class="lead">
       <p class="eyebrow">Contact</p>
       <h2>Tell us what you need</h2>
-      <p class="intro">Call, WhatsApp or send us your requirement. {site.service.supportLine}.</p>
+      <p class="intro">Call, WhatsApp or send us your requirement.</p>
       <div class="buttons">
         <QuoteButton tone="amber" />
         <CallButton tone="amber" />
@@ -37,7 +37,7 @@ import { catalogue } from '../../config/catalogue';
         </div>
         <div>
           <dt class="eyebrow">Hours</dt>
-          <dd>{site.hours.display}. {site.hours.closed}.<br /><strong>{site.service.supportLine}.</strong></dd>
+          <dd>{site.hours.display}. {site.hours.closed}.</dd>
         </div>
       </dl>
       <div class="more">

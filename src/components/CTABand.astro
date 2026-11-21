@@ -1,7 +1,7 @@
 ---
 /**
  * Amber call-to-action band (SPEC §1): a heading, three labelled buttons (quote, call, WhatsApp)
- * and one small hours-and-breakdown line. No phone number: the header strip, mobile bar and footer
+ * and one small hours line. No phone number: the header strip, mobile bar and footer
  * carry it. On amber the primary button is solid navy, since an amber button would disappear.
  */
 import CallButton from './contact/CallButton.astro';
@@ -38,7 +38,7 @@ const {
         <CallButton tone="amber" />
         <WhatsAppButton label={whatsappLabel} text={whatsappText} tone="amber" />
       </div>
-      <p class="hours">{site.hours.short} · {site.service.supportLineShort}</p>
+      <p class="hours">{site.hours.short}</p>
     </div>
   </div>
 </section>

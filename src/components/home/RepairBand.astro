@@ -26,7 +26,7 @@ const whatsappText = `Hello ${site.name}, I have a valve to send for repair.`;
         <h2>Any make. Any model. <span>Typically back in 2–3 days.</span></h2>
         <p class="intro">
           We repair {scope.valves.toLowerCase()}, plus VFDs: {site.service.vfdBrands}.{' '}
-          {site.service.repairTurnaround}, and on-site repair is offered too.
+          On-site repair is offered too, as well as repair in our workshop.
         </p>
         <div class="actions">
           <QuoteButton label="Request repair" product="valve-repair" tone="dark" />
@@ -54,7 +54,7 @@ const whatsappText = `Hello ${site.name}, I have a valve to send for repair.`;
       </div>
     </div>
 
-    <div class="facts"><TrustStats tone="dark" /></div>
+    <div class="facts"><TrustStats tone="dark" omit={['turnaround']} /></div>
 
     <div class="process">
       <h3 class="eyebrow process-title">How a workshop repair runs</h3>

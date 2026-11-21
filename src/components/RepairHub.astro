@@ -99,14 +99,12 @@ const schema = [
         eyebrow="Process"
         division="repair"
         title="How a workshop repair runs"
-        intro={`Five steps from your door and back. ${site.service.repairTurnaround}.`}
+        intro="Five steps from your door and back."
       />
       <div class="steps"><ProcessSteps steps={repairSteps[data.group]} /></div>
       <ul class="terms">
-        <li><Icon name="clock" size={22} />{site.service.repairTurnaround}</li>
         <li><Icon name="pin" size={22} />{site.service.onSiteRepair}</li>
         <li><Icon name="check" size={22} />Warranty: {warranty.repairedValves}</li>
-        <li><Icon name="calendar" size={22} />{site.service.supportLine}</li>
       </ul>
     </div>
   </section>
